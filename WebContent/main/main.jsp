@@ -1,23 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title -->
-    <title>SSAMZO</title>
+<!-- Title -->
+<title>SSAMZO</title>
 
-    <!-- Favicon 크롬 탭에 뜨는 아이콘 모양. 삭제해도 괜찮음 -->
-    <link rel="icon" href="#">
+<!-- Favicon 크롬 탭에 뜨는 아이콘 모양. 삭제해도 괜찮음 -->
+<link rel="icon" href="#">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
 <style>
+/* Master Stylesheet - 1.0 */
+/* :: 1.0 Import Fonts */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
+/* :: 2.0 Import All CSS */
+@import url(../style/css/bootstrap.min.css);
+@import url(../style/css/classy-nav.css);
+@import url(../style/css/owl.carousel.min.css);
+@import url(../style/css/animate.css);
+@import url(../style/css/magnific-popup.css);
+@import url(../style/css/font-awesome.min.css);
+@import url(../style/css/nice-select.css);
+/* :: 3.0 Base CSS */
 * {
   margin: 0;
   padding: 0; }
@@ -381,7 +392,7 @@ h3 {
   background-position: center center;
   background-size: cover; }
   .bg-overlay::after {
-    background-color: rgba(0, 0, 0, 0.69);
+    background-color: rgba(ff, ff, ff, 0.69);
     position: absolute;
     z-index: -1;
     top: 0;
@@ -476,10 +487,10 @@ h3 {
           height: 50px;
           background-color: transparent;
           border: none;
-          color: #ffffff;
+          color: #000000;
           border-bottom: 2px solid #817773;
           font-size: 14px;
-          font-style: italic; }
+          padding: 0 15px; }
         .header-area .top-header-area .top-search-area form button {
           position: absolute;
           top: 0;
@@ -488,7 +499,7 @@ h3 {
           z-index: 10;
           background-color: transparent;
           border: none;
-          color: #ffffff;
+          color: #817773;
           cursor: pointer; }
   .header-area .logo-area {
     position: relative;
@@ -1010,9 +1021,9 @@ h3 {
   z-index: 1;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 20%;
-  flex: 0 0 20%;
-  max-width: 20%;
-  width: 20%;
+  flex: 0 0 10%;
+  max-width: 100%;
+  width: 100%;
   overflow: hidden; }
   @media only screen and (max-width: 767px) {
     .single-instagram {
@@ -1026,8 +1037,8 @@ h3 {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 20%;
       flex: 0 0 20%;
-      max-width: 20%;
-      width: 20%; } }
+      max-width: 100%;
+      width: 100%; } }
   .single-instagram img {
     width: 100%;
     -webkit-transition-duration: 500ms;
@@ -1043,21 +1054,6 @@ h3 {
     z-index: 5;
     position: absolute;
     content: '';
-    visibility: hidden;
-    opacity: 0; }
-  .single-instagram .img-zoom {
-    position: absolute;
-    width: 62px;
-    height: 62px;
-    top: 50%;
-    left: 50%;
-    z-index: 99;
-    background-color: #b0c364;
-    font-size: 24px;
-    color: #ffffff;
-    text-align: center;
-    line-height: 62px;
-    margin-left: -31px;
     visibility: hidden;
     opacity: 0; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1661,55 +1657,75 @@ h3 {
         height: 300px; } }
 
 /* ====== The End ====== */
+
+/*# sourceMappingURL=style.css.map */
 </style>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body>
 
-<%-- header가 들어가는 위치 --%>
-<jsp:include page="../main/header.jsp"></jsp:include>
 
-<div class="container-fluid">
-  <!-- 화면 변경이 되는 부분 -->
-  <jsp:include page="${main_jsp }"></jsp:include>
-</div>
-<%-- footer가 들어가는 위치 --%>
- <jsp:include page="../main/footer.jsp"></jsp:include>
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
+	<!-- ##### All Javascript Script ##### -->
+	<!-- jQuery-2.2.4 js -->
+	<script src="../style/js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="../style/js/bootstrap/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="../style/js/bootstrap/bootstrap.min.js"></script>
+	<!-- All Plugins js -->
+	<script src="../style/js/plugins/plugins.js"></script>
+	<!-- Active js -->
+	<script src="../style/js/active.js"></script>
 
-      // Store hash
-      var hash = this.hash;
+	<%-- preloader가 들어가는 위치 --%>
+	<jsp:include page="../main/preloader.jsp"></jsp:include>
+	
+	<%-- header가 들어가는 위치 --%>
+	<jsp:include page="../main/header.jsp"></jsp:include>
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
+	<div class="container-fluid">
+		<!-- 화면 변경이 되는 부분  -->
+		<jsp:include page="${main_jsp }"></jsp:include>
+	</div>
+	<%-- footer가 들어가는 위치 --%>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
+	<script>
+		$(document).ready(
+				function() {
+					// Add smooth scrolling to all links in navbar + footer link
+					$(".navbar a, footer a[href='#myPage']").on('click',
+							function(event) {
+								// Make sure this.hash has a value before overriding default behavior
+								if (this.hash !== "") {
+									// Prevent default anchor click behavior
+									event.preventDefault();
 
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
-})
-</script>
+									// Store hash
+									var hash = this.hash;
 
+									// Using jQuery's animate() method to add smooth page scroll
+									// The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+									$('html, body').animate({
+										scrollTop : $(hash).offset().top
+									}, 900, function() {
+
+										// Add hash (#) to URL when done scrolling (default click behavior)
+										window.location.hash = hash;
+									});
+								} // End if
+							});
+
+					$(window).scroll(function() {
+						$(".slideanim").each(function() {
+							var pos = $(this).offset().top;
+
+							var winTop = $(window).scrollTop();
+							if (pos < winTop + 600) {
+								$(this).addClass("slide");
+							}
+						});
+					});
+
+				})
+	</script>
 </body>
 </html>
