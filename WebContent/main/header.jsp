@@ -33,7 +33,7 @@
 
         <!-- Logo Area -->
         <div class="logo-area">
-            <a href="#"><img src="../img/core-img/logo.png" alt=""></a>
+            <a href="#"><img src="../style/img/core-img/logo.png" alt=""></a>
         </div>
 
         <!-- Navbar Area -->

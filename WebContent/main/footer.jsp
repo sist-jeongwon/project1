@@ -9,7 +9,7 @@
 <body>
 
 	<div class="instagram-feed-area d-flex flex-wrap">
-			<img src="../img/bg-img/header.jpg" alt="">
+			<img src="../style/img/bg-img/header.jpg" alt="">
 
 	</div>
 	<!-- ##### Footer Area Start ##### -->
