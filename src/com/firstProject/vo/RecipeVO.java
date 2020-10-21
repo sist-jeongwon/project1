@@ -1,6 +1,6 @@
 package com.firstProject.vo;
 
-import java.util.Date;
+import java.util.Date; 
 
 public class RecipeVO {
 	private int recipe_no;
