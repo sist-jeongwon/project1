@@ -1,14 +1,5 @@
 package com.firstProject.vo;
-/*
-   res_no        NUMBER,
-   reserved_date DATE     NOT NULL,
-   people        NUMBER   NOT NULL,   
-   rest_no       NUMBER   NOT NULL,
-   mem_id        VARCHAR2(20) NOT NULL,
-   CONSTRAINT PK_reservation PRIMARY KEY (res_no),
-   CONSTRAINT FK_restaurant_TO_reservation FOREIGN KEY (rest_no) REFERENCES restaurant (rest_no),
-   CONSTRAINT FK_member_TO_reservation FOREIGN KEY (mem_id) REFERENCES member (mem_id) 
- */
+
 import java.util.*;
 public class reservationVO {
 	private int res_no;

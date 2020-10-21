@@ -1,12 +1,5 @@
 package com.firstProject.vo;
-/* -----product_keep
-   keep_no    NUMBER   NOT NULL,
-   quantity   NUMBER   NOT NULL,
-   product_no NUMBER   NOT NULL,
-   mem_id     VARCHAR2(20) NOT NULL,
-   CONSTRAINT PK_product_keep PRIMARY KEY (keep_no)
-   CONSTRAINT FK_product_TO_product_keep FOREIGN KEY (product_no) REFERENCES product (product_no);
- */
+
 public class product_keepVO {
 	private int keep_no;
 	private int quantity;

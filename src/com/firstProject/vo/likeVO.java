@@ -1,5 +1,5 @@
 package com.firstProject.vo;
-
+  
 public class likeVO {
 	private int no;
 	private int cno;
