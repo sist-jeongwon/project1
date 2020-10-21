@@ -1,6 +1,6 @@
 package com.firstProject.vo;
   
-public class likeVO {
+public class LikeVO {
 	private int no;
 	private int cno;
 	private String mem_id;

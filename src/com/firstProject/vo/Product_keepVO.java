@@ -1,6 +1,6 @@
 package com.firstProject.vo;
 
-public class product_keepVO {
+public class Product_keepVO {
 	private int keep_no;
 	private int quantity;
 	private int product_no;

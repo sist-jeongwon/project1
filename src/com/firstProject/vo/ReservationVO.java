@@ -1,7 +1,7 @@
 package com.firstProject.vo;
 
 import java.util.*;
-public class reservationVO {
+public class ReservationVO {
 	private int res_no;
 	private Date reserved_date; 
 	private int people;
