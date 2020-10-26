@@ -7,6 +7,14 @@ public class ProductVO {
 	private String name;
 	private int price;
 	private int discount_rate;
+	private String main_img;
+	
+	public String getMain_img() {
+		return main_img;
+	}
+	public void setMain_img(String main_img) {
+		this.main_img = main_img;
+	}
 	public int getProduct_no() {
 		return product_no;
 	}

@@ -9,7 +9,7 @@
   <properties resource="db.properties"/>
   <typeAliases>
     <!-- VO를 등록 -->
-
+ <typeAlias type="com.firstProject.vo.ProductVO" alias="ProductVO"/>
     <!-- 
                       오라클에서 가지고 오는 데이터를 받아서 저장 
             while(rs.next())
@@ -95,6 +95,7 @@
   <mappers>
 <!-- mapper 추가 -->
    <mapper resource="com/sist/mapper/member-mapper.xml"/>
+   <mapper resource="com/firstProject/mapper/product-mapper.xml"/>
   </mappers>
 </configuration>
 
