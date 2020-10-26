@@ -9,6 +9,7 @@ public class ProductVO {
 	private int discount_rate;
 	private String main_img;
 	
+	
 	public String getMain_img() {
 		return main_img;
 	}
