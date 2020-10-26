@@ -93,8 +93,8 @@
                 ===== Annotation  @
    -->
   <mappers>
-
 <!-- mapper 추가 -->
+   <mapper resource="com/sist/mapper/member-mapper.xml"/>
   </mappers>
 </configuration>
 
