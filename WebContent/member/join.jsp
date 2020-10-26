@@ -120,59 +120,64 @@ $(function(){
     <form method=post action="../member/join_ok.do" name="joinFrm" id="joinFrm">
     <table class="table">
      <tr>
-       <th class="text-right danger" width="20%">아이디</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">아이디</th>
+       <td width=70%>
          <input type=text name=id class="input-sm" size=15 readonly id="id">
          <input type=button value="중복체크" class="btn btn-sm btn-primary" onclick="idcheck()">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">비밀번호</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">비밀번호</th>
+       <td width=70%>
          <input type=password name=pwd class="input-sm" size=15 id="pwd">
-         &nbsp;재입력:<input type=password name=pwd1 class="input-sm" size=15 id="pwd1">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">이름</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">비밀번호 확인</th>
+       <td width=70%>
+         <input type=password name=pwd1 class="input-sm" size=15 id="pwd1">
+       </td>
+     </tr>
+     <tr>
+       <th class="text-right danger" width="30%">이름</th>
+       <td width=70%>
          <input type=text name=name class="input-sm" size=15 id="name">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">이메일</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">이메일</th>
+       <td width=70%>
          <input type=text name=email class="input-sm" size=45>
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">생년월일</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">생년월일</th>
+       <td width=70%>
          <input type=date name=birthday class="input-sm" size=25 id="birthday">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">우편번호</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">우편번호</th>
+       <td width=70%>
          <input type=text name=post class="input-sm" size=7 readonly id="post">
          <input type=button value="우편번호" class="btn btn-sm btn-primary" onclick="postfind()">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">주소</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">주소</th>
+       <td width=70%>
          <input type=text name=addr1 class="input-sm" size=45 readonly id="addr1">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">상세주소</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">상세주소</th>
+       <td width=70%>
          <input type=text name=addr2 class="input-sm" size=45>
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="20%">전화번호</th>
-       <td width=80%>
+       <th class="text-right danger" width="30%">전화번호</th>
+       <td width=70%>
          <select name=tel1>
            <option>010</option>
            <option>011</option>
