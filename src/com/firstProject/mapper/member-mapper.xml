@@ -14,8 +14,7 @@
        #{email},
        #{address},
        #{tel},
-       #{admin},
-       'n'
+       0
      )
  </insert> 
  <select id="memberLogin" resultType="MemberVO" parameterType="String">
