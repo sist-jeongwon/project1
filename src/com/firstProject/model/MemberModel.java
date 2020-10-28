@@ -29,7 +29,7 @@ public class MemberModel {
 
 		   try
 		   {
-			   //한글 변환 
+			   
 		   request.setCharacterEncoding("UTF-8");
 		   
 		   }catch(Exception ex){}
