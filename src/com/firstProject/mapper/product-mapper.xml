@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firstProject.mapper.product-mapper">
+<!-- 
+	private int product_no;
+	private int cno;
+	private String name;
+	private int price;
+	private int discount_rate;
+
+ -->
+ <select id="productListData" resultType="ProductVO" parameterType="hashmap">
+    SELECT product_no,main_img,name,num
+    FROM (SELECT product_no,main_img,name,rownum as num
+    FROM (SELECT product_no,main_img,name 
+    FROM product))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="productTotalPage" resultType="int" parameterType="int">
+    SELECT CEIL(COUNT(*)/12.0) FROM product
+  </select>
+  
+  <select id="productDetailData" resultType="ProductVO" parameterType="int">
+    SELECT * FROM product_detail
+    WHERE no=#{no}
+  </select>
+</mapper>

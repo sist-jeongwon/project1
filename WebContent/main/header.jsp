@@ -65,11 +65,7 @@
                                             <li><a href="#">reservation</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Product</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Catagory</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="../Product/Product_main.do">Product</a></li>
                                     <!--  현재 사용하지 않아 주석처리(필요시 사용)
                                     <li><a href="#">Recipes</a>
                                         <div class="megamenu">
@@ -117,7 +113,7 @@
 
                                 <!-- Login/Register -->
                                 <div class="login-area">
-                                    <a href="#">Login / Register</a>
+                                    <a href="#">Login / Join</a>
                                 </div>
                             </div>
                             <!-- Nav End -->
