@@ -1,6 +1,8 @@
 package com.firstProject.vo;
 
 public class RestaurantVO {
+	
+	
 	private int no;
 	private String name;
 	private String poster;
@@ -15,6 +17,7 @@ public class RestaurantVO {
 	private String sns;
 	private int hit;
 	private int like;
+	private String price;
 	public int getNo() {
 		return no;
 	}
@@ -99,6 +102,11 @@ public class RestaurantVO {
 	public void setLike(int like) {
 		this.like = like;
 	}
-	
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	
 }

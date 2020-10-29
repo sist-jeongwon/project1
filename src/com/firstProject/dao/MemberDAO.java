@@ -1,7 +1,5 @@
 package com.firstProject.dao;
 
-import java.nio.channels.SeekableByteChannel;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
