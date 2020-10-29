@@ -19,9 +19,4 @@
   <select id="productTotalPage" resultType="int" parameterType="int">
     SELECT CEIL(COUNT(*)/12.0) FROM product
   </select>
-  
-  <select id="productDetailData" resultType="ProductVO" parameterType="int">
-    SELECT * FROM product_detail
-    WHERE no=#{no}
-  </select>
 </mapper>

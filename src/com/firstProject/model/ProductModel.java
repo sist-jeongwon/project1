@@ -60,27 +60,5 @@ public class ProductModel {
 		   return "../main/main.jsp";
 	   }
 	  
-	  @RequestMapping("Product/detail.do")
-	   public String product_detail(HttpServletRequest request)
-	   {
-		   // 사용자가 보내준 데이터 읽기
-		   String no=request.getParameter("no");
-		   String page=request.getParameter("page");
-		   String cno=request.getParameter("cno");
-		   if(page==null)
-			   page="1";
-		   /*
-		    *    detail.do
-		    *    ==> page==null
-		    *    if(page==null)
-		    *    detail.do? page= 10   ==>  " 10"  ${ vo.no }
-		    *    ==> page ""
-		    *    if(page.equals(""))
-		    */
-		   // 상세보기 데이터 읽기 
-		   // DataBase연결
-		   
-		   request.setAttribute("main_jsp", "../Product/detail.jsp");
-		   return "../main/main.jsp";
-	   }
+	 
 }
