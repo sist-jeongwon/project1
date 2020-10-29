@@ -1,3 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.firstProject.mapper.restaurant-mapper"></mapper>
+<mapper namespace="com.firstProject.mapper.restaurant-mapper">
+<!-- 
+REST_NO               NUMBER        
+REST_NAME    NOT NULL VARCHAR2(100) 
+REST_POSTER           VARCHAR2(300) 
+REST_SCORE            VARCHAR2(20)  
+REST_ADDR1   NOT NULL VARCHAR2(150) 
+REST_ADDR2            VARCHAR2(150) 
+REST_HOLIDAY          VARCHAR2(100) 
+REST_CONTENT          CLOB          
+REST_TEL     NOT NULL VARCHAR2(30)  
+REST_TIME    NOT NULL VARCHAR2(100) 
+REST_PARKING          VARCHAR2(20)  
+REST_SNS              VARCHAR2(300) 
+REST_HIT              NUMBER        
+REST_LIKE             NUMBER        
+REST_PRICE            VARCHAR2(30)
+
+-->
+<select id="restaurantListData" resultType="com.firstProject.vo.RestaurantVO" parameterType="hashmap">
+    SELECT rest_no,rest_name,rest_poster,num
+    FROM (SELECT rest_no,rest_name,rest_poster,rownum as num
+    FROM (SELECT rest_no,rest_name,rest_poster
+    FROM restaurant ORDER BY rest_no))
+    WHERE num BETWEEN #{start} AND #{end}
+</select>
+<select id="restaurantTotalPage" resultType="int" parameterType="int">
+	SELECT CEIL(COUNT(*)/12.0) FROM restaurant
+</select>
+ 
+</mapper>

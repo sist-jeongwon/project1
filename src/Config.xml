@@ -11,6 +11,7 @@
     <!-- VO를 등록 -->
  <typeAlias type="com.firstProject.vo.ProductVO" alias="ProductVO"/>
    <typeAlias type="com.firstProject.vo.MemberVO" alias="MemberVO"/>
+   <typeAlias type="com.firstProject.vo.RestaurantVO" alias="RestaurantVO"/>
     <!-- 
                       오라클에서 가지고 오는 데이터를 받아서 저장 
             while(rs.next())
@@ -97,6 +98,7 @@
 <!-- mapper 추가 -->
    <mapper resource="com/firstProject/mapper/product-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/member-mapper.xml"/>
+   <mapper resource="com/firstProject/mapper/restaurant-mapper.xml"/>
   </mappers>
 </configuration>
 
