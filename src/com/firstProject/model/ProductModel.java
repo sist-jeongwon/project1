@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.firstProject.dao.ProductDAO;
 import com.firstProject.vo.ProductVO;
 import com.sist.controller.RequestMapping;
-
 
 public class ProductModel {
 
@@ -59,6 +59,17 @@ public class ProductModel {
 		   request.setAttribute("main_jsp", "../Product/Product_main.jsp");
 		   return "../main/main.jsp";
 	   }
+	  
+	  @RequestMapping("Product/detail.do")
+		public String product_detail(HttpServletRequest request) {
+			
+		  	String no=request.getParameter("no");
+		// 영화번호 (no)에 해당되는 영화정보 가지고 와서 출력
+		// DAO를 이용해서 처리
+		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
+			request.setAttribute("main_jsp", "../Product/detail.jsp");
+			return "../main/main.jsp";
+		}
 	  
 	 
 }

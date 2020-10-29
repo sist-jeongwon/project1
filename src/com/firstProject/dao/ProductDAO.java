@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.firstProject.vo.ProductVO;
-
+import com.firstProject.vo.Product_detailVO;
 
 
 public class ProductDAO {
@@ -46,10 +46,15 @@ public class ProductDAO {
 	   public static ProductVO productDetailData(int no)
 	   {
 		   SqlSession session=ssf.openSession();
-		   session.update("hitIncrement", no);
-		   session.commit();
 		   ProductVO vo=session.selectOne("productDetailData", no);
 		   session.close();
 		   return vo;
+	   }
+	   public static Product_detailVO DetailData(int no)
+	   {
+		   SqlSession session=ssf.openSession();
+		   Product_detailVO dvo=session.selectOne("DetailData", no);
+		   session.close();
+		   return dvo;
 	   }
 }

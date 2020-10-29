@@ -8,8 +8,15 @@ public class ProductVO {
 	private int price;
 	private int discount_rate;
 	private String main_img;
+	private Product_detailVO dvo;
 	
 	
+	public Product_detailVO getDvo() {
+		return dvo;
+	}
+	public void setDvo(Product_detailVO dvo) {
+		this.dvo = dvo;
+	}
 	public String getMain_img() {
 		return main_img;
 	}
