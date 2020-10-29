@@ -14,7 +14,7 @@ public class MemberModel {
 		request.setAttribute("main_jsp", "../member/join.jsp");
 		return "../main/main.jsp";
 		
-	} 
+	}   
 	
 	@RequestMapping("member/idcheck.do")
 	public String member_idcheck(HttpServletRequest request)
