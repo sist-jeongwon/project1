@@ -1,15 +1,7 @@
-<%@page import="com.firstProject.vo.Product_detailVO"%>
-<%@page import="com.firstProject.dao.ProductDAO"%>
-<%@page import="com.firstProject.vo.ProductVO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String no=request.getParameter("no");
-  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
-  	
-  	Product_detailVO dvo=ProductDAO.DetailData(Integer.parseInt(no));
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,17 +17,17 @@
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
                         <div class="blog-thumbnail mb-50">
-                            <img src="<%=vo.getMain_img() %>" width="350" height="350" alt="제품사진">
+                            <img src="${vo.main_img }" width="350" height="350" alt="제품사진">
                         </div>
                         <div class="blog-content">
                             <a href="#" class="post-tag">Healthy Food</a>
-                            <h4 class="post-title"><%=vo.getName() %></h4>
+                            <h4 class="post-title"></h4>
                             <div class="post-meta mb-50">
-                                <a href="#" class="post-date"><%=dvo.getContent() %></a><br>
-                                <a href="#" class="post-author"><%=vo.getPrice() %></a>
+                                <a href="#" class="post-date">${vo.name }</a><br>
+                                <a href="#" class="post-author">${vo.price }원</a>
                             </div>
                            <div class="blog-thumbnail mb-50">
-                            <img src="<%=dvo.getImg() %>" alt="상세설명">
+                            <img src="" alt="상세설명">
                            </div>
                         </div>
                     </div>

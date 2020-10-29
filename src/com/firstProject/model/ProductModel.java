@@ -63,10 +63,11 @@ public class ProductModel {
 	  @RequestMapping("Product/detail.do")
 		public String product_detail(HttpServletRequest request) {
 			
-		  	String no=request.getParameter("no");
-		// 영화번호 (no)에 해당되는 영화정보 가지고 와서 출력
-		// DAO를 이용해서 처리
+		  	String no=request.getParameter("no");//사용자에게 번호를 받아옴
+		
+		  	// DAO를  이용해서 번호에 해당하는 데이터 한줄 읽어옴
 		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
+		  	request.setAttribute("vo", vo);
 			request.setAttribute("main_jsp", "../Product/detail.jsp");
 			return "../main/main.jsp";
 		}

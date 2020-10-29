@@ -28,8 +28,4 @@ WHERE product.product_no=product_detail.product_no AND product_no=#{no}
    SELECT * FROM product
    WHERE product_no=#{no}
   </select>
-  <select id="DetailData" resultType="com.firstProject.vo.Product_detailVO" parameterType="int">
-   SELECT * FROM product_detail
-   WHERE product_no=#{no}
-  </select>
 </mapper>
