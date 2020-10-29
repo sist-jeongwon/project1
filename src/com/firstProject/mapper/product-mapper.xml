@@ -19,13 +19,13 @@
   <select id="productTotalPage" resultType="int" parameterType="int">
     SELECT CEIL(COUNT(*)/12.0) FROM product
   </select>
-   <!-- <select id="productDetailData" resultType="ProductVO" parameterType="int">
+   <select id="productDetailData" resultType="ProductVO" parameterType="int">
    SELECT product.product_no, cno, name, price, main_img, detail_no, img, content
 FROM product,product_detail
-WHERE product.product_no=product_detail.product_no AND product_no=#{no}
-  </select> -->
-  <select id="productDetailData" resultType="ProductVO" parameterType="int">
+WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
+  </select>
+ <!--  <select id="productDetailData" resultType="ProductVO" parameterType="int">
    SELECT * FROM product
    WHERE product_no=#{no}
-  </select>
+  </select> -->
 </mapper>

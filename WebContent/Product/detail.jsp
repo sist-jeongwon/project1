@@ -17,7 +17,7 @@
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
                         <div class="blog-thumbnail mb-50">
-                            <img src="${vo.main_img }" width="350" height="350" alt="제품사진">
+                            <img src="${vo.main_img }" alt="제품사진">
                         </div>
                         <div class="blog-content">
                             <a href="#" class="post-tag">Healthy Food</a>
@@ -26,8 +26,8 @@
                                 <a href="#" class="post-date">${vo.name }</a><br>
                                 <a href="#" class="post-author">${vo.price }원</a>
                             </div>
-                           <div class="blog-thumbnail mb-50">
-                            <img src="" alt="상세설명">
+                           <div>
+                            <img src="${vo.dvo.img }" width="400" height="500" alt="상세설명">
                            </div>
                         </div>
                     </div>
@@ -134,15 +134,13 @@
                         <!-- Single Widget Area -->
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
-                                <div class="author-thumbnail">
-                                    <img src="img/bg-img/23.jpg" alt="">
-                                </div>
-                                <p>My name is <span>Jessica Smith</span>, I’m a passionate cook with a love for vegan food.</p>
-                            </div>
-                            <div class="social-info">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                               <div class="post-meta mb-50">
+                                <a href="#" class="post-date">${vo.name }</a><br>
+                                <a href="#" class="post-author">${vo.price }원</a>
+                              </div>
+                                <button type="submit" class="btn bueno-btn w-100">주문하기</button>
+                                <button type="submit" class="btn bueno-btn w-100">장바구니 담기</button>
+                                <button type="submit" class="btn bueno-btn w-100">찜하기</button>
                             </div>
                         </div>
 
