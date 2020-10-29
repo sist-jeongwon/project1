@@ -13,7 +13,7 @@
     SELECT product_no,main_img,name,num
     FROM (SELECT product_no,main_img,name,rownum as num
     FROM (SELECT product_no,main_img,name 
-    FROM product))
+    FROM product ORDER BY product_no))
     WHERE num BETWEEN #{start} AND #{end}
   </select>
   <select id="productTotalPage" resultType="int" parameterType="int">
