@@ -12,7 +12,14 @@ public class MemberVO {
 	private String adderess;
 	private String tel;
 	private int admin;
+	private String msg;
 	
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}
