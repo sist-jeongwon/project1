@@ -1,112 +1,116 @@
 package com.firstProject.vo;
 
+
+
+
 public class RestaurantVO {
 	
 	
-	private int no;
-	private String name;
-	private String poster;
-	private String score;
-	private String addr1;
-	private String addr2;
-	private String holiday;
-	private String content;
-	private String tel;
-	private String time;
-	private String parking;
-	private String sns;
-	private int hit;
-	private int like;
-	private String price;
-	public int getNo() {
-		return no;
+	private int rest_no;
+	private String rest_name;
+	private String rest_poster;
+	private String rest_score;
+	private String rest_addr1;
+	private String rest_addr2;
+	private String rest_holiday;
+	private String rest_content;
+	private String rest_tel;
+	private String rest_time;
+	private String rest_parking;
+	private String rest_sns;
+	private int rest_hit;
+	private int rest_like;
+	private String rest_price;
+	public int getRest_no() {
+		return rest_no;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setRest_no(int rest_no) {
+		this.rest_no = rest_no;
 	}
-	public String getName() {
-		return name;
+	public String getRest_name() {
+		return rest_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRest_name(String rest_name) {
+		this.rest_name = rest_name;
 	}
-	public String getPoster() {
-		return poster;
+	public String getRest_poster() {
+		return rest_poster;
 	}
-	public void setPoster(String poster) {
-		this.poster = poster;
+	public void setRest_poster(String rest_poster) {
+		this.rest_poster = rest_poster;
 	}
-	public String getScore() {
-		return score;
+	public String getRest_score() {
+		return rest_score;
 	}
-	public void setScore(String score) {
-		this.score = score;
+	public void setRest_score(String rest_score) {
+		this.rest_score = rest_score;
 	}
-	public String getAddr1() {
-		return addr1;
+	public String getRest_addr1() {
+		return rest_addr1;
 	}
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
+	public void setRest_addr1(String rest_addr1) {
+		this.rest_addr1 = rest_addr1;
 	}
-	public String getAddr2() {
-		return addr2;
+	public String getRest_addr2() {
+		return rest_addr2;
 	}
-	public void setAddr2(String addr2) {
-		this.addr2 = addr2;
+	public void setRest_addr2(String rest_addr2) {
+		this.rest_addr2 = rest_addr2;
 	}
-	public String getHoliday() {
-		return holiday;
+	public String getRest_holiday() {
+		return rest_holiday;
 	}
-	public void setHoliday(String holiday) {
-		this.holiday = holiday;
+	public void setRest_holiday(String rest_holiday) {
+		this.rest_holiday = rest_holiday;
 	}
-	public String getContent() {
-		return content;
+	public String getRest_content() {
+		return rest_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setRest_content(String rest_content) {
+		this.rest_content = rest_content;
 	}
-	public String getTel() {
-		return tel;
+	public String getRest_tel() {
+		return rest_tel;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setRest_tel(String rest_tel) {
+		this.rest_tel = rest_tel;
 	}
-	public String getTime() {
-		return time;
+	public String getRest_time() {
+		return rest_time;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setRest_time(String rest_time) {
+		this.rest_time = rest_time;
 	}
-	public String getParking() {
-		return parking;
+	public String getRest_parking() {
+		return rest_parking;
 	}
-	public void setParking(String parking) {
-		this.parking = parking;
+	public void setRest_parking(String rest_parking) {
+		this.rest_parking = rest_parking;
 	}
-	public String getSns() {
-		return sns;
+	public String getRest_sns() {
+		return rest_sns;
 	}
-	public void setSns(String sns) {
-		this.sns = sns;
+	public void setRest_sns(String rest_sns) {
+		this.rest_sns = rest_sns;
 	}
-	public int getHit() {
-		return hit;
+	public int getRest_hit() {
+		return rest_hit;
 	}
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setRest_hit(int rest_hit) {
+		this.rest_hit = rest_hit;
 	}
-	public int getLike() {
-		return like;
+	public int getRest_like() {
+		return rest_like;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setRest_like(int rest_like) {
+		this.rest_like = rest_like;
 	}
-	public String getPrice() {
-		return price;
+	public String getRest_price() {
+		return rest_price;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setRest_price(String rest_price) {
+		this.rest_price = rest_price;
 	}
+	
 	
 }
