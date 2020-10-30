@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <!-- Logo Area -->
+        <!-- Logo Area 패딩 거의 삭제했고 이미지 크기 조정하여 헤더 로고 사이즈 조정할 수 있습니다-->
         <div class="logo-area">
             <a href="../main/main.do"><img src="../style/img/core-img/logo.png" width="456px" height="250px"></a>
         </div>
