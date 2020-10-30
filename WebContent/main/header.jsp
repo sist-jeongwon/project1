@@ -59,6 +59,7 @@
                                 <ul>
                                     <li><a href="#">Home</a></li>
                                     <li><a href="#">About Us</a></li>
+                                    <li><a href="../recipe/total.do">recipe</a></li>
                                     <li><a href="#">Restaurant</a>
                                         <ul class="dropdown">
                                             <li><a href="#">Catagory</a></li>

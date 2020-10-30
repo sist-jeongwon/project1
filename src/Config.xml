@@ -99,6 +99,7 @@
    <mapper resource="com/firstProject/mapper/product-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/member-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/restaurant-mapper.xml"/>
+   <mapper resource="com/firstProject/mapper/recipe-mapper.xml"/>
   </mappers>
 </configuration>
 

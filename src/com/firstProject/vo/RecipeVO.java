@@ -5,7 +5,7 @@ import java.util.Date;
 public class RecipeVO {
 	private int recipe_no;
 	private String title;
-	private Date date;
+	private Date recipe_date;
 	private int hit;
 	private String poster;
 	private String content;
@@ -23,11 +23,12 @@ public class RecipeVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getDate() {
-		return date;
+	
+	public Date getRecipe_date() {
+		return recipe_date;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRecipe_date(Date recipe_date) {
+		this.recipe_date = recipe_date;
 	}
 	public int getHit() {
 		return hit;
