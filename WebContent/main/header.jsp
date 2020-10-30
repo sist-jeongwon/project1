@@ -57,14 +57,13 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="../main/main.do">Home</a></li>
                                     <li><a href="../recipe/total.do">recipe</a></li>
-                                    <li><a href="#">Restaurant</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Catagory</a></li>
+                                    <li><a href="../Restaurant/Restaurant_main.do">Restaurant</a>
+                                       <!--  <ul class="dropdown">
+                                            <li><a href="../Restaurant/Restaurant_main.do">Catagory</a></li>
                                             <li><a href="#">reservation</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
                                     <li><a href="../Product/Product_main.do">Product</a></li>
                                     <!--  현재 사용하지 않아 주석처리(필요시 사용)
