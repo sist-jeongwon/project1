@@ -9,7 +9,7 @@ INWON              VARCHAR2(20)
 PRICE              VARCHAR2(10)  
 ISRESERVE          CHAR(1)  
  */
-import java.util.*;
+import java.util.*; 
 public class ReservationVO {
     private int res_no;
     private String mem_id;
