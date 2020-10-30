@@ -6,11 +6,11 @@
     <servlet-class>com.sist.controller.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>C:\Users\SIST\git\project2\WebContent\WEB-INF\app.xml</param-value>
+      <param-value>C:\git\project1\WebContent\WEB-INF\app.xml</param-value>
     </init-param>
     <init-param>
       <param-name>path</param-name>
-      <param-value>C:\Users\SIST\git\project2\src</param-value>
+      <param-value>C:\git\project1\src</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
