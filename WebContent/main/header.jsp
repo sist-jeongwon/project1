@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SSAMZO</title>
+<title>veginner</title>
 </head>
 <body>
  <!-- ##### Header Area Start ##### -->
@@ -33,7 +33,7 @@
 
         <!-- Logo Area -->
         <div class="logo-area">
-            <a href="#"><img src="../style/img/core-img/logo.png" alt=""></a>
+            <a href="../main/main.do"><img src="../style/img/core-img/logo.png" width="456px" height="250px"></a>
         </div>
 
         <!-- Navbar Area -->

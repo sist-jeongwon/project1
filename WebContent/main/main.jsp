@@ -11,10 +11,10 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>SSAMZO</title>
+<title>veginner</title>
 
 <!-- Favicon 크롬 탭에 뜨는 아이콘 모양. 삭제해도 괜찮음 -->
-<link rel="icon" href="#">
+<link rel="icon" href="../style/img/core-img/favicon.ico">
 
 <style>
 /* Master Stylesheet - 1.0 */
@@ -504,17 +504,17 @@ h3 {
   .header-area .logo-area {
     position: relative;
     z-index: 1;
-    padding: 50px 30px;
+    padding: 10px 15px;
     text-align: center; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .header-area .logo-area {
-        padding: 30px; } }
+        padding: 10px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .header-area .logo-area {
-        padding: 30px; } }
+        padding: 10px; } }
     @media only screen and (max-width: 767px) {
       .header-area .logo-area {
-        padding: 30px 15px; } }
+        padding: 10px 15px; } }
     .header-area .logo-area a {
       display: inline-block; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
