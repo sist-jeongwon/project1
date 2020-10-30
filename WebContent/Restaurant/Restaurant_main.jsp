@@ -37,7 +37,7 @@
             <c:if test="${i==curpage }">
               <li class="page-item active"><a class="page-link" href="../Restaurant/Restaurant_main.do?page=${i }">${i }</a></li>
             </c:if>
-            <c:if test="${i!=curpage }">
+            <c:if test="${i!=curpage }">`
               <li class="page-item"><a class="page-link" href="../Restaurant/Restaurant_main.do?page=${i }">${i }</a></li>
             </c:if>
           </c:forEach>
