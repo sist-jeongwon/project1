@@ -113,7 +113,7 @@
 
                                 <!-- Login/Register -->
                                 <div class="login-area">
-                                    <a href="../member/login.do">Login</a>&nbsp;/&nbsp;<a href="../member/join.do">Join</a>
+                                    <a href="../member/login_main.do">Login</a>&nbsp;/&nbsp;<a href="../member/join.do">Join</a>
                                 </div>
                             </div>
                             <!-- Nav End -->

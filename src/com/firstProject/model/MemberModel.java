@@ -60,6 +60,13 @@ public class MemberModel {
 		   return "../main/main.jsp";
 	}
 	
+	@RequestMapping("member/login_main.do")
+	public String member_login_main(HttpServletRequest request) {
+		
+		request.setAttribute("main_jsp", "../member/login_main.jsp");
+		return "../main/main.jsp";
+		
+	} 
 	
 	
 }
