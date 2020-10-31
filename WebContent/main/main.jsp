@@ -1677,8 +1677,8 @@ h3 {
 	<script src="../style/js/active.js"></script>
 
 	<%-- preloader가 들어가는 위치 --%>
-	<jsp:include page="../main/preloader.jsp"></jsp:include>
-	
+  	<jsp:include page="../main/preloader.jsp"></jsp:include>
+
 	<%-- header가 들어가는 위치 --%>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 
