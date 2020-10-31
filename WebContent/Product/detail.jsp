@@ -1,11 +1,13 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,21 +18,23 @@
                 <!-- Post Details Content Area -->
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
-                        <div class="blog-thumbnail mb-50">
-                            <img src="${vo.main_img }" alt="제품사진">
+                        <div class="text-center">
+                            <img src="${vo.main_img }" width="400" height="500" alt="제품사진">
                         </div>
                         <div class="blog-content">
-                            <a href="#" class="post-tag">Healthy Food</a>
+                            <a href="#" class="post-tag text-center">Healthy Food</a>
                             <h4 class="post-title"></h4>
-                            <div class="post-meta mb-50">
+                            <div class="post-meta mb-50 text-center">
                                 <a href="#" class="post-date">${vo.name }</a><br>
                                 <a href="#" class="post-author">${vo.price }원</a>
                             </div>
-                           <div>
-                            <img src="${vo.dvo.img }" width="400" height="500" alt="상세설명">
+                           <div class="blog-thumbnail mb-50">
+                            <img src="${vo.img }"  alt="상세설명 img">
                            </div>
                         </div>
                     </div>
+                 
+                 
                     <!-- Comment Area Start -->
                     <div class="comment_area clearfix mb-100">
                         <h4 class="mb-50">Comments</h4>
@@ -135,12 +139,12 @@
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
                                <div class="post-meta mb-50">
-                                <a href="#" class="post-date">${vo.name }</a><br>
-                                <a href="#" class="post-author">${vo.price }원</a>
+                                 <a href="#" class="post-date"><h4>${vo.name }</h4></a><br>
+                                 <a href="#" class="post-author">${vo.price }원</a>
                               </div>
-                                <button type="submit" class="btn bueno-btn w-100">주문하기</button>
-                                <button type="submit" class="btn bueno-btn w-100">장바구니 담기</button>
-                                <button type="submit" class="btn bueno-btn w-100">찜하기</button>
+                                <button type="submit" class="btn bueno-btn w-100">주문하기</button><br>
+                                <button type="submit" class="btn bueno-btn w-100 mt-1">장바구니 담기</button><br>
+                                <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button><br>
                             </div>
                         </div>
 
@@ -150,19 +154,22 @@
                         </div>
 
                         <!-- Single Widget Area -->
+                         <h6>내가 본 상품</h6>
                         <div class="single-widget-area post-widget mb-30">
                             <!-- Single Post Area -->
                             <div class="single-post-area d-flex">
+                            
+                         
+                            
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
-                                    <img src="img/bg-img/12.jpg" alt="">
+                                    <img src="${vo.main_img }" alt="">
                                 </div>
                                 <!-- Blog Content -->
                                 <div class="blog-content">
-                                    <a href="#" class="post-title">Friend eggs with ham</a>
+                                    <a href="#" class="post-title">${vo.name }</a>
                                     <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
+                                        <a href="#" class="post-date">${vo.price } 원</a>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +182,7 @@
                                 </div>
                                 <!-- Blog Content -->
                                 <div class="blog-content">
-                                    <a href="#" class="post-title">Burger with fries</a>
+                                    <a href="#" class="post-title">쿠키 출력</a>
                                     <div class="post-meta">
                                         <a href="#" class="post-date">July 11, 2018</a>
                                         <a href="#" class="post-author">By Julia Stiles</a>
@@ -183,54 +190,7 @@
                                 </div>
                             </div>
 
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/14.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Avocado &amp; Oisters</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/15.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Tortilla prawns</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/16.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Burger with fries</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                           
 
                         <!-- Single Widget Area -->
                         <div class="single-widget-area newsletter-widget mb-30">

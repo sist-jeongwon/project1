@@ -55,7 +55,7 @@
                         <div class="classy-menu">
 
                             <!-- Nav Start -->
-                            <div class="classynav">
+                            <div class="classynav text-center">
                                 <ul>
                                     <li><a href="../main/main.do">Home</a></li>
                                     <li><a href="../recipe/total.do">recipe</a></li>

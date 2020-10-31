@@ -1,9 +1,11 @@
 package com.firstProject.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -57,6 +59,8 @@ public class ProductModel {
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("main_jsp", "../Product/Product_main.jsp");
+		   
+		 
 		   return "../main/main.jsp";
 	   }
 	  
@@ -69,6 +73,8 @@ public class ProductModel {
 		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
 		  	request.setAttribute("vo", vo);
 			request.setAttribute("main_jsp", "../Product/detail.jsp");
+			
+			
 			return "../main/main.jsp";
 		}
 	  
