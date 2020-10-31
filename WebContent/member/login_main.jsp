@@ -1,10 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 태그에 대한 이벤트 (클릭..마우스 오버 ...)
+	// onClick="send()"  function send(){}
+	$('#logBtn').click(function(){
+		// selector => css
+		let id=$('#loginId').val();// getter  , $('#log_id').val("admin") setter
+		//$('#log_id').val("hong");
+		if(id.trim()=="")
+		{
+			alert("아이디를 입력하세요");
+			$('#loginId').focus();
+			return;
+			// <input type="text" class="input-sm" name=id size="15" id="log_id" placeholder="아이디입력"  style="color:black">
+		}
+		
+		let pwd=$('#loginPw').val();// getter  , $('#log_id').val("admin") setter
+		//$('#log_id').val("hong");
+		if(pwd.trim()=="")
+		{
+			alert("비밀번호를 입력하세요");
+			$('#loginPw').focus();
+			return;
+			// <input type="text" class="input-sm" name=id size="15" id="log_id" placeholder="아이디입력"  style="color:black">
+		}
+		// id입력
+		// pwd입력 ===> login_ok.do ==> 데이터 전송 
+		$('#logFrm').submit(); //<form => action="파일명">
+		// <input type=submit> ==> 'null'
+	});
+});
+</script>
 <style>
 a {
     color: #333;
@@ -33,12 +67,14 @@ input {
     border-color: initial;
     border-image: initial;
 }
+<!--
 .inner_login {
     position: absolute;
     left: 50%;
     top: 50%;
     margin: -145px 0 0 -160px;
 }
+-->
 .login_tistory{
         position: relative;
         width: 320px;
@@ -144,32 +180,33 @@ fieldset, img {
 </style>
 </head>
 <body>
- <div class="inner_login">
+<div style="height:120px"></div>
+ <div class="inner_login1">
     <div class="login_tistory">
-
-        <form method="post" id="authForm" action="https://www.tistory.com/auth/login">
+      <c:if test="${sessionScope.id==null }">
+        <form method="post" id="logFrm" action="../member/login.do">
             <input type="hidden" name="redirectUrl" value="https://blogpack.tistory.com/manage">
             <fieldset>
             <div class="box_login">
                 <div class="inp_text">
                 <label for="loginId" class="screen_out">아이디</label>
-                <input type="email" id="loginId" name="loginId" placeholder="아이디" >
+                <input type="id" id="loginId" name="loginId" placeholder="아이디" >
                 </div>
                 <div class="inp_text">
                 <label for="loginPw" class="screen_out">비밀번호</label>
                 <input type="password" id="loginPw" name="password" placeholder="비밀번호" >
                 </div>
             </div>
-            <button type="submit" class="btn_login"  disabled>로그인</button>
+            <button type="submit" class="btn_login" id=logBtn>로그인</button>
             <div class="login_append">
                 <div class="inp_chk"> <!-- 체크시 checked 추가 -->
                  <!--
                 <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
                 <label for="keepLogin" class="lab_g">
-     <span class="img_top ico_check"></span>   
-        <span class="txt_lab">로그인 상태 유지</span>
-         -->
-        </label>
+     			<span class="img_top ico_check"></span>   
+       			<span class="txt_lab">로그인 상태 유지</span>
+       			-->
+                </label>
                 </div>
                 <span class="txt_find">
                 <a href="/member/find/loginId" class="link_find">아이디</a>
@@ -179,7 +216,12 @@ fieldset, img {
             </div>
             </fieldset>
         </form>
+        </c:if>
     </div>
+</div>
+<div style="height:120px"></div>
+<div id="dialog" style="display:none">
+  <jsp:include page="../member/login.jsp"></jsp:include> 
 </div>
 </body>
 </html>

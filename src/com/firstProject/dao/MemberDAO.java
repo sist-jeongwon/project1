@@ -11,12 +11,7 @@ public class MemberDAO {
   {
 	 ssf=CreateSqlSessionFactory.getSsf();
   }
-  /*
-   *   <select id="memberIdcheck" resultType="int" parameterType="string">
-		    SELECT COUNT(*) FROM member
-		    WHERE id=#{id}
-		  </select>
-   */
+ 
   public static int memberIdCheck(String id)
   {
 	  SqlSession session=ssf.openSession();
@@ -34,13 +29,13 @@ public class MemberDAO {
   }
   
   /*
-   *   <select id="memberLogin" resultType="com.sist.vo.MemberVO" parameterType="String">
-	     SELECT id,name,pwd,admin
-	     FROM member
-	     WHERE id=#{id}
-	   </select>
+   *    <select id="memberLogin" resultType="MemberVO" parameterType="String">
+     		SELECT mem_id,name,mem_pwd,admin
+     		FROM member
+     		WHERE id=#{id}
+ 		</select>
    */
-  /*
+  
   public static MemberVO memberLogin(String id,String pwd)
   {
 	  MemberVO vo=new MemberVO();
@@ -53,10 +48,10 @@ public class MemberDAO {
 	  else
 	  {
 		  MemberVO dVO=session.selectOne("memberLogin", id);
-		  if(pwd.equals(dVO.getPwd()))
+		  if(pwd.equals(dVO.getMem_pwd()))
 		  {
 			  vo.setMsg("OK");
-			  vo.setId(dVO.getId());
+			  vo.setMem_id(dVO.getMem_id());
 			  vo.setName(dVO.getName());
 			  vo.setAdmin(dVO.getAdmin());
 		  }
@@ -68,5 +63,5 @@ public class MemberDAO {
 	  
 	  return vo;
   }
-  */
+  
 }
