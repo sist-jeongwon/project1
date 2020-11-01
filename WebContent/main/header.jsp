@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>veginner</title>
+<title>SSAMZO</title>
 </head>
 <body>
  <!-- ##### Header Area Start ##### -->
@@ -31,9 +31,9 @@
             </div>
         </div>
 
-        <!-- Logo Area 패딩 거의 삭제했고 이미지 크기 조정하여 헤더 로고 사이즈 조정할 수 있습니다-->
+        <!-- Logo Area -->
         <div class="logo-area">
-            <a href="../main/main.do"><img src="../style/img/core-img/logo.png" width="456px" height="250px"></a>
+            <a href="#"><img src="../style/img/core-img/logo.png" alt=""></a>
         </div>
 
         <!-- Navbar Area -->
@@ -57,15 +57,19 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="../main/main.do">Home</a></li>
-                                    <li><a href="../recipe/total.do">recipe</a></li>
-                                    <li><a href="../Restaurant/Restaurant_main.do">Restaurant</a>
-                                       <!--  <ul class="dropdown">
-                                            <li><a href="../Restaurant/Restaurant_main.do">Catagory</a></li>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Restaurant</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Catagory</a></li>
                                             <li><a href="#">reservation</a></li>
-                                        </ul> -->
+                                        </ul>
                                     </li>
-                                    <li><a href="../Product/Product_main.do">Product</a></li>
+                                    <li><a href="#">Product</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Catagory</a></li>
+                                        </ul>
+                                    </li>
                                     <!--  현재 사용하지 않아 주석처리(필요시 사용)
                                     <li><a href="#">Recipes</a>
                                         <div class="megamenu">
@@ -112,17 +116,27 @@
                                 </ul>
 
                                 <!-- Login/Register -->
+                               <c:if test="${sessionScope.id==null }">
                                 <div class="login-area">
                                     <a href="../member/login_main.do">Login</a>&nbsp;/&nbsp;<a href="../member/join.do">Join</a>
                                 </div>
-                            </div>
+                               </c:if> 
+                               <c:if test="${sessionScope.id!=null }">
+	 							 <form action="../member/logout.do"><%-- get(생략이 가능) --%>
+	    							<div class="text-right">
+	     								 ${sessionScope.name }(${sessionScope.admin==1?'관리자':'일반유저' })님 환영합니다.
+	      							<button class="btn btn-danger btn-sm">로그아웃</button>
+	    							</div>
+	  							</form>
+  								</c:if>
+  								</div>
                             <!-- Nav End -->
-
+								
                         </div>
                     </nav>
                 </div>
             </div>
-        </div>
+        </div>s
     </header>
     <!-- ##### Header Area End ##### -->
 </body>
