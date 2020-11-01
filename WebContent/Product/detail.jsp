@@ -65,7 +65,7 @@
                                         <div class="comment-content d-flex">
                                             <!-- Comment Author -->
                                             <div class="comment-author">
-                                                <img src="img/bg-img/33.jpg" alt="author">
+                                                <img src="img/bg-img/32.jpg" alt="author">
                                             </div>
                                             <!-- Comment Meta -->
                                             <div class="comment-meta">
@@ -154,42 +154,28 @@
                         </div>
 
                         <!-- Single Widget Area -->
-                         <h6>내가 본 상품</h6>
+                        <h6>내가 본 상품</h6>
                         <div class="single-widget-area post-widget mb-30">
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                            
-                         
-                            
+                          <!-- Single Post Area -->
+                            <c:forEach var="vo" items="${cList }" varStatus="s">
+                              <c:if test="${s.index<6 }">
+                              <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
-                                    <img src="${vo.main_img }" alt="">
+                                    <img src="${vo.main_img }" alt="상품이미지">
                                 </div>
                                 <!-- Blog Content -->
                                 <div class="blog-content">
                                     <a href="#" class="post-title">${vo.name }</a>
                                     <div class="post-meta">
-                                        <a href="#" class="post-date">${vo.price } 원</a>
+                                      <div class="post-date">${vo.price } 원</div>
                                     </div>
-                                </div>
-                            </div>
+                               </div>
+                             </div>
+                            </c:if>
+                           </c:forEach>
 
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/13.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">쿠키 출력</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
+                         
                            
 
                         <!-- Single Widget Area -->
