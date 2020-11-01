@@ -65,9 +65,9 @@ public class ProductModel {
 		   return "../main/main.jsp";
 	   }
 	 
-	  @RequestMapping("Product/detail_before.do") // 쿠키 전송 받는다 => 요청 => detail
+	  @RequestMapping("Product/detail_before.do") // 쿠키 전송 받는다 => 요청 을 detail로 다시 보낸다
 		/*
-		 * cookie : 클라이언트 (브라우저) ==> 저장 내용을 서버에서 전송 (response) session : 서버에 저장
+		 * cookie : 클라이언트 (브라우저) ==> 저장 내용을 서버에서 전송 (response) session(서버)에 저장
 		 * (response를 이용하지 않는다)
 		 */
 		public String product_detail_before(HttpServletRequest request, HttpServletResponse response) {
@@ -76,13 +76,16 @@ public class ProductModel {
 			// no=1&aaa=1
 			
 			Cookie cookie=new Cookie("p"+no, no);
-			// 기간 
+			//Cookie(키, 값)
+			
+			// 기간 설정
 			cookie.setMaxAge(60*60*24);
+			
 			//전송
 			response.addCookie(cookie);
 
 			//cookie=new Cookie("p"+no, no);
-			return "redirect:../Product/detail.do?no=" + no;// 재요청 
+			return "redirect:../Product/detail.do?no=" + no;// 쿠키값을 저장한 채로 재요청 (detail로 이동)
 		}
 	 
 	  
@@ -94,14 +97,14 @@ public class ProductModel {
 		  	// DAO를  이용해서 번호에 해당하는 데이터 한줄 읽어옴
 		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
 		  	request.setAttribute("vo", vo);
-			request.setAttribute("main_jsp", "../Product/detail.jsp");
+			
 			
 			// 쿠키 읽기
 			Cookie[] cookies=request.getCookies();
 			List<ProductVO> cList=new ArrayList<ProductVO>();
 			if(cookies!=null)
 			{
-				for(int i=0;i<cookies.length;i++)
+				for(int i=cookies.length-1;i>=0;i--)
 				{
 					if(cookies[i].getName().startsWith("p"))
 					{
@@ -113,6 +116,7 @@ public class ProductModel {
 			}
 			request.setAttribute("cList", cList);
 		 
+			request.setAttribute("main_jsp", "../Product/detail.jsp");
 			
 			return "../main/main.jsp";
 		}

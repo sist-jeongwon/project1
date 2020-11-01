@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SSAMZO</title>
+<title>veginner</title>
 </head>
 <body>
  <!-- ##### Header Area Start ##### -->
@@ -31,9 +31,9 @@
             </div>
         </div>
 
-        <!-- Logo Area -->
-        <div class="logo-area">
-            <a href="#"><img src="../style/img/core-img/logo.png" alt=""></a>
+        <!-- Logo Area 패딩 거의 삭제했고 이미지 크기 조정하여 헤더 로고 사이즈 조정할 수 있습니다-->
+         <div class="logo-area">
+            <a href="../main/main.do"><img src="../style/img/core-img/logo.png" width="456px" height="250px"></a>
         </div>
 
         <!-- Navbar Area -->
@@ -57,27 +57,15 @@
                             <!-- Nav Start -->
                             <div class="classynav text-center">
                                 <ul>
-<<<<<<< HEAD
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Restaurant</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Catagory</a></li>
-=======
                                     <li><a href="../main/main.do">Home</a></li>
                                     <li><a href="../recipe/total.do">recipe</a></li>
-                                    <li><a href="../restaurant/restaurant_main.do">Restaurant</a>
+                                    <li><a href="../Restaurant/Restaurant_main.do">Restaurant</a>
                                        <!--  <ul class="dropdown">
-                                            <li><a href="../restaurant/restaurant_main.do">Catagory</a></li>
->>>>>>> branch 'master' of https://github.com/sist-jeongwon/project1.git
+                                            <li><a href="../Restaurant/Restaurant_main.do">Catagory</a></li>
                                             <li><a href="#">reservation</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
-                                    <li><a href="#">Product</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Catagory</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="../Product/Product_main.do">Product</a></li>
                                     <!--  현재 사용하지 않아 주석처리(필요시 사용)
                                     <li><a href="#">Recipes</a>
                                         <div class="megamenu">
