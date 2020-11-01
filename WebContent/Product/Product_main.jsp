@@ -18,7 +18,7 @@
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
                    <a href="#" class="post-tag">The Best</a>
-                   <a href="../Product/detail.do?no=${vo.product_no }" class="post-title">${vo.name }</a>
+                   <a href="../Product/detail_before.do?no=${vo.product_no }" class="post-title">${vo.name }</a>
                  </div>
               </div>
          </div>
@@ -53,4 +53,3 @@
   </div>
 </body>
 </html>
-

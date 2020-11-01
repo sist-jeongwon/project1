@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
   <div class="post-catagory section-padding-100">
   <div class="container">
   <div class="row">
@@ -17,8 +18,8 @@
 	        <img src="${vo.rest_poster}" alt="" style="width:100%">      
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
-                   <a href="#" class="post-tag">The Best</a>
-                   <a href="#" class="post-title">${vo.rest_name }</a>
+                   <a href="../restaurant/restaurant_detail.do?rest_no=${vo.rest_no }" class="post-tag">${vo.rest_content }</a>
+                   <a href="../restaurant/restaurant_detail.do?rest_no=${vo.rest_no }" class="post-title">${vo.rest_name }</a>
                  </div>
               </div>
          </div>
@@ -31,18 +32,18 @@
       <nav aria-label="Page navigation example">
        <ul class="pagination">
           <c:if test="${curpage>BLOCK }">
-           <li class="page-item"><a class="page-link" href="../Restaurnat/Restaurant_main.do?page=${startPage-1 }">&lt;</a></li>
+           <li class="page-item"><a class="page-link" href="../restaurnat/restaurant_main.do?page=${startPage-1 }">&lt;</a></li>
           </c:if>
           <c:forEach var="i" begin="${startPage }" end="${endPage }">
             <c:if test="${i==curpage }">
-              <li class="page-item active"><a class="page-link" href="../Restaurant/Restaurant_main.do?page=${i }">${i }</a></li>
+              <li class="page-item active"><a class="page-link" href="../restaurant/restaurant_main.do?page=${i }">${i }</a></li>
             </c:if>
-            <c:if test="${i!=curpage }">
-              <li class="page-item"><a class="page-link" href="../Restaurant/Restaurant_main.do?page=${i }">${i }</a></li>
+            <c:if test="${i!=curpage }">`
+              <li class="page-item"><a class="page-link" href="../restaurant/restaurant_main.do?page=${i }">${i }</a></li>
             </c:if>
           </c:forEach>
           <c:if test="${endPage<totalpage }">
-		    <li class="page-item"><a class="page-link" href="../Restaurant/Restaurant_main.do?page=${endPage+1 }">&gt;</a></li>
+		    <li class="page-item"><a class="page-link" href="../restaurant/restaurant_main.do?page=${endPage+1 }">&gt;</a></li>
 		  </c:if>
 		</ul>
 	  </nav>

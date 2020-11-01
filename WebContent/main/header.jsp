@@ -55,13 +55,21 @@
                         <div class="classy-menu">
 
                             <!-- Nav Start -->
-                            <div class="classynav">
+                            <div class="classynav text-center">
                                 <ul>
+<<<<<<< HEAD
                                     <li><a href="#">Home</a></li>
                                     <li><a href="#">About Us</a></li>
                                     <li><a href="#">Restaurant</a>
                                         <ul class="dropdown">
                                             <li><a href="#">Catagory</a></li>
+=======
+                                    <li><a href="../main/main.do">Home</a></li>
+                                    <li><a href="../recipe/total.do">recipe</a></li>
+                                    <li><a href="../restaurant/restaurant_main.do">Restaurant</a>
+                                       <!--  <ul class="dropdown">
+                                            <li><a href="../restaurant/restaurant_main.do">Catagory</a></li>
+>>>>>>> branch 'master' of https://github.com/sist-jeongwon/project1.git
                                             <li><a href="#">reservation</a></li>
                                         </ul>
                                     </li>

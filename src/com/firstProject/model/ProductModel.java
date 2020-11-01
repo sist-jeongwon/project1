@@ -1,10 +1,13 @@
 package com.firstProject.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.firstProject.dao.ProductDAO;
@@ -57,8 +60,31 @@ public class ProductModel {
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("main_jsp", "../Product/Product_main.jsp");
+		   
+	
 		   return "../main/main.jsp";
 	   }
+	 
+	  @RequestMapping("Product/detail_before.do") // 쿠키 전송 받는다 => 요청 => detail
+		/*
+		 * cookie : 클라이언트 (브라우저) ==> 저장 내용을 서버에서 전송 (response) session : 서버에 저장
+		 * (response를 이용하지 않는다)
+		 */
+		public String product_detail_before(HttpServletRequest request, HttpServletResponse response) {
+			// ../movie/detail_before.do?no=${vo.no }
+			String no = request.getParameter("no");
+			// no=1&aaa=1
+			
+			Cookie cookie=new Cookie("p"+no, no);
+			// 기간 
+			cookie.setMaxAge(60*60*24);
+			//전송
+			response.addCookie(cookie);
+
+			//cookie=new Cookie("p"+no, no);
+			return "redirect:../Product/detail.do?no=" + no;// 재요청 
+		}
+	 
 	  
 	  @RequestMapping("Product/detail.do")
 		public String product_detail(HttpServletRequest request) {
@@ -69,6 +95,25 @@ public class ProductModel {
 		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
 		  	request.setAttribute("vo", vo);
 			request.setAttribute("main_jsp", "../Product/detail.jsp");
+			
+			// 쿠키 읽기
+			Cookie[] cookies=request.getCookies();
+			List<ProductVO> cList=new ArrayList<ProductVO>();
+			if(cookies!=null)
+			{
+				for(int i=0;i<cookies.length;i++)
+				{
+					if(cookies[i].getName().startsWith("p"))
+					{
+						String cno=cookies[i].getValue();
+						ProductVO cvo=ProductDAO.productDetailData(Integer.parseInt(cno));
+						cList.add(cvo);
+					}
+				}
+			}
+			request.setAttribute("cList", cList);
+		 
+			
 			return "../main/main.jsp";
 		}
 	  
