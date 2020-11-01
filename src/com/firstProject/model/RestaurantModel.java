@@ -14,7 +14,7 @@ import com.sist.controller.RequestMapping;
 
 public class RestaurantModel {
 
-	  @RequestMapping("Restaurant/Restaurant_main.do")
+	  @RequestMapping("restaurant/restaurant_main.do")
 	  public String product_main(HttpServletRequest request)
 	   {
 		// 데이터 읽어서 => jsp 전송(데이터베이스)
@@ -57,9 +57,25 @@ public class RestaurantModel {
 		   request.setAttribute("BLOCK", BLOCK);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
-		   request.setAttribute("main_jsp", "../Restaurant/Restaurant_main.jsp");
+		   request.setAttribute("main_jsp", "../restaurant/restaurant_main.jsp");
 		   return "../main/main.jsp";
 	   }
-	  
+	  @RequestMapping("restaurant/restaurant_detail.do")
+		public String movie_detail(HttpServletRequest request) {
+			
+			String rest_no=request.getParameter("rest_no");
+			System.out.println(rest_no);
+			// DB연동
+//			Map map=new HashMap();
+//			map.put("rest_no",rest_no);
+			
+			 RestaurantVO vo=RestaurantDAO.restaurantDetailData(Integer.parseInt(rest_no));
+			
+			
+			request.setAttribute("vo", vo);
+			request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+			
+			return "../main/main.jsp";
+		}
 	 
 }

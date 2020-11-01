@@ -14,7 +14,7 @@ public class MemberModel {
 		request.setAttribute("main_jsp", "../member/join.jsp");
 		return "../main/main.jsp";
 		
-	}   
+	} 
 	
 	@RequestMapping("member/idcheck.do")
 	public String member_idcheck(HttpServletRequest request)
@@ -29,7 +29,7 @@ public class MemberModel {
 
 		   try
 		   {
-			   
+			   //한글 변환 
 		   request.setCharacterEncoding("UTF-8");
 		   
 		   }catch(Exception ex){}
@@ -45,19 +45,28 @@ public class MemberModel {
 		   String tel2=request.getParameter("tel2");
 		   String tel3=request.getParameter("tel3");
 		   
+		   // MemberVO에 값을 설정 ==> DAO로 전송
 		   MemberVO vo=new MemberVO();
 		   vo.setMem_id(id);
 		   vo.setMem_pwd(pwd);
 		   vo.setName(name);
 		   vo.setEmail(email);
-	//	   vo.setBirth(ToString(birthday));
-		   vo.setAdderess(addr1+addr2);
-		   vo.setTel(tel1+"-"+tel2+"-"+tel3);
+	       vo.setBirth(birthday);
+		   vo.setAddress(addr1+addr2);
+		   vo.setTel(tel1+tel2+tel3);
+		   //Insert문장 실행
 		   MemberDAO.memberInsert(vo);
 	
 		   return "../main/main.jsp";
 	}
 	
+	@RequestMapping("member/login_main.do")
+	public String member_login_main(HttpServletRequest request) {
+		
+		request.setAttribute("main_jsp", "../member/login_main.jsp");
+		return "../main/main.jsp";
+		
+	} 
 	
 	
 }

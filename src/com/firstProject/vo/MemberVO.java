@@ -7,11 +7,11 @@ public class MemberVO {
 	private String mem_id;
 	private String name;
 	private String mem_pwd;
-	private Date birth;
 	private String email;
-	private String adderess;
+	private String address;
 	private String tel;
 	private int admin;
+	private String birth;
 	private String msg;
 	
 	public String getMsg() {
@@ -38,10 +38,11 @@ public class MemberVO {
 	public void setMem_pwd(String mem_pwd) {
 		this.mem_pwd = mem_pwd;
 	}
-	public Date getBirth() {
+	
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getEmail() {
@@ -50,11 +51,12 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdderess() {
-		return adderess;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setAdderess(String adderess) {
-		this.adderess = adderess;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getTel() {
 		return tel;

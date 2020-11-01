@@ -4,7 +4,7 @@
 <c:choose>
   <c:when test="${msg=='NOID' }">
     <script>
-    alert("ID가 존재하지 않습니다!!");
+    alert("ID가 존재하지 않습니다");
     history.back();
     </script>
   </c:when>

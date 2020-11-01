@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firstProject.mapper.member-mapper">
- <select id="memberIdcheck" resultType="int" parameterType="string">
+ <select id="memberIdcheck" resultType="int" parameterType="String">
     SELECT COUNT(*) FROM member
-    WHERE mem_id=#{mem_id}
+    WHERE mem_id=#{id}
  </select>
  <insert id="memberInsert" parameterType="MemberVO">
-     INSERT INTO member VALUES(
+     INSERT INTO member VALUES (
        #{mem_id},
        #{name},
        #{mem_pwd},
-       #{birth},
        #{email},
        #{address},
        #{tel},
-       0
+       0,
+       #{birth}
      )
  </insert> 
  <select id="memberLogin" resultType="MemberVO" parameterType="String">
      SELECT mem_id,name,mem_pwd,admin
      FROM member
-     WHERE id=#{id}
+     WHERE mem_id=#{id}
  </select>
 </mapper>
