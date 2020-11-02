@@ -11,7 +11,7 @@
   width:700px;
 }
 </style>
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 function postfind()
@@ -71,22 +71,6 @@ $(function(){
 			return;
 		}
 		
-		let email=$('#email').val();
-		if(email.trim()=="")
-		{
-			alert("이메일을 입력하세요");
-			$('#email').focus();
-			return;
-		}
-		
-		let birthday=$('#birthday').val();
-		if(birthday.trim()=="")
-		{
-			alert("생년월일을 입력하세요");
-			$('#birthday').focus();
-			return;
-		}
-		
 		let post=$('#post').val();
 		if(post.trim()=="")
 		{
@@ -142,32 +126,43 @@ $(function(){
 </script>
 </head>
 <body>
-  <div style="height: 30px"></div>
+  <div style="height:120px"></div>
+  <div class="row row2">
+   
+  </div>
   <div class="row row1">
-    <h1 class="text-center"></h1>
+    <h4 class="text-left"></h1>
     <form method=post action="../member/join_ok.do" name="joinFrm" id="joinFrm">
     <table class="table">
      <tr>
-       <th class="text-right danger" width="30%">아이디</th>
+       <th class="text-right danger" width="30%">아이디
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=text name=id class="input-sm" size=15 readonly id="id">
          <input type=button value="중복체크" class="btn btn-sm btn-primary" onclick="idcheck()">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">비밀번호</th>
+       <th class="text-right danger" width="30%">비밀번호
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=password name=pwd class="input-sm" size=15 id="pwd">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">비밀번호 확인</th>
+       <th class="text-right danger" width="30%">비밀번호 확인
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=password name=pwd1 class="input-sm" size=15 id="pwd1">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">이름</th>
+       <th class="text-right danger" width="30%">이름
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=text name=name class="input-sm" size=15 id="name">
        </td>
@@ -185,26 +180,34 @@ $(function(){
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">우편번호</th>
+       <th class="text-right danger" width="30%">우편번호
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=text name=post class="input-sm" size=7 readonly id="post">
          <input type=button value="우편번호" class="btn btn-sm btn-primary" onclick="postfind()">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">주소</th>
+       <th class="text-right danger" width="30%">주소
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=text name=addr1 class="input-sm" size=45 readonly id="addr1">
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">상세주소</th>
+       <th class="text-right danger" width="30%">상세주소
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <input type=text name=addr2 class="input-sm" size=45 id=addr2>
        </td>
      </tr>
      <tr>
-       <th class="text-right danger" width="30%">전화번호</th>
+       <th class="text-right danger" width="30%">전화번호
+        <img src="ico_required.gif">
+       </th>
        <td width=70%>
          <select name=tel1 id=tel1>
            <option>---</option>
@@ -214,7 +217,7 @@ $(function(){
            <option>017</option>
            <option>018</option>
          </select>
-         <input type=text name=tel2 class="input-sm" size=3 id=tel2>-
+         <input type=text name=tel2 class="input-sm" size=3 id=tel2>
          <input type=text name=tel3 class="input-sm" size=3 id=tel3>
        </td>
      </tr>
@@ -222,11 +225,13 @@ $(function(){
        <td colspan="2" class="text-center">
          <input type=button value="회원가입" class="btn btn-sm btn-danger" id="joinBtn">
          <input type=button value="취소" class="btn btn-sm btn-warning"
-           onclick="javascript:history.back()">
+           onclick="javascript:history.back()"
+         >
        </td>
      </tr>
     </table>
     </form>
   </div>
+  <div style="height:120px"></div>
 </body>
 </html>
