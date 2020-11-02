@@ -59,9 +59,9 @@
                                 <ul>
                                     <li><a href="../main/main.do">Home</a></li>
                                     <li><a href="../recipe/total.do">recipe</a></li>
-                                    <li><a href="../Restaurant/Restaurant_main.do">Restaurant</a>
+                                    <li><a href="../restaurant/restaurant_main.do">Restaurant</a>
                                        <!--  <ul class="dropdown">
-                                            <li><a href="../Restaurant/Restaurant_main.do">Catagory</a></li>
+                                            <li><a href="../restaurant/Restaurant_main.do">Catagory</a></li>
                                             <li><a href="#">reservation</a></li>
                                         </ul> -->
                                     </li>
