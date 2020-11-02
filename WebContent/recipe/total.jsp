@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,25 @@
     <c:forEach var="vo" items="${list }">
        <div class="col-12 col-sm-6 col-lg-4">
 	     <div class="single-post-catagory mb-30">
-	        <img src="${vo.poster }" alt="" style="width:100%">      
+	        <!-- <img src="${vo.poster }" alt="" style="width:100%;">  -->
+	        <img src="${vo.poster }" alt="" style="width:350px; height:350px;">   
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
-                   <a href="#" class="post-tag">The Best</a>
-                   <a href="../recipe/detail.do?recipe_no=${vo.recipe_no }" class="post-title">${vo.title }</a>
+                   <a href="#" class="post-tag">${vo.mem_id }</a>
+                   <a href="../recipe/detail.do?recipe_no=${vo.recipe_no }" class="post-title">
+                   
+                   <c:choose>
+				        <c:when test="${fn:length(vo.title) gt 20}">
+				        <c:out value="${fn:substring(vo.title, 0, 20)}"/>...
+				        </c:when>
+				        <c:otherwise>
+				        <c:out value="${vo.title}">
+				        </c:out></c:otherwise>
+				</c:choose>
+				
+                   
+                   
+                   </a>
                  </div>
               </div>
          </div>

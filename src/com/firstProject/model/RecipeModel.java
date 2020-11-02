@@ -47,6 +47,17 @@ public class RecipeModel {
 		   request.setAttribute("main_jsp", "../recipe/total.jsp");
 		   
 		   /*
+		  
+		   if(title.length()>10)
+		   {
+			   title=title.substring(0,10);
+			   title+="...";
+		   }
+		   
+		   request.setAttribute("title", title);
+		   */
+		   
+		   /*
 			   HttpSession session=request.getSession();
 			   String id=(String)session.getAttribute("id");
 			   // 쿠키 읽기
@@ -89,18 +100,11 @@ public class RecipeModel {
 	   public String recipe_detail(HttpServletRequest request)
 	   {
 		   String recipe_no=request.getParameter("recipe_no");
-		   // DB 연동
+			// DB 연동
 		   RecipeVO vo=RecipeDAO.recipeDetailData(Integer.parseInt(recipe_no));
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../recipe/detail.jsp");
-		   /*
-		   HttpSession session=request.getSession();
-		   String id=(String)session.getAttribute("id");
-		   
-		   String content=request.getParameter("content");
-		   String[] contents=content.split("|");
-		   request.setAttribute("contents", contents);
-		   */
+		  
 		  /*
 		   *  JjimVO jvo=new JjimVO();
 		   

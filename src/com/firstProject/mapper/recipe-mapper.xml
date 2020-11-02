@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firstProject.mapper.recipe-mapper">
  <select id="recipeData" resultType="com.firstProject.vo.RecipeVO" parameterType="hashmap">
-    SELECT recipe_no, poster, title, num
-    FROM (SELECT recipe_no, poster, title, rownum as num
-    FROM (SELECT recipe_no, poster, title
+    SELECT recipe_no, poster, title, mem_id, num
+    FROM (SELECT recipe_no, poster, title, mem_id, rownum as num
+    FROM (SELECT recipe_no, poster, title, mem_id
     FROM recipe))
     WHERE num BETWEEN #{start} AND #{end}
   </select>
