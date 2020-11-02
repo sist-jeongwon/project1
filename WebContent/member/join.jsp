@@ -11,7 +11,7 @@
   width:700px;
 }
 </style>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script> -->
 <script type="text/javascript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 function postfind()
@@ -214,7 +214,6 @@ $(function(){
            <option>017</option>
            <option>018</option>
          </select>
-         -
          <input type=text name=tel2 class="input-sm" size=3 id=tel2>-
          <input type=text name=tel3 class="input-sm" size=3 id=tel3>
        </td>
@@ -223,8 +222,7 @@ $(function(){
        <td colspan="2" class="text-center">
          <input type=button value="회원가입" class="btn btn-sm btn-danger" id="joinBtn">
          <input type=button value="취소" class="btn btn-sm btn-warning"
-           onclick="javascript:history.back()"
-         >
+           onclick="javascript:history.back()">
        </td>
      </tr>
     </table>

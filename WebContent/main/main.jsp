@@ -1682,8 +1682,8 @@ h3 {
 	<%-- header가 들어가는 위치 --%>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 
+	<%-- 화면 변경이 되는 부분  --%>
 	<div class="container-fluid">
-		<!-- 화면 변경이 되는 부분  -->
 		<jsp:include page="${main_jsp }"></jsp:include>
 	</div>
 	<%-- footer가 들어가는 위치 --%>
