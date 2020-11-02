@@ -40,6 +40,7 @@ public class MemberDAO {
   {
 	  MemberVO vo=new MemberVO();
 	  SqlSession session=ssf.openSession();
+	  
 	  int count=session.selectOne("memberIdcheck", id);
 	  if(count==0)
 	  {
@@ -48,6 +49,7 @@ public class MemberDAO {
 	  else
 	  {
 		  MemberVO dVO=session.selectOne("memberLogin", id);
+		 
 		  if(pwd.equals(dVO.getMem_pwd()))
 		  {
 			  vo.setMsg("OK");

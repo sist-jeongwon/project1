@@ -1,6 +1,7 @@
 package com.firstProject.model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.RequestMapping;
 import com.firstProject.dao.MemberDAO;
@@ -68,5 +69,41 @@ public class MemberModel {
 		
 	} 
 	
+	@RequestMapping("member/login.do")
+	   public String member_login(HttpServletRequest request)
+	   {
+		 System.out.println("1");
+		   try
+		   {
+			   //한글 변환 
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception e) {}
+		   // 데이터 받기 
+		   String id=request.getParameter("id");
+		   System.out.println("id="+id);
+		   
+		   String pwd=request.getParameter("pwd");
+		   System.out.println("pwd="+pwd);
+		   MemberVO vo=MemberDAO.memberLogin(id, pwd);
+		   if(vo.getMsg().equals("OK"))
+		   {
+			   
+			   HttpSession session=request.getSession();
+			   session.setAttribute("id", vo.getMem_id());
+			   session.setAttribute("name", vo.getName());
+			   session.setAttribute("admin", vo.getAdmin());
+			   
+		   }
+		   
+		   request.setAttribute("msg", vo.getMsg());
+		   return "../member/login.jsp";
+	   }
+	@RequestMapping("member/logout.do")
+	   public String member_logout(HttpServletRequest request)
+	   {
+		   HttpSession session=request.getSession();
+		   session.invalidate();
+		   return "../member/logout.jsp";
+	   }
 	
 }

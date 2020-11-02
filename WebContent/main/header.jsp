@@ -112,19 +112,19 @@
                                 </ul>
 
                                 <!-- Login/Register -->
+                              <div class="text-right">
                                <c:if test="${sessionScope.id==null }">
                                 <div class="login-area">
                                     <a href="../member/login_main.do">Login</a>&nbsp;/&nbsp;<a href="../member/join.do">Join</a>
                                 </div>
                                </c:if> 
                                <c:if test="${sessionScope.id!=null }">
-	 							 <form action="../member/logout.do"><%-- get(생략이 가능) --%>
 	    							<div class="text-right">
 	     								 ${sessionScope.name }(${sessionScope.admin==1?'관리자':'일반유저' })님 환영합니다.
-	      							<a href="../main/main.do">Logout</a>
+	      							<a href="../member/logout.do">Logout</a>
 	    							</div>
-	  							</form>
   								</c:if>
+  								</div>
   								</div>
                             <!-- Nav End -->
 								

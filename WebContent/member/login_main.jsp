@@ -9,33 +9,23 @@
 <!--  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script> -->
 <script type="text/javascript">
 $(function(){
-	// 태그에 대한 이벤트 (클릭..마우스 오버 ...)
-	// onClick="send()"  function send(){}
 	$('#logBtn').click(function(){
-		// selector => css
-		let id=$('#loginId').val();// getter  , $('#log_id').val("admin") setter
-		//$('#log_id').val("hong");
+		let id=$('#loginId').val();
 		if(id.trim()=="")
 		{
 			alert("아이디를 입력하세요");
 			$('#loginId').focus();
 			return;
-			// <input type="text" class="input-sm" name=id size="15" id="log_id" placeholder="아이디입력"  style="color:black">
 		}
 		
-		let pwd=$('#loginPw').val();// getter  , $('#log_id').val("admin") setter
-		//$('#log_id').val("hong");
+		let pwd=$('#loginPw').val();
 		if(pwd.trim()=="")
 		{
 			alert("비밀번호를 입력하세요");
 			$('#loginPw').focus();
 			return;
-			// <input type="text" class="input-sm" name=id size="15" id="log_id" placeholder="아이디입력"  style="color:black">
 		}
-		// id입력
-		// pwd입력 ===> login_ok.do ==> 데이터 전송 
-		$('#logFrm').submit(); //<form => action="파일명">
-		// <input type=submit> ==> 'null'
+		$('#logFrm').submit(); 
 	});
 });
 </script>
@@ -67,14 +57,14 @@ input {
     border-color: initial;
     border-image: initial;
 }
-<!--
+
 .inner_login {
     position: absolute;
     left: 50%;
     top: 50%;
     margin: -145px 0 0 -160px;
 }
--->
+
 .login_tistory{
         position: relative;
         width: 320px;
@@ -185,21 +175,21 @@ fieldset, img {
     <div class="login_tistory">
       <c:if test="${sessionScope.id==null }">
         <form method="post" id="logFrm" action="../member/login.do">
-            <input type="hidden" name="redirectUrl" value="https://blogpack.tistory.com/manage">
             <fieldset>
             <div class="box_login">
                 <div class="inp_text">
                 <label for="loginId" class="screen_out">아이디</label>
-                <input type="id" id="loginId" name="loginId" placeholder="아이디" >
+                <input type="text" id="loginId" name="id" placeholder="아이디" >
                 </div>
                 <div class="inp_text">
                 <label for="loginPw" class="screen_out">비밀번호</label>
-                <input type="password" id="loginPw" name="password" placeholder="비밀번호" >
+                <input type="password" id="loginPw" name="pwd" placeholder="비밀번호" >
                 </div>
             </div>
-            <button type="submit" class="btn_login" id=logBtn>로그인</button>
-            <div class="login_append">
-                <div class="inp_chk"> <!-- 체크시 checked 추가 -->
+            <input type="button" class="btn_login" id=logBtn style="text-align:center" value="로그인">
+           	    <div class="login_append">
+            	<div class="inp_chk"> 
+                <!-- 체크시 checked 추가 -->
                  <!--
                 <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
                 <label for="keepLogin" class="lab_g">
