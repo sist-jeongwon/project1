@@ -121,7 +121,7 @@
 	 							 <form action="../member/logout.do"><%-- get(생략이 가능) --%>
 	    							<div class="text-right">
 	     								 ${sessionScope.name }(${sessionScope.admin==1?'관리자':'일반유저' })님 환영합니다.
-	      							<button class="btn btn-danger btn-sm">로그아웃</button>
+	      							<a href="../main/main.do">Logout</a>
 	    							</div>
 	  							</form>
   								</c:if>
