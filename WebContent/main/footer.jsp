@@ -29,7 +29,7 @@
 					<!-- Footer Nav -->
 					<div class="footer-nav">
 						<ul>
-							<li><a href="#">Home</a></li>
+							<li><a href="../main/main.do">Home</a></li>
 							<li><a href="#">About Us</a></li>
 						</ul>
 					</div>
