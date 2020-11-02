@@ -76,7 +76,7 @@
                             <li><img src="png/rest_sns.png" width="60" height="60" alt><a href="${vo.rest_sns }" class="post-author"><span style="color:black;">웹사이트&nbsp;&nbsp;&nbsp;</span></li>
                             </c:if>
                             
-                            <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn list-btn">목록</button></a>
+                           
                         </ul>
                      </div>
                     </div>
@@ -133,32 +133,7 @@
                         </ol>
                     </div>
  
-                    <div class="post-a-comment-area mb-30 clearfix">
-                        <h4 class="mb-50">Leave a reply</h4>
-
-                        <!-- Reply Form -->
-                        <div class="contact-form-area">
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="Name*">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <input type="email" class="form-control" id="email" placeholder="Email*">
-                                    </div>
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" id="subject" placeholder="Website">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn bueno-btn mt-30" type="submit">Submit Comment</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                   
                   
@@ -174,6 +149,7 @@
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
                              <!--  <div class="post-meta mb-50"></div> --> 
+                             	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button>
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
@@ -185,22 +161,26 @@
                         </div>
 							
                         <!-- Single Widget Area -->
+                        <h6>내가 본 음식점</h6>
                         <div class="single-widget-area post-widget mb-30">
                             <!-- Single Post Area -->
+                            <c:forEach var="vo" items="${cList }" varStatus="s">
+                            <c:if test="${s.index<6 }">
                             <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
-                                    <img src="img/bg-img/12.jpg" alt="">
+                                    <a href="${vo.rest_sns }" ><img src="${vo.rest_poster }" alt=""></a>
                                 </div>
                                 <!-- Blog Content -->
                                 <div class="blog-content">
-                                    <a href="#" class="post-title">Friend eggs with ham</a>
+                                    <a href="${vo.rest_sns }" class="post-title">${vo.rest_name }</a>
                                     <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
+                                        <a href="#" class="post-date">${vo.rest_price }</a>
                                     </div>
                                 </div>
                             </div>
+                            </c:if>
+                            </c:forEach>
 
                             <!-- Single Post Area -->
                             <div class="single-post-area d-flex">
@@ -266,7 +246,9 @@
                                 </div>
                             </div>
                         </div>
-
+							
+							
+							
                         <!-- Single Widget Area -->
                         <div class="single-widget-area newsletter-widget mb-30">
                             <h6>Subscribe to newsletter</h6>

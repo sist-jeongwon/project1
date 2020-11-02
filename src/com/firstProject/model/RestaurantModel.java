@@ -1,14 +1,19 @@
 package com.firstProject.model;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import com.firstProject.dao.RestaurantDAO;
+
 import com.firstProject.vo.RestaurantVO;
 import com.firstProject.vo.Restaurant_reviewVO;
 import com.sist.controller.RequestMapping;
@@ -106,5 +111,67 @@ public class RestaurantModel {
 		   RestaurantDAO.replyInsert(vo);
 		   return "redirect:../restaurant/restaurant_detail.do?rest_no="+rest_review_content;
 	   }
+
+		  @RequestMapping("restaurant/rest_detail_before.do") // 쿠키 전송 받는다 => 요청 을 detail로 다시 보낸다
+			/*
+			 * cookie : 클라이언트 (브라우저) ==> 저장 내용을 서버에서 전송 (response) session(서버)에 저장
+			 * (response를 이용하지 않는다)
+			 */
+			public String product_detail_before(HttpServletRequest request, HttpServletResponse response) {
+				// ../movie/detail_before.do?no=${vo.no }
+				String no = request.getParameter("no");
+				// no=1&aaa=1
+				
+				Cookie cookie=new Cookie("p"+no, no);
+				//Cookie(키, 값)
+				
+				// 기간 설정
+				cookie.setMaxAge(60*60*24);
+				
+				//전송
+				response.addCookie(cookie);
+
+				//cookie=new Cookie("p"+no, no);
+				return "redirect:../restaurant/rest_detail.do?rest_no=" + no;// 쿠키값을 저장한 채로 재요청 (detail로 이동)
+			}
+		 
+		  
+		  @RequestMapping("restaurant/rest_detail.do")
+			public String product_detail(HttpServletRequest request) {
+				
+			  	String no=request.getParameter("no");//사용자에게 번호를 받아옴
+			
+			  	// DAO를  이용해서 번호에 해당하는 데이터 한줄 읽어옴
+			  	RestaurantVO vo=RestaurantDAO.restaurantDetailData(Integer.parseInt(no));
+			  	request.setAttribute("vo", vo);
+				
+			  					
+				
+				request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+			  	
+			  	
+				// 쿠키 읽기
+				Cookie[] cookies=request.getCookies();
+				List<RestaurantVO> cList=new ArrayList<RestaurantVO>();
+				if(cookies!=null)
+				{
+					for(int i=cookies.length-1;i>=0;i--)
+					{
+						if(cookies[i].getName().startsWith("p"))
+						{
+							String cno=cookies[i].getValue();
+							RestaurantVO cvo=RestaurantDAO.restaurantDetailData(Integer.parseInt(cno));
+							cList.add(cvo);
+						}
+					}
+				}
+				request.setAttribute("cList", cList);
+			 
+				request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+				
+				return "../main/main.jsp";
+			}
+		  
+		 
 	 
 }
