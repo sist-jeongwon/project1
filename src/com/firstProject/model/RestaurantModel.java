@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.firstProject.dao.RestaurantDAO;
 import com.firstProject.vo.RestaurantVO;
@@ -68,7 +69,8 @@ public class RestaurantModel {
 			// DB연동
 //			Map map=new HashMap();
 //			map.put("rest_no",rest_no);
-			
+			HttpSession session=request.getSession();
+			 String id=(String)session.getAttribute("id");
 			 RestaurantVO vo=RestaurantDAO.restaurantDetailData(Integer.parseInt(rest_no));
 			
 			
