@@ -10,7 +10,10 @@ import javax.servlet.http.HttpSession;
 
 import com.firstProject.dao.RestaurantDAO;
 import com.firstProject.vo.RestaurantVO;
+import com.firstProject.vo.Restaurant_reviewVO;
 import com.sist.controller.RequestMapping;
+
+
 
 
 public class RestaurantModel {
@@ -61,23 +64,47 @@ public class RestaurantModel {
 		   request.setAttribute("main_jsp", "../restaurant/restaurant_main.jsp");
 		   return "../main/main.jsp";
 	   }
-	  @RequestMapping("restaurant/restaurant_detail.do")
-		public String movie_detail(HttpServletRequest request) {
-			
-			String rest_no=request.getParameter("rest_no");
-			System.out.println(rest_no);
-			// DB연동
-//			Map map=new HashMap();
-//			map.put("rest_no",rest_no);
-			HttpSession session=request.getSession();
-			 String id=(String)session.getAttribute("id");
-			 RestaurantVO vo=RestaurantDAO.restaurantDetailData(Integer.parseInt(rest_no));
-			
-			
-			request.setAttribute("vo", vo);
-			request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
-			
-			return "../main/main.jsp";
-		}
+	  
+	@RequestMapping("restaurant/restaurant_detail.do")
+	public String movie_detail(HttpServletRequest request) {
+		
+		String rest_no=request.getParameter("rest_no");
+		System.out.println(rest_no);
+		// DB연동
+//		Map map=new HashMap();
+//		map.put("rest_no",rest_no);
+		
+		 RestaurantVO vo=RestaurantDAO.restaurantDetailData(Integer.parseInt(rest_no));
+		
+		
+		request.setAttribute("vo", vo);
+		request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+		
+		return "../main/main.jsp";
+	}
+	// 게시물에 댓글 
+	   @RequestMapping("restaurant/restaurant_detail.do")
+	   public String reply_insert(HttpServletRequest request)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+			   
+		   }catch(Exception ex) {}
+		   String rest_review_bno=request.getParameter("rest_review_bno");
+		   String rest_review_content=request.getParameter("rest_review_content");
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   String name=(String)session.getAttribute("name");
+		   // VO에 담아서 => DAO
+		   Restaurant_reviewVO vo=new Restaurant_reviewVO();
+		  // vo.setRest_review_bno=request(Integer.parseInt(rest_review_bno=request));
+		   vo.setId(id);
+		   vo.setRest_review_content(rest_review_content);
+		   vo.setName(name);
+		   // DAO연결 
+		   RestaurantDAO.replyInsert(vo);
+		   return "redirect:../restaurant/restaurant_detail.do?rest_no="+rest_review_content;
+	   }
 	 
 }

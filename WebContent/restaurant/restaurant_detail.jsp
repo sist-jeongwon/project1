@@ -25,6 +25,9 @@
             top: 0;
             right: -14px;
             content: ""; }
+            .list-btn{
+            	float:right;
+            }
 </style>
 
 </head>
@@ -36,6 +39,7 @@
     <!-- ##### Post Details Area Start ##### -->
     <section class="post-news-area section-padding-100-0 mb-70">
         <div class="container">
+        <!-- container 에서 div 클래스 닫지 않기..... 닫으면 사이드바 내려감.. -->
             <div class="row justify-content-center">
                 <!-- Post Details Content Area -->
                 <!-- 크기조절 ↓ㅁ-->
@@ -43,7 +47,8 @@
                 <!-- 크기조절 ↑-->
                     <div class="post-details-content mb-100">
                         <div class="blog-thumbnail mb-50">
-                         <img src="${vo.rest_poster }" width="400" height="400"> 
+                         <img src="${vo.rest_poster }" width="400" height="500"> 
+                         
                         </div>
                      </div>   
                <div class="blog-content">
@@ -60,7 +65,7 @@
                         <h5>Info</h5>
                         <ul class="info-data">
                         	
-                        	 <li><img src="png/rest_location.png" width="60" height="60" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp; ${vo.rest_addr1 }<p>
+                        	 <li><img src="png/rest_location.png" width="60" height="60" alt> <span style="color:black;" text-align="center;">&nbsp;&nbsp;&nbsp; ${vo.rest_addr1 }<p>
                         													 &nbsp;&nbsp;&nbsp;	${vo.rest_addr2 }</p>				</span></li>
                             <li><img src="png/rest_tel.png" width="30" height="30" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_tel }</span></li>
                             <li><img src="png/rest_price.png" width="30" height="30" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp; ${vo.rest_price }</span></li>
@@ -70,7 +75,8 @@
                             <c:if test="${vo.rest_sns != 'X' }">
                             <li><img src="png/rest_sns.png" width="60" height="60" alt><a href="${vo.rest_sns }" class="post-author"><span style="color:black;">웹사이트&nbsp;&nbsp;&nbsp;</span></li>
                             </c:if>
-                            <button type="submit" class="btn bueno-btn" sytle="w-10">목록</button>
+                            
+                            <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn list-btn">목록</button></a>
                         </ul>
                      </div>
                     </div>
@@ -158,7 +164,7 @@
                   
                   
                   
-                  </div>
+                  
                   
                    <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
@@ -168,8 +174,8 @@
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
                              <!--  <div class="post-meta mb-50"></div> --> 
-                                <button type="submit" class="btn bueno-btn w-100">예약하기</button>
-                                <button type="submit" class="btn bueno-btn w-100">찜하기</button>
+                                <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button>
+                                <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
                         </div>
 
@@ -272,7 +278,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+         
       </div>
    
  

@@ -15,7 +15,7 @@
     <c:forEach var="vo" items="${list }">
        <div class="col-12 col-sm-6 col-lg-4">
 	     <div class="single-post-catagory mb-30">
-	        <img src="${vo.rest_poster}" alt="" style="width:100%">      
+	        <img src="${vo.rest_poster}" alt="" style="width:350px; height:350px;">      
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
                    <a href="../restaurant/restaurant_detail.do?rest_no=${vo.rest_no }" class="post-tag">${vo.rest_content }</a>

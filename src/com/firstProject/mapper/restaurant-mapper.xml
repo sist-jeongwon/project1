@@ -20,17 +20,39 @@ REST_PRICE            VARCHAR2(30)
 
 -->
 <select id="restaurantListData" resultType="com.firstProject.vo.RestaurantVO" parameterType="hashmap">
-    SELECT rest_no,rest_name,rest_poster,num
-    FROM (SELECT rest_no,rest_name,rest_poster,rownum as num
-    FROM (SELECT rest_no,rest_name,rest_poster
+    SELECT rest_no,rest_name,rest_poster,rest_content, num
+    FROM (SELECT rest_no,rest_name,rest_poster,rest_content, rownum as num
+    FROM (SELECT rest_no,rest_name,rest_poster,rest_content 
     FROM restaurant ORDER BY rest_no))
     WHERE num BETWEEN #{start} AND #{end}
 </select>
 <select id="restaurantTotalPage" resultType="int" parameterType="int">
 	SELECT CEIL(COUNT(*)/12.0) FROM restaurant
 </select>
-  <select id="restaurantDetailData" resultType="RestaurantVO" parameterType="int">
+ <select id="restaurantDetailData" resultType="RestaurantVO" parameterType="int">
     SELECT * FROM restaurant
     WHERE rest_no=#{rest_no}
   </select>
+
+  <insert id="rest_rivewInsert" parameterType="com.firstProject.vo.Restaurant_reviewVO">
+    <!-- -->
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) as no FROM restaurant_review
+    </selectKey>
+    INSERT INTO restaurant_review(rest_review_no,rest_review_bno,id,name,rest_review_content,group_id) VALUES(
+      #{rest_review_no},
+      #{rest_review_bno},
+      #{id},
+      #{name},
+      #{rest_review_content},
+      (SELECT NVL(MAX(group_id)+1,1) FROM restaurant_review)
+    )
+  </insert>
+  <select id="rest_reviewListData" resultType="com.firstProject.vo.Restaurant_reviewVO" parameterType="int">
+    SELECT rest_review_no,rest_review_bno,id,name,rest_review_content,
+    group_tab FROM restaurant_review
+    WHERE rest_review_bno=#{rest_review_bno}
+  </select>  
+  
+  
 </mapper>

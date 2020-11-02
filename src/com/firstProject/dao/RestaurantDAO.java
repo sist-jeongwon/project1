@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.firstProject.vo.RestaurantVO;
+import com.firstProject.vo.Restaurant_reviewVO;
+
+
 public class RestaurantDAO {
  private static SqlSessionFactory ssf;
  static
@@ -44,13 +47,43 @@ REST_PRICE            VARCHAR2(30)
 	   return total;
  }
  
- public static RestaurantVO restaurantDetailData(int no)
+ public static RestaurantVO restaurantDetailData(int rest_no)
+ {
+//	   SqlSession session=ssf.openSession();
+//	   session.update("hitIncrement", no);
+//	   session.commit();
+//	   RestaurantVO vo=session.selectOne("restaurantDetailData", no);
+//	   session.close();
+//	   return vo;
+	 // 
+	 SqlSession session=ssf.openSession();
+	 RestaurantVO vo=session.selectOne("restaurantDetailData",rest_no);
+	 session.close();
+	 return vo;
+ }
+ public static void replyInsert(Restaurant_reviewVO vo)
+ {
+	   SqlSession session=ssf.openSession(true);// commit(X)
+	   // commit() ==> DML
+	   session.insert("rest_rivewInsert",vo);
+	   session.close();
+ }
+ /*
+  *   <select id="replyListData" resultType="ReplyVO" parameterType="int">
+		    SELECT no,bno,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,
+		    group_tab FROM movie_reply
+		    WHERE bno=#{bno}
+		  </select>
+  */
+ public static List<Restaurant_reviewVO> resaurant_reviewListData(int rest_review_bno)
  {
 	   SqlSession session=ssf.openSession();
-	   session.update("hitIncrement", no);
-	   session.commit();
-	   RestaurantVO vo=session.selectOne("restaurantDetailData", no);
+	   List<Restaurant_reviewVO> list=session.selectList("resaurant_reviewListData",rest_review_bno);
 	   session.close();
-	   return vo;
+	   return list;
  }
+ 
+ 
+ 
+ 
 }
