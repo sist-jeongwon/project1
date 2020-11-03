@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firstProject.mapper.board-mapper">
+ <select id="boardListData" resultType="BoardVO" parameterType="hashmap">
+    SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num
+    FROM (SELECT no,subject,name,regdate,hit,rownum as num
+    FROM (SELECT no,subject,name,regdate,hit 
+    FROM board ORDER BY no DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <!-- 총페이지 -->
+  <select id="boardTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM board
+  </select>
+  <insert id="boardInsert" parameterType="BoardVO">
+     <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM board
+    </selectKey>
+    INSERT INTO board VALUES(
+      #{no},
+      #{name},
+      #{subject},
+      #{content},
+      #{pwd},
+      SYSDATE,
+      0
+    )
+  </insert>
+  <!-- 내용보기  -->
+  <update id="boardHitIncrement" parameterType="int">
+    UPDATE board SET
+    hit=hit+1
+    WHERE no=#{no}
+  </update>
+  <select id="boardDetailData" parameterType="int" resultType="BoardVO">
+    SELECT * FROM board
+    WHERE no=#{no}
+  </select>
+
+</mapper> 

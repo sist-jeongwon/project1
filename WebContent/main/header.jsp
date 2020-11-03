@@ -122,6 +122,7 @@ margin-left:300px;
 											<li><a href="../reserve/adminpage.do">예매현황</a></li>
 										</c:if>
 									</c:if>
+									<li><a href="../board/list.do">community</a></li>
 								</ul>
 
 								<!-- Login/Register -->
