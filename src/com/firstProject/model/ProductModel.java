@@ -76,8 +76,10 @@ public class ProductModel {
 			// ../movie/detail_before.do?no=${vo.no }
 			String no = request.getParameter("no");
 			// no=1&aaa=1
-			
-			Cookie cookie=new Cookie("p"+no, no);
+			HttpSession session=request.getSession();
+			String id=(String)session.getAttribute("id");
+			//   shim123
+			Cookie cookie=new Cookie(id+no, no);
 			//Cookie(키, 값)
 			
 			// 기간 설정
@@ -86,7 +88,7 @@ public class ProductModel {
 			//전송
 			response.addCookie(cookie);
 
-			//cookie=new Cookie("p"+no, no);
+			//cookie=new Cookie(id+no, no);
 			return "redirect:../Product/detail.do?no=" + no;// 쿠키값을 저장한 채로 재요청 (detail로 이동)
 		}
 	 
@@ -100,6 +102,8 @@ public class ProductModel {
 		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
 		  	request.setAttribute("vo", vo);
 			
+		  	HttpSession session=request.getSession();
+			String id=(String)session.getAttribute("id");
 			
 			// 쿠키 읽기
 			Cookie[] cookies=request.getCookies();
@@ -108,7 +112,7 @@ public class ProductModel {
 			{
 				for(int i=cookies.length-1;i>=0;i--)
 				{
-					if(cookies[i].getName().startsWith("p"))
+					if(cookies[i].getName().startsWith(id))
 					{
 						String cno=cookies[i].getValue();
 						ProductVO cvo=ProductDAO.productDetailData(Integer.parseInt(cno));

@@ -45,10 +45,10 @@ public class ProductDAO {
 	   }
 	   /*
 	    * <select id="productDetailData" resultType="ProductVO" parameterType="int">
-   SELECT product.product_no, cno, name, price, main_img, detail_no, img, content
-FROM product,product_detail
-WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
-  </select>
+		   	SELECT product.product_no, cno, name, price, main_img, detail_no, img, content
+			FROM product,product_detail
+			WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
+		  </select>
 	    */
 	   public static ProductVO productDetailData(int no)
 	   {
