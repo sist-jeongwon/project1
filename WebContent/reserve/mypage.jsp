@@ -6,11 +6,101 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-usermenu {
+  margin-top: 30px;
+  height:300px;
+  }
+.profile-usermenu ul
+{
+   display: block;
+}
+/*메뉴간격*/
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+  margin-top: 20px; 
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+  
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+</style>
 </head>
 <body>
 <div class="container">
- <div class="row profile">
+ <div class="row">
 	    <div class="col-md-3">
+	      <div class="profile">
 	         <div class="profile-sidebar">
 	            <div class="profile-userpic">
 					<img src="https://previews.123rf.com/images/marucyan/marucyan1210/marucyan121000033/16019619-%EC%83%88%EC%8B%B9.jpg" class="img-responsive" alt="">
@@ -37,6 +127,8 @@
 			            <li><a href="#likelist" data-toggle="tab">찜목록</a></li>
 			            <li><a href="#q&alist" data-toggle="tab">1:1문의</a></li>
 					</ul>
+								</div>
+								
 								</div>
     </div><!-- col-md-3 -->
     
