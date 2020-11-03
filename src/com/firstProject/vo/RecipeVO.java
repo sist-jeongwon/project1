@@ -11,6 +11,14 @@ public class RecipeVO {
 	private String content;
 	private String ingredient;
 	private String mem_id;
+	private int lrcno; //찜
+	
+	public int getLrcno() {
+		return lrcno;
+	}
+	public void setLrcno(int lrcno) {
+		this.lrcno = lrcno;
+	}
 	public int getRecipe_no() {
 		return recipe_no;
 	}

@@ -21,7 +21,7 @@
   </select>
   
    <select id="productDetailData" resultType="ProductVO" parameterType="int">
-   SELECT product.product_no, cno, name, price, main_img, detail_no, img , content
+   SELECT product.product_no, name, price, main_img, detail_no, img , content
 FROM product,product_detail
 WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
   </select>
@@ -29,4 +29,51 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
    SELECT * FROM product
    WHERE product_no=#{no}
   </select> -->
+  
+  
+  <!-- 장바구니 저장  -->
+  <insert id="Product_keepInsert" parameterType="com.firstProject.vo.Product_keepVO">
+    INSERT INTO product_keep VALUES(
+      (SELECT NVL(MAX(product_no)+1,1) FROM product_keep),#{mem_id},#{pno}
+    )
+  </insert>
+  <!-- 데이터 읽기(장바구니 목록) -->
+  <select id="product_keepListData" parameterType="String" resultType="com.firstProject.vo.Product_keepVO">
+    SELECT * FROM product_keep
+    WHERE mem_id=#{mem_id}
+    ORDER BY product_no DESC
+  </select>
+  <!-- 장바구니여부 확인 -->
+  <select id="product_keepCount" parameterType="com.firstProject.vo.Product_keepVO" resultType="int">
+    SELECT COUNT(*) FROM product_keep
+    WHERE mem_id=#{mem_id} AND pno=#{pno}
+  </select>
+  <!-- 장바구니 취소시에 처리  -->
+  <delete id="product_keepDelete" parameterType="int">
+    DELETE FROM product_keep
+    WHERE product_no=#{product_no}
+  </delete>
+  
+  <!-- 찜저장  -->
+  <insert id="likeInsert" parameterType="com.firstProject.vo.LikeVO">
+    INSERT INTO like_product VALUES(
+      (SELECT NVL(MAX(product_no)+1,1) FROM like_product),#{mem_id},#{cno}
+    )
+  </insert>
+  <!-- 데이터 읽기(찜 목록) -->
+  <select id="likeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+    SELECT * FROM like_product
+    WHERE mem_id=#{mem_id}
+    ORDER BY product_no DESC
+  </select>
+  <!--  찜여부 확인 -->
+  <select id="likeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
+    SELECT COUNT(*) FROM like_product
+    WHERE mem_id=#{mem_id} AND cno=#{cno}
+  </select>
+  <!-- 찜 취소시에 처리  -->
+  <delete id="likeDelete" parameterType="int">
+    DELETE FROM like_product
+    WHERE product_no=#{product_no}
+  </delete>
 </mapper>

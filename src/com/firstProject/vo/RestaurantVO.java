@@ -21,6 +21,14 @@ public class RestaurantVO {
 	private int rest_hit;
 	private int rest_like;
 	private String rest_price;
+	private int lrsno; //찜번호
+	
+	public int getLno() {
+		return lrsno;
+	}
+	public void setLno(int lno) {
+		this.lrsno = lno;
+	}
 	public int getRest_no() {
 		return rest_no;
 	}

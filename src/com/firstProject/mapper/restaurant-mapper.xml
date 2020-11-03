@@ -55,4 +55,104 @@ REST_PRICE            VARCHAR2(30)
   </select>  
   
   
+  
+  <!-- mypage + reservation -->
+ <select id="restaurantReserveData" resultType="RestaurantVO">
+    SELECT rest_no,rest_name,rest_poster,theater_no 
+    FROM restaurant_info
+  </select>
+  <!-- 
+      1,2,3,4
+   -->
+  <select id="restaurantTheaterNo" resultType="String" parameterType="int">
+    SELECT theater_no FROM restaurant_info
+    WHERE rset_no=#{rest_no}
+  </select>
+  
+  <select id="theaterListData" resultType="com.firstProject.vo.TheaterVO" parameterType="int">
+    SELECT * FROM theater_info
+    WHERE tno=#{tno}
+  </select>
+  
+  <select id="theaterReserveData" resultType="String" parameterType="int">
+    SELECT rday FROM theater_info
+    WHERE tno=#{tno}
+  </select>
+  
+  <select id="dayTimeData" resultType="String" parameterType="int">
+    SELECT rtime FROM date_info
+    WHERE rday=#{rday}
+  </select>
+  
+  <select id="timeData" resultType="String" parameterType="int">
+    SELECT time FROM time_info
+    WHERE tno=#{tno}
+  </select>
+ 
+  <insert id="reserveInsert" parameterType="com.firstProject.vo.ReservationVO">
+    <selectKey keyProperty="rest_no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) as rest_no FROM reservation
+    </selectKey>
+    INSERT INTO reservation VALUES(
+      #{rest_no},
+      #{mem_id},
+      #{cno},
+      #{theater},
+      #{time},
+      #{people},
+      #{price},
+      'n',SYSDATE)
+  </insert>
+  <resultMap type="com.firstProject.vo.ReservationVO" id="reserveList">
+   <result property="rest_no" column="rest_no"/>
+   <result property="mem_id" column="mem_id"/>
+   <result property="theater" column="theater"/>
+   <result property="time" column="time"/>
+   <result property="people" column="people"/>
+   <result property="price" column="price"/>
+   <result property="isreserve" column="isreserve"/>
+   <result property="resvo.rest_name" column="rest_name"/>
+   <result property="resvo.rest_poster" column="rest_poster"/>
+  </resultMap>
+  <select id="mypageReserveListData" resultMap="reserveList" parameterType="string">
+    SELECT reservation.rest_no,rest_name,rest_poster,theater,time,people,price,isreserve
+    FROM reservation,restaurant_info
+    WHERE cno=restaurant_info.rest_no AND mem_id=#{mem_id}
+    ORDER BY rest_no DESC
+  </select>
+  <select id="adminReserveListData" resultMap="reserveList">
+    SELECT reservation.rest_no,mem_id,rest_name,rest_poster,theater,time,people,price,isreserve
+    FROM reservation,restaurant_info
+    WHERE cno=restaurant_info.rset_no AND isreserve='n'
+    ORDER BY rset_no DESC
+  </select>
+  
+  <update id="reserveOk" parameterType="int">
+    UPDATE reservation SET
+    isreserve='y'
+    WHERE rest_no=#{rest_no}
+  </update>
+  
+  <!-- 찜 저장  -->
+  <insert id="likeInsert" parameterType="com.firstProject.vo.LikeVO">
+    INSERT INTO like_restaurant VALUES(
+      (SELECT NVL(MAX(rest_no)+1,1) FROM like_restaurant),#{id},#{cno}
+    )
+  </insert>
+  <!-- 데이터 읽기(찜 목록) -->
+  <select id="likeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+    SELECT * FROM like_restaurant
+    WHERE mem_id=#{mem_id}
+    ORDER BY rest_no DESC
+  </select>
+  <!-- 찜여부 확인 -->
+  <select id="likeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
+    SELECT COUNT(*) FROM like_restaurant
+    WHERE mem_id=#{mem_id} AND cno=#{cno}
+  </select>
+  <!-- 찜 취소시에 처리  -->
+  <delete id="likeDelete" parameterType="int">
+    DELETE FROM like_restaurant
+    WHERE rest_no=#{rest_no}
+  </delete>
 </mapper>

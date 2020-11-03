@@ -11,20 +11,37 @@ ISRESERVE          CHAR(1)
  */
 import java.util.*; 
 public class ReservationVO {
-    private int res_no;
+    private int rest_no;
     private String mem_id;
     private int cno;
+    private String theater;
     private String time;
     private String people;
     private String price;
     private String isreserve;
     private Date reserved_date;
     private RestaurantVO resvo=new RestaurantVO();
-	public int getRes_no() {
-		return res_no;
+    private ProductVO pvo=new ProductVO();
+    private RecipeVO recvo=new RecipeVO();
+    
+    
+	public ProductVO getPvo() {
+		return pvo;
 	}
-	public void setRes_no(int res_no) {
-		this.res_no = res_no;
+	public void setPvo(ProductVO pvo) {
+		this.pvo = pvo;
+	}
+	public RecipeVO getRecvo() {
+		return recvo;
+	}
+	public void setRecvo(RecipeVO recvo) {
+		this.recvo = recvo;
+	}
+	public int getRest_no() {
+		return rest_no;
+	}
+	public void setRest_no(int rest_no) {
+		this.rest_no = rest_no;
 	}
 	public String getMem_id() {
 		return mem_id;
@@ -32,11 +49,17 @@ public class ReservationVO {
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
 	}
-	public int getMno() {
+	public int getCno() {
 		return cno;
 	}
-	public void setMno(int mno) {
-		this.cno = mno;
+	public void setCno(int cno) {
+		this.cno = cno;
+	}
+	public String getTheater() {
+		return theater;
+	}
+	public void setTheater(String theater) {
+		this.theater = theater;
 	}
 	public String getTime() {
 		return time;
@@ -75,6 +98,6 @@ public class ReservationVO {
 		this.resvo = resvo;
 	}
     
-	
+    
   
 }

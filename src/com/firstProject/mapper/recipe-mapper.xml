@@ -20,4 +20,28 @@
     SELECT * FROM recipe
     WHERE recipe_no=#{recipe_no}
   </select>
+  
+  
+  <!-- 찜 저장  -->
+  <insert id="likeInsert" parameterType="com.firstProject.vo.LikeVO">
+    INSERT INTO like_recipe VALUES(
+      (SELECT NVL(MAX(recipe_no)+1,1) FROM like_recipe),#{mem_id},#{cno}
+    )
+  </insert>
+  <!-- 데이터 읽기(찜 목록) -->
+  <select id="likeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+    SELECT * FROM like_recipe
+    WHERE mem_id=#{mem_id}
+    ORDER BY recipe_no DESC
+  </select>
+  <!-- 찜여부 확인 -->
+  <select id="likeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
+    SELECT COUNT(*) FROM like_recipe
+    WHERE mem_id=#{mem_id} AND cno=#{cno}
+  </select>
+  <!-- 찜 취소시에 처리  -->
+  <delete id="likeDelete" parameterType="int">
+    DELETE FROM like_recipe
+    WHERE rest_no=#{rest_no}
+  </delete>
 </mapper>

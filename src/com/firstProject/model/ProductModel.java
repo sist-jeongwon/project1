@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.firstProject.dao.ProductDAO;
+import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.ProductVO;
+import com.firstProject.vo.Product_keepVO;
 import com.sist.controller.RequestMapping;
 
 public class ProductModel {
@@ -121,5 +123,47 @@ public class ProductModel {
 			return "../main/main.jsp";
 		}
 	  
+	  
+	  ////////////////////////////////////////////////////////////
+	 // 장바구니
+	  @RequestMapping("Product/product_keep.do")
+		public String Product_product_keep(HttpServletRequest request)
+		{
+			String no=request.getParameter("no");
+			HttpSession session=request.getSession();
+			String id=(String)session.getAttribute("id");
+			Product_keepVO vo=new Product_keepVO();
+			vo.setMem_id(id);
+			vo.setPno(Integer.parseInt(no));
+			ProductDAO.Product_keepInsert(vo);
+			return "redirect:../product/detail.do?no="+no;
+		}
+		@RequestMapping("Product/product_keep_cancel.do")
+		public String product_keep_cancel(HttpServletRequest request)
+		{
+			String no=request.getParameter("no");
+			ProductDAO.product_keepDelete(Integer.parseInt(no));
+			return "redirect:../reserve/mypage.do";
+		}
+		// 찜
+		@RequestMapping("Product/like.do")
+		public String Product_like(HttpServletRequest request)
+		{
+			String no=request.getParameter("no");
+			HttpSession session=request.getSession();
+			String id=(String)session.getAttribute("id");
+			LikeVO vo=new LikeVO();
+			vo.setMem_id(id);
+			vo.setCno(Integer.parseInt(no));
+			ProductDAO.LikeInsert(vo);
+			return "redirect:../product/detail.do?no="+no;
+		}
+		@RequestMapping("Product/like_cancel.do")
+		public String like_cancel(HttpServletRequest request)
+		{
+			String no=request.getParameter("no");
+			ProductDAO.likeDelete(Integer.parseInt(no));
+			return "redirect:../reserve/mypage.do";
+		}
 	 
 }

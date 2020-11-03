@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 
 import com.firstProject.dao.RestaurantDAO;
-
+import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.RestaurantVO;
 import com.firstProject.vo.Restaurant_reviewVO;
 import com.sist.controller.RequestMapping;
@@ -172,6 +172,28 @@ public class RestaurantModel {
 				return "../main/main.jsp";
 			}
 		  
-		 
+		  
+		  
+		  ////////////////////////////////////////////////////////////
+			// 찜
+					@RequestMapping("Restaurant/like.do")
+					public String Product_like(HttpServletRequest request)
+					{
+						String no=request.getParameter("no");
+						HttpSession session=request.getSession();
+						String id=(String)session.getAttribute("id");
+						LikeVO vo=new LikeVO();
+						vo.setMem_id(id);
+						vo.setCno(Integer.parseInt(no));
+						RestaurantDAO.likeInsert(vo);
+						return "redirect:../product/detail.do?no="+no;
+					}
+					@RequestMapping("Restaurant/like_cancel.do")
+					public String like_cancel(HttpServletRequest request)
+					{
+						String no=request.getParameter("no");
+						RestaurantDAO.likeDelete(Integer.parseInt(no));
+						return "redirect:../reserve/mypage.do";
+					}		 
 	 
 }

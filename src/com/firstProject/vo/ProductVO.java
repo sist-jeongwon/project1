@@ -3,13 +3,27 @@ package com.firstProject.vo;
 public class ProductVO {
 
 	private int product_no;
-	private int cno;
 	private String name;
 	private int price;
 	private int discount_rate;
 	private String main_img;
 	private Product_detailVO dvo=new Product_detailVO();
+	private int kno; //장바구니
+	private int lpno; //찜
 	
+	
+	public int getLpno() {
+		return lpno;
+	}
+	public void setLpno(int lpno) {
+		this.lpno = lpno;
+	}
+	public int getKno() {
+		return kno;
+	}
+	public void setKno(int kno) {
+		this.kno = kno;
+	}
 	private String img;
 	
 	public String getImg() {
@@ -35,12 +49,6 @@ public class ProductVO {
 	}
 	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
-	}
-	public int getCno() {
-		return cno;
-	}
-	public void setCno(int cno) {
-		this.cno = cno;
 	}
 	public String getName() {
 		return name;

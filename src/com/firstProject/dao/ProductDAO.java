@@ -6,7 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.ProductVO;
+import com.firstProject.vo.Product_keepVO;
 
 
 public class ProductDAO {
@@ -56,4 +58,66 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
 		   return vo;
 	   }
 	 
+		 ///////////////////////////////////////////////////////////////////////
+		 //장바구니
+		   public static void Product_keepInsert(Product_keepVO vo)
+		   {
+		  	   SqlSession session=ssf.openSession(true);
+		  	   session.update("productInsert", vo);
+		  	   session.close();
+		   }
+		   
+		   public static List<Product_keepVO> product_keepListData(String id)
+		   {
+		  	   SqlSession session=ssf.openSession();
+		  	   List<Product_keepVO> list=session.selectList("product_keepListData",id);
+		  	   session.close();
+		  	   return list;
+		   }
+
+		   public static int product_keepCount(LikeVO vo)
+		   {
+		  	   SqlSession session=ssf.openSession();
+		  	   int count=session.selectOne("product_keepCount",vo);
+		  	   session.close();
+		  	   return count;
+		   }
+
+		   public static void product_keepDelete(int no)
+		   {
+		  	   SqlSession session=ssf.openSession(true);
+		  	   session.delete("product_keepDelete", no);
+		  	   session.close();
+		   }
+		   
+		 //찜
+		   public static void LikeInsert(LikeVO vo)
+		   {
+		  	   SqlSession session=ssf.openSession(true);
+		  	   session.update("likeInsert", vo);
+		  	   session.close();
+		   }
+		   
+		   public static List<LikeVO> likeListData(String id)
+		   {
+		  	   SqlSession session=ssf.openSession();
+		  	   List<LikeVO> list=session.selectList("likeListData",id);
+		  	   session.close();
+		  	   return list;
+		   }
+
+		   public static int likeCount(LikeVO vo)
+		   {
+		  	   SqlSession session=ssf.openSession();
+		  	   int count=session.selectOne("likeCount",vo);
+		  	   session.close();
+		  	   return count;
+		   }
+
+		   public static void likeDelete(int no)
+		   {
+		  	   SqlSession session=ssf.openSession(true);
+		  	   session.delete("likeDelete", no);
+		  	   session.close();
+		   }	   
 }
