@@ -10,6 +10,22 @@
 	margin: 0px auto;
 	width: 700px;
 }
+.button {
+    width:70px;
+    background-color: #81c147;
+    border: none;
+    color:#fff;
+    padding: 4px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 5px
+}
+
+
+
 </style>
 <!-- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>-->
 <script type="text/javascript"
@@ -127,7 +143,7 @@
 						</th>
 						<td width=70%><input type=text name=id class="input-sm"
 							size=15 readonly id="id"> <input type=button value="중복체크"
-							class="btn btn-sm btn-primary" onclick="idcheck()"></td>
+							class="button" onclick="idcheck()"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 <img
@@ -166,7 +182,7 @@
 						</th>
 						<td width=70%><input type=text name=post class="input-sm"
 							size=7 readonly id="post"> <input type=button
-							value="우편번호" class="btn btn-sm btn-primary" onclick="postfind()">
+							value="우편번호" class="button" onclick="postfind()">
 						</td>
 					</tr>
 					<tr>
@@ -200,8 +216,8 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="text-center"><input type=button
-							value="회원가입" class="btn btn-sm btn-danger" id="joinBtn">
-							<input type=button value="취소" class="btn btn-sm btn-warning"
+							value="회원가입" class="button" id="joinBtn">
+							<input type=button value="취소" class="button"
 							onclick="javascript:history.back()"></td>
 					</tr>
 				</table>
