@@ -8,7 +8,23 @@ public class BoardVO {
 	private String subject;
 	private String content;
 	private String name;
-	private Date date;
+	private Date regdate;
+	private String pwd;
+	 private String dbday;
+	    private int replyCount;
+	    
+	public String getDbday() {
+			return dbday;
+		}
+		public void setDbday(String dbday) {
+			this.dbday = dbday;
+		}
+		public int getReplyCount() {
+			return replyCount;
+		}
+		public void setReplyCount(int replyCount) {
+			this.replyCount = replyCount;
+		}
 	public int getNo() {
 		return no;
 	}
@@ -39,11 +55,17 @@ public class BoardVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getDate() {
-		return date;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	
 }
