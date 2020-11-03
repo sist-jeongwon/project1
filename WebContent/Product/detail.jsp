@@ -37,7 +37,7 @@
                  
                     <!-- Comment Area Start -->
                     <div class="comment_area clearfix mb-100">
-                        <h4 class="mb-50">Comments</h4>
+                        <h4 class="mb-50">상품평</h4>
                         
                         <ol>
                             <!-- Single Comment Area -->
@@ -103,27 +103,18 @@
                         </ol>
                     </div>
 
-                    <div class="post-a-comment-area mb-30 clearfix">
-                        <h4 class="mb-50">Leave a reply</h4>
+                    <div class="post-a-comment-area mb-10 clearfix">
+                        <h4 class="mb-50">상품 문의</h4>
 
                         <!-- Reply Form -->
                         <div class="contact-form-area">
                             <form action="#" method="post">
                                 <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="Name*">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <input type="email" class="form-control" id="email" placeholder="Email*">
-                                    </div>
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" id="subject" placeholder="Website">
-                                    </div>
                                     <div class="col-12">
                                         <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn bueno-btn mt-30" type="submit">Submit Comment</button>
+                                        <button class="btn bueno-btn mt-10" type="submit">문의 하기</button>
                                     </div>
                                 </div>
                             </form>
@@ -154,10 +145,10 @@
                         </div>
 
                         <!-- Single Widget Area -->
-                        <h6>내가 본 상품</h6>
+                       <!--  <h6>내가 본 상품</h6> -->
                         <div class="single-widget-area post-widget mb-30">
                           <!-- Single Post Area -->
-                            <c:forEach var="vo" items="${cList }" varStatus="s">
+                            <%-- <c:forEach var="vo" items="${cList }" varStatus="s">
                               <c:if test="${s.index<6 }">
                               <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
@@ -173,7 +164,7 @@
                                </div>
                              </div>
                             </c:if>
-                           </c:forEach>
+                           </c:forEach> --%>
 
                          
                            

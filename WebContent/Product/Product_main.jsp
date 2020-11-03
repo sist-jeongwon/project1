@@ -49,6 +49,23 @@
 	 </div>
     </div>
   </div>
+  <div style="height: 30px"></div>
+  <h6>오늘 본 상품</h6>
+  <div style="height: 30px"></div>
+  <div class="row">
+	 <c:forEach var="vo" items="${cList }" varStatus="s">
+		<c:if test="${s.index<6 }">
+		   <div class="col-md-2">
+		   		<div class="thumbnail">
+		        <img src="${vo.main_img }">
+		          <div class="caption">
+			      	<p>${vo.name }</p>
+			      	<p>${vo.price } 원</p>
+			      </div>   
+			    </div>
+			</div>
+		</c:if>
+	  </c:forEach>
   </div>
   </div>
 </body>

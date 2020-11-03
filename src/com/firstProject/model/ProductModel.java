@@ -63,6 +63,25 @@ public class ProductModel {
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("main_jsp", "../Product/Product_main.jsp");
 		   
+		   HttpSession session=request.getSession();
+			String id=(String)session.getAttribute("id");
+			
+			// 쿠키 읽기
+			Cookie[] cookies=request.getCookies();
+			List<ProductVO> cList=new ArrayList<ProductVO>();
+			if(cookies!=null)
+			{
+				for(int i=cookies.length-1;i>=0;i--)
+				{
+					if(cookies[i].getName().startsWith(id))
+					{
+						String cno=cookies[i].getValue();
+						ProductVO cvo=ProductDAO.productDetailData(Integer.parseInt(cno));
+						cList.add(cvo);
+					}
+				}
+			}
+			request.setAttribute("cList", cList);
 	
 		   return "../main/main.jsp";
 	   }
@@ -102,25 +121,7 @@ public class ProductModel {
 		  	ProductVO vo=ProductDAO.productDetailData(Integer.parseInt(no));
 		  	request.setAttribute("vo", vo);
 			
-		  	HttpSession session=request.getSession();
-			String id=(String)session.getAttribute("id");
-			
-			// 쿠키 읽기
-			Cookie[] cookies=request.getCookies();
-			List<ProductVO> cList=new ArrayList<ProductVO>();
-			if(cookies!=null)
-			{
-				for(int i=cookies.length-1;i>=0;i--)
-				{
-					if(cookies[i].getName().startsWith(id))
-					{
-						String cno=cookies[i].getValue();
-						ProductVO cvo=ProductDAO.productDetailData(Integer.parseInt(cno));
-						cList.add(cvo);
-					}
-				}
-			}
-			request.setAttribute("cList", cList);
+		  	
 		 
 			request.setAttribute("main_jsp", "../Product/detail.jsp");
 			

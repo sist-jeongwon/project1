@@ -229,6 +229,7 @@ public class ReserveModel {
 			  rest_vo.setRest_content(rest_content);;
 		  }
 		  lrList.add(rest_vo);
+		 
 	  }
 	
 	  for(LikeVO vo:lcrList)//레시피찜
