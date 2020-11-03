@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.controller.RequestMapping;
+import com.firstProject.dao.ProductDAO;
 import com.firstProject.dao.RecipeDAO;
 import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.RecipeVO;
@@ -100,7 +101,23 @@ public class RecipeModel {
 		   request.setAttribute("main_jsp", "../recipe/detail.jsp");
 		   return "../main/main.jsp";
 	   }
-	   
-	   
-	   
+	   @RequestMapping("recipe/like.do")
+		public String recipe_like(HttpServletRequest request)
+		{
+			String no=request.getParameter("no");
+			HttpSession session=request.getSession();
+			String id=(String)session.getAttribute("id");
+			LikeVO vo=new LikeVO();
+			vo.setMem_id(id);
+			vo.setCno(Integer.parseInt(no));
+			RecipeDAO.likeInsert(vo);
+			return "redirect:../recipe/detail.do?no="+no;
+		}
+		@RequestMapping("recipe/like_cancel.do")
+		public String like_cancel(HttpServletRequest request)
+		{
+			String no=request.getParameter("no");
+			RecipeDAO.likeDelete(Integer.parseInt(no));
+			return "redirect:../reserve/mypage.do";
+		}
 }

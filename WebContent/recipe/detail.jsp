@@ -151,7 +151,7 @@
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
                                
-                                <button type="submit" class="btn bueno-btn w-100 mt-1">레시피 찜하기</button>
+                                <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a>
                             </div>
                         </div>
  <!-- Single Widget Area -->

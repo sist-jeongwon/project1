@@ -63,7 +63,7 @@
   
   
   
-<div class="row">
+<div class="row" style="padding-top:30px;">
   <!-- Single Widget Area -->
                         <h6>오늘 본 레시피</h6>
                           <!-- Single Post Area -->
@@ -71,7 +71,7 @@
 		                              <c:if test="${s.index<6 }">
 		                              <div class="col-md-2">
 		   								 <div class="thumbnail">
-		                                    <img src="${vo.poster }">
+		                                    <img src="${vo.poster }" style="width:160px; height:160px;">
 		                                    <div class="caption">
 			      							    <p>${vo.title }</p>
 			      							    <p>${vo.mem_id }</p>

@@ -70,4 +70,6 @@ public class RecipeDAO {
 	  	   session.delete("likeDelete", no);
 	  	   session.close();
 	   }
+	   
+	   
 }
