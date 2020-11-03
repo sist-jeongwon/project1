@@ -160,7 +160,7 @@ public class ProductModel {
 			vo.setMem_id(id);
 			vo.setCno(Integer.parseInt(no));
 			ProductDAO.likeInsert(vo);
-			return "redirect:../product/detail.do?no="+no;
+			return "redirect:../Product/detail.do?no="+no;
 		}
 		@RequestMapping("Product/like_cancel.do")
 		public String like_cancel(HttpServletRequest request)

@@ -144,7 +144,7 @@
                               </div>
                                 <button type="submit" class="btn bueno-btn w-100">주문하기</button><br>
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">장바구니 담기</button><br>
-                                <a href="#" class="btn bueno-btn w-100 mt-1">찜하기</a><br>
+                                <a href="../Product/like.do?no=${vo.product_no }" class="btn bueno-btn w-100 mt-1">찜하기</a><br>
                             </div>
                         </div>
 
