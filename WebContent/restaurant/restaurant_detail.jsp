@@ -47,39 +47,95 @@
                 <!-- 크기조절 ↑-->
                     <div class="post-details-content mb-100">
                         <div class="blog-thumbnail mb-50">
-                         <img src="${vo.rest_poster }" width="400" height="500"> 
+                         <img src="${vo.rest_poster }" style="width:400; height:500"> 
                          
                         </div>
                      </div>   
                <div class="blog-content">
-                            <a href="#" class="post-tag">${vo.rest_content}</a>
-                            <h4 class="post-title">${vo.rest_name}&nbsp;&nbsp;&nbsp;${vo.rest_score}</h4>
+                            <span style="color:#B0C364; font-weight:bold; font-size:18px; font-face:바탕체;">${vo.rest_content}</span>
+                            
                             <div class="post-meta mb-50">
-                                <a href="#" class="post-author" ><img src="png/rest_eye.png" width="20" height="20" alt>${vo.rest_hit}</a> 
-                                <a href="#" class="post-author"><img src="png/rest_like.png" width="20" height="20" alt>${vo.rest_like}</a> 
+                            <h4 class="post-title">${vo.rest_name}
+                            
+                            <span style="color:#FF8C00; font-weight:bold;">${vo.rest_score}</span></h4>
+                           
+                            <div class="post-meta mb-50">
+                             <span><img src="png/rest_eye.png" width="20" height="20" alt>&nbsp;${vo.rest_hit}</span> 
+                               <span><img src="png/rest_like.png" width="20" height="20" alt>&nbsp;${vo.rest_like}</span> 
                             </div>
-             
+             <div style="border-bottom: 20% solid #e4e4e4" width="15%"></div>
+<!--              <div style="border-left: thick solid #ff0000" width="15%"></div> -->
                
              
-               <div class="recipe-info" style="background-color: white;">
-                        <h5>Info</h5>
-                        <ul class="info-data">
+             
+               
+               <table style="font-size:15px;">
+               	<tr>
+               		<td width=20% style="color: #41AC33;font-weight:BOLD;padding-left:0px;wideth:200px;">주소</td>
+               		<td>${vo.rest_addr1 }</td>
+               	<!-- 신주소 -->
+               	</tr>
+               	 	<tr>
+               	 	<td width=20% style="color:#333;padding-left:20px;">&nbsp;</td>
+               		<td>${vo.rest_addr2 }<br>
+               	</tr>
+               	<tr>
+               	<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">전화번호</td>
+               	<td width="20%" style="margin:100%; padding-bottom:5px;rowspan:1px">${vo.rest_tel }</td>
+                </tr>
+               	<tr>
+               		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">가격대</td>
+               	    <td width="20%" style="margin:100%; padding-bottom:9px;rowspan:1px">${vo.rest_price }</td>
+               	</tr>
+               	<tr>
+               		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">주차장</td>
+               		<td  width="20%" style="margin:100%;padding-bottom:9px; rowspan:2px">${vo.rest_parking }</td>
+               	</tr>
+               	<tr>
+               		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">영업시간</td>
+               		<td  width="20%" style="margin:100%; rowspan:2px">${vo.rest_time }</td>
+               	</tr>
+               	<tr>
+               		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">휴무일</td>
+               		<td width="20%" style="margin:100%; rowspan:2px">${vo.rest_holiday }</td>
+               	</tr>
+               	<tr>
+               		
+               		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;"><c:if test="${vo.rest_sns != 'X' }">
+               		웹 사이트</td>
+               		<td  width="20%" style="margin:100%;" rowspan="2px">
+               		<a href="${vo.rest_sns }" class="post-author"><span style="color:black;">홈페이지 바로가기</a>
+                            </c:if>
+               		</td>
+               	</tr>
+               </table>
+               </div>
+               <%-- 
+<!--                         <ul class="info-data"> -->
                         	
-                        	 <li><img src="png/rest_location.png" width="60" height="60" alt> <span style="color:black;" text-align="center;">&nbsp;&nbsp;&nbsp; ${vo.rest_addr1 }<p>
-                        													 &nbsp;&nbsp;&nbsp;	${vo.rest_addr2 }</p>				</span></li>
-                            <li><img src="png/rest_tel.png" width="30" height="30" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_tel }</span></li>
-                            <li><img src="png/rest_price.png" width="30" height="30" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp; ${vo.rest_price }</span></li>
-                            <li><img src="png/rest_park.png" width="30" height="30" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_parking }</span></li>
-                            <li><img src="png/rest_time.png" width="45" height="45" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_time }</span></li>
-                            <li><img src="png/rest_holiday.png" width="45" height="45" alt> <span style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_holiday }</span></li>
+                        	 <img src="png/rest_location.png" width="60" height="60" > <span style="color:black;" text-align="center;">&nbsp;&nbsp;&nbsp; ${vo.rest_addr1 }<p>
+                        													 &nbsp;&nbsp;&nbsp;	${vo.rest_addr2 }</p>				</span>
+                            <img src="png/rest_tel.png" width="30" height="30" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_tel }</div>
+                            <img src="png/rest_price.png" width="30" height="30" > <div style="color:black;">&nbsp;&nbsp;&nbsp; ${vo.rest_price }</div>
+                            <img src="png/rest_park.png" width="30" height="30" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_parking }</div>
+                            <img src="png/rest_time.png" width="45" height="45" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_time }</div>
+                            <img src="png/rest_holiday.png" width="45" height="45" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_holiday }</div>
                             <c:if test="${vo.rest_sns != 'X' }">
-                            <li><img src="png/rest_sns.png" width="60" height="60" alt><a href="${vo.rest_sns }" class="post-author"><span style="color:black;">웹사이트&nbsp;&nbsp;&nbsp;</span></li>
+                           <img src="png/rest_sns.png" width="60" height="60" ><a href="${vo.rest_sns }" class="post-author"><span style="color:black;">웹사이트&nbsp;&nbsp;&nbsp;</div></a>
                             </c:if>
                             
+                                  
                            
-                        </ul>
-                     </div>
-                    </div>
+<!-- <!--                         </ul> --> -->
+<!-- <!--                      </div> --> -->
+<!--                      </ul> --> --%>
+               
+                
+     
+    
+                  
+                  <div style="border-bottom: 1px solid #e4e4e4" width="65%"></div>
+                  
                   
                   
                   
@@ -133,7 +189,7 @@
                         </ol>
                     </div>
  
-                    
+                    </div>
                 </div>
                   
                   
@@ -161,7 +217,7 @@
                         </div>
 							
                         <!-- Single Widget Area -->
-                        <h6>내가 본 음식점</h6>
+                        <h6> 내가 본 음식점 </h6>
                         <div class="single-widget-area post-widget mb-30">
                             <!-- Single Post Area -->
                             <c:forEach var="vo" items="${cList }" varStatus="s">
@@ -169,7 +225,7 @@
                             <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
-                                    <a href="${vo.rest_sns }" ><img src="${vo.rest_poster }" alt=""></a>
+                                    <a href="${vo.rest_sns }" ><img src="${vo.rest_poster }" ></a>
                                 </div>
                                 <!-- Blog Content -->
                                 <div class="blog-content">
@@ -179,6 +235,7 @@
                                     </div>
                                 </div>
                             </div>
+                           
                             </c:if>
                             </c:forEach>
 
@@ -259,10 +316,11 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                     </div>
-                </div>
+                    </div>
+             
          
-      </div>
-   
+
+
  
 
               
