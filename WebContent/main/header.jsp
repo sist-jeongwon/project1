@@ -109,10 +109,12 @@
                                     </li>
                                     -->
                                     <c:if test="${ sessionScope.id!=null}">
-								      <c:if test="${ sessionScope.admin=='n'}">
-							            <li><a href="../reserve/mypage.do">마이페이지</a></li>
+								      <%-- <c:if test="${ sessionScope.admin=='n'}"> --%>
+								      <%-- <c:if test="${ sessionScope.admin!=1}"> --%>
+								      <c:if test="${ sessionScope.admin==0}">
+							            <li><a href="../reserve/mypage.do">Mypage</a></li>
 							          </c:if>
-							          <c:if test="${ sessionScope.admin=='y'}">
+							          <c:if test="${ sessionScope.admin==1}">
 							            <li><a href="../reserve/adminpage.do">예매현황</a></li>
 							          </c:if>
 							        </c:if>
