@@ -31,18 +31,16 @@ public class RecipeDAO {
 		   session.close();
 		   return total;
 	   }
-	   public static RecipeVO recipeDetailData(int no)
+	   public static RecipeVO recipeDetailData(int recipe_no)
 	   {
 		   SqlSession session=ssf.openSession();
-		   session.update("hitIncrement", no);
+		   session.update("hitIncrement", recipe_no);
 		   session.commit();
-		   RecipeVO vo=session.selectOne("recipeDetailData", no);
+		   RecipeVO vo=session.selectOne("recipeDetailData", recipe_no);
 		   session.close();
 		   return vo;
 	   }
 	   
-	   ///////////////////////////////////////////////////
-	 //찜
 	   public static void likeInsert(LikeVO vo)
 	   {
 	  	   SqlSession session=ssf.openSession(true);

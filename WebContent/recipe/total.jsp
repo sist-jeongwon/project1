@@ -20,8 +20,7 @@
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
                    <a href="#" class="post-tag">${vo.mem_id }</a>
-                   <a href="../recipe/detail.do?recipe_no=${vo.recipe_no }" class="post-title">
-                   
+                   <a href="../recipe/detail_before.do?recipe_no=${vo.recipe_no }" class="post-title">
                    <c:choose>
 				        <c:when test="${fn:length(vo.title) gt 20}">
 				        <c:out value="${fn:substring(vo.title, 0, 20)}"/>...
@@ -30,9 +29,6 @@
 				        <c:out value="${vo.title}">
 				        </c:out></c:otherwise>
 				</c:choose>
-				
-                   
-                   
                    </a>
                  </div>
               </div>
@@ -63,6 +59,28 @@
 	  </nav>
 	 </div>
     </div>
+  </div>
+  
+  
+  
+<div class="row">
+  <!-- Single Widget Area -->
+                        <h6>오늘 본 레시피</h6>
+                          <!-- Single Post Area -->
+	                            <c:forEach var="vo" items="${cList }" varStatus="s">
+		                              <c:if test="${s.index<6 }">
+		                              <div class="col-md-2">
+		   								 <div class="thumbnail">
+		                                    <img src="${vo.poster }">
+		                                    <div class="caption">
+			      							    <p>${vo.title }</p>
+			      							    <p>${vo.mem_id }</p>
+			      							 </div>   
+			      						 </div>
+			      					 </div>
+		                            </c:if>
+	                           </c:forEach>
+  
   </div>
   </div>
   </div>

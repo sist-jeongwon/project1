@@ -158,32 +158,28 @@
                         <div class="single-widget-area add-widget mb-30">
                             <img src="img/bg-img/add.png" alt="">
                         </div>
-<!-- Single Widget Area -->
+                        
+                        
+					<!-- Single Widget Area -->
+					<!-- 
                         <h6>오늘 본 레시피</h6>
                         <div class="single-widget-area post-widget mb-30">
-                          <!-- Single Post Area -->
-                            <!--
-	                             <c:forEach var="vo" items="${cList }" varStatus="s">
+	                            <c:forEach var="vo" items="${cList }" varStatus="s">
 	                              <c:if test="${s.index<6 }">
-                              -->
-                              <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="" alt="상품이미지">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">1</a>
-                                    <div class="post-meta">
-                                      <div class="post-date">1</div>
-                                    </div>
-                               </div>
-                             </div>
-                               <!--
+	                              <div class="single-post-area d-flex">
+	                                <div class="blog-thumbnail">
+	                                    <img src="${vo.poster }" alt="상품이미지">
+	                                </div>
+	                                <div class="blog-content">
+	                                    <a href="#" class="post-title">${vo.title }</a>
+	                                    <div class="post-meta">
+	                                      <div class="post-date">${vo.mem_id }</div>
+	                                    </div>
+	                               </div>
+	                             </div>
 	                            </c:if>
 	                           </c:forEach>
                             -->
-                           
                            
                     
 
