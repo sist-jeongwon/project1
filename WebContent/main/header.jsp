@@ -96,15 +96,6 @@
                                                 <li><a href="#">- Salad</a></li>
                                                 <li><a href="#">- Soup</a></li>
                                             </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">- Recipe</a></li>
-                                                <li><a href="#">- Bread</a></li>
-                                                <li><a href="#">- Breakfast</a></li>
-                                                <li><a href="#">- Meat</a></li>
-                                                <li><a href="#">- Fastfood</a></li>
-                                                <li><a href="#">- Salad</a></li>
-                                                <li><a href="#">- Soup</a></li>
-                                            </ul>
                                         </div>
                                     </li>
                                     -->

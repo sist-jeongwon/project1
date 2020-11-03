@@ -552,7 +552,7 @@ h3 {
     .header-area .bueno-main-menu .login-area {
       position: relative;
       z-index: 1;
-      margin-left: 100px; }
+      margin-left: 650px; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .header-area .bueno-main-menu .login-area {
           margin-left: 10px;
