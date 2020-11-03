@@ -22,7 +22,7 @@
 						MYPAGE
 					</div>
 					<div class="profile-usertitle-job">
-						${sessionScope.name }(${sessionScope.admin=='y'?'관리자':'일반유저' })님 환영합니다
+						${sessionScope.name }(${sessionScope.admin=='1'?'관리자':'일반유저' })님 환영합니다
 					</div>
 				</div>
 	        </div>
@@ -56,7 +56,7 @@
 		      <div class="tab-pane" id="reservationlist"> <!-- 예약확인 -->
 		           <div class="row">
 					<div class="input-group">
-						<!-- 테이블장소 -->
+						<!-- 테이블장소 -->2
 						<!-- 
 						  <table class="table">
 						    <caption>예매목록</caption>
@@ -85,10 +85,10 @@
 							           <td class="text-center">${vo.people }</td>
 							           <td class="text-center">${vo.price }</td>
 							           <td class="text-center">
-							             <c:if test="${vo.isreserve=='y' }">
+							             <c:if test="${vo.isreserve=='0' }">
 							              <a href="#" class="btn btn-sm btn-primary">예매완료</a>
 							             </c:if>
-							             <c:if test="${vo.isreserve=='n' }">
+							             <c:if test="${vo.isreserve=='1' }">
 							              <span class="btn btn-sm btn-danger">예매대기</span>
 							             </c:if>
 							           </td>
@@ -134,7 +134,7 @@
 						            <tr>
 						               <td width=70% class="text-right">
 						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
-						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">결제하기</a>
+						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-success">결제하기</a>
 						               </td>
 						            </tr>
 						          </table>
@@ -157,7 +157,7 @@
 						        <c:forEach var="vo" items="${p2List }">
 						          <table class="table">
 						            <tr>
-						              <td width=30% class="text-center" rowspan="3">
+						              <td width=70% class="text-center" rowspan="3">
 						               <img src="${vo.main_img }" width=200 height=150>
 						              </td>
 						              <td width=70%>${vo.name }</td>
@@ -183,7 +183,7 @@
 						        <c:forEach var="vo" items="${lrList }">
 						          <table class="table">
 						            <tr>
-						              <td width=30% class="text-center" rowspan="3">
+						              <td width=70% class="text-center" rowspan="3">
 						               <img src="${vo.rest_poster }" width=200 height=150>
 						              </td>
 						              <td width=70%>${vo.rest_name }</td>
@@ -209,7 +209,7 @@
 						        <c:forEach var="vo" items="${lcList }">
 						          <table class="table">
 						            <tr>
-						              <td width=30% class="text-center" rowspan="3">
+						              <td width=70% class="text-center" rowspan="3">
 						               <img src="${vo.poster }" width=200 height=150>
 						              </td>
 						              <td width=70%>${vo.title }</td>

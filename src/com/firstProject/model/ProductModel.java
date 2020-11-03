@@ -155,7 +155,7 @@ public class ProductModel {
 			LikeVO vo=new LikeVO();
 			vo.setMem_id(id);
 			vo.setCno(Integer.parseInt(no));
-			ProductDAO.LikeInsert(vo);
+			ProductDAO.likeInsert(vo);
 			return "redirect:../product/detail.do?no="+no;
 		}
 		@RequestMapping("Product/like_cancel.do")

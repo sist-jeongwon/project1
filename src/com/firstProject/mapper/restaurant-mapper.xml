@@ -66,7 +66,7 @@ REST_PRICE            VARCHAR2(30)
    -->
   <select id="restaurantTheaterNo" resultType="String" parameterType="int">
     SELECT theater_no FROM restaurant_info
-    WHERE rset_no=#{rest_no}
+    WHERE rest_no=#{rest_no}
   </select>
   
   <select id="theaterListData" resultType="com.firstProject.vo.TheaterVO" parameterType="int">
@@ -123,35 +123,35 @@ REST_PRICE            VARCHAR2(30)
   <select id="adminReserveListData" resultMap="reserveList">
     SELECT reservation.rest_no,mem_id,rest_name,rest_poster,theater,time,people,price,isreserve
     FROM reservation,restaurant_info
-    WHERE cno=restaurant_info.rset_no AND isreserve='n'
-    ORDER BY rset_no DESC
+    WHERE cno=restaurant_info.rest_no AND isreserve='0'
+    ORDER BY rest_no DESC
   </select>
   
   <update id="reserveOk" parameterType="int">
     UPDATE reservation SET
-    isreserve='y'
+    isreserve='1'
     WHERE rest_no=#{rest_no}
   </update>
   
   <!-- 찜 저장  -->
-  <insert id="likeInsert" parameterType="com.firstProject.vo.LikeVO">
+  <insert id="rslikeInsert" parameterType="com.firstProject.vo.LikeVO">
     INSERT INTO like_restaurant VALUES(
       (SELECT NVL(MAX(rest_no)+1,1) FROM like_restaurant),#{id},#{cno}
     )
   </insert>
   <!-- 데이터 읽기(찜 목록) -->
-  <select id="likeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+  <select id="rslikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
     SELECT * FROM like_restaurant
     WHERE mem_id=#{mem_id}
     ORDER BY rest_no DESC
   </select>
   <!-- 찜여부 확인 -->
-  <select id="likeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
+  <select id="rslikeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
     SELECT COUNT(*) FROM like_restaurant
     WHERE mem_id=#{mem_id} AND cno=#{cno}
   </select>
   <!-- 찜 취소시에 처리  -->
-  <delete id="likeDelete" parameterType="int">
+  <delete id="rslikeDelete" parameterType="int">
     DELETE FROM like_restaurant
     WHERE rest_no=#{rest_no}
   </delete>

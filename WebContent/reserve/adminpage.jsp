@@ -68,10 +68,10 @@ $(function(){
 	           <td class="text-center">${vo.people }</td>
 	           <td class="text-center">${vo.price }</td>
 	           <td class="text-center">
-	             <c:if test="${vo.isreserve=='n' }">
+	             <c:if test="${vo.isreserve=='0' }">
 	              <a href="../reserve/admin_ok.do?no=${vo.no }" class="btn btn-sm btn-primary">승인대기</a>
 	             </c:if>
-	             <c:if test="${vo.isreserve=='y' }">
+	             <c:if test="${vo.isreserve=='1' }">
 	              <span class="btn btn-sm btn-danger">승인완료</span>
 	             </c:if>
 	           </td>

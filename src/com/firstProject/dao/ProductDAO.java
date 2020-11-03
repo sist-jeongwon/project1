@@ -75,7 +75,7 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
 		  	   return list;
 		   }
 
-		   public static int product_keepCount(LikeVO vo)
+		   public static int product_keepCount(Product_keepVO vo)
 		   {
 		  	   SqlSession session=ssf.openSession();
 		  	   int count=session.selectOne("product_keepCount",vo);
@@ -91,7 +91,7 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
 		   }
 		   
 		 //찜
-		   public static void LikeInsert(LikeVO vo)
+		   public static void likeInsert(LikeVO vo)
 		   {
 		  	   SqlSession session=ssf.openSession(true);
 		  	   session.update("likeInsert", vo);
