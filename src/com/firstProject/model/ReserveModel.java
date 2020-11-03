@@ -222,7 +222,7 @@ public class ReserveModel {
 	 {
 		  RestaurantVO rest_vo=RestaurantDAO.restaurantDetailData(vo.getCno());
 		  String rest_content=rest_vo.getRest_content();
-		  rest_vo.setLno(vo.getRest_no());
+		  rest_vo.setLrsno(vo.getRest_no());
 		  if(rest_content.length()>150)
 		  {
 			  rest_content=rest_content.substring(0,150)+"...";

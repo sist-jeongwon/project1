@@ -23,11 +23,12 @@ public class RestaurantVO {
 	private String rest_price;
 	private int lrsno; //찜번호
 	
-	public int getLno() {
+	
+	public int getLrsno() {
 		return lrsno;
 	}
-	public void setLno(int lno) {
-		this.lrsno = lno;
+	public void setLrsno(int lrsno) {
+		this.lrsno = lrsno;
 	}
 	public int getRest_no() {
 		return rest_no;
