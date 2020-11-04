@@ -26,7 +26,7 @@
   border-radius: 50% !important;
 }
 .profile-usertitle {
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
 }
 .profile-usertitle-name {
@@ -378,7 +378,7 @@ $(function() {
 						            <tr>
 						               <td width=70% class="text-right">
 						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
-						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-success">결제하기</a>
+						                 <a href="#" class="btn btn-sm btn-success">결제하기</a>
 						               </td>
 						            </tr>
 						          </table>
@@ -411,7 +411,7 @@ $(function() {
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">
-						                 <a href="../product/product_keep_cancel.do?no=${vo.lpno }" class="btn btn-sm btn-danger">취소</a>
+						                 <a href="../Product/like_cancel.do?no=${vo.lpno }" class="btn btn-sm btn-danger">취소</a>
 						               </td>
 						            </tr>
 						          </table>
@@ -437,7 +437,7 @@ $(function() {
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">
-						                 <a href="../product/product_keep_cancel.do?no=${vo.lrsno }" class="btn btn-sm btn-danger">취소</a>
+						                 <a href="../restaurant/like_cancel.do?no=${vo.lrsno }" class="btn btn-sm btn-danger">취소</a>
 						               </td>
 						            </tr>
 						          </table>
@@ -463,7 +463,7 @@ $(function() {
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">
-						                 <a href="../product/product_keep_cancel.do?no=${vo.lrcno }" class="btn btn-sm btn-danger">취소</a>
+						                 <a href="../recipe/like_cancel.do?no=${vo.lrcno }" class="btn btn-sm btn-danger">취소</a>
 						               </td>
 						            </tr>
 						          </table>
