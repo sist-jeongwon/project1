@@ -11,6 +11,19 @@
     margin: 0px auto;
     width:300px;
 }
+.button {
+    width:70px;
+    background-color: #81c147;
+    border: none;
+    color:#fff;
+    padding: 4px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 5px
+}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -18,6 +31,7 @@
 $(function(){
 	$('#idcheckBtn').click(function(){
 		let id=$('#id').val();
+		
 		if(id=="")
 		{
 			$('#id').focus();
@@ -57,8 +71,8 @@ function ok()
        <table class="table">
          <tr>
            <td>
-            ID:<input type=text id=id class="input-sm" size=15>
-            <input type=button value="중복체크" id="idcheckBtn" class="btn btn-sm btn-primary">
+            아이디 : <input type=text id=id class="input-sm" size=15>
+            <input type=button value="중복체크" id="idcheckBtn" class="button">
            </td>
          </tr>
          <tr>

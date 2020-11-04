@@ -20,6 +20,15 @@ public class MemberModel {
 	@RequestMapping("member/idcheck.do")
 	public String member_idcheck(HttpServletRequest request)
 	{
+		
+		return "../member/idcheck.jsp";
+	}
+	
+	@RequestMapping("member/idcheck_ok.do")
+	public String member_idcheck_ok(HttpServletRequest request)
+	{
+		String id=request.getParameter("id");
+		System.out.println("id="+id);
 		return "../member/idcheck.jsp";
 	}
 	

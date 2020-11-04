@@ -5,10 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+<style type="text/css">
 body {
 	text-align: center;
 }
+.button {
+    width:100px;
+    background-color: #81c147;
+    border: none;
+    color:#fff;
+    padding: 4px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 5px
+}
+
+
 </style>
 </head>
 <body>
@@ -22,7 +37,7 @@ body {
 		id="mainBtn">
 		<h5>회원가입이 완료되었습니다.</h5>
 		<br> <br>
-		<button type="button" onclick="location.href='../main/main.do' ">메인으로
+		<button type="button" class="button" onclick="location.href='../main/main.do' ">메인으로
 			이동</button>
 	</form>
 	<br>

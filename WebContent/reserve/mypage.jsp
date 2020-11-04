@@ -81,6 +81,19 @@
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
 }
+.updateBtn {
+    width:70px;
+    background-color: #81c147;
+    border: none;
+    color:#fff;
+    padding: 4px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 5px
+}
 </style>
 </head>
 <body>
@@ -181,16 +194,101 @@
 					</div>
 		           </div>
 		       </div>
-		       
+		       <div style="height: 30px"></div>
 		      <div class="tab-pane" id="member"> <!-- 내 정보 수정 -->
 		           <div class="row">
 					<div class="input-group">
-						<!-- 테이블장소 -->3
+		       <form method=post action="../member/join_ok.do" name="joinFrm" id="joinFrm">
+				<table class="table">
+					<tr>
+						<th class="text-right danger" width="30%">아이디 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=text name=id class="input-sm"
+							size=15  readonly id="id"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">비밀번호 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=password name=pwd class="input-sm"
+							size=15 id="pwd"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">비밀번호 확인 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=password name=pwd1 class="input-sm"
+							size=15 id="pwd1"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">이름 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=text name=name class="input-sm"
+							size=15 id="name"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">이메일</th>
+						<td width=70%><input type=text name=email class="input-sm"
+							size=45 id="email"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">생년월일</th>
+						<td width=70%><input type=date name=birthday class="input-sm"
+							size=25 id="birthday"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">우편번호 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=text name=post class="input-sm"
+							size=7 readonly id="post"> <input type=button
+							value="우편번호" class="updateBtn" onclick="postfind()">
+						</td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">주소 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=text name=addr1 class="input-sm"
+							size=45 readonly id="addr1"></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">상세주소 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><input type=text name=addr2 class="input-sm"
+							size=45 id=addr2></td>
+					</tr>
+					<tr>
+						<th class="text-right danger" width="30%">전화번호 <img
+							src="ico_required.gif">
+						</th>
+						<td width=70%><select name=tel1 id=tel1>
+								<option>---</option>
+								<option>010</option>
+								<option>011</option>
+								<option>016</option>
+								<option>017</option>
+								<option>018</option>
+						</select> <input type=text name=tel2 class="input-sm" size=3 id=tel2>
+							<input type=text name=tel3 class="input-sm" size=3 id=tel3>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="text-center"><input type=button
+							value="수정" class="updateBtn" id="joinBtn">
+							<input type=button value="탈퇴" class="updateBtn"
+							onclick="javascript:history.back()"></td>
+					</tr>
+				</table>
+			</form>
 						
 					</div>
 		           </div>
 		       </div>
-		       
+		       <div style="height: 30px"></div>
 		      <div class="tab-pane" id="cart"> <!-- 장바구니 -->
 		           <div class="row">
 					<div class="input-group">
