@@ -103,6 +103,7 @@
    <mapper resource="com/firstProject/mapper/restaurant-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/recipe-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/board-mapper.xml"/>
+   <mapper resource="com/firstProject/mapper/main-mapper.xml"/>
   </mappers>
 </configuration>
 

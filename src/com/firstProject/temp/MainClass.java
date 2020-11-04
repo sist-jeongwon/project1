@@ -5,7 +5,6 @@ import java.util.*;
 public class MainClass {
 	//예매데이터돌릴곳
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		/*
 		 * String res=getRand(); System.out.println(res); StringTokenizer st=new
 		 * StringTokenizer(res,","); RestaurantDAO dao=new RestaurantDAO();

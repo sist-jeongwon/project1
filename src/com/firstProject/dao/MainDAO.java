@@ -1,11 +1,9 @@
 package com.firstProject.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import com.firstProject.dao.*;
 import com.firstProject.vo.*;
 
 public class MainDAO {
@@ -25,9 +23,6 @@ public class MainDAO {
 		SqlSession session = ssf.openSession();
 		List<RecipeVO> recipeList = session.selectList("mainRecipeList");
 		session.close();
-		if(recipeList!=null)
-		System.out.println(recipeList.get(0).getTitle());
-		else System.out.println("null");
 		return recipeList;
 	}
 }

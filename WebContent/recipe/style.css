@@ -373,7 +373,7 @@ h3 {
   background-position: center center;
   background-size: cover; }
   .bg-overlay::after {
-    background-color: rgba(0, 0, 0, 0.69);
+    background-color: rgba(ff, ff, ff, 0.69);
     position: absolute;
     z-index: -1;
     top: 0;

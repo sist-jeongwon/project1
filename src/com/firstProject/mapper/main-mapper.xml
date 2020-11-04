@@ -8,10 +8,9 @@
 		parameterType="int"> SELECT product.product_no, name, price, main_img, detail_no, 
 		img , content FROM product,product_detail WHERE product.product_no=product_detail.product_no 
 		AND product.product_no=#{no} </select> -->
-	<select id="mainRecipeList"
-		resultType="com.firstProject.vo.RecipeVO">
-		SELECT recpe_no, poster, title, mem_id
-		FROM (SELECT recipe_no, poster, title, mem_id, hit,rownum 
+	<select id="mainRecipeList" resultType="com.firstProject.vo.RecipeVO">
+		SELECT recipe_no, poster, title, mem_id
+		FROM (SELECT recipe_no, poster, title, mem_id, rownum 
 		FROM (SELECT recipe_no, poster, title, mem_id FROM recipe ORDER BY hit DESC)) 
 		WHERE rownum<![CDATA[<=]]>10
 	</select>
