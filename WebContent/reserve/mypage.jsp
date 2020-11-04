@@ -11,13 +11,11 @@
 .profile {
   margin: 20px 0;
 }
-
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
 }
-
 .profile-userpic img {
   float: none;
   margin: 0 auto;
@@ -27,19 +25,16 @@
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
 }
-
 .profile-usertitle {
   text-align: center;
   margin-top: 20px;
 }
-
 .profile-usertitle-name {
   color: #5a7391;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 7px;
 }
-
 .profile-usertitle-job {
   text-transform: uppercase;
   color: #5b9bd1;
@@ -47,7 +42,6 @@
   font-weight: 600;
   margin-bottom: 15px;
 }
-
 .profile-usermenu {
   margin-top: 30px;
   height:300px;
@@ -61,39 +55,32 @@
   border-bottom: 1px solid #f0f4f7;
   margin-top: 20px; 
 }
-
 .profile-usermenu ul li:last-child {
   border-bottom: none;
 }
-
 .profile-usermenu ul li a {
   color: #93a3b5;
   font-size: 14px;
   font-weight: 400;
 }
-
 .profile-usermenu ul li a i {
   margin-right: 8px;
   font-size: 14px;
 }
-
 .profile-usermenu ul li a:hover {
   background-color: #fafcfd;
   color: #5b9bd1;
   
 }
-
 .profile-usermenu ul li.active {
   border-bottom: none;
 }
-
 .profile-usermenu ul li.active a {
   color: #5b9bd1;
   background-color: #f6f9fb;
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
 }
-
 </style>
 </head>
 <body>
@@ -133,8 +120,8 @@
     </div><!-- col-md-3 -->
     
 	    <!--   SIDEBAR BUTTONS   -->
-      <div class="profile-container">
 		<div class="col-md-9">
+      <div class="profile-container">
 		  <div class="tab-content">
 		      <div class="tab-pane" id="orderlist"> <!-- 주문조회 -->
 		           <div class="row">
@@ -208,8 +195,8 @@
 		           <div class="row">
 					<div class="input-group">
 						<!-- 테이블장소 -->
-						<table class="table">
 						    <caption>장바구니</caption>
+						<table class="table">
 						    <tr>
 						      <td>
 						        <c:forEach var="vo" items="${p1List }">
@@ -242,14 +229,14 @@
 		           <div class="row">
 					<div class="input-group">
 						<!-- 테이블장소 -->
-						<table class="table">
 						    <caption>상품찜 목록</caption> <!--  -->
+						<table class="table">
 						    <tr>
 						      <td>
 						        <c:forEach var="vo" items="${p2List }">
 						          <table class="table">
 						            <tr>
-						              <td width=70% class="text-center" rowspan="3">
+						              <td width=30% class="text-center" rowspan="3">
 						               <img src="${vo.main_img }" width=200 height=150>
 						              </td>
 						              <td width=70%>${vo.name }</td>
@@ -268,14 +255,14 @@
 						    </tr>
 						  </table>
 
-						<table class="table">
 						    <caption>맛집찜 목록</caption> <!--  -->
+						<table class="table">
 						    <tr>
 						      <td>
 						        <c:forEach var="vo" items="${lrList }">
 						          <table class="table">
 						            <tr>
-						              <td width=70% class="text-center" rowspan="3">
+						              <td width=30% class="text-center" rowspan="3">
 						               <img src="${vo.rest_poster }" width=200 height=150>
 						              </td>
 						              <td width=70%>${vo.rest_name }</td>
@@ -294,14 +281,14 @@
 						    </tr>
 						  </table>
 
-						<table class="table">
 						    <caption>레시피찜 목록</caption> <!--  -->
+						<table class="table">
 						    <tr>
 						      <td>
 						        <c:forEach var="vo" items="${lcList }">
 						          <table class="table">
 						            <tr>
-						              <td width=70% class="text-center" rowspan="3">
+						              <td width=30% class="text-center" rowspan="3">
 						               <img src="${vo.poster }" width=200 height=150>
 						              </td>
 						              <td width=70%>${vo.title }</td>
