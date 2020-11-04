@@ -19,7 +19,8 @@
 <style>
 /* Master Stylesheet - 1.0 */
 /* :: 1.0 Import Fonts */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+/*@import url("https://fonts.googleapis.com/css?family=Noto Sans KR:300,400,500,600,700");*/
 /* :: 2.0 Import All CSS */
 @import url(../style/css/bootstrap.min.css);
 @import url(../style/css/classy-nav.css);
@@ -34,7 +35,7 @@
   padding: 0; }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 14px; }
 
 h1,
@@ -43,13 +44,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   color: #272727;
   line-height: 1.3;
   font-weight: 600; }
 
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   color: #7a7a7a;
   font-size: 14px;
   line-height: 2;
@@ -65,7 +66,7 @@ a:focus {
   color: #000000;
   font-weight: 600;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Noto Sans KR", sans-serif; }
 
 ul,
 ol {
