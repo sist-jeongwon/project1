@@ -6,12 +6,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
+ <link rel="stylesheet" href="style.css">
 <style type="text/css">
 .row1 {
     margin: 0px auto;
     width:700px;
 }
+  .bueno-btn:hover, .bueno-btn:focus {
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #000000;
+    color: #ffffff; }
 </style>
 </head>
 <body>
@@ -41,8 +51,8 @@
       </tr>
       <tr>
         <td colspan="4" class="text-right">
-          <a href="#" class="btn btn-xs btn-danger">수정</a>
-          <a href="#" class="btn btn-xs btn-info">삭제</a>
+          <a href="#" class="btn btn-xs btn-success">수정</a>
+          <a href="#" class="btn btn-xs btn-success">삭제</a>
           <a href="../board/list.do" class="btn btn-xs btn-success">목록</a>
         </td>
       </tr>
@@ -102,7 +112,7 @@
             <input type=hidden name="bno" value="${vo.no }">
 	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>
 	        <input type=submit value="댓글쓰기" style="height:70px;float: left"
-	          class="btn btn-sm btn-primary"
+	          class="btn btn-sm btn-success"
 	        >
         </form>
        </td>

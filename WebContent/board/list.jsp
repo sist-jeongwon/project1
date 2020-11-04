@@ -24,7 +24,7 @@
     <table class="table">
       <tr>
         <td class="text-left">
-          <a href="../board/insert.do" class="btn btn-sm btn-danger">새글</a>
+          <a href="../board/insert.do" class="btn btn-sm btn-success">새글</a>
         </td>
       </tr>
     </table>
@@ -55,9 +55,9 @@
       <tr>
         <td class="text-left"></td>
         <td class="text-right">
-          <a href="#" class="btn btn-sm btn-primary">이전</a>
+          <a href="#" class="btn btn-sm btn-success">이전</a>
             ${curpage } page / ${totalpage } pages
-          <a href="#" class="btn btn-sm btn-primary">다음</a>
+          <a href="#" class="btn btn-sm btn-success">다음</a>
         </td>
       </tr>
     </table>
