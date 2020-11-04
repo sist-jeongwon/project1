@@ -53,7 +53,7 @@ function ok()
 <body>
    <div class="container">
      <div class="row">
-       <h4>아이디 중복확인</h4><h4>
+       <h4>아이디 중복확인</h4>
        <table class="table">
          <tr>
            <td>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firstProject.mapper.main-mapper">
+	<!-- private int product_no; private int cno; private String name; private 
+		int price; private int discount_rate; -->
+	<!-- <select id="productMainList" resultType="ProductVO"> SELECT product_no,main_img,name 
+		FROM product WHERE cno=10; </select> <select id="productDetailData" resultType="com.firstProject.vo.ProductVO" 
+		parameterType="int"> SELECT product.product_no, name, price, main_img, detail_no, 
+		img , content FROM product,product_detail WHERE product.product_no=product_detail.product_no 
+		AND product.product_no=#{no} </select> -->
+	<select id="mainRecipeList"
+		resultType="com.firstProject.vo.RecipeVO">
+		SELECT recpe_no, poster, title, mem_id
+		FROM (SELECT recipe_no, poster, title, mem_id, hit,rownum 
+		FROM (SELECT recipe_no, poster, title, mem_id FROM recipe ORDER BY hit DESC)) 
+		WHERE rownum<![CDATA[<=]]>10
+	</select>
+</mapper>

@@ -9,11 +9,11 @@
 <style>
 #none{
 padding-right:30px;
-margin-left:600px;
+margin-left:500px;
 }
 #in{
 padding-right:30px;
-margin-left:300px;
+margin-left:200px;
 }
 </style>
 </head>
@@ -79,6 +79,7 @@ margin-left:300px;
                                             <li><a href="#">reservation</a></li>
                                         </ul> --></li>
 									<li><a href="../Product/Product_main.do">Product</a></li>
+									<li><a href="../board/list.do">community</a></li>
 									<!--  현재 사용하지 않아 주석처리(필요시 사용)
                                     <li><a href="#">Recipes</a>
                                         <div class="megamenu">
@@ -122,7 +123,6 @@ margin-left:300px;
 											<li><a href="../reserve/adminpage.do">예매현황</a></li>
 										</c:if>
 									</c:if>
-									<li><a href="../board/list.do">community</a></li>
 								</ul>
 
 								<!-- Login/Register -->

@@ -195,8 +195,7 @@ fieldset, img {
                 <label for="keepLogin" class="lab_g">
      			<span class="img_top ico_check"></span>   
        			<span class="txt_lab">로그인 상태 유지</span>
-       			-->
-                </label>
+                </label>-->
                 </div>
                 <span class="txt_find">
                 <a href="/member/find/loginId" class="link_find">아이디</a>
