@@ -18,8 +18,8 @@
 	        <img src="${vo.rest_poster}" alt="" style="width:350px; height:350px;">      
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
-                   <a href="../restaurant/restaurant_detail.do?rest_no=${vo.rest_no }" class="post-tag">${vo.rest_content }</a>
-                   <a href="../restaurant/restaurant_detail.do?rest_no=${vo.rest_no }" class="post-title">${vo.rest_name }</a>
+                   <a href="#" class="post-tag">${vo.rest_content }</a>
+                   <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" class="post-title">${vo.rest_name }</a>
                  </div>
               </div>
          </div>
@@ -38,7 +38,7 @@
             <c:if test="${i==curpage }">
               <li class="page-item active"><a class="page-link" href="../restaurant/restaurant_main.do?page=${i }">${i }</a></li>
             </c:if>
-            <c:if test="${i!=curpage }">`
+            <c:if test="${i!=curpage }">
               <li class="page-item"><a class="page-link" href="../restaurant/restaurant_main.do?page=${i }">${i }</a></li>
             </c:if>
           </c:forEach>
@@ -49,6 +49,24 @@
 	  </nav>
 	 </div>
     </div>
+  </div>
+  <div class="row" style="padding-top:30px;">
+  <!-- Single Widget Area -->
+                        <h6>방문한 식당</h6>
+                          <!-- Single Post Area -->
+	                            <c:forEach var="vo" items="${cList }" varStatus="s">
+		                              <c:if test="${s.index<6 }">
+		                              <div class="col-md-2">
+		   								 <div class="thumbnail">
+		                                    <img src="${vo.rest_poster }" style="width:160px; height:160px;">
+		                                    <div class="caption">
+			      							    <p>${vo.rest_name }</p>
+			      							 </div>   
+			      						 </div>
+			      					 </div>
+		                            </c:if>
+	                           </c:forEach>
+  
   </div>
   </div>
   </div>
