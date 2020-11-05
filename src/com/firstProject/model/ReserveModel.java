@@ -226,7 +226,7 @@ public class ReserveModel {
 		  if(rest_content.length()>150)
 		  {
 			  rest_content=rest_content.substring(0,150)+"...";
-			  rest_vo.setRest_content(rest_content);;
+			  rest_vo.setRest_content(rest_content);
 		  }
 		  lrList.add(rest_vo);
 		 

@@ -6,19 +6,30 @@ public class MainClass {
 	//예매데이터돌릴곳
 	public static void main(String[] args) {
 		/*
-		 * String res=getRand(); System.out.println(res); StringTokenizer st=new
-		 * StringTokenizer(res,","); RestaurantDAO dao=new RestaurantDAO();
-		 * while(st.hasMoreTokens()) { String s=st.nextToken(); String
-		 * r=dao.theaterInfoData(Integer.parseInt(s)); System.out.println(r); }
+		 String res=getRand(); 
+		System.out.println(res); 
+		StringTokenizer st=new StringTokenizer(res,","); 
+		RestaurantDAO dao=new RestaurantDAO();
+		 while(st.hasMoreTokens()) { 
+			 String s=st.nextToken(); 
+			 String r=dao.theaterInfoData(Integer.parseInt(s)); 
+			 System.out.println(r); }
 		 */
 		/*
-		 * RestaurantDAO dao=new RestaurantDAO(); List<Integer> list=dao.restaurantData(); for(int
-		 * no:list) { String res=getRand(); dao.theaterInsert(no, res); }
-		 * System.out.println("Insert 완료!!");
+		RestaurantDAO dao=new RestaurantDAO(); 
+		List<Integer> list=dao.restaurantData(); 
+		for(int	rest_no:list) { 
+			String res=getRand(); 
+			dao.theaterInsert(rest_no, res); }
+		 System.out.println("Insert 완료!!");
 		 */
 		/*
-		 * RestaurantDAO dao=new RestaurantDAO(); for(int i=1;i<=18;i++) { String rday=getRand();
-		 * dao.theater_rday(i, rday); } System.out.println("Update완료");
+		 RestaurantDAO dao=new RestaurantDAO(); 
+		for(int i=1;i<=24;i++) { 
+			String rday=getRand();
+		 dao.theater_rday(i, rday); 
+		 } 
+		System.out.println("Update완료");
 		 */
 		//String s=getRand();
 		//System.out.println(s);
