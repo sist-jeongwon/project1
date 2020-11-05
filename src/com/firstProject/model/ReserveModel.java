@@ -102,12 +102,12 @@ public class ReserveModel {
 	  // 1일자의 요일 
 	  return "../reserve/date.jsp";
   }
-  @RequestMapping("reserve/restauran.do")
+  @RequestMapping("reserve/restaurant.do")
   public String reserve_restauran(HttpServletRequest request)
   {
 	    List<RestaurantVO> list=RestaurantDAO.restaurantReserveData();
 	    request.setAttribute("list", list);
-	    return "../reserve/restauran.jsp";
+	    return "../reserve/restaurant.jsp";
   }
   // 체인점
   @RequestMapping("reserve/theater.do")
@@ -125,7 +125,7 @@ public class ReserveModel {
 		  list.add(vo);
 	  }
 	  request.setAttribute("list", list);
-	  return "../reserve/theater.jsp";
+	  return "../reserve/theater.do";
   }
   // 시간
   @RequestMapping("reserve/time.do")

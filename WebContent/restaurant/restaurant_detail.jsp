@@ -224,7 +224,7 @@ $(function(){
                               
                                  <!-- <a href="../restaurant/restaurant_map.do"> --><input type="button" class="btn bueno-btn w-100 mt-1" value="지도" id="mapBtn"><!-- </a> -->
                              	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
-                                 <a href="../reserve/reserve.do">
+                                 <a href="../reserve/restaurant.do">
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
@@ -240,11 +240,11 @@ $(function(){
                         <h6> 내가 본 음식점 </h6>
                         <div class="row" style="padding-top:30px;"></div>
   						
-                          <!-- Single Post Area -->
+                       <!-- 쿠키 적용 하는 코드  
                           <div class="row">
 	                            <c:forEach var="vo" items="${cList }" varStatus="s">
 		                             <c:if test="${s.index<6 }">
-		                              <div class="col-md-2">
+		                           <div class="single-widget-area author-widget mb-30">
 		   								 <div class="thumbnail">
 		                                    <img src="${vo.rest_poster }" style="width:160px; height:160px;">
 		                                    <div class="caption">
@@ -256,42 +256,30 @@ $(function(){
 		                            </c:if>
 	                           </c:forEach>
   
-  						</div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/13.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Burger with fries</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/14.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Avocado &amp; Oisters</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
+  						</div> -->
+  						  <c:forEach var="vo" items="${cList }" varStatus="s">
+		                             <c:if test="${s.index<6 }">
+  								<div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+				          			 <!-- Blog Thumbnail -->
+				            			<div class="blog-thumbnail">
+				                			<img src="${vo.rest_poster }" alt="">
+				            			</div>
+				            		<!-- Blog Content -->
+				            			<div class="blog-content">
+				           	<!--       <a href="#" class="post-tag">The Best</a>-->
+				                	<a href="#" class="post-title" style="font-size:25;">${vo.rest_name }</a>
+				                		<div class="post-meta">
+				                    		<a href="#" class="post-date">${vo.rest_score }</a>
+				                    			<a href="#" class="post-author">${vo.rest_content }</a>
+									                </div>
+									            </div>
+					        				</div>
+					         			</c:if>
+						                           </c:forEach>
+  									<!-- Single Widget Area -->
+                        <div class="single-widget-area add-widget mb-30">
+                            <img src="img/bg-img/add.png" alt="">
                         </div>
-							
 							
 							
                         <!-- Single Widget Area -->

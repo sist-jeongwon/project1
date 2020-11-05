@@ -95,7 +95,27 @@ public class RestaurantModel {
 
 		request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+		
+		
 
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		Cookie[] cookies = request.getCookies();
+		List<RestaurantVO> cList = new ArrayList<RestaurantVO>();
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().startsWith(id)) {
+					String cno = cookies[i].getValue();
+					if (cno == null || cno.trim().equals("")) {
+						cno = "0";
+					}
+					RestaurantVO cvo = RestaurantDAO.restaurantDetailData(Integer.parseInt(cno));
+					cList.add(cvo);
+				}
+			}
+		}
+		request.setAttribute("cList", cList);
 		return "../main/main.jsp";
 	}
 
