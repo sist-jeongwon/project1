@@ -21,7 +21,6 @@
     WHERE recipe_no=#{recipe_no}
   </select>
   
-  
   <!-- 찜 저장  -->
   <insert id="rclikeInsert" parameterType="com.firstProject.vo.LikeVO">
     INSERT INTO like_recipe VALUES(
@@ -42,6 +41,89 @@
   <!-- 찜 취소시에 처리  -->
   <delete id="rclikeDelete" parameterType="int">
     DELETE FROM like_recipe
-    WHERE rest_no=#{rest_no}
+    WHERE recipe_no=#{recipe_no}
   </delete>
+  
+  <!-- 댓글 -->
+  <insert id="replyInsert" parameterType="ReplyVO">
+	    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+	      SELECT NVL(MAX(no)+1,1) as no FROM recipe_reply
+	    </selectKey>
+	    INSERT INTO recipe_reply(no,bno,mem_id,name,msg,group_id) VALUES(
+	      #{no},
+	      #{bno},
+	      #{mem_id},
+	      #{name},
+	      #{msg},
+	      (SELECT NVL(MAX(group_id)+1,1) FROM recipe_reply)
+	    )
+  </insert>
+	<select id="replyListData" resultType="ReplyVO" parameterType="int">
+		SELECT no, bno, mem_id,name, msg, TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:ss') as dbday,
+		group_tab FROM recipe_reply
+		WHERE bno=#{bno}
+		ORDER BY group_id DESC, group_step ASC
+	</select>
+	<select id="replyParentData" parameterType="int" resultType="ReplyVO">
+		SELECT group_id, group_step, group_tab
+		FROM recipe_reply
+		WHERE no=#{no}
+	</select>
+	<update id="replyStepIncrement" parameterType="ReplyVO">
+		UPDATE recipe_reply SET
+		group_step=group_step+1
+		WHERE group_id=#{group_id} AND group_step>#{group_step}
+	</update>
+	<insert id="replyReplyInsert" parameterType="ReplyVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		      SELECT NVL(MAX(no)+1,1) as no FROM recipe_reply
+		    </selectKey>
+		    INSERT INTO recipe_reply(no,bno,mem_id,name,msg,group_id, group_step, group_tab, root, depth) VALUES(
+		      #{no},
+		      #{bno},
+		      #{mem_id},
+		      #{name},
+		      #{msg},
+		      #{group_id},
+		      #{group_step},
+		      #{group_tab},
+		      #{root},
+		      0
+		    )	
+	</insert>
+	<update id="replyDepthIncrement" parameterType="int">
+		UPDATE recipe_reply SET
+		depth=depth+1
+		WHERE no=#{no}
+	</update>
+	<update id="replyUpdate" parameterType="ReplyVO">
+		UPDATE recipe_reply SET
+		msg=#{msg}
+		where no=#{no}
+	</update>
+	<!-- 삭제 -->
+	<select id="replyInfoData" resultType="ReplyVO" parameterType="int">
+		SELECT depth, root FROM recipe_reply
+		WHERE no=#{no}
+	</select>
+	<!-- depth=0일 때 -->
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM recipe_reply
+		WHERE no=#{no}
+	</delete>
+	<!-- depth!=0 -->
+	<update id="replyMsgUpdate" parameterType="int">
+		UPDATE recipe_reply SET
+		msg='삭제된 댓글입니다.'
+		WHERE no=#{no}
+	</update>
+	<update id="replyDepthDecrement" parameterType="int">
+		UPDATE recipe_reply SET
+		depth=depth-1
+		WHERE no=#{no}
+	</update>
+	<select id="replyCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM recipe_reply
+		WHERE bno=#{bno}
+	</select>
 </mapper>

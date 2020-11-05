@@ -241,10 +241,15 @@ $(function(){
                               
                                  
                              	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
+<<<<<<< HEAD
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button>
                                 <c:if test="${count==0 }">
             <a href="../restaurant/jjim.do?no=${vo.rest_no }" class="btn btn-sm btn-primary">찜하기</a>
            </c:if>
+=======
+                                 <a href="../reserve/reserve.do">
+                                <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
+>>>>>>> refs/remotes/origin/master
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
                         </div>

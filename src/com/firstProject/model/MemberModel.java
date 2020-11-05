@@ -28,8 +28,10 @@ public class MemberModel {
 	public String member_idcheck_ok(HttpServletRequest request)
 	{
 		String id=request.getParameter("id");
-		System.out.println("id="+id);
-		return "../member/idcheck.jsp";
+		int count=MemberDAO.memberIdCheck(id);
+//		System.out.println("id="+id);
+		request.setAttribute("count", count);
+		return "../member/idcheck_ok.jsp";
 	}
 	
 	@RequestMapping("member/join_ok.do")
@@ -115,4 +117,44 @@ public class MemberModel {
 		   return "../member/logout.jsp";
 	   }
 	
+	@RequestMapping("member/find_id.do")
+	 	public String member_find_id(HttpServletRequest request) {
+		
+		request.setAttribute("main_jsp", "../member/find_id.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
+	@RequestMapping("member/find_id_ok.do")
+		public String member_find_id_ok(HttpServletRequest request) {
+		
+		String tel=request.getParameter("tel");
+		int count=MemberDAO.memberTelCheck(tel);
+		String res="";
+		if(count==0)
+		{
+			res="0";
+		}
+		else {
+			res=MemberDAO.findMemberId(tel);
+		}
+		request.setAttribute("res", res);
+		//request.setAttribute("count", count);
+		return "../member/find_id_ok.jsp";
+		
+	}
+	
+	@RequestMapping("member/find_pwd.do")
+ 	public String member_find_pwd(HttpServletRequest request) {
+	
+		request.setAttribute("main_jsp", "../member/find_pwd.jsp");
+		return "../main/main.jsp";
+	
+	}
+	   
+//	@RequestMapping("member/find_pwd_ok.do")
+//	public String member_find_pwd_ok(HttpServletRequest request) {
+//		
+//		
+//	}
 }

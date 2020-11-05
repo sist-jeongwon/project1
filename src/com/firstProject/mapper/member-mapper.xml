@@ -5,6 +5,7 @@
     SELECT COUNT(*) FROM member
     WHERE mem_id=#{id}
  </select>
+ 
  <insert id="memberInsert" parameterType="MemberVO">
      INSERT INTO member VALUES (
        #{mem_id},
@@ -17,11 +18,26 @@
        #{birth}
      )
  </insert> 
+ 
  <select id="memberLogin" resultType="MemberVO" parameterType="String">
      SELECT mem_id,name,mem_pwd,admin
      FROM member
      WHERE mem_id=#{id}
  </select>
+ 
+ <select id="memberTelCheck" resultType="int" parameterType="String">
+    SELECT COUNT (*) FROM member
+    WHERE tel=#{tel}
+ </select>
+ 
+ <select id="findMemberId" parameterType="String" resultType="String">
+  SELECT RPAD(SUBSTR(mem_id,1,2),LENGTH(mem_id),'●') FROM member WHERE tel=#{tel}
+ </select>
+ 
+ <select id="findMemberPwd" resultType="MemberVO" parameterType="String">
+  SELECT RPAD(SUBSTR(mem_pwd,1,2),LENGTH(mem_pwd),'●') FROM member WHERE name={name} AND tel=#{tel}  
+ </select>
+ 
  <update id="memberUpdate" parameterType="MemberVO">
    UPDATE member SET 
    mem_pwd={pwd},

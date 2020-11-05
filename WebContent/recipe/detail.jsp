@@ -13,6 +13,65 @@
     <title>Bueno - Food Blog HTML Template</title>
    <link rel="icon" href="img/core-img/favicon.ico">
    <link rel="stylesheet" href="style.css">
+   <!-- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script> -->
+<script type="text/javascript">
+let i=0;
+let u=0;
+$(function(){
+	$('.reply_reply').click(function(){
+	  $('.rIn').hide();
+	  $('.rUp').hide();
+	  $('.reply_reply').text("댓글");
+	  let no=$(this).attr('value');
+	  if(i==0)
+	  {
+			$('#rIn'+no).show();
+			$(this).text("취소");
+			i=1;
+	  }
+	  else
+	  {
+		    $('#rIn'+no).hide();
+		    $(this).text("댓글");
+			i=0;
+	  }
+	});
+	$('.reply_update').click(function(){
+		let no=$(this).attr("value");
+		$('.rIn').hide();
+		$('.rUp').hide("slow");
+		if(u==0)
+		{
+			$('#rUp'+no).show();
+			u=1;		
+		}
+		else
+		{
+			$('#rUp'+no).hide();
+			u=0;
+		}
+	})
+	let d=0;
+	$('#delBtn').click(function(){
+		if(d==0)
+		{
+			$('#delTr').show();
+			d=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			d=0;
+		}
+	});
+});
+</script>
+<style type="text/css">
+.btn{
+	background-color:#92C364;
+	border:none;
+}
+</style>
 </head>
 <body>
     <!-- ##### Post Details Area Start ##### -->
@@ -23,7 +82,7 @@
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
                         <div class="blog-thumbnail mb-50">
-                            <img src="${vo.poster }" alt="">
+                            <img src="${vo.poster }" alt="이미지" style="width:600px;">
                         </div>
                         <div class="blog-content">
                             <h4 class="post-title">${vo.title }</h4>
@@ -36,106 +95,86 @@
 							</c:forTokens>
                         </div>
                     </div>
+                                 
+                    
                     <!-- Comment Area Start -->
                     <div class="comment_area clearfix mb-100">
-                        <h4 class="mb-50">Comments</h4>
+                        <h4 class="mb-50">댓글</h4>
                         
-                        <ol>
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="img/bg-img/32.jpg" alt="author">
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <div class="d-flex">
-                                            <a href="#" class="post-author">Jane Smith</a>
-                                            <a href="#" class="post-date">July 11, 2018</a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                        <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tinci dunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis sus cipit sem a consequat.</p>
-                                    </div>
-                                </div>
-
-                                <ol class="children">
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content d-flex">
-                                            <!-- Comment Author -->
-                                            <div class="comment-author">
-                                                <img src="img/bg-img/32.jpg" alt="author">
-                                            </div>
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta">
-                                                <div class="d-flex">
-                                                    <a href="#" class="post-author">Christian Williams</a>
-                                                    <a href="#" class="post-date">April 15, 2018</a>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                                <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, Nullam vel orci dui. Su spendisse sit amet laoreet neque.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="img/bg-img/32.jpg" alt="author">
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <div class="d-flex">
-                                            <a href="#" class="post-author">Cris Williams</a>
-                                            <a href="#" class="post-date">July 11, 2018</a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit.</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <div class="post-a-comment-area mb-30 clearfix">
-                        <h4 class="mb-50">Leave a reply</h4>
-
-                        <!-- Reply Form -->
-                        <div class="contact-form-area">
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="Name*">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <input type="email" class="form-control" id="email" placeholder="Email*">
-                                    </div>
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" id="subject" placeholder="Website">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn bueno-btn mt-30" type="submit">Submit Comment</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                        <c:forEach var="rvo" items="${rList }">
+						      <table class="table">
+						        <tr>
+						          <td class="text-left">
+						           <c:if test="${rvo.group_tab>0 }"> 
+						           		<c:forEach var="i" begin="1" end="${rvo.group_tab }">
+						               &nbsp;&nbsp;&nbsp;&nbsp;
+						             </c:forEach>
+						             <img src="#">
+						           </c:if>
+						           <img src="../style/img/icon.PNG" style="width:30px; height:30px;">&nbsp;${rvo.name }(${rvo.dbday })
+						          </td> 
+						          <td class="text-right">
+						            <c:if test="${sessionScope.id == rvo.mem_id }">
+						             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
+						             <a href="../recipe/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn btn-xs btn-success">삭제</a>
+						            </c:if>
+						             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
+						          </td>
+						        </tr>
+						        <tr>
+						          <td class="text-left" colspan="2">
+						            <c:if test="${rvo.group_tab>0 }">
+						             <c:forEach var="i" begin="1" end="${rvo.group_tab }">
+						               &nbsp;&nbsp; &nbsp;&nbsp;
+						             </c:forEach>
+						           </c:if>
+						            <pre style="white-space: pre-wrap;background-color: white;border:none">${rvo.msg }</pre>
+						          </td>
+						        </tr>
+						       <tr class="rIn" id="rIn${rvo.no }" value="${rvo.no }" style="display:none">
+						       <td colspan="2">
+						        <form method=post action="../recipe/reply_reply_insert.do">
+						            <input type=hidden name="no" value="${rvo.no }">
+						            <input type=hidden name="bno" value="${vo.recipe_no }">
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
+							          class="btn btn-sm">
+						        </form>
+						       </td>
+						      </tr>
+						      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
+						       <td colspan="2">
+						        <form method=post action="../recipe/reply_update.do">
+						            <input type=hidden name="no" value="${rvo.no }">
+						            <input type=hidden name="bno" value="${vo.recipe_no }">	<!-- bno는 게시물 번호 -->
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
+							        <input type=submit value="댓글수정" style="height:70px;float: left"
+							          class="btn btn-sm btn-primary">
+						        </form>
+						       </td>
+						      </tr>
+						      </table>
+						    </c:forEach>
+						    <%-- </c:forEach> --%>
+						    <hr>
+						    <table class="table">
+						      <tr>
+						       <td>
+						        <form method=post action="../recipe/reply_insert.do">
+						            <input type=hidden name="bno" value="${vo.recipe_no }">
+							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
+							          class="btn btn-sm btn-primary">
+						        </form>
+						       </td>
+						      </tr>
+						    </table>
+						    
+						    </div>
                 </div>
-                    
-                    
-                    
-                               
-               <!-- Sidebar Widget -->
+						    
+						    
+                                             <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
 		                <div class="ingredients">
@@ -154,47 +193,11 @@
                                 <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a>
                             </div>
                         </div>
- <!-- Single Widget Area -->
-                        <div class="single-widget-area add-widget mb-30">
-                            <img src="img/bg-img/add.png" alt="">
-                        </div>
-                        
-                        
-					<!-- Single Widget Area -->
-					<!-- 
-                        <h6>오늘 본 레시피</h6>
-                        <div class="single-widget-area post-widget mb-30">
-	                            <c:forEach var="vo" items="${cList }" varStatus="s">
-	                              <c:if test="${s.index<6 }">
-	                              <div class="single-post-area d-flex">
-	                                <div class="blog-thumbnail">
-	                                    <img src="${vo.poster }" alt="상품이미지">
-	                                </div>
-	                                <div class="blog-content">
-	                                    <a href="#" class="post-title">${vo.title }</a>
-	                                    <div class="post-meta">
-	                                      <div class="post-date">${vo.mem_id }</div>
-	                                    </div>
-	                               </div>
-	                             </div>
-	                            </c:if>
-	                           </c:forEach>
-                            -->
-                           
-                    
-
+                               
                     </div>
-
-                            </div>
-
-     
             </div>
+                    </div>
         </div>
     </section>
-                
-                
-
-                         
-                           
 </body>
 </html>

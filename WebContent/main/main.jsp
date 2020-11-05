@@ -1714,6 +1714,12 @@ h3 {
 									});
 								} // End if
 							});
+					
+					$(window).on('load', function () {
+				        $('.preloader').fadeOut('slow', function () {
+				            $(this).remove();
+				        });
+				    });
 
 					$(window).scroll(function() {
 						$(".slideanim").each(function() {

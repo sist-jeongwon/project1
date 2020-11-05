@@ -199,9 +199,9 @@ fieldset, img {
                 </label>-->
                 </div>
                 <span class="txt_find">
-                <a href="/member/find/loginId" class="link_find">아이디</a>
+                <a href="../member/find_id.do">아이디</a>
                     / 
-                <a href="/member/find/password" class="link_find">비밀번호 찾기</a>
+                <a href="../member/find_pwd.do">비밀번호 찾기</a>
                 </span>
             </div>
             </fieldset>
