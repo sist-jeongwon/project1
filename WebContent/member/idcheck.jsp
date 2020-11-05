@@ -51,7 +51,7 @@ $(function(){
 				}
 				else 
 				{
-					$('#idcheck_result').html("<font color=red>이미 사용중인 아이디입니다</font>");
+					$('#idcheck_result').html("<font color=red>이미 사용중인 아이디입니다</font>")
 				}
 			}
 		})
