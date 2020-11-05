@@ -22,4 +22,14 @@
      FROM member
      WHERE mem_id=#{id}
  </select>
+ <update id="memberUpdate" parameterType="MemberVO">
+   UPDATE member SET 
+   mem_pwd={pwd},
+   name={name},
+   email=#{email},
+   birth=#{birth},
+   address=#{address}
+   tel=#{tel}
+   WHERE mem_id={id}
+ </update>
 </mapper>

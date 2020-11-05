@@ -27,13 +27,13 @@ public class RestaurantDAO {
 		   if(conn!=null) conn.close();
 	   }catch(Exception ex) {}
    }
-   public List<Integer> movieData()
+   public List<Integer> restaurantData()
    {
 	   List<Integer> list=new ArrayList<Integer>();
 	   try
 	   {
 		   getConnection();
-		   String sql="SELECT rset_no FROM restaurant_info";
+		   String sql="SELECT rest_no FROM restaurant_info";
 		   ps=conn.prepareStatement(sql);
 		   ResultSet rs=ps.executeQuery();
 		   while(rs.next())
