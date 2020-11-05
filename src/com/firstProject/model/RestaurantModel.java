@@ -55,7 +55,7 @@ public class RestaurantModel {
 		Cookie[] cookies = request.getCookies();
 		List<RestaurantVO> cList = new ArrayList<RestaurantVO>();
 		if (cookies != null && id != null) {
-			for (int i = 0; i < cookies.length; i++) {
+			for (int i=cookies.length-1;i>=0;i--) {
 				if (cookies[i].getName().startsWith(id)) {
 					String no = cookies[i].getValue();
 					if (no == null || no.trim().equals("")) {
@@ -103,8 +103,8 @@ public class RestaurantModel {
 		
 		Cookie[] cookies = request.getCookies();
 		List<RestaurantVO> cList = new ArrayList<RestaurantVO>();
-		if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
+		if (cookies != null && id != null) {
+			for (int i=cookies.length-1;i>=0;i--) {
 				if (cookies[i].getName().startsWith(id)) {
 					String cno = cookies[i].getValue();
 					if (cno == null || cno.trim().equals("")) {
