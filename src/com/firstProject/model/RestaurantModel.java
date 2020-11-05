@@ -54,7 +54,7 @@ public class RestaurantModel {
 		// 쿠키 읽기
 		Cookie[] cookies = request.getCookies();
 		List<RestaurantVO> cList = new ArrayList<RestaurantVO>();
-		if (cookies != null) {
+		if (cookies != null && id != null) {
 			for (int i = 0; i < cookies.length; i++) {
 				if (cookies[i].getName().startsWith(id)) {
 					String no = cookies[i].getValue();
