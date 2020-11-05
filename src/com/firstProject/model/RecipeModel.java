@@ -19,105 +19,97 @@ import com.firstProject.vo.RecipeVO;
 
 public class RecipeModel {
 	@RequestMapping("recipe/total.do")
-	public String recipe_total(HttpServletRequest request)
-	{
-		String page=request.getParameter("page");
-		   if(page==null)
-			   page="1";
-		   int curpage=Integer.parseInt(page);
-		   Map map=new HashMap();
-		   int rowSize=12;
-		   int start=(rowSize*curpage)-(rowSize-1);
-		   int end=rowSize*curpage;
-		   map.put("start", start);
-		   map.put("end",end);
-		   List<RecipeVO> list=RecipeDAO.recipeData(map);
-		   int totalpage=RecipeDAO.recipeTotalPage();
-		   
-		   int BLOCK=5;
-		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
-		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
-		   if(endPage>totalpage)
-			   endPage=totalpage;
-		   
-		   request.setAttribute("list", list);
-		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);
-		   request.setAttribute("BLOCK", BLOCK);
-		   request.setAttribute("startPage", startPage);
-		   request.setAttribute("endPage", endPage);
-		   request.setAttribute("main_jsp", "../recipe/total.jsp");
-		   
-			HttpSession session=request.getSession();
-			String id=(String)session.getAttribute("id");
-		   // ÄíÅ° ÀÐ±â
-			Cookie[] cookies=request.getCookies();
-			List<RecipeVO> cList=new ArrayList<RecipeVO>();
-			if(cookies!=null)
-			{
-				for(int i=0;i<cookies.length;i++)
-				{
-					if(cookies[i].getName().startsWith(id))
-					{
-							String no=cookies[i].getValue();
-							if(no == null || no.trim().equals(""))
-							{
-								no= "0";
-							}
-							RecipeVO vo=RecipeDAO.recipeDetailData(Integer.parseInt(no));
-						   cList.add(vo);
+	public String recipe_total(HttpServletRequest request) {
+		String page = request.getParameter("page");
+		if (page == null)
+			page = "1";
+		int curpage = Integer.parseInt(page);
+		Map map = new HashMap();
+		int rowSize = 12;
+		int start = (rowSize * curpage) - (rowSize - 1);
+		int end = rowSize * curpage;
+		map.put("start", start);
+		map.put("end", end);
+		List<RecipeVO> list = RecipeDAO.recipeData(map);
+		int totalpage = RecipeDAO.recipeTotalPage();
+
+		int BLOCK = 5;
+		int startPage = ((curpage - 1) / BLOCK * BLOCK) + 1;
+		int endPage = ((curpage - 1) / BLOCK * BLOCK) + BLOCK;
+		if (endPage > totalpage)
+			endPage = totalpage;
+
+		request.setAttribute("list", list);
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("totalpage", totalpage);
+		request.setAttribute("BLOCK", BLOCK);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("main_jsp", "../recipe/total.jsp");
+
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		// ï¿½ï¿½Å° ï¿½Ð±ï¿½
+		Cookie[] cookies = request.getCookies();
+		List<RecipeVO> cList = new ArrayList<RecipeVO>();
+		if (cookies != null && id != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().startsWith(id)) {
+					String no = cookies[i].getValue();
+					if (no == null || no.trim().equals("")) {
+						no = "0";
 					}
+					RecipeVO vo = RecipeDAO.recipeDetailData(Integer.parseInt(no));
+					cList.add(vo);
 				}
 			}
-		   request.setAttribute("cList", cList);
-		   
-		   return "../main/main.jsp";
+		}
+		request.setAttribute("cList", cList);
+
+		return "../main/main.jsp";
 	}
 
-		@RequestMapping("recipe/detail_before.do")	
-		   public String recipe_detail_before(HttpServletRequest request, HttpServletResponse response)
-		   {
-			String no = request.getParameter("recipe_no");
-				HttpSession session=request.getSession();
-				String id=(String)session.getAttribute("id");
-				Cookie cookie=new Cookie(id+no, no);
+	@RequestMapping("recipe/detail_before.do")
+	public String recipe_detail_before(HttpServletRequest request, HttpServletResponse response) {
+		String no = request.getParameter("recipe_no");
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		Cookie cookie = new Cookie(id + no, no);
 
-				   // ÄíÅ° ±â°£
-				   cookie.setMaxAge(60*60*24);
-				   // Àü¼Û
-				   response.addCookie(cookie);
-				   return "redirect:../recipe/detail.do?no="+no;
-		   }
+		// ï¿½ï¿½Å° ï¿½â°£
+		cookie.setMaxAge(60 * 60 * 24);
+		// ï¿½ï¿½ï¿½ï¿½
+		response.addCookie(cookie);
+		return "redirect:../recipe/detail.do?no=" + no;
+	}
 
-	   @RequestMapping("recipe/detail.do")
-	   public String recipe_detail(HttpServletRequest request)
-	   {
-		   String no=request.getParameter("no");
+	@RequestMapping("recipe/detail.do")
+	public String recipe_detail(HttpServletRequest request) {
+		String no = request.getParameter("no");
 
-		   RecipeVO vo=RecipeDAO.recipeDetailData(Integer.parseInt(no));
-		  	request.setAttribute("vo", vo);
-		   
-		  
-		   request.setAttribute("main_jsp", "../recipe/detail.jsp");
-		   return "../main/main.jsp";
-	   }
-	   @RequestMapping("recipe/like.do")
-		public String recipe_like(HttpServletRequest request)
-		{
-			String no=request.getParameter("no");
-			HttpSession session=request.getSession();
-			String id=(String)session.getAttribute("id");
-			LikeVO vo=new LikeVO();
-			vo.setMem_id(id);
-			vo.setCno(Integer.parseInt(no));
-			RecipeDAO.likeInsert(vo);
-			return "redirect:../recipe/detail.do?no="+no;
-		}
-		@RequestMapping("recipe/like_cancel.do")
-		public String like_cancel(HttpServletRequest request)
-		{
-			String no=request.getParameter("no");
-			RecipeDAO.likeDelete(Integer.parseInt(no));
-			return "redirect:../reserve/mypage.do";
-		}
+		RecipeVO vo = RecipeDAO.recipeDetailData(Integer.parseInt(no));
+		request.setAttribute("vo", vo);
+
+		request.setAttribute("main_jsp", "../recipe/detail.jsp");
+		return "../main/main.jsp";
+	}
+
+	@RequestMapping("recipe/like.do")
+	public String recipe_like(HttpServletRequest request) {
+		String no = request.getParameter("no");
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		LikeVO vo = new LikeVO();
+		vo.setMem_id(id);
+		vo.setCno(Integer.parseInt(no));
+		RecipeDAO.likeInsert(vo);
+		return "redirect:../recipe/detail.do?no=" + no;
+	}
+
+	@RequestMapping("recipe/like_cancel.do")
+	public String like_cancel(HttpServletRequest request) {
+		String no = request.getParameter("no");
+		RecipeDAO.likeDelete(Integer.parseInt(no));
+		return "redirect:../reserve/mypage.do";
+	}
 }

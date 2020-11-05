@@ -69,7 +69,7 @@ public class ProductModel {
 			// 쿠키 읽기
 			Cookie[] cookies=request.getCookies();
 			List<ProductVO> cList=new ArrayList<ProductVO>();
-			if(cookies!=null)
+			if(cookies!=null && id != null)
 			{
 				for(int i=cookies.length-1;i>=0;i--)
 				{
