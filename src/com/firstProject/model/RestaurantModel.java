@@ -135,6 +135,15 @@ public class RestaurantModel {
 						String no=request.getParameter("no");
 						RestaurantDAO.likeDelete(Integer.parseInt(no));
 						return "redirect:../reserve/mypage.do";
-					}		 
+					}
+					 @RequestMapping("restaurant/restaurant_map.do")
+					    public String restaurant_map(HttpServletRequest request){
+					 
+					        return "../restaurant/restaurant_map.jsp";
+					    }
+					 
+					 
+					
+					
 	 
 }

@@ -50,10 +50,12 @@
 	 </div>
     </div>
   </div>
-  <div class="row" style="padding-top:30px;">
+  <div class="row" style="padding-top:30px;"></div>
   <!-- Single Widget Area -->
                         <h6>방문한 식당</h6>
+                        <div class="row" style="padding-top:30px;"></div>
                           <!-- Single Post Area -->
+                          <div class="row">
 	                            <c:forEach var="vo" items="${cList }" varStatus="s">
 		                              <c:if test="${s.index<6 }">
 		                              <div class="col-md-2">
@@ -61,6 +63,7 @@
 		                                    <img src="${vo.rest_poster }" style="width:160px; height:160px;">
 		                                    <div class="caption">
 			      							    <p>${vo.rest_name }</p>
+			      							    <p>${vo.rest_content }</p>
 			      							 </div>   
 			      						 </div>
 			      					 </div>

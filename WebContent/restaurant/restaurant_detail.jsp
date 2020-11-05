@@ -29,7 +29,23 @@
             	float:right;
             }
 </style>
-
+<!-- <script type="text/javascript" src="http://code/jquery.com/jquery.js"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=99ae3e19196ec095b5718c4a72ec1ba8&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript">
+$(function(){
+	$('#mapBtn').click(function(){
+		$.ajax({
+			type:'post',
+			url:'../restaurant/restaurant_map.do',
+			success:function(result)
+			{
+				alert(result);
+				$('#map').html(result);
+			}
+		})
+	})
+})
+</script>
 </head>
 
 
@@ -205,8 +221,11 @@
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
                              <!--  <div class="post-meta mb-50"></div> --> 
+                              
+                                 <!-- <a href="../restaurant/restaurant_map.do"> --><input type="button" class="btn bueno-btn w-100 mt-1" value="지도" id="mapBtn"><!-- </a> -->
                              	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
-                                <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button>
+                                 <a href="../reserve/reserve.do">
+                                <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
                         </div>
@@ -217,27 +236,27 @@
                         </div>
 							
                         <!-- Single Widget Area -->
+                        <div class="row" style="padding-top:30px;"></div>
                         <h6> 내가 본 음식점 </h6>
-                        <div class="single-widget-area post-widget mb-30">
-                            <!-- Single Post Area -->
-                            <c:forEach var="vo" items="${cList }" varStatus="s">
-                            <c:if test="${s.index<6 }">
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="${vo.rest_sns }" ><img src="${vo.rest_poster }" ></a>
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="${vo.rest_sns }" class="post-title">${vo.rest_name }</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">${vo.rest_price }</a>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            </c:if>
-                            </c:forEach>
+                        <div class="row" style="padding-top:30px;"></div>
+  						
+                          <!-- Single Post Area -->
+                          <div class="row">
+	                            <c:forEach var="vo" items="${cList }" varStatus="s">
+		                             <c:if test="${s.index<6 }">
+		                              <div class="col-md-2">
+		   								 <div class="thumbnail">
+		                                    <img src="${vo.rest_poster }" style="width:160px; height:160px;">
+		                                    <div class="caption">
+			      							    <p>${vo.rest_name }</p>
+			      							    <p>${vo.rest_content }</p>
+			      							 </div>   
+			      						 </div>
+			      					 </div>
+		                            </c:if>
+	                           </c:forEach>
+  
+  						</div>
 
                             <!-- Single Post Area -->
                             <div class="single-post-area d-flex">
@@ -271,37 +290,6 @@
                                 </div>
                             </div>
 
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/15.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Tortilla prawns</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/16.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Burger with fries</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 							
 							
@@ -324,7 +312,7 @@
  
 
               
-
+  <div id="map"></div>
                 
     </section>
   
