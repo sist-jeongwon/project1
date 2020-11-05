@@ -9,11 +9,11 @@ public class ReplyVO {
 	    private String msg;
 	    private Date regdate;
 	    private String dbday;
-	    private int group_id;// 같은 종류 댓글을 모아서 처리 
-	    private int group_step; // 출력 순서 
-	    private int group_tab; // 종류 
-	    private int root; // 상위 댓글   삭제용
-	    private int depth; // 댓글 몇개? 삭제용 
+	    private int group_id;// 媛숈� 醫낅쪟 �뙎湲��쓣 紐⑥븘�꽌 泥섎━ 
+	    private int group_step; // 異쒕젰 �닚�꽌 
+	    private int group_tab; // 醫낅쪟 
+	    private int root; // �긽�쐞 �뙎湲�   �궘�젣�슜
+	    private int depth; // �뙎湲� 紐뉕컻? �궘�젣�슜 
 		public int getNo() {
 			return no;
 		}
