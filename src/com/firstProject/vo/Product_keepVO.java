@@ -23,6 +23,6 @@ public class Product_keepVO {
 		this.mem_id = mem_id;
 	}
 	
-	
+	//quantity 추가?
 	
 }

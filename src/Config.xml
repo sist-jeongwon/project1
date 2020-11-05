@@ -14,6 +14,9 @@
    <typeAlias type="com.firstProject.vo.RestaurantVO" alias="RestaurantVO"/>
    <typeAlias type="com.firstProject.vo.BoardVO" alias="BoardVO"/>
    <typeAlias type="com.firstProject.vo.ReplyVO" alias="ReplyVO"/>
+   <typeAlias type="com.firstProject.vo.orderVO" alias="orderVO"/>
+   <typeAlias type="com.firstProject.vo.orderStateVO" alias="orderStateVO"/>
+   <typeAlias type="com.firstProject.vo.orderProductsVO" alias="orderProductsVO"/>
     <!-- 
                       오라클에서 가지고 오는 데이터를 받아서 저장 
             while(rs.next())
@@ -104,6 +107,7 @@
    <mapper resource="com/firstProject/mapper/recipe-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/board-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/main-mapper.xml"/>
+   <!-- <mapper resource="com/firstProject/mapper/order-mapper.xml"/> -->
   </mappers>
 </configuration>
 

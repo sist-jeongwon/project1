@@ -33,23 +33,8 @@
 	color: rgb(112, 173, 71);
 }
 
-.main-section .problems ul {
-	padding: 10px;
-	height: 500px;
-	position: relative;
-	margin: auto;
-}
-
-.main-section .problems ul li img {
-	max-width: 50%;
-}
-
 #sec1 {
 	height: 350px;
-}
-
-#sec2 {
-	height: 1000px;
 }
 
 .slide {
@@ -70,7 +55,7 @@
 
 .slide ul li {
 	display: inline-block;
-	margin: 20px !important;
+	margin: 20px;
 }
 
 .post-title-main {
@@ -126,28 +111,37 @@
 				화학비료로 키운 사료를 먹습니다. 대규모 공장식 축산은 탄소배출이나 환경오염 등의 문제를 일으키는 것은 물론, 우리의
 				건강을 위협하고 있습니다.</p>
 		</div>
-		<div class="contaimer">
-			<div class="row">
-				<div class="problems col-12 col-sm-6 col-lg-4">
-					<ul>
-						<li><img src="../style/img/core-img/problem1.png">
-							<p>육류 과다 섭취는 당뇨, 동맥경화, 심혈관 질환은 물론 암 등 치명적인 질병의 원인이 되기도 합니다.
-								식물성 위주의 식단은 제2형 당뇨병 발생 위험을 40% 줄일 수 있다고 합니다.</p></li>
-						<li><img src="../style/img/core-img/problem2.png">
-							<p>1960년에서 2011년까지 50년 동안, 전세계 전환된 토지의 65%가 축산업을 위한 개간이었습니다.
-								계속해서 늘어나는 가축들의 사료를 마련하기 위해, 지금도 생물다양성이 풍부한 숲이 베어져나가고 있습니다.</p></li>
-						<li><img src="../style/img/core-img/problem3.png">
-							<p>대규모 산업식 축산은 이윤추구를 위해 가능한 한 빨리 동물을 키우고 도살하는 시스템을 만들었습니다. 이로
-								인해 동물들은 살아있는 동안은 엄청난 고통을 겪다 무참히 도살 당하고 있습니다.</p></li>
-						<li><img src="../style/img/core-img/problem4.png">
-							<p>현재 축산업으로 인한 온실가스 배출량은 전체의 14%를 차지하고 있습니다. 이대로 방치한다면
-								2050년까지 육식으로 인한 탄소배출량은 전체 배출량의 절반 이상을 차지하게 될 것입니다.</p></li>
-						<li><img src="../style/img/core-img/problem5.png">
-							<p>가축 사육은 엄청난 양의 물을 사용할 뿐 아니라 수질 오염의 원인 중 하나입니다. 축산업으로 인한 물
-								사용은 전체 농업에서 사용하는 양의 29%를 차지합니다. 대규모 산업식 축산 농장에서 사용하는 화학비료, 살충제,
-								가축을 위한 약품들은 물과 토양을 오염시키고 결국 우리의 식탁으로 돌아와 건강을 위협합니다.</p></li>
-					</ul>
-				</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-lg-4">
+				<img margin-left="20px" src="../style/img/core-img/problem1.png">
+				<p>육류 과다 섭취는 당뇨, 동맥경화, 심혈관 질환은 물론 암 등 치명적인 질병의 원인이 되기도 합니다. 식물성
+					위주의 식단은 제2형 당뇨병 발생 위험을 40% 줄일 수 있다고 합니다.</p>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-4">
+				<img src="../style/img/core-img/problem2.png">
+				<p>1960년에서 2011년까지 50년 동안, 전세계 전환된 토지의 65%가 축산업을 위한 개간이었습니다.
+					계속해서 늘어나는 가축들의 사료를 마련하기 위해, 지금도 생물다양성이 풍부한 숲이 베어져나가고 있습니다.</p>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-4">
+				<img src="../style/img/core-img/problem3.png">
+				<p>대규모 산업식 축산은 이윤추구를 위해 가능한 한 빨리 동물을 키우고 도살하는 시스템을 만들었습니다. 이로 인해
+					동물들은 살아있는 동안은 엄청난 고통을 겪다 무참히 도살 당하고 있습니다.</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12 col-sm-6 col-lg-4">
+				<img src="../style/img/core-img/problem4.png">
+				<p>현재 축산업으로 인한 온실가스 배출량은 전체의 14%를 차지하고 있습니다. 이대로 방치한다면 2050년까지
+					육식으로 인한 탄소배출량은 전체 배출량의 절반 이상을 차지하게 될 것입니다.</p>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-4">
+				<img src="../style/img/core-img/problem5.png">
+				<p>가축 사육은 엄청난 양의 물을 사용할 뿐 아니라 수질 오염의 원인 중 하나입니다. 축산업으로 인한 물 사용은
+					전체 농업에서 사용하는 양의 29%를 차지합니다. 대규모 산업식 축산 농장에서 사용하는 화학비료, 살충제, 가축을 위한
+					약품들은 물과 토양을 오염시키고 결국 우리의 식탁으로 돌아와 건강을 위협합니다.</p>
 			</div>
 		</div>
 	</div>
