@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.firstProject.vo.BoardVO;
+import com.firstProject.vo.ReplyVO;
 
 public class BoardDAO {
 	 private static SqlSessionFactory ssf;
@@ -115,4 +116,213 @@ public class BoardDAO {
 	    )
 	  </insert>
     */
+   
+   public static void replyInsert(ReplyVO vo)
+   {
+	   SqlSession session=ssf.openSession(true);// commit(X)
+	   // commit() ==> DML
+	   session.insert("creplyInsert",vo);
+	   session.close();
+   }
+   /*
+    *   <select id="creplyListData" resultType="ReplyVO" parameterType="int">
+		    SELECT no,bno,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,
+		    group_tab FROM movie_reply
+		    WHERE bno=#{bno}
+		  </select>
+    */
+   public static List<ReplyVO> creplyListData(int bno)
+   {
+	   SqlSession session=ssf.openSession();
+	   List<ReplyVO> list=session.selectList("creplyListData",bno);
+	   session.close();
+	   return list;
+   }
+   /*
+    *   <select id="replyParentData" parameterType="int" resultType="ReplyVO">
+   SELECT group_id,group_step,group_tab
+   FROM movie_reply
+   WHERE no=#{no}
+  </select>
+  <update id="replyStepIncrement" parameterType="ReplyVO">
+    UPDATE movie_reply SET
+    group_step=group_step+1
+    WHERE group_id=#{group_id} AND group_step>#{group_step}
+  </update>
+  <insert id="resplyReplyInsert" parameterType="ReplyVO">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) as no FROM movie_reply
+    </selectKey>
+    INSERT INTO movie_reply(no,bno,id,name,msg,group_id,group_step,group_tab,root,depth) VALUES(
+      #{no},
+      #{bno},
+      #{id},
+      #{name},
+      #{msg},
+      #{group_id},
+      #{group_step},
+      #{group_tab},
+      #{root},
+      0
+    )
+  </insert>
+  <update id="replyDepthIncrement" parameterType="int">
+    UPDATE movie_reply SET
+    depth=depth+1
+    WHERE no=#{no}
+  </update>
+    */
+   public static void replyReplyInsert(int root,ReplyVO vo)
+   {
+	   SqlSession session=ssf.openSession();
+	   ReplyVO pvo=session.selectOne("creplyParentData",root);
+	   session.update("creplyStepIncrement", pvo);
+	   vo.setGroup_id(pvo.getGroup_id());
+	   vo.setGroup_step(pvo.getGroup_step()+1);
+	   vo.setGroup_tab(pvo.getGroup_tab()+1);
+	   vo.setRoot(root);
+
+	   session.insert("cresplyReplyInsert", vo);
+	   session.update("creplyDepthIncrement", root);
+	   session.commit();
+	   session.close();
+   }
+   /*
+    *  <update id="replyUpdate" parameterType="ReplyVO">
+		    UPDATE movie_reply SET
+		    msg=#{msg}
+		    WHERE no=#{no}
+		  </update>
+    */
+   public static void replyUpdate(ReplyVO vo)
+   {
+	   SqlSession session=ssf.openSession(true);
+	   session.update("creplyUpdate",vo);
+	   session.close();
+
+   }
+   /*
+    *   <!-- 삭제 -->
+	  <select id="replyInfoData" resultType="ReplyVO" parameterType="int">
+	    SELECT depth,root FROM movie_reply
+	    WHERE no=#{no}
+	  </select>
+	  <!-- depth==0 -->
+	  <delete id="replyDelete" parameterType="int">
+	    DELETE FROM movie_reply
+	    WHERE no=#{no}
+	  </delete>
+	  <!-- depth!=0 -->
+	  <update id="replyMsgUpdate" parameterType="int">
+	    UPDATE movie_reply SET
+	    msg='관리자가 삭제한 댓글입니다'
+	    WHERE no=#{no}
+	  </update>
+	  <update id="replyDepthDecrement" parameterType="int">
+	    UPDATE movie_reply SET
+	    depth=depth-1
+	    WHERE no=#{no}
+	  </update>
+    */
+   public static void replyDelete(int no)
+   {
+	   SqlSession session=ssf.openSession();
+	   // depth,root
+	   ReplyVO vo=session.selectOne("creplyInfoData", no);
+	   if(vo.getDepth()==0)
+	   {
+		   session.delete("creplyDelete", no);
+	   }
+	   else
+	   {
+		   session.update("creplyMsgUpdate",no);
+	   }
+	   session.update("creplyDepthDecrement",vo.getRoot());
+
+	   session.commit();
+	   session.close();
+   }
+   /*
+    *  <select id="replyCount" resultType="int" parameterType="int">
+   SELECT COUNT(*) FROM movie_reply
+   WHERE bno=#{bno}
+  </select>
+    */
+   public static int replyCount(int bno)
+   {
+	   SqlSession session=ssf.openSession();
+	   int count=session.selectOne("creplyCount", bno);
+	   session.close();
+	   return count;
+   }
+   /*
+    *   <select id="boardGetPassword" resultType="String" parameterType="int">
+		    SELECT pwd FROM movie_board
+		    WHERE no=#{no}
+		  </select>
+    */
+   // 게시판 수정 
+   public static BoardVO boardUpdateData(int no)
+   {
+	// 연결
+	   SqlSession session=ssf.openSession();
+	   // 데이터 읽기
+	   BoardVO vo=session.selectOne("boardDetailData", no);
+	   session.close();
+	   return vo;
+   }
+   public static String boardGetPassword(int no)
+   {
+	   SqlSession session=ssf.openSession();
+	   String db_pwd=session.selectOne("boardGetPassword", no);
+	   session.close();
+	   return db_pwd;
+   }
+
+   /*
+    *  <update id="boardUpdate" parameterType="BoardVO">
+    UPDATE movie_board SET
+    name=#{name},subject=#{subject},content=#{content}
+    WHERE no=#{no}
+  </update>
+    */
+   public static void boardUpdate(BoardVO vo)
+   {
+	   SqlSession session=ssf.openSession(true);
+	   session.update("boardUpdate", vo);
+	   session.close();
+   }
+   /*
+    *   <delete id="boardDelete" parameterType="int">
+		    DELETE FROM movie_board 
+		    WHERE no=#{no}
+		  </delete>
+		  <delete id="boardReplyDelete" parameterType="int">
+		    DELETE FROM movie_reply
+		    WHERE bno=#{bno}
+		  </delete>
+    */// replyCount
+   public static boolean boardDelete(int no,String pwd)
+   {
+	   boolean bCheck=false;
+	   SqlSession session=ssf.openSession();
+	   String db_pwd=session.selectOne("boardGetPassword", no);
+	   if(db_pwd.equals(pwd))
+	   {
+		   bCheck=true;
+		   int count=session.selectOne("creplyCount", no);
+		   if(count>0)
+		   {
+			   session.delete("boardReplyDelete",no);
+		   }
+		   session.delete("boardDelete",no);
+		   session.commit();
+	   }
+	   else
+	   {
+		   bCheck=false;
+	   }
+	   session.close();
+	   return bCheck;
+   }
 }

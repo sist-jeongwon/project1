@@ -12,6 +12,61 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
  <link rel="stylesheet" href="style.css">
+<!--  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+ --><script type="text/javascript">
+let i=0;
+let u=0;
+$(function(){
+	$('.reply_reply').click(function(){
+	  $('.rIn').hide();
+	  $('.rUp').hide();
+	  $('.reply_reply').text("댓글");
+	  let no=$(this).attr('value');
+	  if(i==0)
+	  {
+		    
+			$('#rIn'+no).show();
+			$(this).text("취소");
+			i=1;
+	  }
+	  else
+	  {
+		    $('#rIn'+no).hide();
+		    $(this).text("댓글");
+			i=0;
+	  }
+		
+	});
+	$('.reply_update').click(function(){
+		let no=$(this).attr("value");
+		$('.rIn').hide();
+		$('.rUp').hide();
+		if(u==0)
+		{
+			$('#rUp'+no).show();
+			u=1;
+		}
+		else
+		{
+			$('#rUp'+no).hide();
+			u=0;
+		}
+	})
+	let d=0;
+	$('#delBtn').click(function(){
+		if(d==0)
+		{
+			$('#delTr').show();
+			d=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			d=0;
+		}
+	});
+});
+</script>
 <style type="text/css">
 .row1 {
     margin: 0px auto;
@@ -51,15 +106,18 @@
       </tr>
       <tr>
         <td colspan="4" class="text-right">
-          <a href="#" class="btn btn-xs btn-success">수정</a>
-          <a href="#" class="btn btn-xs btn-success">삭제</a>
+            <a href="../board/update.do?no=${vo.no }" class="btn btn-xs btn-danger">수정</a>
+          <span class="btn btn-xs btn-info" id="delBtn">삭제</span>
           <a href="../board/list.do" class="btn btn-xs btn-success">목록</a>
         </td>
-      </tr>
-      <tr style="display:none">
+      </tr> 
+      <tr style="display:none" id="delTr">
         <td colspan="4" class="text-right">
-          비밀번호:<input type=password id=pwd size=10 class="input-sm">
-            <input type=button value="삭제" class="btn btn-sm btn-primary">
+           <form method=post action="../board/delete.do">
+          비밀번호:<input type=password id=pwd size=10 class="input-sm" name=pwd>
+            <input type=hidden name=no value="${vo.no }">
+            <input type=submit value="삭제" class="btn btn-sm btn-primary">
+            </form>
         </td>
       </tr>
       <tr style="display:none">
@@ -77,31 +135,54 @@
         <tr>
           <td class="text-left">
            <c:if test="${rvo.group_tab>0 }">
-             <c:forEach var="i" begin="1" end="${vo.group_tab }">
-               &nbsp;&nbsp;
+             <c:forEach var="i" begin="1" end="${rvo.group_tab }">
+               &nbsp;&nbsp;&nbsp;&nbsp;
              </c:forEach>
-                             ☞
+				<img src="../board/re.gif">
            </c:if>
            <img src="../board/img.png">&nbsp;${rvo.name }(${rvo.dbday })
           </td>
           <td class="text-right">
-            <c:if test="${sessionScope.id==rvo.id }">
-             <a href="#" class="btn btn-xs btn-primary">수정</a>
-             <a href="#" class="btn btn-xs btn-success">삭제</a>
+            <c:if test="${sessionScope.id==rvo.mem_id }">
+             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
+             <a href="../board/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs btn-success">삭제</a>
             </c:if>
-             <a href="#" class="btn btn-xs btn-danger">댓글</a>
+             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
           </td>
         </tr>
         <tr>
           <td class="text-left" colspan="2">
             <c:if test="${rvo.group_tab>0 }">
-             <c:forEach var="i" begin="1" end="${vo.group_tab }">
-               &nbsp;&nbsp;
+            <c:forEach var="i" begin="1" end="${rvo.group_tab }">
+               &nbsp;&nbsp; &nbsp;&nbsp;
              </c:forEach>
            </c:if>
             <pre style="white-space: pre-wrap;background-color: white;border:none">${rvo.msg }</pre>
           </td>
         </tr>
+         <tr class="rIn" id="rIn${rvo.no }" value="${rvo.no }" style="display:none">
+       <td colspan="2">
+        <form method=post action="../board/reply_update.do">
+            <input type=hidden name="no" value="${rvo.no }">
+            <input type=hidden name="bno" value="${vo.no }">
+	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>
+	        <input type=submit value="댓글쓰기" style="height:70px;float: left"
+	          class="btn btn-sm btn-primary"
+	        >
+        </form>
+       </td>
+      </tr>
+      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
+       <td colspan="2">
+        <form method=post action="../board/reply_insert.do">
+            <input type=hidden name="bno" value="${vo.no }">
+	        <textarea rows="3" cols="80" name="msg" style="float: left">${rvo.msg }</textarea>
+	        <input type=submit value="댓글수정" style="height:70px;float: left"
+	          class="btn btn-sm btn-primary"
+	        >
+        </form>
+       </td>
+      </tr>
       </table>
     </c:forEach>
     <hr>

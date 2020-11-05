@@ -37,4 +37,107 @@
     WHERE no=#{no}
   </select>
 
+<!-- 댓글 올리기  -->
+  <insert id="creplyInsert" parameterType="ReplyVO">
+    <!-- 적용할 수 없다(한번) -->
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) as no FROM reply
+    </selectKey>
+    INSERT INTO reply(no,bno,mem_id,name,msg,group_id) VALUES(
+      #{no},
+      #{bno},
+      #{mem_id},
+      #{name},
+      #{msg},
+      (SELECT NVL(MAX(group_id)+1,1) FROM reply)
+    )
+  </insert>
+  <select id="creplyListData" resultType="ReplyVO" parameterType="int">
+    SELECT no,bno,mem_id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,
+    group_tab FROM reply
+    WHERE bno=#{bno}
+    ORDER BY group_id DESC , group_step ASC
+  </select>
+  <select id="creplyParentData" parameterType="int" resultType="ReplyVO">
+   SELECT group_id,group_step,group_tab
+   FROM reply
+   WHERE no=#{no}
+  </select>
+  <update id="creplyStepIncrement" parameterType="ReplyVO">
+    UPDATE reply SET
+    group_step=group_step+1
+    WHERE group_id=#{group_id} AND group_step>#{group_step}
+  </update>
+  <insert id="cresplyReplyInsert" parameterType="ReplyVO">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) as no FROM reply
+    </selectKey>
+    INSERT INTO reply(no,bno,mem_id,name,msg,group_id,group_step,group_tab,root,depth) VALUES(
+      #{no},
+      #{bno},
+      #{mem_id},
+      #{name},
+      #{msg},
+      #{group_id},
+      #{group_step},
+      #{group_tab},
+      #{root},
+      0
+    )
+  </insert>
+  <update id="creplyDepthIncrement" parameterType="int">
+    UPDATE reply SET
+    depth=depth+1
+    WHERE no=#{no}
+  </update>
+  
+   <update id="creplyUpdate" parameterType="ReplyVO">
+    UPDATE reply SET
+    msg=#{msg}
+    WHERE no=#{no}
+  </update>
+  <!-- 삭제 -->
+  <select id="creplyInfoData" resultType="ReplyVO" parameterType="int">
+    SELECT depth,root FROM reply
+    WHERE no=#{no}
+  </select>
+  <!-- depth==0 -->
+  <delete id="creplyDelete" parameterType="int">
+    DELETE FROM reply
+    WHERE no=#{no}
+  </delete>
+  <!-- depth!=0 -->
+  <update id="creplyMsgUpdate" parameterType="int">
+    UPDATE reply SET
+    msg='관리자가 삭제한 댓글입니다'
+    WHERE no=#{no}
+  </update>
+  <update id="creplyDepthDecrement" parameterType="int">
+    UPDATE reply SET
+    depth=depth-1
+    WHERE no=#{no}
+  </update>
+   <select id="creplyCount" resultType="int" parameterType="int">
+   SELECT COUNT(*) FROM reply
+   WHERE bno=#{bno}
+  </select>
+  
+  <select id="boardGetPassword" resultType="String" parameterType="int">
+    SELECT pwd FROM board
+    WHERE no=#{no}
+  </select>
+  <update id="boardUpdate" parameterType="BoardVO">
+    UPDATE board SET
+    name=#{name},subject=#{subject},content=#{content}
+    WHERE no=#{no}
+  </update>
+
+  <delete id="boardDelete" parameterType="int">
+    DELETE FROM board 
+    WHERE no=#{no}
+  </delete>
+  <delete id="boardReplyDelete" parameterType="int">
+    DELETE FROM reply
+    WHERE bno=#{bno}
+  </delete>
 </mapper> 

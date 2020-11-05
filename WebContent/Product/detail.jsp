@@ -146,10 +146,10 @@
                         </div>
 
                         <!-- Single Widget Area -->
-                       <!--  <h6>내가 본 상품</h6> -->
+                        <h6 class=text-center>다른 고객이 함께 구매한 상품</h6>
                         <div class="single-widget-area post-widget mb-30">
                           <!-- Single Post Area -->
-                            <%-- <c:forEach var="vo" items="${cList }" varStatus="s">
+                     <%--        <c:forEach var="vo" items="${cList }" varStatus="s">
                               <c:if test="${s.index<6 }">
                               <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
