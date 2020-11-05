@@ -224,7 +224,7 @@ $(function(){
                               
                                  <!-- <a href="../restaurant/restaurant_map.do"> --><input type="button" class="btn bueno-btn w-100 mt-1" value="지도" id="mapBtn"><!-- </a> -->
                              	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
-                                 <a href="../reserve/restaurant.do">
+                                 <a href="../reserve/reserve.do">
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
