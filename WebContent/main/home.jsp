@@ -21,6 +21,7 @@
 
 .main-section p {
 	font-size: 17px;
+	margin:10px;
 }
 
 .main-section img {
@@ -32,7 +33,9 @@
 	font-size: 1.2em;
 	color: rgb(112, 173, 71);
 }
-
+#bgset{
+	background-color: rgb(112, 173, 71);
+}
 #sec1 {
 	height: 350px;
 }
@@ -89,7 +92,7 @@
 </head>
 <body>
 	<div class="main-section" id="sec1">
-		<div class="text-center">
+		<div class="text-center" id="bgset">
 			<img src="../style/img/core-img/section_title_1.png"
 				alt="채소 한끼, 최소 한끼로 지구를 지켜주세요!">
 		</div>
