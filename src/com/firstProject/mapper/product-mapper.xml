@@ -76,4 +76,87 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
     DELETE FROM like_product
     WHERE product_no=#{product_no}
   </delete>
+  
+  <!-- 댓글 -->
+  <insert id="preplyInsert" parameterType="ReplyVO">
+	    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+	      SELECT NVL(MAX(no)+1,1) as no FROM product_reply
+	    </selectKey>
+	    INSERT INTO product_reply(no,bno,mem_id,name,msg,group_id) VALUES(
+	      #{no},
+	      #{bno},
+	      #{mem_id},
+	      #{name},
+	      #{msg},
+	      (SELECT NVL(MAX(group_id)+1,1) FROM product_reply)
+	    )
+  </insert>
+	<select id="preplyListData" resultType="ReplyVO" parameterType="int">
+		SELECT no, bno, mem_id,name, msg, TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:ss') as dbday,
+		group_tab FROM product_reply
+		WHERE bno=#{bno}
+		ORDER BY group_id DESC, group_step ASC
+	</select>
+	<select id="preplyParentData" parameterType="int" resultType="ReplyVO">
+		SELECT group_id, group_step, group_tab
+		FROM product_reply
+		WHERE no=#{no}
+	</select>
+	<update id="preplyStepIncrement" parameterType="ReplyVO">
+		UPDATE product_reply SET
+		group_step=group_step+1
+		WHERE group_id=#{group_id} AND group_step>#{group_step}
+	</update>
+	<insert id="preplyReplyInsert" parameterType="ReplyVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		      SELECT NVL(MAX(no)+1,1) as no FROM product_reply
+		    </selectKey>
+		    INSERT INTO product_reply(no,bno,mem_id,name,msg,group_id, group_step, group_tab, root, depth) VALUES(
+		      #{no},
+		      #{bno},
+		      #{mem_id},
+		      #{name},
+		      #{msg},
+		      #{group_id},
+		      #{group_step},
+		      #{group_tab},
+		      #{root},
+		      0
+		    )	
+	</insert>
+	<update id="preplyDepthIncrement" parameterType="int">
+		UPDATE product_reply SET
+		depth=depth+1
+		WHERE no=#{no}
+	</update>
+	<update id="preplyUpdate" parameterType="ReplyVO">
+		UPDATE product_reply SET
+		msg=#{msg}
+		where no=#{no}
+	</update>
+	<!-- 삭제 -->
+	<select id="preplyInfoData" resultType="ReplyVO" parameterType="int">
+		SELECT depth, root FROM product_reply
+		WHERE no=#{no}
+	</select>
+	<!-- depth=0일 때 -->
+	<delete id="preplyDelete" parameterType="int">
+		DELETE FROM product_reply
+		WHERE no=#{no}
+	</delete>
+	<!-- depth!=0 -->
+	<update id="preplyMsgUpdate" parameterType="int">
+		UPDATE product_reply SET
+		msg='삭제된 댓글입니다.'
+		WHERE no=#{no}
+	</update>
+	<update id="preplyDepthDecrement" parameterType="int">
+		UPDATE product_reply SET
+		depth=depth-1
+		WHERE no=#{no}
+	</update>
+	<select id="preplyCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM product_reply
+		WHERE bno=#{bno}
+	</select>
 </mapper>

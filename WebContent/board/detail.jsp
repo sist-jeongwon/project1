@@ -72,11 +72,10 @@ $(function(){
     margin: 0px auto;
     width:700px;
 }
-  .bueno-btn:hover, .bueno-btn:focus {
-    font-size: 14px;
-    font-weight: 500;
-    background-color: #000000;
-    color: #ffffff; }
+  .btn{
+	background-color:#92C364;
+	border:none;
+	}
 </style>
 </head>
 <body>
@@ -106,8 +105,8 @@ $(function(){
       </tr>
       <tr>
         <td colspan="4" class="text-right">
-            <a href="../board/update.do?no=${vo.no }" class="btn btn-xs btn-danger">수정</a>
-          <span class="btn btn-xs btn-info" id="delBtn">삭제</span>
+            <a href="../board/update.do?no=${vo.no }" class="btn btn-xs btn-success">수정</a>
+          <span class="btn btn-xs btn-success" id="delBtn">삭제</span>
           <a href="../board/list.do" class="btn btn-xs btn-success">목록</a>
         </td>
       </tr> 
@@ -144,10 +143,10 @@ $(function(){
           </td>
           <td class="text-right">
             <c:if test="${sessionScope.id==rvo.mem_id }">
-             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
-             <a href="../board/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs btn-success">삭제</a>
+             <span class="btn btn-xs reply_update" value="${rvo.no }">수정</span>
+             <a href="../board/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs">삭제</a>
             </c:if>
-             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
+             <span class="btn btn-xs reply_reply" value="${rvo.no }">댓글</span>
           </td>
         </tr>
         <tr>
@@ -167,7 +166,7 @@ $(function(){
             <input type=hidden name="bno" value="${vo.no }">
 	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>
 	        <input type=submit value="댓글쓰기" style="height:70px;float: left"
-	          class="btn btn-sm btn-primary"
+	          class="btn btn-sm"
 	        >
         </form>
        </td>
@@ -178,7 +177,7 @@ $(function(){
             <input type=hidden name="bno" value="${vo.no }">
 	        <textarea rows="3" cols="80" name="msg" style="float: left">${rvo.msg }</textarea>
 	        <input type=submit value="댓글수정" style="height:70px;float: left"
-	          class="btn btn-sm btn-primary"
+	          class="btn btn-sm"
 	        >
         </form>
        </td>
@@ -193,7 +192,7 @@ $(function(){
             <input type=hidden name="bno" value="${vo.no }">
 	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>
 	        <input type=submit value="댓글쓰기" style="height:70px;float: left"
-	          class="btn btn-sm btn-success"
+	          class="btn btn-sm"
 	        >
         </form>
        </td>

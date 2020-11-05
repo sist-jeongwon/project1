@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,67 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
+   <link rel="icon" href="img/core-img/favicon.ico">
+<link rel="stylesheet" href="style.css">
+   <!-- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script> -->
+<script type="text/javascript">
+let i=0;
+let u=0;
+$(function(){
+	$('.reply_reply').click(function(){
+	  $('.rIn').hide();
+	  $('.rUp').hide();
+	  $('.reply_reply').text("댓글");
+	  let no=$(this).attr('value');
+	  if(i==0)
+	  {
+			$('#rIn'+no).show();
+			$(this).text("취소");
+			i=1;
+	  }
+	  else
+	  {
+		    $('#rIn'+no).hide();
+		    $(this).text("댓글");
+			i=0;
+	  }
+	});
+	$('.reply_update').click(function(){
+		let no=$(this).attr("value");
+		$('.rIn').hide();
+		$('.rUp').hide("slow");
+		if(u==0)
+		{
+			$('#rUp'+no).show();
+			u=1;		
+		}
+		else
+		{
+			$('#rUp'+no).hide();
+			u=0;
+		}
+	})
+	let d=0;
+	$('#delBtn').click(function(){
+		if(d==0)
+		{
+			$('#delTr').show();
+			d=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			d=0;
+		}
+	});
+});
+</script>
+<style type="text/css">
+.btn{
+	background-color:#92C364;
+	border:none;
+}
+</style>
 </head>
 <body>
     <!-- ##### Post Details Area Start ##### -->
@@ -37,90 +99,77 @@
                  
                  
                     <!-- Comment Area Start -->
+                    
                     <div class="comment_area clearfix mb-100">
                         <h4 class="mb-50">상품평</h4>
-                        
-                        <ol>
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="img/bg-img/32.jpg" alt="author">
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <div class="d-flex">
-                                            <a href="#" class="post-author">Jane Smith</a>
-                                            <a href="#" class="post-date">July 11, 2018</a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                        <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tinci dunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis sus cipit sem a consequat.</p>
-                                    </div>
-                                </div>
-
-                                <ol class="children">
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content d-flex">
-                                            <!-- Comment Author -->
-                                            <div class="comment-author">
-                                                <img src="img/bg-img/32.jpg" alt="author">
-                                            </div>
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta">
-                                                <div class="d-flex">
-                                                    <a href="#" class="post-author">Christian Williams</a>
-                                                    <a href="#" class="post-date">April 15, 2018</a>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                                <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, Nullam vel orci dui. Su spendisse sit amet laoreet neque.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="img/bg-img/32.jpg" alt="author">
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <div class="d-flex">
-                                            <a href="#" class="post-author">Cris Williams</a>
-                                            <a href="#" class="post-date">July 11, 2018</a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit.</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <div class="post-a-comment-area mb-10 clearfix">
-                        <h4 class="mb-50">상품 문의</h4>
-
-                        <!-- Reply Form -->
-                        <div class="contact-form-area">
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn bueno-btn mt-10" type="submit">문의 하기</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+  							<c:forEach var="rvo" items="${pList }">
+						      <table class="table">
+						        <tr>
+						          <td class="text-left">
+						           <c:if test="${rvo.group_tab>0 }"> 
+						           		<c:forEach var="i" begin="1" end="${rvo.group_tab }">
+						               &nbsp;&nbsp;&nbsp;&nbsp;
+						             </c:forEach>
+						             <img src="#">
+						           </c:if>
+						           <img src="../style/img/icon.PNG" style="width:30px; height:30px;">&nbsp;${rvo.name }(${rvo.dbday })
+						          </td> 
+						          <td class="text-right">
+						            <c:if test="${sessionScope.id == rvo.mem_id }">
+						             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
+						             <a href="../Product/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn btn-xs btn-success">삭제</a>
+						            </c:if>
+						             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
+						          </td>
+						        </tr>
+						        <tr>
+						          <td class="text-left" colspan="2">
+						            <c:if test="${rvo.group_tab>0 }">
+						             <c:forEach var="i" begin="1" end="${rvo.group_tab }">
+						               &nbsp;&nbsp; &nbsp;&nbsp;
+						             </c:forEach>
+						           </c:if>
+						            <pre style="white-space: pre-wrap;background-color: white;border:none">${rvo.msg }</pre>
+						          </td>
+						        </tr>
+						       <tr class="rIn" id="rIn${rvo.no }" value="${rvo.no }" style="display:none">
+						       <td colspan="2">
+						        <form method=post action="../Product/reply_reply_insert.do">
+						            <input type=hidden name="no" value="${rvo.no }">
+						            <input type=hidden name="bno" value="${vo.product_no }">
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
+							          class="btn btn-sm">
+						        </form>
+						       </td>
+						      </tr>
+						      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
+						       <td colspan="2">
+						        <form method=post action="../Product/reply_update.do">
+						            <input type=hidden name="no" value="${rvo.no }">
+						            <input type=hidden name="bno" value="${vo.product_no }">	<!-- bno는 게시물 번호 -->
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
+							        <input type=submit value="댓글수정" style="height:70px;float: left"
+							          class="btn btn-sm btn-primary">
+						        </form>
+						       </td>
+						      </tr>
+						      </table>
+						    </c:forEach>
+						  	    <hr>
+						    <table class="table">
+						      <tr>
+						       <td>
+						        <form method=post action="../Product/reply_insert.do">
+						            <input type=hidden name="bno" value="${vo.product_no }">
+							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
+							          class="btn btn-sm btn-primary">
+						        </form>
+						       </td>
+						      </tr>
+						    </table>
+						    </div>
                 </div>
 
                 <!-- Sidebar Widget -->
@@ -149,7 +198,7 @@
                         <h6 class=text-center>다른 고객이 함께 구매한 상품</h6>
                         <div class="single-widget-area post-widget mb-30">
                           <!-- Single Post Area -->
-                     <%--        <c:forEach var="vo" items="${cList }" varStatus="s">
+                            <c:forEach var="vo" items="${cList }" varStatus="s">
                               <c:if test="${s.index<6 }">
                               <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
@@ -165,7 +214,7 @@
                                </div>
                              </div>
                             </c:if>
-                           </c:forEach> --%>
+                           </c:forEach>
 
                          
                            

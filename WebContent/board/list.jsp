@@ -14,6 +14,10 @@
 .btd {
   font-size: 8pt;
 }
+.btn{
+	background-color:#92C364;
+	border:none;
+	}
 </style>
 </head>
 <body>

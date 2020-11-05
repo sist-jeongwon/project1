@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.ProductVO;
 import com.firstProject.vo.Product_keepVO;
+import com.firstProject.vo.ReplyVO;
 
 public class ProductDAO {
 	private static SqlSessionFactory ssf;
@@ -106,4 +107,65 @@ public class ProductDAO {
 		session.delete("likeDelete", no);
 		session.close();
 	}
+	////////////////////// 댓글 관련 ///////////////////////
+	public static void replyInsert(ReplyVO vo) {
+		SqlSession session = ssf.openSession(true);// commit(X)
+		// commit() ==> DML
+		session.insert("preplyInsert", vo);
+		session.close();
+	}
+
+	public static List<ReplyVO> replyListData(int bno) {
+		SqlSession session = ssf.openSession();
+		List<ReplyVO> list = session.selectList("preplyListData", bno);
+		session.close();
+		return list;
+	}
+
+	public static void replyReplyInsert(int root, ReplyVO vo) {
+		SqlSession session = ssf.openSession();
+		ReplyVO pvo = session.selectOne("preplyParentData", root);
+		session.update("preplyStepIncrement", pvo);
+		vo.setGroup_id(pvo.getGroup_id());
+		vo.setGroup_step(pvo.getGroup_step() + 1);
+		vo.setGroup_tab(pvo.getGroup_tab() + 1);
+		vo.setRoot(root);
+
+		session.insert("preplyReplyInsert", vo);
+		session.update("preplyDepthIncrement", root);
+		session.commit();
+		session.close();
+	}
+
+	public static void replyUpdate(ReplyVO vo) {
+		SqlSession session = ssf.openSession(true);
+		session.update("preplyUpdate", vo);
+		session.close();
+
+	}
+
+	public static void replyDelete(int no) {
+		SqlSession session = ssf.openSession();
+		// depth,root
+		ReplyVO vo = session.selectOne("preplyInfoData", no);
+		if (vo.getDepth() == 0) {
+			session.delete("preplyDelete", no);
+		} else {
+			session.update("preplyMsgUpdate", no);
+		}
+		session.update("preplyDepthDecrement", vo.getRoot());
+
+		session.commit();
+		session.close();
+	}
+
+	public static int replyCount(int bno) {
+		SqlSession session = ssf.openSession();
+		int count = session.selectOne("preplyCount", bno);
+		session.close();
+		return count;
+	}
+
 }
+
+

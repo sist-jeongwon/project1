@@ -14,6 +14,7 @@ import com.firstProject.dao.ProductDAO;
 import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.ProductVO;
 import com.firstProject.vo.Product_keepVO;
+import com.firstProject.vo.ReplyVO;
 import com.sist.controller.RequestMapping;
 
 public class ProductModel {
@@ -125,6 +126,9 @@ public class ProductModel {
 		 
 			request.setAttribute("main_jsp", "../Product/detail.jsp");
 			
+			List<ReplyVO> list=ProductDAO.replyListData(Integer.parseInt(no));
+					request.setAttribute("pList", list);
+			
 			return "../main/main.jsp";
 		}
 	  
@@ -170,5 +174,93 @@ public class ProductModel {
 			ProductDAO.likeDelete(Integer.parseInt(no));
 			return "redirect:../reserve/mypage.do";
 		}
-	 
+		
+		//////////////// 댓글관련 ////////////////////////
+		 @RequestMapping("Product/reply_insert.do")
+		   public String reply_insert(HttpServletRequest request)
+		   {
+			   try
+			   {
+				   request.setCharacterEncoding("UTF-8");
+				   
+			   }catch(Exception ex) {}
+			   String bno=request.getParameter("bno");
+			   String msg=request.getParameter("msg");
+			   HttpSession session=request.getSession();
+			   String mem_id=(String)session.getAttribute("id");
+			   String name=(String)session.getAttribute("name");
+			   
+			   //vo에 담아서 => dao
+			   ReplyVO vo=new ReplyVO();
+			   vo.setBno(Integer.parseInt(bno));
+			   vo.setMem_id(mem_id);
+			   vo.setMsg(msg);
+			   vo.setName(name);
+			   
+			   ProductDAO.replyInsert(vo);
+			   return "redirect:../Product/detail.do?no="+bno;
+		   }
+		   @RequestMapping("Product/reply_reply_insert.do")
+		   public String reply_reply_insert(HttpServletRequest request)
+		   {
+			   try
+			   {
+				   request.setCharacterEncoding("UTF-8");
+			   }catch(Exception ex) {}
+			   String no=request.getParameter("no");
+			   System.out.println("no="+no);
+			   String bno=request.getParameter("bno");
+			   System.out.println("bno="+bno);
+			   String msg=request.getParameter("msg");
+			   ReplyVO vo=new ReplyVO();
+			   //vo.setRoot(Integer.parseInt(no));
+			   vo.setBno(Integer.parseInt(bno));
+			   vo.setMsg(msg);
+			   HttpSession session=request.getSession();
+			   String mem_id=(String)session.getAttribute("id");
+			   String name=(String)session.getAttribute("name");
+			   vo.setMem_id(mem_id);
+			   vo.setName(name);
+			   // DB 연동 
+			   ProductDAO.replyReplyInsert(Integer.parseInt(no), vo);
+			   //System.out.println("---"+mem_id);
+			   return "redirect:../Product/detail.do?no="+bno;
+		   }
+		   
+		   @RequestMapping("Product/reply_update.do")
+		   public String reply_update(HttpServletRequest request)
+		   {
+			  
+			   try
+			   {
+				   request.setCharacterEncoding("UTF-8");
+			   }catch(Exception ex) {}
+			   String no=request.getParameter("no");
+			   String bno=request.getParameter("bno");
+			   String msg=request.getParameter("msg");
+			   // DB => UPDATE
+			   ReplyVO vo=new ReplyVO();
+			   vo.setNo(Integer.parseInt(no));
+			   vo.setMsg(msg);
+			   
+			   ProductDAO.replyUpdate(vo);
+			   return "redirect:../Product/detail.do?no="+bno;
+		   }
+		   
+		   @RequestMapping("Product/reply_delete.do")
+		   public String reply_delete(HttpServletRequest request)
+		   {
+			   
+			  //데이터 받기
+			   String no=request.getParameter("no");
+			   String bno=request.getParameter("bno");
+			   ProductDAO.replyDelete(Integer.parseInt(no));
+			   return "redirect:../Product/detail.do?no="+bno;
+		   }
 }
+
+
+
+
+
+
