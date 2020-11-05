@@ -60,10 +60,13 @@
 		                              <c:if test="${s.index<6 }">
 		                              <div class="col-md-2">
 		   								 <div class="thumbnail">
-		                                    <img src="${vo.rest_poster }" style="width:160px; height:160px;">
+		                                    <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" class="post-date">
+		                                    <img src="${vo.rest_poster }" style="width:160px; height:160px;"></a>
 		                                    <div class="caption">
-			      							    <p>${vo.rest_name }</p>
-			      							    <p>${vo.rest_content }</p>
+			      							    <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" 
+			      							    class="post-date"><p>${vo.rest_name }</p></a>
+			      							    <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" 
+			      							    class="post-date"><p>${vo.rest_content }</p></a>
 			      							 </div>   
 			      						 </div>
 			      					 </div>

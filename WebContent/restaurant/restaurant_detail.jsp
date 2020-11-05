@@ -241,15 +241,15 @@ $(function(){
                               
                                  
                              	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
-<<<<<<< HEAD
+
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button>
                                 <c:if test="${count==0 }">
             <a href="../restaurant/jjim.do?no=${vo.rest_no }" class="btn btn-sm btn-primary">찜하기</a>
            </c:if>
-=======
+
                                  <a href="../reserve/reserve.do">
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
->>>>>>> refs/remotes/origin/master
+
                                 <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
                         </div>
@@ -268,85 +268,21 @@ $(function(){
                             <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
-                                    <a href="${vo.rest_sns }" ><img src="${vo.rest_poster }" style="width:70px; height:70px;"></a>
+                                    <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" ><img src="${vo.rest_poster }" style="width:70px; height:70px;"></a>
                                 </div>
                                 <!-- Blog Content -->
                                 <div class="blog-content">
                                     <a href="${vo.rest_sns }" class="post-title">${vo.rest_name }</a>
                                     <div class="post-rest">
-                                    	 <a href="" class="post-date">${vo.rest_content }</a>
-                                        <a href="" class="post-date">가격대 : ${vo.rest_price }</a>
+                                    	 <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" class="post-date">${vo.rest_content }</a>
+                                        <a href="../restaurant/restaurant_detail_before.do?rest_no=${vo.rest_no }" class="post-date">가격대 : ${vo.rest_price }</a>
                                     </div>
                                 </div>
                             </div>
                            
                             </c:if>
                             </c:forEach>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/13.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Burger with fries</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/14.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Avocado &amp; Oisters</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/15.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Tortilla prawns</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Post Area -->
-                            <div class="single-post-area d-flex">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <img src="img/bg-img/16.jpg" alt="">
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <a href="#" class="post-title">Burger with fries</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date">July 11, 2018</a>
-                                        <a href="#" class="post-author">By Julia Stiles</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
 							
 							
 							
