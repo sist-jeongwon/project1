@@ -109,7 +109,7 @@ $(function(){
 						           		<c:forEach var="i" begin="1" end="${rvo.group_tab }">
 						               &nbsp;&nbsp;&nbsp;&nbsp;
 						             </c:forEach>
-						             <img src="#">
+						             <img src="../style/img/re.png" style="width:15px; height:15px;">
 						           </c:if>
 						           <img src="../style/img/icon.PNG" style="width:30px; height:30px;">&nbsp;${rvo.name }(${rvo.dbday })
 						          </td> 
