@@ -48,6 +48,61 @@
 <!-- <script type="text/javascript" src="http://code/jquery.com/jquery.js"></script> -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=99ae3e19196ec095b5718c4a72ec1ba8&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript">
+<!--▲ 댓글 부분-->
+let i=0;
+let u=0;
+$(function(){
+	$('.reply_reply').click(function(){
+	  $('.rIn').hide();
+	  $('.rUp').hide();
+	  $('.reply_reply').text("댓글");
+	  let no=$(this).attr('value');
+	  if(i==0)
+	  {
+			$('#rIn'+no).show();
+			$(this).text("취소");
+			i=1;
+	  }
+	  else
+	  {
+		    $('#rIn'+no).hide();
+		    $(this).text("댓글");
+			i=0;
+	  }
+	});
+	$('.reply_update').click(function(){
+		let no=$(this).attr("value");
+		$('.rIn').hide();
+		$('.rUp').hide("slow");
+		if(u==0)
+		{
+			$('#rUp'+no).show();
+			u=1;		
+		}
+		else
+		{
+			$('#rUp'+no).hide();
+			u=0;
+		}
+	})
+	let d=0;
+	$('#delBtn').click(function(){
+		if(d==0)
+		{
+			$('#delTr').show();
+			d=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			d=0;
+		}
+	});
+});
+<!--▲ 댓글 부분-->
+
+
+
 $(function(){
 	$('#mapBtn').click(function(){
 		$.ajax({
@@ -84,10 +139,10 @@ $(function(){
                          
                         </div>
                      </div>   
-               <div class="blog-content">
+            <!--   <div class="blog-content">-->
                             <span style="color:#B0C364; font-weight:bold; font-size:18px; font-face:바탕체;">${vo.rest_content}</span>
                             
-                            <div class="post-meta mb-50">
+                            <!--  <div class="post-meta mb-50">-->
                             <h4 class="post-title">${vo.rest_name}
                             
                             <span style="color:#FF8C00; font-weight:bold;">${vo.rest_score}</span></h4>
@@ -99,18 +154,18 @@ $(function(){
              <div style="border-bottom: 20% solid #e4e4e4" width="15%"></div>
 <!--              <div style="border-left: thick solid #ff0000" width="15%"></div> -->
                
-             
-             
                
+             
+               <div class="col-md-9">
                <table style="font-size:15px;">
                	<tr>
                		<td width=20% style="color: #41AC33;font-weight:BOLD;padding-left:0px;wideth:200px;">주소</td>
-               		<td>${vo.rest_addr1 }</td>
+               		<td>${vo.rest_addr2 }</td>
                	<!-- 신주소 -->
                	</tr>
                	 	<tr>
-               	 	<td width=20% style="color:#333;padding-left:20px;">&nbsp;</td>
-               		<td>${vo.rest_addr2 }<br>
+               	 	<td width=20% style="color: #41AC33;font-weight:BOLD;padding-left:0px;wideth:200px;">&emsp;</td>
+               		<td>&emsp;${vo.rest_addr1 }<br>
                	</tr>
                	<tr>
                	<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">전화번호</td>
@@ -142,7 +197,7 @@ $(function(){
                		</td>
                	</tr>
                </table>
-               </div>
+             </div>
                <%-- 
 <!--                         <ul class="info-data"> -->
                         	
@@ -173,6 +228,7 @@ $(function(){
                   
                   
                    <!-- Comment Area Start -->
+                   <h4 class="post-title"></h4>
                     <div class="comment_area clearfix mb-100">
                         <h4 class="mb-50">한줄 평가</h4>
                         
@@ -222,8 +278,86 @@ $(function(){
                         </ol>
                     </div>
  
+ 						<!-- Comment Area Start -->
+                    <div class="comment_area clearfix mb-100">
+                        <h4 class="mb-50">댓글</h4>
+                        
+                        <c:forEach var="rvo" items="${rList }">
+						      <table class="table">
+						        <tr>
+						          <td class="text-left">
+						           <c:if test="${rvo.group_tab>0 }"> 
+						           		<c:forEach var="i" begin="1" end="${rvo.group_tab }">
+						               &nbsp;&nbsp;&nbsp;&nbsp;
+						             </c:forEach>
+						             <img src="../style/img/re.png" style="width:15px; height:15px;">
+						           </c:if>
+						           <img src="../style/img/icon.PNG" style="width:30px; height:30px;">&nbsp;${rvo.name }(${rvo.dbday })
+						          </td> 
+						          <td class="text-right">
+						            <c:if test="${sessionScope.id == rvo.mem_id }">
+						             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
+						             <a href="../recipe/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn btn-xs btn-success">삭제</a>
+						            </c:if>
+						             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
+						          </td>
+						        </tr>
+						        <tr>
+						          <td class="text-left" colspan="2">
+						            <c:if test="${rvo.group_tab>0 }">
+						             <c:forEach var="i" begin="1" end="${rvo.group_tab }">
+						               &nbsp;&nbsp; &nbsp;&nbsp;
+						             </c:forEach>
+						           </c:if>
+						            <pre style="white-space: pre-wrap;background-color: white;border:none">${rvo.msg }</pre>
+						          </td>
+						        </tr>
+						       <tr class="rIn" id="rIn${rvo.no }" value="${rvo.no }" style="display:none">
+						       <td colspan="2">
+						        <form method=post action="../recipe/reply_reply_insert.do">
+						            <input type=hidden name="no" value="${rvo.no }">
+						            <input type=hidden name="bno" value="${vo.recipe_no }">
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
+							          class="btn btn-sm">
+						        </form>
+						       </td>
+						      </tr>
+						      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
+						       <td colspan="2">
+						        <form method=post action="../recipe/reply_update.do">
+						            <input type=hidden name="no" value="${rvo.no }">
+						            <input type=hidden name="bno" value="${vo.recipe_no }">	<!-- bno는 게시물 번호 -->
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
+							        <input type=submit value="댓글수정" style="height:70px;float: left"
+							          class="btn btn-sm btn-primary">
+						        </form>
+						       </td>
+						      </tr>
+						      </table>
+						    </c:forEach>
+						    <%-- </c:forEach> --%>
+						    <hr>
+						    <table class="table">
+						      <tr>
+						       <td>
+						        <form method=post action="../recipe/reply_insert.do">
+						            <input type=hidden name="bno" value="${vo.rest_no }">
+							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
+							          class="btn btn-sm btn-primary">
+						        </form>
+						       </td>
+						      </tr>
+						    </table>
+						    
+						    </div>
+ 
+ 
+ 
+ 
                     </div>
-                </div>
+                
                   
                   
                   
@@ -238,19 +372,13 @@ $(function(){
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
                              <!--  <div class="post-meta mb-50"></div> --> 
-                              
-                                 
-                             	 <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">목록</button></a>
-
-                                <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button>
-                                <c:if test="${count==0 }">
-            <a href="../restaurant/jjim.do?no=${vo.rest_no }" class="btn btn-sm btn-primary">찜하기</a>
-           </c:if>
-
-                                 <a href="../reserve/reserve.do">
-                                <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
-
-                                <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
+                           <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">맛집 둘러보기</button></a>
+							<a href="../reserve/reserve.do">
+                            <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
+                         <c:if test="${count==0 }">
+           				     <a href="../restaurant/jjim.do?no=${vo.rest_no }" class="btn btn-sm btn-primary">찜하기</a>
+           					</c:if>
+							  <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
                             </div>
                         </div>
 
@@ -260,7 +388,7 @@ $(function(){
                         </div>
 							
                         <!-- Single Widget Area -->
-                        <h6> 내가 본 음식점 </h6>
+                        <h6> 내가 본 맛집 </h6>
                         <div class="single-widget-area post-widget mb-30">
                             <!-- Single Post Area -->
                             <c:forEach var="vo" items="${cList }" varStatus="s">

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.firstProject.vo.LikeVO;
+import com.firstProject.vo.ReplyVO;
 import com.firstProject.vo.ReservationVO;
 import com.firstProject.vo.RestaurantVO;
 import com.firstProject.vo.Restaurant_reviewVO;
@@ -64,28 +65,7 @@ REST_PRICE            VARCHAR2(30)
 	 session.close();
 	 return vo;
  }
- public static void replyInsert(Restaurant_reviewVO vo)
- {
-	   SqlSession session=ssf.openSession(true);// commit(X)
-	   // commit() ==> DML
-	   session.insert("rest_rivewInsert",vo);
-	   session.close();
- }
- /*
-  *   <select id="replyListData" resultType="ReplyVO" parameterType="int">
-		    SELECT no,bno,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,
-		    group_tab FROM movie_reply
-		    WHERE bno=#{bno}
-		  </select>
-  */
- public static List<Restaurant_reviewVO> resaurant_reviewListData(int rest_review_bno)
- {
-	   SqlSession session=ssf.openSession();
-	   List<Restaurant_reviewVO> list=session.selectList("resaurant_reviewListData",rest_review_bno);
-	   session.close();
-	   return list;
- }
- 
+
  
  ///////////////////////////////////////////////////////////////
 //mypage + resesrvation
@@ -219,5 +199,63 @@ public static void likeDelete(int no)
 	   session.delete("likeDelete", no);
 	   session.close();
 }
- 
+//���
+	public static void replyInsert(ReplyVO vo) {
+		SqlSession session = ssf.openSession(true);// commit(X)
+		// commit() ==> DML
+		session.insert("replyInsert", vo);
+		session.close();
+	}
+
+	public static List<ReplyVO> replyListData(int bno) {
+		SqlSession session = ssf.openSession();
+		List<ReplyVO> list = session.selectList("replyListData", bno);
+		session.close();
+		return list;
+	}
+
+	public static void replyReplyInsert(int root, ReplyVO vo) {
+		SqlSession session = ssf.openSession();
+		ReplyVO pvo = session.selectOne("replyParentData", root);
+		session.update("replyStepIncrement", pvo);
+		vo.setGroup_id(pvo.getGroup_id());
+		vo.setGroup_step(pvo.getGroup_step() + 1);
+		vo.setGroup_tab(pvo.getGroup_tab() + 1);
+		vo.setRoot(root);
+
+		session.insert("replyReplyInsert", vo);
+		session.update("replyDepthIncrement", root);
+		session.commit();
+		session.close();
+	}
+
+	public static void replyUpdate(ReplyVO vo) {
+		SqlSession session = ssf.openSession(true);
+		session.update("replyUpdate", vo);
+		session.close();
+
+	}
+
+	public static void replyDelete(int no) {
+		SqlSession session = ssf.openSession();
+		// depth,root
+		ReplyVO vo = session.selectOne("replyInfoData", no);
+		if (vo.getDepth() == 0) {
+			session.delete("replyDelete", no);
+		} else {
+			session.update("replyMsgUpdate", no);
+		}
+		session.update("replyDepthDecrement", vo.getRoot());
+
+		session.commit();
+		session.close();
+	}
+
+	public static int replyCount(int bno) {
+		SqlSession session = ssf.openSession();
+		int count = session.selectOne("replyCount", bno);
+		session.close();
+		return count;
+	}
+
 }

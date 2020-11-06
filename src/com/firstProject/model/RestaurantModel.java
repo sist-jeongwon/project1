@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.firstProject.dao.RecipeDAO;
 import com.firstProject.dao.RestaurantDAO;
 import com.firstProject.vo.LikeVO;
+import com.firstProject.vo.ReplyVO;
 import com.firstProject.vo.RestaurantVO;
 import com.firstProject.vo.Restaurant_reviewVO;
 import com.sist.controller.RequestMapping;
@@ -130,7 +132,7 @@ public class RestaurantModel {
 		vo.setMem_id(id);
 		vo.setCno(Integer.parseInt(no));
 		RestaurantDAO.likeInsert(vo);
-		return "redirect:../restaurant/detail.do?no=" + no;
+		return "redirect:../restaurant/detail.do?no="+no;
 	}
 
 	@RequestMapping("restaurant/like_cancel.do")
@@ -139,5 +141,87 @@ public class RestaurantModel {
 		RestaurantDAO.likeDelete(Integer.parseInt(no));
 		return "redirect:../reserve/mypage.do";
 	}
+	// ���
+	   @RequestMapping("restaurant/reply_insert.do")
+	   public String reply_insert(HttpServletRequest request)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+			   
+		   }catch(Exception ex) {}
+		   String bno=request.getParameter("bno");
+		   String msg=request.getParameter("msg");
+		   HttpSession session=request.getSession();
+		   String mem_id=(String)session.getAttribute("id");
+		   String name=(String)session.getAttribute("name");
+		   
+		   // VO�� ��Ƽ� => DAO
+		   ReplyVO vo=new ReplyVO();
+		   vo.setBno(Integer.parseInt(bno));
+		   vo.setMem_id(mem_id);
+		   vo.setMsg(msg);
+		   vo.setName(name);
+		   // DAO���� 
+		   RecipeDAO.replyInsert(vo);
+		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
+	   }
+	   @RequestMapping("restaurant/restaurant_reply_insert.do")
+	   public String reply_reply_insert(HttpServletRequest request)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String no=request.getParameter("no");
+		   System.out.println("no="+no);
+		   String bno=request.getParameter("bno");
+		   System.out.println("bno="+bno);
+		   String msg=request.getParameter("msg");
+		   ReplyVO vo=new ReplyVO();
+		   //vo.setRoot(Integer.parseInt(no));
+		   vo.setBno(Integer.parseInt(bno));
+		   vo.setMsg(msg);
+		   HttpSession session=request.getSession();
+		   String mem_id=(String)session.getAttribute("id");
+		   String name=(String)session.getAttribute("name");
+		   vo.setMem_id(mem_id);
+		   vo.setName(name);
+		   // DB���� 
+		   RecipeDAO.replyReplyInsert(Integer.parseInt(no), vo);
+		   //System.out.println("---"+mem_id);
+		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
+	   }
+	   
+	   @RequestMapping("restaurant/reply_update.do")
+	   public String reply_update(HttpServletRequest request)
+	   {
+		   // ������ �ޱ�
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String no=request.getParameter("no");
+		   String bno=request.getParameter("bno");
+		   String msg=request.getParameter("msg");
+		   // DB => UPDATE
+		   ReplyVO vo=new ReplyVO();
+		   vo.setNo(Integer.parseInt(no));
+		   vo.setMsg(msg);
+		   
+		   RecipeDAO.replyUpdate(vo);
+		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
+	   }
+	   
+	   @RequestMapping("restaurant/reply_delete.do")
+	   public String reply_delete(HttpServletRequest request)
+	   {
+		   // ������ �ޱ�
+		  
+		   String no=request.getParameter("no");
+		   String bno=request.getParameter("bno");
+		   RecipeDAO.replyDelete(Integer.parseInt(no));
+		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
+	   }
 
 }

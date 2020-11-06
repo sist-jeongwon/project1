@@ -52,7 +52,7 @@
   </div>
   <div class="row" style="padding-top:30px;"></div>
   <!-- Single Widget Area -->
-                        <h6>방문한 식당</h6>
+                        <h6>내가 본 맛집</h6>
                         <div class="row" style="padding-top:30px;"></div>
                           <!-- Single Post Area -->
                           <div class="row">

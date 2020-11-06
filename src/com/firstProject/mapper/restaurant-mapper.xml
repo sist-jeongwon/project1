@@ -34,29 +34,7 @@ REST_PRICE            VARCHAR2(30)
     WHERE rest_no=#{rest_no}
   </select>
 
-  <insert id="rest_rivewInsert" parameterType="com.firstProject.vo.Restaurant_reviewVO">
-    <!-- -->
-    <selectKey keyProperty="no" resultType="int" order="BEFORE">
-      SELECT NVL(MAX(no)+1,1) as no FROM restaurant_review
-    </selectKey>
-    INSERT INTO restaurant_review(rest_review_no,rest_review_bno,id,name,rest_review_content,group_id) VALUES(
-      #{rest_review_no},
-      #{rest_review_bno},
-      #{id},
-      #{name},
-      #{rest_review_content},
-      (SELECT NVL(MAX(group_id)+1,1) FROM restaurant_review)
-    )
-  </insert>
-  <select id="rest_reviewListData" resultType="com.firstProject.vo.Restaurant_reviewVO" parameterType="int">
-    SELECT rest_review_no,rest_review_bno,id,name,rest_review_content,
-    group_tab FROM restaurant_review
-    WHERE rest_review_bno=#{rest_review_bno}
-  </select>  
-  
-  
-  
-  <!-- mypage + reservation -->
+   <!-- mypage + reservation -->
  <select id="restaurantReserveData" resultType="RestaurantVO">
     SELECT rest_no,rest_name,rest_poster,theater_no 
     FROM restaurant_info
@@ -140,7 +118,7 @@ REST_PRICE            VARCHAR2(30)
     )
   </insert>
   <!-- 데이터 읽기(찜 목록) -->
-  <select id="rslikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+  <select id="rclikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
     SELECT * FROM like_restaurant
     WHERE mem_id=#{mem_id}
     ORDER BY rest_no DESC
@@ -155,4 +133,95 @@ REST_PRICE            VARCHAR2(30)
     DELETE FROM like_restaurant
     WHERE rest_no=#{rest_no}
   </delete>
+  <!-- 댓글 -->
+  <insert id="replyInsert" parameterType="ReplyVO">
+	    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+	      SELECT NVL(MAX(no)+1,1) as no FROM rest_reply
+	    </selectKey>
+	    INSERT INTO rest_reply(no,bno,mem_id,name,msg,group_id) VALUES(
+	      #{no},
+	      #{bno},
+	      #{mem_id},
+	      #{name},
+	      #{msg},
+	      (SELECT NVL(MAX(group_id)+1,1) FROM rest_reply)
+	    )
+  </insert>
+	<select id="replyListData" resultType="ReplyVO" parameterType="int">
+		SELECT no, bno, mem_id,name, msg, TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:ss') as dbday,
+		group_tab FROM rest_reply
+		WHERE bno=#{bno}
+		ORDER BY group_id DESC, group_step ASC
+	</select>
+	<select id="replyParentData" parameterType="int" resultType="ReplyVO">
+		SELECT group_id, group_step, group_tab
+		FROM rest_reply
+		WHERE no=#{no}
+	</select>
+	<update id="replyStepIncrement" parameterType="ReplyVO">
+		UPDATE rest_reply SET
+		group_step=group_step+1
+		WHERE group_id=#{group_id} AND group_step>#{group_step}
+	</update>
+	<insert id="replyReplyInsert" parameterType="ReplyVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		      SELECT NVL(MAX(no)+1,1) as no FROM rest_reply
+		    </selectKey>
+		    INSERT INTO rest_reply(no,bno,mem_id,name,msg,group_id, group_step, group_tab, root, depth) VALUES(
+		      #{no},
+		      #{bno},
+		      #{mem_id},
+		      #{name},
+		      #{msg},
+		      #{group_id},
+		      #{group_step},
+		      #{group_tab},
+		      #{root},
+		      
+		    )	
+	</insert>
+	<update id="replyDepthIncrement" parameterType="int">
+		UPDATE rest_reply SET
+		depth=depth+1
+		WHERE no=#{no}
+	</update>
+	<update id="replyUpdate" parameterType="ReplyVO">
+		UPDATE rest_reply SET
+		msg=#{msg}
+		where no=#{no}
+	</update>
+	<!-- 삭제 -->
+	<select id="replyInfoData" resultType="ReplyVO" parameterType="int">
+		SELECT depth, root FROM rest_reply
+		WHERE no=#{no}
+	</select>
+	<!-- depth=0일 때 -->
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM rest_reply
+		WHERE no=#{no}
+	</delete>
+	<!-- depth!=0 -->
+	<update id="replyMsgUpdate" parameterType="int">
+		UPDATE rest_reply SET
+		msg='삭제된 댓글입니다.'
+		WHERE no=#{no}
+	</update>
+	<update id="replyDepthDecrement" parameterType="int">
+		UPDATE rest_reply SET
+		depth=depth-1
+		WHERE no=#{no}
+	</update>
+	<select id="replyCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM rest_reply
+		WHERE bno=#{bno}
+	</select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </mapper>
