@@ -181,15 +181,15 @@ public class ProductModel {
 			String id=(String)session.getAttribute("id");
 			LikeVO vo=new LikeVO();
 			vo.setMem_id(id);
-			vo.setCno(Integer.parseInt(no));
-			ProductDAO.likeInsert(vo);
+			vo.setProduct_no(Integer.parseInt(no));
+			ProductDAO.pdlikeInsert(vo);
 			return "redirect:../Product/detail.do?no="+no;
 		}
 		@RequestMapping("Product/like_cancel.do")
 		public String like_cancel(HttpServletRequest request)
 		{
 			String no=request.getParameter("no");
-			ProductDAO.likeDelete(Integer.parseInt(no));
+			ProductDAO.pdlikeDelete(Integer.parseInt(no));
 			return "redirect:../reserve/mypage.do";
 		}
 		

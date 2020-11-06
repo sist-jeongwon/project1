@@ -194,15 +194,16 @@ public class ReserveModel {
 	  request.setAttribute("main_jsp", "../reserve/mypage.jsp");
 	  
 	  List<Product_keepVO> pkList=ProductDAO.product_keepListData(id);//�옣諛붽뎄�땲
-	  List<LikeVO> lpList=ProductDAO.likeListData(id); //�뙋留ㅼ컻
-	  List<LikeVO> lrsList=RestaurantDAO.likeListData(id);//�떇�떦李�
+	  List<LikeVO> lpList=ProductDAO.pdlikeListData(id); //�뙋留ㅼ컻
+	  //List<LikeVO> lrsList=RestaurantDAO.likeListData(id);//�떇�떦李�
 	  List<LikeVO> lcrList=RecipeDAO.rclikeListData(id);//�젅�떆�뵾李�
 	  
 	  List<ProductVO> p1List=new ArrayList<ProductVO>();//�옣諛붽뎄�땲
 	  List<ProductVO> p2List=new ArrayList<ProductVO>();//�뙋留ㅼ컻
-	  List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//�떇�떦李�
+	 // List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//�떇�떦李�
 	  List<RecipeVO> lcList=new ArrayList<RecipeVO>();//�젅�떆�뵾李�
 	  
+	 /*
 	  for(Product_keepVO vo:pkList)//�옣諛붽뎄�땲--cno�떖由ъ벐怨좎엳�뒗�뜲媛��엳�뼱�꽌洹몃윴�벏
 	  {
 		  ProductVO pkvo=ProductDAO.productDetailData(vo.getPno());
@@ -210,7 +211,7 @@ public class ReserveModel {
 		  pkvo.setKno(vo.getProduct_no());
 		  p1List.add(pkvo);
 	  }
-		/*
+		*/
 		  for(LikeVO vo:lpList)//�뙋留ㅼ컻 
 		  {
 			  ProductVO plvo=ProductDAO.productDetailData(vo.getCno());
@@ -218,7 +219,7 @@ public class ReserveModel {
 			  plvo.setLpno(vo.getProduct_no());
 			  p2List.add(plvo);
 		  }
-		 for(LikeVO vo:lrsList)//�떇�떦李� 
+		/* for(LikeVO vo:lrsList)//�떇�떦李� 
 		 {
 			  RestaurantVO rest_vo=RestaurantDAO.restaurantDetailData(vo.getCno());
 			  String rest_content=rest_vo.getRest_content();
@@ -245,9 +246,9 @@ public class ReserveModel {
 		  }
 		  lcList.add(rec_vo);
 	  }
-	  request.setAttribute("p1List", p1List);
+	 // request.setAttribute("p1List", p1List);
 	  request.setAttribute("p2List", p2List);
-	  request.setAttribute("lrList", lrList);
+	 // request.setAttribute("lrList", lrList);
 	  request.setAttribute("lcList", lcList);
 	  return "../main/main.jsp";
   }
