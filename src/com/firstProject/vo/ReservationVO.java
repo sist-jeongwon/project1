@@ -19,12 +19,18 @@ public class ReservationVO {
     private String people;
     private String price;
     private String isreserve;
-    private Date reserved_date;
+    private Date regdate;
     private RestaurantVO resvo=new RestaurantVO();
     private ProductVO pvo=new ProductVO();
     private RecipeVO recvo=new RecipeVO();
     
     
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	public ProductVO getPvo() {
 		return pvo;
 	}
@@ -84,12 +90,6 @@ public class ReservationVO {
 	}
 	public void setIsreserve(String isreserve) {
 		this.isreserve = isreserve;
-	}
-	public Date getReserved_date() {
-		return reserved_date;
-	}
-	public void setReserved_date(Date reserved_date) {
-		this.reserved_date = reserved_date;
 	}
 	public RestaurantVO getResvo() {
 		return resvo;

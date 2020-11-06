@@ -55,24 +55,24 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
   </delete>
   
   <!-- 찜저장  -->
-  <insert id="likeInsert" parameterType="com.firstProject.vo.LikeVO">
-    INSERT INTO like_product VALUES(
-      (SELECT NVL(MAX(product_no)+1,1) FROM like_product),#{mem_id},#{cno}
+  <insert id="pdlikeInsert" parameterType="com.firstProject.vo.LikeVO">
+    INSERT INTO like_product(no, product_no, mem_id) VALUES(
+      (SELECT NVL(MAX(no)+1,1) FROM like_product),#{product_no},#{mem_id}
     )
   </insert>
   <!-- 데이터 읽기(찜 목록) -->
-  <select id="likeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+  <select id="pdlikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
     SELECT * FROM like_product
     WHERE mem_id=#{mem_id}
-    ORDER BY product_no DESC
+    ORDER BY no DESC
   </select>
   <!--  찜여부 확인 -->
-  <select id="likeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
+  <select id="pdlikeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">
     SELECT COUNT(*) FROM like_product
     WHERE mem_id=#{mem_id} AND cno=#{cno}
   </select>
   <!-- 찜 취소시에 처리  -->
-  <delete id="likeDelete" parameterType="int">
+  <delete id="pdlikeDelete" parameterType="int">
     DELETE FROM like_product
     WHERE product_no=#{product_no}
   </delete>

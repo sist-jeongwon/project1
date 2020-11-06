@@ -82,29 +82,29 @@ public class ProductDAO {
 	}
 
 	// 찜
-	public static void likeInsert(LikeVO vo) {
+	public static void pdlikeInsert(LikeVO vo) {
 		SqlSession session = ssf.openSession(true);
-		session.update("likeInsert", vo);
+		session.update("pdlikeInsert", vo);
 		session.close();
 	}
 
-	public static List<LikeVO> likeListData(String id) {
+	public static List<LikeVO> pdlikeListData(String id) {
 		SqlSession session = ssf.openSession();
-		List<LikeVO> list = session.selectList("likeListData", id);
+		List<LikeVO> list = session.selectList("pdlikeListData", id);
 		session.close();
 		return list;
 	}
 
-	public static int likeCount(LikeVO vo) {
+	public static int pdlikeCount(LikeVO vo) {
 		SqlSession session = ssf.openSession();
-		int count = session.selectOne("likeCount", vo);
+		int count = session.selectOne("pdlikeCount", vo);
 		session.close();
 		return count;
 	}
 
-	public static void likeDelete(int no) {
+	public static void pdlikeDelete(int no) {
 		SqlSession session = ssf.openSession(true);
-		session.delete("likeDelete", no);
+		session.delete("pdlikeDelete", no);
 		session.close();
 	}
 	////////////////////// 댓글 관련 ///////////////////////
