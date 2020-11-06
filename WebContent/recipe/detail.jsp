@@ -100,7 +100,6 @@ $(function(){
                         </div>
                     </div>
                                  
-                    
                     <!-- Comment Area Start -->
                     <div class="comment_area clearfix mb-100">
                         <h4 class="mb-50">댓글</h4>
@@ -178,7 +177,7 @@ $(function(){
                 </div>
 						    
 						    
-                                             <!-- Sidebar Widget -->
+         <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
 		                <div class="ingredients">
