@@ -117,6 +117,10 @@ public class BoardDAO {
 	  </insert>
     */
    
+   
+   ////////////  댓글 //////////////////////////////////////////
+   
+   
    public static void replyInsert(ReplyVO vo)
    {
 	   SqlSession session=ssf.openSession(true);// commit(X)
@@ -131,7 +135,7 @@ public class BoardDAO {
 		    WHERE bno=#{bno}
 		  </select>
     */
-   public static List<ReplyVO> creplyListData(int bno)
+   public static List<ReplyVO> replyListData(int bno)
    {
 	   SqlSession session=ssf.openSession();
 	   List<ReplyVO> list=session.selectList("creplyListData",bno);

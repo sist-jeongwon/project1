@@ -12,8 +12,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
  <link rel="stylesheet" href="style.css">
-<!--  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
- --><script type="text/javascript">
+ <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
 let i=0;
 let u=0;
 $(function(){
@@ -137,9 +137,9 @@ $(function(){
              <c:forEach var="i" begin="1" end="${rvo.group_tab }">
                &nbsp;&nbsp;&nbsp;&nbsp;
              </c:forEach>
-				<img src="../board/re.gif">
+				<img src="../style/img/re.png"  style="width:25px; height:25px;">
            </c:if>
-           <img src="../board/img.png">&nbsp;${rvo.name }(${rvo.dbday })
+           <img src="../style/img/icon.PNG" style="width:30px; height:30px;">&nbsp;${rvo.name }(${rvo.dbday })
           </td>
           <td class="text-right">
             <c:if test="${sessionScope.id==rvo.mem_id }">
@@ -161,7 +161,7 @@ $(function(){
         </tr>
          <tr class="rIn" id="rIn${rvo.no }" value="${rvo.no }" style="display:none">
        <td colspan="2">
-        <form method=post action="../board/reply_update.do">
+        <form method=post action="../board/reply_reply_insert.do">
             <input type=hidden name="no" value="${rvo.no }">
             <input type=hidden name="bno" value="${vo.no }">
 	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>

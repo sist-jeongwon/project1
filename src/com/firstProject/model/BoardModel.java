@@ -118,7 +118,7 @@ public class BoardModel {
 	   // 화면 
 	   request.setAttribute("main_jsp", "../board/detail.jsp");
 
-	   List<ReplyVO> list=BoardDAO.creplyListData(Integer.parseInt(no));
+	   List<ReplyVO> list=BoardDAO.replyListData(Integer.parseInt(no));
 
 	   request.setAttribute("rList", list);
 	  

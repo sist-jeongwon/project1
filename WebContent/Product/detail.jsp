@@ -110,7 +110,7 @@ $(function(){
 						           		<c:forEach var="i" begin="1" end="${rvo.group_tab }">
 						               &nbsp;&nbsp;&nbsp;&nbsp;
 						             </c:forEach>
-						             <img src="#">
+						             <img src="../style/img/re.png" style="width:25px; height:25px;">
 						           </c:if>
 						           <img src="../style/img/icon.PNG" style="width:30px; height:30px;">&nbsp;${rvo.name }(${rvo.dbday })
 						          </td> 
@@ -195,7 +195,7 @@ $(function(){
                         </div>
 
                         <!-- Single Widget Area -->
-                        <h6 class=text-center>다른 고객이 함께 구매한 상품</h6>
+                        <h6> 다른 고객이 함께 구매한 상품</h6><br>
                         <div class="single-widget-area post-widget mb-30">
                           <!-- Single Post Area -->
                             <c:forEach var="vo" items="${cList }" varStatus="s">
@@ -215,19 +215,6 @@ $(function(){
                              </div>
                             </c:if>
                            </c:forEach>
-
-                         
-                           
-
-                        <!-- Single Widget Area -->
-                        <div class="single-widget-area newsletter-widget mb-30">
-                            <h6>Subscribe to newsletter</h6>
-                            <form action="#" method="post">
-                                <input type="search" name="widget-search" id="widgetSearch" placeholder="E-mail">
-                                <button type="submit" class="btn bueno-btn w-100">Subscribe</button>
-                            </form>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
                     </div>
                 </div>
             </div>
