@@ -195,12 +195,12 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  
 	  List<Product_keepVO> pkList=ProductDAO.product_keepListData(id);//장바구니
 	  List<LikeVO> lpList=ProductDAO.pdlikeListData(id); //판매찜
-	  //List<LikeVO> lrsList=RestaurantDAO.likeListData(id);//식당찜
+	  List<LikeVO> lrsList=RestaurantDAO.rslikeListData(id);//식당찜
 	  List<LikeVO> lcrList=RecipeDAO.rclikeListData(id);//레시피찜
 	  
 	  List<ProductVO> p1List=new ArrayList<ProductVO>();//장바구니
 	  List<ProductVO> p2List=new ArrayList<ProductVO>();//판매찜
-	 // List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//식당찜
+	  List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//식당찜
 	  List<RecipeVO> lcList=new ArrayList<RecipeVO>();//레시피찜
 	  
 	 /*
@@ -219,9 +219,9 @@ public String reserve_reserve_ok(HttpServletRequest request)
 			  plvo.setLpno(vo.getProduct_no());
 			  p2List.add(plvo);
 		  }
-		/* for(LikeVO vo:lrsList)//식당찜
+		 for(LikeVO vo:lrsList)//식당찜
 		 {
-			  RestaurantVO rest_vo=RestaurantDAO.restaurantDetailData(vo.getCno());
+			  RestaurantVO rest_vo=RestaurantDAO.restaurantDetailData(vo.getRest_no());
 			  String rest_content=rest_vo.getRest_content();
 			  rest_vo.setLrsno(vo.getRest_no());
 			  if(rest_content.length()>150)
@@ -232,7 +232,7 @@ public String reserve_reserve_ok(HttpServletRequest request)
 			  lrList.add(rest_vo);
 			 
 		  }
-	*/
+	
 	  for(LikeVO vo:lcrList)//레시피찜
 	  {
 		  RecipeVO rec_vo=RecipeDAO.recipeDetailData(vo.getRecipe_no());
@@ -248,7 +248,7 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  }
 	 // request.setAttribute("p1List", p1List);
 	  request.setAttribute("p2List", p2List);
-	 // request.setAttribute("lrList", lrList);
+	  request.setAttribute("lrList", lrList);
 	  request.setAttribute("lcList", lcList);
 	  return "../main/main.jsp";
   }

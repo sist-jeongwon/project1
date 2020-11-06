@@ -323,11 +323,9 @@ $(function(){
                            <a href="../restaurant/restaurant_main.do"> <button type="submit" class="btn bueno-btn w-100 mt-1">맛집 둘러보기</button></a>
 							<a href="../reserve/reserve.do">
                             <button type="submit" class="btn bueno-btn w-100 mt-1">예약하기</button></a>
-                         <c:if test="${count==0 }">
-           				     <a href="../restaurant/jjim.do?no=${vo.rest_no }" class="btn btn-sm btn-primary">찜하기</a>
-           					</c:if>
-							  <button type="submit" class="btn bueno-btn w-100 mt-1">찜하기</button>
-                            </div>
+                      
+           				     <a href="../restaurant/like.do?rest_no=${vo.rest_no }" class="btn bueno-btn w-100 mt-1">찜하기</a>
+           		              </div>
                         </div>
 
                         <!-- Single Widget Area -->

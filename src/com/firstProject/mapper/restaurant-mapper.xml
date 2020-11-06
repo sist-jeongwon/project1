@@ -113,12 +113,12 @@ REST_PRICE            VARCHAR2(30)
   
   <!-- 찜 저장  -->
   <insert id="rslikeInsert" parameterType="com.firstProject.vo.LikeVO">
-    INSERT INTO like_restaurant VALUES(
-      (SELECT NVL(MAX(rest_no)+1,1) FROM like_restaurant),#{id},#{cno}
+     INSERT INTO like_restaurant(no, rest_no, mem_id) VALUES(
+      (SELECT NVL(MAX(no)+1,1) FROM like_restaurant),#{rest_no}, #{mem_id}
     )
   </insert>
   <!-- 데이터 읽기(찜 목록) -->
-  <select id="rclikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
+  <select id="rslikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
     SELECT * FROM like_restaurant
     WHERE mem_id=#{mem_id}
     ORDER BY rest_no DESC

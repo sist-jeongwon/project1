@@ -41,7 +41,7 @@ public class RecipeDAO {
 		return vo;
 	}
 
-	// Âò
+	// 찜
 	public static void rclikeInsert(LikeVO vo)
 	{
 		SqlSession session=ssf.openSession(true);	

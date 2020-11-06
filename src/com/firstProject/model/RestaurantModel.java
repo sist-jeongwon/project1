@@ -129,20 +129,20 @@ public class RestaurantModel {
 	// 찜
 	@RequestMapping("restaurant/like.do")
 	public String restaurant_like(HttpServletRequest request) {
-		String no = request.getParameter("no");
+		String no = request.getParameter("rest_no");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		LikeVO vo = new LikeVO();
 		vo.setMem_id(id);
-		vo.setCno(Integer.parseInt(no));
-		RestaurantDAO.likeInsert(vo);
-		return "redirect:../restaurant/detail.do?no="+no;
+		vo.setRest_no(Integer.parseInt(no));
+		RestaurantDAO.rslikeInsert(vo);
+		return "redirect:../restaurant/restaurant_detail.do?rest_no="+no;
 	}
 
 	@RequestMapping("restaurant/like_cancel.do")
 	public String like_cancel(HttpServletRequest request) {
 		String no = request.getParameter("no");
-		RestaurantDAO.likeDelete(Integer.parseInt(no));
+		RestaurantDAO.rslikeDelete(Integer.parseInt(no));
 		return "redirect:../reserve/mypage.do";
 	}
 	// ���

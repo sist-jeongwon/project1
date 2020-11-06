@@ -170,22 +170,22 @@ public static void reserveOk(int no)
 	   session.close();
 }
 //찜
-public static void likeInsert(LikeVO vo)
+public static void rslikeInsert(LikeVO vo)
 {
 	   SqlSession session=ssf.openSession(true);
-	   session.update("likeInsert", vo);
+	   session.update("rslikeInsert", vo);
 	   session.close();
 }
 
-public static List<LikeVO> likeListData(String id)
+public static List<LikeVO> rslikeListData(String id)
 {
 	   SqlSession session=ssf.openSession();
-	   List<LikeVO> list=session.selectList("likeListData",id);
+	   List<LikeVO> list=session.selectList("rslikeListData",id);
 	   session.close();
 	   return list;
 }
 
-public static int likeCount(LikeVO vo)
+public static int rslikeCount(LikeVO vo)
 {
 	   SqlSession session=ssf.openSession();
 	   int count=session.selectOne("likeCount",vo);
@@ -193,10 +193,10 @@ public static int likeCount(LikeVO vo)
 	   return count;
 }
 
-public static void likeDelete(int no)
+public static void rslikeDelete(int no)
 {
 	   SqlSession session=ssf.openSession(true);
-	   session.delete("likeDelete", no);
+	   session.delete("rslikeDelete", no);
 	   session.close();
 }
 //댓글
