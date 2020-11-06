@@ -41,7 +41,7 @@ public class RecipeDAO {
 		return vo;
 	}
 
-	// Âò
+	// Ã‚Ã²
 	public static void rclikeInsert(LikeVO vo)
 	{
 		SqlSession session=ssf.openSession(true);	
@@ -69,7 +69,7 @@ public class RecipeDAO {
 		session.close();
 	}
 
-	// ´ñ±Û
+	// Â´Ã±Â±Ã›
 	public static void replyInsert(ReplyVO vo) {
 		SqlSession session = ssf.openSession(true);// commit(X)
 		// commit() ==> DML

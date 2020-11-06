@@ -199,39 +199,39 @@ public static void likeDelete(int no)
 	   session.delete("likeDelete", no);
 	   session.close();
 }
-//���
+//댓글
 	public static void replyInsert(ReplyVO vo) {
 		SqlSession session = ssf.openSession(true);// commit(X)
 		// commit() ==> DML
-		session.insert("replyInsert", vo);
+		session.insert("rereplyInsert", vo);
 		session.close();
 	}
 
 	public static List<ReplyVO> replyListData(int bno) {
 		SqlSession session = ssf.openSession();
-		List<ReplyVO> list = session.selectList("replyListData", bno);
+		List<ReplyVO> list = session.selectList("rereplyListData", bno);
 		session.close();
 		return list;
 	}
 
 	public static void replyReplyInsert(int root, ReplyVO vo) {
 		SqlSession session = ssf.openSession();
-		ReplyVO pvo = session.selectOne("replyParentData", root);
-		session.update("replyStepIncrement", pvo);
+		ReplyVO pvo = session.selectOne("rereplyParentData", root);
+		session.update("rereplyStepIncrement", pvo);
 		vo.setGroup_id(pvo.getGroup_id());
 		vo.setGroup_step(pvo.getGroup_step() + 1);
 		vo.setGroup_tab(pvo.getGroup_tab() + 1);
 		vo.setRoot(root);
 
-		session.insert("replyReplyInsert", vo);
-		session.update("replyDepthIncrement", root);
+		session.insert("rereplyReplyInsert", vo);
+		session.update("rereplyDepthIncrement", root);
 		session.commit();
 		session.close();
 	}
 
 	public static void replyUpdate(ReplyVO vo) {
 		SqlSession session = ssf.openSession(true);
-		session.update("replyUpdate", vo);
+		session.update("rereplyUpdate", vo);
 		session.close();
 
 	}
@@ -239,13 +239,13 @@ public static void likeDelete(int no)
 	public static void replyDelete(int no) {
 		SqlSession session = ssf.openSession();
 		// depth,root
-		ReplyVO vo = session.selectOne("replyInfoData", no);
+		ReplyVO vo = session.selectOne("rereplyInfoData", no);
 		if (vo.getDepth() == 0) {
-			session.delete("replyDelete", no);
+			session.delete("rereplyDelete", no);
 		} else {
-			session.update("replyMsgUpdate", no);
+			session.update("rereplyMsgUpdate", no);
 		}
-		session.update("replyDepthDecrement", vo.getRoot());
+		session.update("rereplyDepthDecrement", vo.getRoot());
 
 		session.commit();
 		session.close();
@@ -253,7 +253,7 @@ public static void likeDelete(int no)
 
 	public static int replyCount(int bno) {
 		SqlSession session = ssf.openSession();
-		int count = session.selectOne("replyCount", bno);
+		int count = session.selectOne("rereplyCount", bno);
 		session.close();
 		return count;
 	}

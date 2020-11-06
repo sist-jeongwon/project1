@@ -134,40 +134,40 @@ REST_PRICE            VARCHAR2(30)
     WHERE rest_no=#{rest_no}
   </delete>
   <!-- 댓글 -->
-  <insert id="replyInsert" parameterType="ReplyVO">
+  <insert id="rereplyInsert" parameterType="ReplyVO">
 	    <selectKey keyProperty="no" resultType="int" order="BEFORE">
-	      SELECT NVL(MAX(no)+1,1) as no FROM rest_reply
+	      SELECT NVL(MAX(no)+1,1) as no FROM restaurant_reply
 	    </selectKey>
-	    INSERT INTO rest_reply(no,bno,mem_id,name,msg,group_id) VALUES(
+	    INSERT INTO restaurant_reply(no,bno,mem_id,name,msg,group_id) VALUES(
 	      #{no},
 	      #{bno},
 	      #{mem_id},
 	      #{name},
 	      #{msg},
-	      (SELECT NVL(MAX(group_id)+1,1) FROM rest_reply)
+	      (SELECT NVL(MAX(group_id)+1,1) FROM restaurant_reply)
 	    )
   </insert>
-	<select id="replyListData" resultType="ReplyVO" parameterType="int">
+	<select id="rereplyListData" resultType="ReplyVO" parameterType="int">
 		SELECT no, bno, mem_id,name, msg, TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:ss') as dbday,
-		group_tab FROM rest_reply
+		group_tab FROM restaurant_reply
 		WHERE bno=#{bno}
 		ORDER BY group_id DESC, group_step ASC
 	</select>
-	<select id="replyParentData" parameterType="int" resultType="ReplyVO">
+	<select id="rereplyParentData" parameterType="int" resultType="ReplyVO">
 		SELECT group_id, group_step, group_tab
-		FROM rest_reply
+		FROM restaurant_reply
 		WHERE no=#{no}
 	</select>
-	<update id="replyStepIncrement" parameterType="ReplyVO">
-		UPDATE rest_reply SET
+	<update id="rereplyStepIncrement" parameterType="ReplyVO">
+		UPDATE restaurant_reply SET
 		group_step=group_step+1
 		WHERE group_id=#{group_id} AND group_step>#{group_step}
 	</update>
-	<insert id="replyReplyInsert" parameterType="ReplyVO">
+	<insert id="rereplyReplyInsert" parameterType="ReplyVO">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
-		      SELECT NVL(MAX(no)+1,1) as no FROM rest_reply
+		      SELECT NVL(MAX(no)+1,1) as no FROM restaurant_reply
 		    </selectKey>
-		    INSERT INTO rest_reply(no,bno,mem_id,name,msg,group_id, group_step, group_tab, root, depth) VALUES(
+		    INSERT INTO restaurant_reply(no,bno,mem_id,name,msg,group_id, group_step, group_tab, root, depth) VALUES(
 		      #{no},
 		      #{bno},
 		      #{mem_id},
@@ -177,42 +177,42 @@ REST_PRICE            VARCHAR2(30)
 		      #{group_step},
 		      #{group_tab},
 		      #{root},
-		      
+		      0
 		    )	
 	</insert>
-	<update id="replyDepthIncrement" parameterType="int">
-		UPDATE rest_reply SET
+	<update id="rereplyDepthIncrement" parameterType="int">
+		UPDATE restaurant_reply SET
 		depth=depth+1
 		WHERE no=#{no}
 	</update>
-	<update id="replyUpdate" parameterType="ReplyVO">
-		UPDATE rest_reply SET
+	<update id="rereplyUpdate" parameterType="ReplyVO">
+		UPDATE restaurant_reply SET
 		msg=#{msg}
 		where no=#{no}
 	</update>
 	<!-- 삭제 -->
-	<select id="replyInfoData" resultType="ReplyVO" parameterType="int">
-		SELECT depth, root FROM rest_reply
+	<select id="rereplyInfoData" resultType="ReplyVO" parameterType="int">
+		SELECT depth, root FROM restaurant_reply
 		WHERE no=#{no}
 	</select>
 	<!-- depth=0일 때 -->
-	<delete id="replyDelete" parameterType="int">
-		DELETE FROM rest_reply
+	<delete id="rereplyDelete" parameterType="int">
+		DELETE FROM restaurant_reply
 		WHERE no=#{no}
 	</delete>
 	<!-- depth!=0 -->
-	<update id="replyMsgUpdate" parameterType="int">
-		UPDATE rest_reply SET
+	<update id="rereplyMsgUpdate" parameterType="int">
+		UPDATE restaurant_reply SET
 		msg='삭제된 댓글입니다.'
 		WHERE no=#{no}
 	</update>
-	<update id="replyDepthDecrement" parameterType="int">
-		UPDATE rest_reply SET
+	<update id="rereplyDepthDecrement" parameterType="int">
+		UPDATE restaurant_reply SET
 		depth=depth-1
 		WHERE no=#{no}
 	</update>
-	<select id="replyCount" resultType="int" parameterType="int">
-		SELECT COUNT(*) FROM rest_reply
+	<select id="rereplyCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM restaurant_reply
 		WHERE bno=#{bno}
 	</select>
   

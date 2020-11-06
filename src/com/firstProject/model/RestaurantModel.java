@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.firstProject.dao.RecipeDAO;
+import com.firstProject.dao.ProductDAO;
 import com.firstProject.dao.RestaurantDAO;
 import com.firstProject.vo.LikeVO;
 import com.firstProject.vo.ReplyVO;
@@ -91,12 +91,12 @@ public class RestaurantModel {
 
 	@RequestMapping("restaurant/restaurant_detail.do")
 	public String restaurnat_detail(HttpServletRequest request) {
-		String no = request.getParameter("rest_no");
-
+		String no = request.getParameter("rest_no"); //사용자에게 번호를 받아옴
+		// DAO 를 이용해서 번호에 해당하는 데이터 한줄을 읽어옴 
+		if(no==null) no="1";
 		RestaurantVO vo = RestaurantDAO.restaurantDetailData(Integer.parseInt(no));
-
 		request.setAttribute("vo", vo);
-		request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+		
 		
 		
 
@@ -118,6 +118,10 @@ public class RestaurantModel {
 			}
 		}
 		request.setAttribute("cList", cList);
+		
+		request.setAttribute("main_jsp", "../restaurant/restaurant_detail.jsp");
+		List<ReplyVO> list=RestaurantDAO.replyListData(Integer.parseInt(no));
+			request.setAttribute("reList", list);
 		return "../main/main.jsp";
 	}
 
@@ -163,10 +167,10 @@ public class RestaurantModel {
 		   vo.setMsg(msg);
 		   vo.setName(name);
 		   // DAO���� 
-		   RecipeDAO.replyInsert(vo);
+		   RestaurantDAO.replyInsert(vo);
 		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
 	   }
-	   @RequestMapping("restaurant/restaurant_reply_insert.do")
+	   @RequestMapping("restaurant/reply_reply_insert.do")
 	   public String reply_reply_insert(HttpServletRequest request)
 	   {
 		   try
@@ -187,10 +191,10 @@ public class RestaurantModel {
 		   String name=(String)session.getAttribute("name");
 		   vo.setMem_id(mem_id);
 		   vo.setName(name);
-		   // DB���� 
-		   RecipeDAO.replyReplyInsert(Integer.parseInt(no), vo);
+		   // DB연동
+		   RestaurantDAO.replyReplyInsert(Integer.parseInt(no), vo);
 		   //System.out.println("---"+mem_id);
-		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
+		   return "redirect:../restaurant/restaurant_detail.do?rest_no="+bno;
 	   }
 	   
 	   @RequestMapping("restaurant/reply_update.do")
@@ -209,7 +213,7 @@ public class RestaurantModel {
 		   vo.setNo(Integer.parseInt(no));
 		   vo.setMsg(msg);
 		   
-		   RecipeDAO.replyUpdate(vo);
+		   RestaurantDAO.replyUpdate(vo);
 		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
 	   }
 	   
@@ -220,7 +224,7 @@ public class RestaurantModel {
 		  
 		   String no=request.getParameter("no");
 		   String bno=request.getParameter("bno");
-		   RecipeDAO.replyDelete(Integer.parseInt(no));
+		   RestaurantDAO.replyDelete(Integer.parseInt(no));
 		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
 	   }
 

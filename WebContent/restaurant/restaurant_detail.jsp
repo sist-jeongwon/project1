@@ -99,9 +99,9 @@ $(function(){
 		}
 	});
 });
-<!--▲ 댓글 부분-->
 
 
+<!--
 
 $(function(){
 	$('#mapBtn').click(function(){
@@ -116,6 +116,7 @@ $(function(){
 		})
 	})
 })
+-->
 </script>
 
 </head>
@@ -225,64 +226,11 @@ $(function(){
                   <div style="border-bottom: 1px solid #e4e4e4" width="65%"></div>
                   
                   
-                  
-                  
-                   <!-- Comment Area Start -->
-                   <h4 class="post-title"></h4>
-                    <div class="comment_area clearfix mb-100">
-                        <h4 class="mb-50">한줄 평가</h4>
-                        
-                        <ol>
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content d-flex">
-                                    <!-- Comment Author -->
-                                    <div class="comment-author">
-                                        <img src="png/rest_smile.png" width="30" height="30" alt="author">
-                                         
-                                    </div>
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta">
-                                        <div class="d-flex">
-                                            <a href="#" class="post-author">아이디</a>
-                                            <a href="#" class="post-date">날짜</a>
-                                            <a href="#" class="reply">평가</a>
-                                        </div>
-                                        <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tinci dunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis sus cipit sem a consequat.</p>
-                                    </div>
-                                </div>
-
-                                <ol class="children">
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content d-flex">
-                                            <!-- Comment Author -->
-                                            <div class="comment-author">
-                                                <img src="png/rest_smile.png" width="30" height="30" alt="author">
-                                            </div>
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta">
-                                                <div class="d-flex">
-                                                    <a href="#" class="post-author">아이디</a>
-                                                    <a href="#" class="post-date">날짜</a>
-                                                    <a href="#" class="reply">평가</a>
-                                                </div>
-                                                <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, Nullam vel orci dui. Su spendisse sit amet laoreet neque.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                        </ol>
-                    </div>
- 
- 						<!-- Comment Area Start -->
+ 						<!-- 댓글 -->
                     <div class="comment_area clearfix mb-100">
                         <h4 class="mb-50">댓글</h4>
                         
-                        <c:forEach var="rvo" items="${rList }">
+                        <c:forEach var="rvo" items="${reList }">
 						      <table class="table">
 						        <tr>
 						          <td class="text-left">
@@ -297,7 +245,7 @@ $(function(){
 						          <td class="text-right">
 						            <c:if test="${sessionScope.id == rvo.mem_id }">
 						             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
-						             <a href="../recipe/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn btn-xs btn-success">삭제</a>
+						             <a href="../restaurant/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn btn-xs btn-success">삭제</a>
 						            </c:if>
 						             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
 						          </td>
@@ -314,9 +262,9 @@ $(function(){
 						        </tr>
 						       <tr class="rIn" id="rIn${rvo.no }" value="${rvo.no }" style="display:none">
 						       <td colspan="2">
-						        <form method=post action="../recipe/reply_reply_insert.do">
+						        <form method=post action="../restaurant/reply_reply_insert.do">
 						            <input type=hidden name="no" value="${rvo.no }">
-						            <input type=hidden name="bno" value="${vo.recipe_no }">
+						            <input type=hidden name="bno" value="${vo.rest_no }">
 							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
 							          class="btn btn-sm">
@@ -325,9 +273,9 @@ $(function(){
 						      </tr>
 						      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
 						       <td colspan="2">
-						        <form method=post action="../recipe/reply_update.do">
+						        <form method=post action="../restaurant/reply_update.do">
 						            <input type=hidden name="no" value="${rvo.no }">
-						            <input type=hidden name="bno" value="${vo.recipe_no }">	<!-- bno는 게시물 번호 -->
+						            <input type=hidden name="bno" value="${vo.rest_no }">	<!-- bno는 게시물 번호 -->
 							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
 							        <input type=submit value="댓글수정" style="height:70px;float: left"
 							          class="btn btn-sm btn-primary">
@@ -341,7 +289,7 @@ $(function(){
 						    <table class="table">
 						      <tr>
 						       <td>
-						        <form method=post action="../recipe/reply_insert.do">
+						        <form method=post action="../restaurant/reply_insert.do">
 						            <input type=hidden name="bno" value="${vo.rest_no }">
 							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
