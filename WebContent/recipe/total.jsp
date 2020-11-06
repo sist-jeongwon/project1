@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+</style>
 </head>
 <body>
   <div class="post-catagory section-padding-100">
@@ -19,7 +21,7 @@
 	        <img src="${vo.poster }" alt="" style="width:350px; height:350px;">   
 	          <div class="catagory-content-bg">
                  <div class="catagory-content">
-                   <a href="#" class="post-tag">${vo.mem_id }</a>
+                   <span class="post-tag">${vo.mem_id }</span>
                    <a href="../recipe/detail_before.do?recipe_no=${vo.recipe_no }" class="post-title">
                    <c:choose>
 				        <c:when test="${fn:length(vo.title) gt 20}">

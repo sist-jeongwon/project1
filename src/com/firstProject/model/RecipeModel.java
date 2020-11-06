@@ -110,19 +110,20 @@ public class RecipeModel {
 		public String recipe_like(HttpServletRequest request)
 		{
 			String no=request.getParameter("no");
+			//System.out.println("rno : " + no);
 			HttpSession session=request.getSession();
 			String id=(String)session.getAttribute("id");
 			LikeVO vo=new LikeVO();
 			vo.setMem_id(id);
-			vo.setCno(Integer.parseInt(no));
-			RecipeDAO.likeInsert(vo);
+			vo.setRecipe_no(Integer.parseInt(no));
+			RecipeDAO.rclikeInsert(vo);
 			return "redirect:../recipe/detail.do?no="+no;
 		}
 		@RequestMapping("recipe/like_cancel.do")
 		public String like_cancel(HttpServletRequest request)
 		{
 			String no=request.getParameter("no");
-			RecipeDAO.likeDelete(Integer.parseInt(no));
+			RecipeDAO.rclikeDelete(Integer.parseInt(no));
 			return "redirect:../reserve/mypage.do";
 		}
 		// ´ñ±Û

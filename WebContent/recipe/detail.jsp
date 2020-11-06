@@ -71,6 +71,10 @@ $(function(){
 	background-color:#92C364;
 	border:none;
 }
+.btn-xs{
+	min-width:0px;
+	padding:0 15px;
+}
 </style>
 </head>
 <body>
@@ -115,10 +119,10 @@ $(function(){
 						          </td> 
 						          <td class="text-right">
 						            <c:if test="${sessionScope.id == rvo.mem_id }">
-						             <span class="btn btn-xs btn-primary reply_update" value="${rvo.no }">수정</span>
-						             <a href="../recipe/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn btn-xs btn-success">삭제</a>
+						             <span class="btn bueno-btn btn-xs reply_update" value="${rvo.no }">수정</span>
+						             <a href="../recipe/reply_delete.do?no=${rvo.no }&bno=${rvo.bno}" class="btn bueno-btn btn-xs">삭제</a>
 						            </c:if>
-						             <span class="btn btn-xs btn-danger reply_reply" value="${rvo.no }">댓글</span>
+						             <span class="btn bueno-btn reply_reply btn-xs" value="${rvo.no }">댓글</span>
 						          </td>
 						        </tr>
 						        <tr>
@@ -136,9 +140,9 @@ $(function(){
 						        <form method=post action="../recipe/reply_reply_insert.do">
 						            <input type=hidden name="no" value="${rvo.no }">
 						            <input type=hidden name="bno" value="${vo.recipe_no }">
-							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							         <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
-							          class="btn btn-sm">
+							          class="btn bueno-btn reply_reply btn-xs">
 						        </form>
 						       </td>
 						      </tr>
@@ -147,9 +151,9 @@ $(function(){
 						        <form method=post action="../recipe/reply_update.do">
 						            <input type=hidden name="no" value="${rvo.no }">
 						            <input type=hidden name="bno" value="${vo.recipe_no }">	<!-- bno는 게시물 번호 -->
-							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
+							         <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
 							        <input type=submit value="댓글수정" style="height:70px;float: left"
-							          class="btn btn-sm btn-primary">
+							          class="btn bueno-btn reply_reply btn-xs">
 						        </form>
 						       </td>
 						      </tr>
@@ -162,9 +166,9 @@ $(function(){
 						       <td>
 						        <form method=post action="../recipe/reply_insert.do">
 						            <input type=hidden name="bno" value="${vo.recipe_no }">
-							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
-							          class="btn btn-sm btn-primary">
+							          class="btn bueno-btn reply_reply btn-xs">
 						        </form>
 						       </td>
 						      </tr>
@@ -178,7 +182,7 @@ $(function(){
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
 		                <div class="ingredients">
-		                        <h5>Ingredients</h5>
+		                        <h5>재료</h5>
 		 						<c:forEach items="${fn:split(vo.ingredient, ',') }" var="item" varStatus="stat">
 		                             <div class="custom-control custom-checkbox">
 				                            <input type="checkbox" class="custom-control-input" id="customCheck${stat.count}">
@@ -189,8 +193,9 @@ $(function(){
  <!-- Single Widget Area -->
                         <div class="single-widget-area author-widget mb-30">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
-                               
+                               <input type=hidden name="rno" value="${vo.recipe_no }">
                                 <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a>
+						            
                             </div>
                         </div>
                                

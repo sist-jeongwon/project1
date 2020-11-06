@@ -5,6 +5,7 @@ public class LikeVO {
 	private int recipe_no;
 	private int rest_no;
 	private int cno;
+	private int no;
 	private String mem_id;
 	public int getProduct_no() {
 		return product_no;
@@ -35,6 +36,12 @@ public class LikeVO {
 	}
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}
 	
 	

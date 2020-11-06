@@ -23,15 +23,15 @@
   
   <!-- 찜 저장  -->
   <insert id="rclikeInsert" parameterType="com.firstProject.vo.LikeVO">
-    INSERT INTO like_recipe VALUES(
-      (SELECT NVL(MAX(recipe_no)+1,1) FROM like_recipe),#{mem_id},#{cno}
+    INSERT INTO like_recipe(no, recipe_no, mem_id) VALUES(
+      (SELECT NVL(MAX(no)+1,1) FROM like_recipe),#{recipe_no}, #{mem_id}
     )
   </insert>
   <!-- 데이터 읽기(찜 목록) -->
   <select id="rclikeListData" parameterType="String" resultType="com.firstProject.vo.LikeVO">
     SELECT * FROM like_recipe
     WHERE mem_id=#{mem_id}
-    ORDER BY recipe_no DESC
+    ORDER BY no DESC
   </select>
   <!-- 찜여부 확인 -->
   <select id="rclikeCount" parameterType="com.firstProject.vo.LikeVO" resultType="int">

@@ -41,29 +41,31 @@ public class RecipeDAO {
 		return vo;
 	}
 
-	public static void likeInsert(LikeVO vo) {
-		SqlSession session = ssf.openSession(true);
-		session.update("likeInsert", vo);
-		session.close();
+	// Âò
+	public static void rclikeInsert(LikeVO vo)
+	{
+		SqlSession session=ssf.openSession(true);	
+		 session.update("rclikeInsert", vo);
+		 session.close();
 	}
-
-	public static List<LikeVO> likeListData(String id) {
+	
+	public static List<LikeVO> rclikeListData(String id) {
 		SqlSession session = ssf.openSession();
-		List<LikeVO> list = session.selectList("likeListData", id);
+		List<LikeVO> list = session.selectList("rclikeListData", id);
 		session.close();
 		return list;
 	}
 
-	public static int likeCount(LikeVO vo) {
+	public static int rclikeCount(LikeVO vo) {
 		SqlSession session = ssf.openSession();
-		int count = session.selectOne("likeCount", vo);
+		int count = session.selectOne("rclikeCount", vo);
 		session.close();
 		return count;
 	}
 
-	public static void likeDelete(int no) {
+	public static void rclikeDelete(int no) {
 		SqlSession session = ssf.openSession(true);
-		session.delete("likeDelete", no);
+		session.delete("rclikeDelete", no);
 		session.close();
 	}
 
