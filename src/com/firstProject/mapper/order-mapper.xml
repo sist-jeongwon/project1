@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firstProject.mapper.order-mapper">
+
+	
+	<!-- 주문 목록 데이터 읽기 -->
+	<select id="orderProductsList" resultType="orderProductsVO"
+		parameterType="String">
+		SELECT * FROM orderProductList WHERE mem_id=#{mem_id}
+	</select>
+</mapper>

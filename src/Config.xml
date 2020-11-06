@@ -107,7 +107,7 @@
    <mapper resource="com/firstProject/mapper/recipe-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/board-mapper.xml"/>
    <mapper resource="com/firstProject/mapper/main-mapper.xml"/>
-   <!-- <mapper resource="com/firstProject/mapper/order-mapper.xml"/> -->
+   <mapper resource="com/firstProject/mapper/order-mapper.xml"/>
   </mappers>
 </configuration>
 

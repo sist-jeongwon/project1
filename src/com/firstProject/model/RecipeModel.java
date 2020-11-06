@@ -52,10 +52,10 @@ public class RecipeModel {
 		   
 			HttpSession session=request.getSession();
 			String id=(String)session.getAttribute("id");
-		   // ÄíÅ° ÀÐ±â
+		   // ï¿½ï¿½Å° ï¿½Ð±ï¿½
 			Cookie[] cookies=request.getCookies();
 			List<RecipeVO> cList=new ArrayList<RecipeVO>();
-			if(cookies!=null)
+			if(cookies!=null && id != null)
 			{
 				for(int i=0;i<cookies.length;i++)
 				{
@@ -84,9 +84,9 @@ public class RecipeModel {
 				String id=(String)session.getAttribute("id");
 				Cookie cookie=new Cookie(id+no, no);
 
-				   // ÄíÅ° ±â°£
+				   // ï¿½ï¿½Å° ï¿½â°£
 				   cookie.setMaxAge(60*60*24);
-				   // Àü¼Û
+				   // ï¿½ï¿½ï¿½ï¿½
 				   response.addCookie(cookie);
 				   return "redirect:../recipe/detail.do?no="+no;
 		   }
@@ -126,7 +126,7 @@ public class RecipeModel {
 			RecipeDAO.rclikeDelete(Integer.parseInt(no));
 			return "redirect:../reserve/mypage.do";
 		}
-		// ´ñ±Û
+		// ï¿½ï¿½ï¿½
 		   @RequestMapping("recipe/reply_insert.do")
 		   public String reply_insert(HttpServletRequest request)
 		   {
@@ -141,13 +141,13 @@ public class RecipeModel {
 			   String mem_id=(String)session.getAttribute("id");
 			   String name=(String)session.getAttribute("name");
 			   
-			   // VO¿¡ ´ã¾Æ¼­ => DAO
+			   // VOï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ => DAO
 			   ReplyVO vo=new ReplyVO();
 			   vo.setBno(Integer.parseInt(bno));
 			   vo.setMem_id(mem_id);
 			   vo.setMsg(msg);
 			   vo.setName(name);
-			   // DAO¿¬°á 
+			   // DAOï¿½ï¿½ï¿½ï¿½ 
 			   RecipeDAO.replyInsert(vo);
 			   return "redirect:../recipe/detail.do?no="+bno;
 		   }
@@ -172,7 +172,7 @@ public class RecipeModel {
 			   String name=(String)session.getAttribute("name");
 			   vo.setMem_id(mem_id);
 			   vo.setName(name);
-			   // DB¿¬µ¿ 
+			   // DBï¿½ï¿½ï¿½ï¿½ 
 			   RecipeDAO.replyReplyInsert(Integer.parseInt(no), vo);
 			   //System.out.println("---"+mem_id);
 			   return "redirect:../recipe/detail.do?no="+bno;
@@ -181,7 +181,7 @@ public class RecipeModel {
 		   @RequestMapping("recipe/reply_update.do")
 		   public String reply_update(HttpServletRequest request)
 		   {
-			   // µ¥ÀÌÅÍ ¹Þ±â
+			   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ±ï¿½
 			   try
 			   {
 				   request.setCharacterEncoding("UTF-8");
@@ -201,7 +201,7 @@ public class RecipeModel {
 		   @RequestMapping("recipe/reply_delete.do")
 		   public String reply_delete(HttpServletRequest request)
 		   {
-			   // µ¥ÀÌÅÍ ¹Þ±â
+			   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ±ï¿½
 			  
 			   String no=request.getParameter("no");
 			   String bno=request.getParameter("bno");

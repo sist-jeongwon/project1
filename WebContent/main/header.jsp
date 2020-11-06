@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>veginner</title>
 <style>
-#none{
-padding-right:30px;
-margin-left:500px;
+#none {
+	padding-right: 30px;
+	margin-left: 500px;
 }
-#in{
-padding-right:30px;
-margin-left:200px;
+
+#in {
+	padding-right: 30px;
+	margin-left: 200px;
 }
 </style>
 </head>
@@ -49,7 +50,6 @@ margin-left:200px;
 			<a href="../main/main.do"><img
 				src="../style/img/core-img/logo.png" width="456px" height="250px"></a>
 		</div>
-
 		<!-- Navbar Area -->
 		<div class="bueno-main-menu" id="sticker">
 			<div class="classy-nav-container breakpoint-off">
@@ -136,13 +136,12 @@ margin-left:200px;
 									<c:if test="${sessionScope.id!=null }">
 										<div class="login-area" id="in">
 											<a>${sessionScope.name }(${sessionScope.admin==1?'관리자':'일반유저' })님
-											환영합니다.</a>&nbsp;&nbsp;<a href="../member/logout.do">Logout</a>
+												환영합니다.</a>&nbsp;&nbsp;<a href="../member/logout.do">Logout</a>
 										</div>
 									</c:if>
-								</div> 
+								</div>
 							</div>
 							<!-- Nav End -->
-
 						</div>
 					</nav>
 				</div>
