@@ -196,39 +196,22 @@ $(function(){
                		<a href="${vo.rest_sns }" class="post-author"><span style="color:black;">홈페이지 바로가기</a>
                             </c:if>
                		</td>
+               		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;"><c:if test="${vo.rest_sns != 'X' }">
+               		</td>
+               		<td  width="20%" style="margin:100%;" rowspan="2px">
+               		<a href="${vo.rest_sns }" class="post-author"><span style="color:black;"></a>
+                            </c:if>
+               		</td>
                	</tr>
                </table>
              </div>
-               <%-- 
-<!--                         <ul class="info-data"> -->
-                        	
-                        	 <img src="png/rest_location.png" width="60" height="60" > <span style="color:black;" text-align="center;">&nbsp;&nbsp;&nbsp; ${vo.rest_addr1 }<p>
-                        													 &nbsp;&nbsp;&nbsp;	${vo.rest_addr2 }</p>				</span>
-                            <img src="png/rest_tel.png" width="30" height="30" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_tel }</div>
-                            <img src="png/rest_price.png" width="30" height="30" > <div style="color:black;">&nbsp;&nbsp;&nbsp; ${vo.rest_price }</div>
-                            <img src="png/rest_park.png" width="30" height="30" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_parking }</div>
-                            <img src="png/rest_time.png" width="45" height="45" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_time }</div>
-                            <img src="png/rest_holiday.png" width="45" height="45" > <div style="color:black;">&nbsp;&nbsp;&nbsp;${vo.rest_holiday }</div>
-                            <c:if test="${vo.rest_sns != 'X' }">
-                           <img src="png/rest_sns.png" width="60" height="60" ><a href="${vo.rest_sns }" class="post-author"><span style="color:black;">웹사이트&nbsp;&nbsp;&nbsp;</div></a>
-                            </c:if>
-                            
-                                  
-                           
-<!-- <!--                         </ul> --> -->
-<!-- <!--                      </div> --> -->
-<!--                      </ul> --> --%>
-               
-                
-     
-    
-                  
-                  <div style="border-bottom: 1px solid #e4e4e4" width="65%"></div>
-                  
-                  
- 						<!-- 댓글 -->
+
+<div class="post-meta mb-50"></div>
+
+             
+             				<!-- 댓글 -->
                     <div class="comment_area clearfix mb-100">
-                        <h4 class="mb-50">댓글</h4>
+                        <h4 class="mb-50">후기</h4>
                         
                         <c:forEach var="rvo" items="${reList }">
 						      <table class="table">
@@ -291,20 +274,15 @@ $(function(){
 						       <td>
 						        <form method=post action="../restaurant/reply_insert.do">
 						            <input type=hidden name="bno" value="${vo.rest_no }">
-							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
-							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
-							          class="btn btn-sm btn-primary">
+							        <textarea rows="3" cols="86" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <input type=submit value="댓글쓰기"  style="height:65px;float: left;"
+							        class="btn bueno-btn reply_reply">
 						        </form>
 						       </td>
 						      </tr>
 						    </table>
-						    
 						    </div>
- 
- 
- 
- 
-                    </div>
+						 </div>
                 
                   
                   
