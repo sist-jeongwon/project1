@@ -85,7 +85,7 @@ $(function(){
                 <!-- Post Details Content Area -->
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
-                        <div class="blog-thumbnail mb-50">
+                        <div class="blog-thumbnail mb-50 text-center">
                             <img src="${vo.poster }" alt="이미지" style="width:600px;">
                         </div>
                         <div class="blog-content">
@@ -180,6 +180,13 @@ $(function(){
          <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
+ 			<!-- Single Widget Area -->
+                        <div class="single-widget-area author-widge">
+                            <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png); margin-bottom:30px;">
+                               <input type=hidden name="rno" value="${vo.recipe_no }">
+                                <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a>
+                            </div>
+                        </div>
 		                <div class="ingredients">
 		                        <h5>재료</h5>
 		 						<c:forEach items="${fn:split(vo.ingredient, ',') }" var="item" varStatus="stat">
@@ -189,15 +196,6 @@ $(function(){
 		                 	       </div>
 								</c:forEach>
 		                    </div>
- <!-- Single Widget Area -->
-                        <div class="single-widget-area author-widget mb-30">
-                            <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png);">
-                               <input type=hidden name="rno" value="${vo.recipe_no }">
-                                <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a>
-						            
-                            </div>
-                        </div>
-                               
                     </div>
             </div>
                     </div>

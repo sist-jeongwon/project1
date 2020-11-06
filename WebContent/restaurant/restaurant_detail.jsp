@@ -79,8 +79,8 @@ $(function(){
                 <div class="col-12 col-lg-8 col-xl-9">
                 <!-- 크기조절 ↑-->
                     <div class="post-details-content mb-100">
-                        <div class="blog-thumbnail mb-50" id="poster">
-                         <img src="${vo.rest_poster }" style="width:825px; "> 
+                        <div class="blog-thumbnail mb-50 text-center" id="poster">
+                         <img src="${vo.rest_poster }" style="width:600px;"> 
                          
                         </div>
                      </div>   
