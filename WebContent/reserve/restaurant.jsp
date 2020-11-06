@@ -51,9 +51,9 @@ $(function(){
        <tbody>
 		     <c:forEach var="vo" items="${list }">
 		       <tr class="restaurant" data-value="${vo.rest_no }"
-		           data-poster="${rest_poster }" data-title="${rest_name }">
-		         <td><img src="${rest_poster }" width=20 height=20></td>
-		         <td style="font-size:8pt">${rest_name }</td>
+		           data-poster="${vo.rest_poster }" data-title="${vo.rest_name }">
+		         <td><img src="${vo.rest_poster }" width=20 height=20></td>
+		         <td style="font-size:8pt">${vo.rest_name }</td>
 		       </tr>
 		     </c:forEach>
      </tbody>

@@ -26,9 +26,7 @@
 			$.ajax({
 				type : 'post',
 				url : '../reserve/date.do',
-				data : {
-					"year" : year
-				},
+				data : {"year":year},
 				success : function(result) {
 					$('#date_info').html(result);
 				}
@@ -68,9 +66,7 @@
 			$.ajax({
 				type : 'post',
 				url : '../reserve/time.do',
-				data : {
-					"day" : day
-				},
+				data : {"day" : day},
 				success : function(result) {
 					$('#time_info').html(result);
 				}
@@ -158,15 +154,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 

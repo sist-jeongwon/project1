@@ -66,19 +66,19 @@ public class ReserveModel {
 	  cal.set(Calendar.MONTH,month-1);// month=>0~11
 	  cal.set(Calendar.DATE,1);
 	  
-	  // �슂�씪�쓣 援ы븳�떎
-	  int week=cal.get(Calendar.DAY_OF_WEEK);// 1~7 ==> week-1
-	  int lastday=cal.getActualMaximum(Calendar.DATE);
-	  String[] strWeek={"�씪","�썡","�솕","�닔","紐�","湲�","�넗"};
-	  System.out.println("�슂�씪:"+strWeek[week-1]);
-	  System.out.println("留덉�留됰궇:"+lastday);
-	  
-	  // DB => �삁�빟�궇吏� �씫湲�
-	  System.out.println("tno="+tno);
-	  String rday=RestaurantDAO.theaterReserveData(Integer.parseInt(tno));
-	  System.out.println("rday="+rday);
-	  int[] days=new int[32];
-	  StringTokenizer st2=new StringTokenizer(rday,",");
+	  		// 요일을 구한다
+		  int week=cal.get(Calendar.DAY_OF_WEEK);// 1~7 ==> week-1
+		  int lastday=cal.getActualMaximum(Calendar.DATE);
+		  String[] strWeek={"일","월","화","수","목","금","토"};
+		  System.out.println("요일:"+strWeek[week-1]);
+		  System.out.println("마지막날:"+lastday);
+		  
+		  // DB => 예약날짜 읽기
+		  System.out.println("tno="+tno);
+		  String rday=RestaurantDAO.theaterReserveData(Integer.parseInt(tno));
+		  System.out.println("rday="+rday);
+		  int[] days=new int[32];
+		  StringTokenizer st2=new StringTokenizer(rday,",");
 	  //int i=0;
 	  while(st2.hasMoreTokens())
 	  {
@@ -109,12 +109,12 @@ public class ReserveModel {
 	    request.setAttribute("list", list);
 	    return "../reserve/restaurant.jsp";
   }
-  // 泥댁씤�젏
-  @RequestMapping("reserve/theater.do")
-  public String reserve_theater(HttpServletRequest request)
-  {
+//체인점
+ @RequestMapping("reserve/theater.do")
+ public String reserve_theater(HttpServletRequest request)
+ {
 	  String no=request.getParameter("no");
-	  // DB�뿰�룞 
+	  // DB연동 
 	  String tdata=RestaurantDAO.restaurantTheaterNo(Integer.parseInt(no));
 	  StringTokenizer st=new StringTokenizer(tdata,",");
 	  List<TheaterVO> list=new ArrayList<TheaterVO>();
@@ -125,14 +125,14 @@ public class ReserveModel {
 		  list.add(vo);
 	  }
 	  request.setAttribute("list", list);
-	  return "../reserve/theater.do";
-  }
-  // �떆媛�
-  @RequestMapping("reserve/time.do")
-  public String reserve_time(HttpServletRequest request)
-  {
+	  return "../reserve/theater.jsp";
+ }
+//시간
+@RequestMapping("reserve/time.do")
+public String reserve_time(HttpServletRequest request)
+{
 	  String day=request.getParameter("day");
-	  // �뜲�씠�꽣踰좎씠�뒪 = DB�뿰�룞
+	  // 데이터베이스 = DB연동
 	  String rdays=RestaurantDAO.dayTimeData(Integer.parseInt(day));
 	  // 1(08:00),2(09:00),5(...),6,7,8
 	  StringTokenizer st=new StringTokenizer(rdays,",");
@@ -145,16 +145,16 @@ public class ReserveModel {
 	  }
 	  request.setAttribute("list", list);
 	  return "../reserve/time.jsp";
-  }
-  // �씤�썝
-  @RequestMapping("reserve/people.do")
-  public String reserve_people(HttpServletRequest request)
-  {
+}
+// 인원
+@RequestMapping("reserve/people.do")
+public String reserve_people(HttpServletRequest request)
+{
 	  return "../reserve/people.jsp";
-  }
-  // �삁留� 
-  @RequestMapping("reserve/reserve_ok.do")
-  public String reserve_reserve_ok(HttpServletRequest request)
+}
+// 예매 
+@RequestMapping("reserve/reserve_ok.do")
+public String reserve_reserve_ok(HttpServletRequest request)
   {
 	 
 	  try
@@ -183,7 +183,7 @@ public class ReserveModel {
 	  RestaurantDAO.reserveInsert(vo);
 	  return "../reserve/reserve_ok.jsp";
   }
-  // 留덉씠�럹�씠吏�
+  // 마이페이지
   @RequestMapping("reserve/mypage.do")
   public String reserve_mypage(HttpServletRequest request)
   {
@@ -193,18 +193,18 @@ public class ReserveModel {
 	  request.setAttribute("list", list);
 	  request.setAttribute("main_jsp", "../reserve/mypage.jsp");
 	  
-	  List<Product_keepVO> pkList=ProductDAO.product_keepListData(id);//�옣諛붽뎄�땲
-	  List<LikeVO> lpList=ProductDAO.pdlikeListData(id); //�뙋留ㅼ컻
-	  //List<LikeVO> lrsList=RestaurantDAO.likeListData(id);//�떇�떦李�
-	  List<LikeVO> lcrList=RecipeDAO.rclikeListData(id);//�젅�떆�뵾李�
+	  List<Product_keepVO> pkList=ProductDAO.product_keepListData(id);//장바구니
+	  List<LikeVO> lpList=ProductDAO.pdlikeListData(id); //판매찜
+	  //List<LikeVO> lrsList=RestaurantDAO.likeListData(id);//식당찜
+	  List<LikeVO> lcrList=RecipeDAO.rclikeListData(id);//레시피찜
 	  
-	  List<ProductVO> p1List=new ArrayList<ProductVO>();//�옣諛붽뎄�땲
-	  List<ProductVO> p2List=new ArrayList<ProductVO>();//�뙋留ㅼ컻
-	 // List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//�떇�떦李�
-	  List<RecipeVO> lcList=new ArrayList<RecipeVO>();//�젅�떆�뵾李�
+	  List<ProductVO> p1List=new ArrayList<ProductVO>();//장바구니
+	  List<ProductVO> p2List=new ArrayList<ProductVO>();//판매찜
+	 // List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//식당찜
+	  List<RecipeVO> lcList=new ArrayList<RecipeVO>();//레시피찜
 	  
 	 /*
-	  for(Product_keepVO vo:pkList)//�옣諛붽뎄�땲--cno�떖由ъ벐怨좎엳�뒗�뜲媛��엳�뼱�꽌洹몃윴�벏
+	  for(Product_keepVO vo:pkList)//장바구니--cno달리쓰고있는데가있어서그런듯
 	  {
 		  ProductVO pkvo=ProductDAO.productDetailData(vo.getPno());
 		  String name=pkvo.getName();
@@ -212,14 +212,14 @@ public class ReserveModel {
 		  p1List.add(pkvo);
 	  }
 		*/
-		  for(LikeVO vo:lpList)//�뙋留ㅼ컻 
+		  for(LikeVO vo:lpList)//판매찜
 		  {
 			  ProductVO plvo=ProductDAO.productDetailData(vo.getCno());
 			  String name=plvo.getName();
 			  plvo.setLpno(vo.getProduct_no());
 			  p2List.add(plvo);
 		  }
-		/* for(LikeVO vo:lrsList)//�떇�떦李� 
+		/* for(LikeVO vo:lrsList)//식당찜
 		 {
 			  RestaurantVO rest_vo=RestaurantDAO.restaurantDetailData(vo.getCno());
 			  String rest_content=rest_vo.getRest_content();
@@ -233,7 +233,7 @@ public class ReserveModel {
 			 
 		  }
 	*/
-	  for(LikeVO vo:lcrList)//�젅�떆�뵾李�
+	  for(LikeVO vo:lcrList)//레시피찜
 	  {
 		  RecipeVO rec_vo=RecipeDAO.recipeDetailData(vo.getRecipe_no());
 		   //System.out.println("레시피 번호 : "+vo.getRecipe_no());
@@ -252,7 +252,7 @@ public class ReserveModel {
 	  request.setAttribute("lcList", lcList);
 	  return "../main/main.jsp";
   }
-  // �뼱�뱶誘� �럹�씠吏�
+  // 어드민페이지
   @RequestMapping("reserve/adminpage.do")
   public String reserve_adminpage(HttpServletRequest request)
   {
@@ -265,17 +265,17 @@ public class ReserveModel {
   @RequestMapping("reserve/admin_ok.do")
   public String reserve_admin_ok(HttpServletRequest request)
   {
-	  // �삁�빟踰덊샇 
+	  //예약번호
 	  String no=request.getParameter("no");
 	  // UPDATE
 	  RestaurantDAO.reserveOk(Integer.parseInt(no));
-	  return "redirect:../reserve/adminpage.do";// �썝�긽蹂듦�
+	  return "redirect:../reserve/adminpage.do";// 원상복귀
   }
   
   @RequestMapping("reserve/reserve_all_ok.do")
   public String reserve_all_ok(HttpServletRequest request)
   {
-	  // �뜲�씠�꽣 諛쏄린 
+	  //데이터받기
 	  String[] nos=request.getParameterValues("cb");
 	  for(String n:nos)
 	  {
