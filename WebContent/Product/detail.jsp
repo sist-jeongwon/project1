@@ -35,6 +35,7 @@ $(function(){
 		    $(this).text("댓글");
 			i=0;
 	  }
+	  
 	});
 	$('.reply_update').click(function(){
 		let no=$(this).attr("value");
@@ -170,9 +171,8 @@ $(function(){
 						      </tr>
 						    </table>
 						    </div>
-                </div>
-
-                <!-- Sidebar Widget -->
+                		</div>
+                 <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
 
