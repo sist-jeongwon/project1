@@ -75,7 +75,7 @@
 </head>
 <body>
 
-	<h3 class="text-center">${year }년도${month }월</h3>
+	<%-- <h3 class="text-center">${year }년도${month }월</h3> --%>
 	<table class="table">
 		<tr>
 			<td><select name="year" id="year">
