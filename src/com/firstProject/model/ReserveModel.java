@@ -172,10 +172,10 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  String time=request.getParameter("time");
 	  
 	  HttpSession session=request.getSession();
-	  String mem_id=(String)session.getAttribute("mem_id");
+	  String id=(String)session.getAttribute("id");
 	   
 	  ReservationVO vo=new ReservationVO();
-	  vo.setMem_id(mem_id);
+	  vo.setMem_id(id);
 	  vo.setCno(Integer.parseInt(cno));
 	  vo.setPeople(people);
 	  vo.setPrice(price);

@@ -48,7 +48,6 @@
 
                 <div class="col-xs-3"> 
 
-                <form class="form" action="##" method="post"> 
                  <div class="form-group">
 
                   <label for="first_name"><h4> 식당정보</h4></label>               
@@ -59,12 +58,11 @@
 		           </tr>
                       
                       </div>
-                </form>
+                
                </div> <!-- 식당정보 -->
                 
             
                 <div class="col-xs-3">   
-			       <form class="form" action="##" method="post"> 
 			                 <div class="form-group">
 			
 			                  <label for="first_name"><h4> 체인점정보</h4></label>               
@@ -75,11 +73,12 @@
 					           </tr>
                       
                       </div>
-                </form>
+                
+            
+            </div>
                 </div><!-- 체인점 -->
                 
                 <div class="col-xs-3">   
-			       <form class="form" action="##" method="post"> 
 			                 <div class="form-group">
 			
 			                  <label for="first_name"><h4> 예매일</h4></label>               
@@ -90,11 +89,10 @@
 					           </tr>
                       
                       </div>
-                </form>
                 </div><!-- 예매일 -->
                 
                 <div class="col-xs-3">   
-			       <form class="form" action="##" method="post"> 
+			        
 			                 <div class="form-group">
 			
 			                  <label for="first_name"><h4> 예매정보</h4></label>               
@@ -151,7 +149,7 @@
              <td width=75%>
                <span id="restaurant_price"></span>
              </td>
-           </tr></br>
+           </tr>
            <tr style="display:none" id="okbtn">
               <td colspan="2" class="text-center">
                 <form method="post" action="../reserve/reserve_ok.do">
@@ -168,49 +166,39 @@
               </td>
            </tr>
                       </div>
-                </form>
                 </div><!-- 예매일 -->
-            <div class="row">
-            <div class="col-xs-2">   
-			       <form class="form" action="##" method="post"> 
+            
+				
+            
+				</div>
+            
+            </div>   
+            
+		<div class="row">
+		<div class="col-xs-3">   
 			                 <div class="form-group">
 			
 			                  <label for="first_name"><h4> 시간정보</h4></label>               
 			                <tr>
-				             <td>
-				               <div id="time_info"></div>
+				             <td width=20% height=500>
+				               <div id="time_info" style="overflow-y:auto;height:450px"></div>
 				             </td>
 				           </tr>
                       
                       </div>
-                </form>
                 </div>
-
-            <div class="col-xs-2">   
-			       <form class="form" action="##" method="post"> 
-			                 <div class="form-group">
-			
-			                  <label for="first_name"><h4> 인원정보</h4></label>               
-			                <tr>
-				             <td>
-				               <div id="time_info"></div>
-				             </td>
-				           </tr>
-                      
-                      </div>
-                </form>
-                </div>
-            
-            </div>
-            
-            </div>   
-
-    
-              
-
-
-
-
+		            <div class="col-xs-3">   
+					                 <div class="form-group">
+					
+					                  <label for="first_name"><h4> 인원정보</h4></label>               
+					                <tr>
+						             <td width=15 height=500>
+						               <div id="people_info"  style="overflow-y:auto;height:250px"></div>
+						             </td>
+						           </tr>
+		                      
+		                      </div>
+		                </div>
              </div><!--/tab-pane-->
 
                   

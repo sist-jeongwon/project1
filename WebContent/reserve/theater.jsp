@@ -20,7 +20,7 @@ $(function(){
 	$('.theater').click(function(){
 	   let no=$(this).attr("data-tno");
 	   let tloc1=$(this).attr("data-name"); //이 name이머지..tname=tloc1로해놨는디 attribute중에 'data-name'이라는 어트리뷰트를 가져온다는 거임
-	   $('#resertaurant_theater').text(tloc1);
+	   $('#restaurant_theater').text(tloc1);
 	   $('#tloc1').val(tloc1);
 	   $.ajax({
 		   type:'post',

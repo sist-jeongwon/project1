@@ -79,7 +79,7 @@ REST_PRICE            VARCHAR2(30)
       #{time},
       #{people},
       #{price},
-      'n',SYSDATE)
+      '0',SYSDATE)
   </insert>
   <resultMap type="com.firstProject.vo.ReservationVO" id="reserveList">
    <result property="rest_no" column="rest_no"/>

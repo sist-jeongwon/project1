@@ -37,9 +37,7 @@
 			$.ajax({
 				type : 'post',
 				url : '../reserve/date.do',
-				data : {
-					"month" : month
-				},
+				data : {"month" : month},
 				success : function(result) {
 					$('#date_info').html(result);
 				}
@@ -54,7 +52,7 @@
 			let year = $(this).attr("data-year");
 			let month = $(this).attr("data-month");
 			let day = $(this).text();
-			let rday = year + "년도 " + month + "월 " + day + "일";
+			let rday = year+"년도 "+month+"월 "+day+"일";
 			$('#restaurant_reserve').text(rday);
 			$('#day').val(rday);
 
@@ -66,7 +64,7 @@
 			$.ajax({
 				type : 'post',
 				url : '../reserve/time.do',
-				data : {"day" : day},
+				data : {"day":day},
 				success : function(result) {
 					$('#time_info').html(result);
 				}
@@ -84,11 +82,14 @@
 					<c:forEach var="i" begin="2020" end="2030">
 						<option ${i==year?"selected":"" }>${i }</option>
 					</c:forEach>
-			</select>년도&nbsp; <select name="month" id="month">
+			</select>년도&nbsp; 
+			
+			<select name="month" id="month">
 					<c:forEach var="i" begin="1" end="12">
 						<option ${i==month?"selected":"" }>${i }</option>
 					</c:forEach>
-			</select>월</td>
+			</select>월
+			</td>
 		</tr>
 	</table>
 	<table class="table table-striped">
@@ -135,13 +136,15 @@
 				<c:set var="bg" value="text-center" />
 			</c:if>
 
-			<td class="${bg }"><font color="${color }"> <c:if
-						test="${i==rdays[i] }">
+			<td class="${bg }"><font color="${color }"> 
+			<c:if test="${i==rdays[i] }">
 						<span class="rdays_ok" data-year=${year } data-month=${month }>${i }</span>
-					</c:if> <c:if test="${i!=rdays[i]  }">
+					</c:if> 
+					<c:if test="${i!=rdays[i]  }">
              ${i }
             </c:if>
-			</font></td>
+			</font>
+			</td>
 			<c:set var="week" value="${week+1 }" />
 			<c:if test="${week>6 }">
 				<c:set var="week" value="0" />
