@@ -137,24 +137,10 @@ $(function() {
 			return;
 		}
 
-		let post = $('#post').val();
-		if (post.trim() == "") {
+		let addr = $('#addr').val();
+		if (addr.trim() == "") {
 			alert("주소를 입력하세요");
-			$('#post').focus();
-			return;
-		}
-
-		let addr1 = $('#addr1').val();
-		if (addr1.trim() == "") {
-			alert("주소를 입력하세요");
-			$('#addr1').focus();
-			return;
-		}
-
-		let addr2 = $('#addr2').val();
-		if (addr2.trim() == "") {
-			alert("상세주소를 입력하세요");
-			$('#addr2').focus();
+			$('#addr').focus();
 			return;
 		}
 
@@ -164,7 +150,6 @@ $(function() {
 			$('#tel').focus();
 			return;
 		}
-
 		
 	});
 });
@@ -277,52 +262,40 @@ $(function() {
 				 
 					<tr>
 						<th class="text-right danger" width="30%">아이디 <img src="ico_required.gif"></th>
-						<td width=70%><input type=text name=id class="input-sm"  size=15 value="${vo.mem_id }"  readonly id="id"></td>
+						<td width=70%><input type=text name=id class="input-sm" size=15 value="${dvo.mem_id }" readonly id="id"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=password name=pwd class="input-sm" size=15 value="${vo.mem_pwd }"   id="pwd"></td>
+						<td width=70%><input type=password name=pwd class="input-sm" size=15  id="pwd"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 확인 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=password name=pwd class="input-sm" size=15 value="${vo.mem_pwd }"  id="pwd"></td>
+						<td width=70%><input type=password name=pwd class="input-sm" size=15  id="pwd"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">이름 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=text name=name class="input-sm" size=15 value="${vo.name }"  id="name"></td>
+						<td width=70%><input type=text name=name class="input-sm" size=15 value="${dvo.name }"  id="name"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">이메일</th>
-						<td width=70%><input type=text name=email class="input-sm" size=45 value="${vo.email }" id="email"></td>
+						<td width=70%><input type=text name=email class="input-sm" size=45 value="${dvo.email }" id="email"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">생년월일</th>
-						<td width=70%><input type=date name=birthday class="input-sm" size=25 value="${vo.birth }"  id="birthday"></td>
-					</tr>
-					<tr>
-						<th class="text-right danger" width="30%">우편번호 <img src="ico_required.gif">
-						</th>
-						<td width=70%><input type=text name=post class="input-sm" size=7 readonly id="post"> 
-						<input type=button	value="우편번호" class="updateBtn" onclick="postfind()">
-						</td>
+						<td width=70%>${dvo.birth }</td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">주소 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=text name=addr1 class="input-sm" size=45 readonly id="addr1"></td>
-					</tr>
-					<tr>
-						<th class="text-right danger" width="30%">상세주소 <img src="ico_required.gif">
-						</th>
-						<td width=70%><input type=text name=addr2 class="input-sm" size=45 id=addr2></td>
+						<td width=70%><input type=text name=addr class="input-sm" size=45 id="addr" value=${dvo.address }></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">전화번호 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=text name=tel class="input-sm" size=7 value="${vo.tel }" id=tel></td>
+						<td width=70%><input type=text name=tel class="input-sm" size=7 value="${dvo.tel }" id=tel></td>
 					</tr>
 					
 					<tr>

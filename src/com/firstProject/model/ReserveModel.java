@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.sist.controller.RequestMapping;
+import com.firstProject.dao.MemberDAO;
 import com.firstProject.dao.ProductDAO;
 import com.firstProject.dao.RecipeDAO;
 import com.firstProject.dao.RestaurantDAO;
 import com.firstProject.vo.LikeVO;
+import com.firstProject.vo.MemberVO;
 import com.firstProject.vo.ProductVO;
 import com.firstProject.vo.Product_keepVO;
 import com.firstProject.vo.RecipeVO;
@@ -190,6 +192,8 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  HttpSession session=request.getSession();
 	  String id=(String)session.getAttribute("id");
 	  List<ReservationVO> list=RestaurantDAO.mypageReserveListData(id);
+	  MemberVO dvo=MemberDAO.memberDetailData(id);
+	  request.setAttribute("dvo", dvo);
 	  request.setAttribute("list", list);
 	  request.setAttribute("main_jsp", "../reserve/mypage.jsp");
 	  

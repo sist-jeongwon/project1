@@ -69,7 +69,7 @@ public class MemberModel {
 		   vo.setName(name);
 		   vo.setEmail(email);
 	       vo.setBirth(birthday);
-		   vo.setAddress(addr1+addr2);
+		   vo.setAddress(post+addr1+addr2);
 		   vo.setTel(tel1+tel2+tel3);
 		   //Insert문장 실행
 		   MemberDAO.memberInsert(vo);
@@ -92,7 +92,7 @@ public class MemberModel {
 		   try
 		   {
 			   //한글 변환 
-			   request.setCharacterEncoding("UTF-8");
+			request.setCharacterEncoding("UTF-8");
 		   }catch(Exception e) {}
 		   // 데이터 받기 
 		   String id=request.getParameter("id");
@@ -177,25 +177,25 @@ public class MemberModel {
 	}
 
 	
-	@RequestMapping("reserve/mypage.do")
-	public String member_update(HttpServletRequest request) {
-		
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-		MemberVO vo=MemberDAO.memberDetailData(id);
-		
-//		String tel1=vo.getTel();
-//		tel1.substring(0, 2);
-//		System.out.println(tel1);
-//		String tel2=vo.getTel();
-//		tel2.substring(3, 6);
-//		String tel3=vo.getTel();
-//		tel3.substring(7, 10);
-		
-		request.setAttribute("vo", vo);
-		request.setAttribute("main_jsp", "../reserve/mypage.jsp");
-		return "../main/main.jsp";
-	}
+//	@RequestMapping("member/update.do")
+//	public String member_update(HttpServletRequest request) {
+//		
+//		HttpSession session=request.getSession();
+//		String id=(String)session.getAttribute("id");
+//		MemberVO vo=MemberDAO.memberDetailData(id);
+//		
+////		String tel1=vo.getTel();
+////		tel1.substring(0, 2);
+////		System.out.println(tel1);
+////		String tel2=vo.getTel();
+////		tel2.substring(3, 6);
+////		String tel3=vo.getTel();
+////		tel3.substring(7, 10);
+//		
+//		request.setAttribute("vo", vo);
+//		request.setAttribute("main_jsp", "../member/update.jsp");
+//		return "../main/main.jsp";
+//	}
 	
 	
 	@RequestMapping("member/update_ok.do")
@@ -210,26 +210,22 @@ public class MemberModel {
 			e.printStackTrace();
 		
 		}
-		   String id=request.getParameter("id");	
+		   String id=request.getParameter("id");
 		   String pwd=request.getParameter("pwd");
 		   String name=request.getParameter("name");
 		   String email=request.getParameter("email");
-		   String birthday=request.getParameter("birthday");
-		   String post=request.getParameter("post");
-		   String addr1=request.getParameter("addr1");
-		   String addr2=request.getParameter("addr2");
+		   String addr=request.getParameter("addr");
 		   String tel=request.getParameter("tel");
 		   
-		   MemberVO vo=new MemberVO();
-		   vo.setMem_id(id);
-		   vo.setMem_pwd(pwd);
-		   vo.setName(name);
-		   vo.setEmail(email);
-	       vo.setBirth(birthday);
-		   vo.setAddress(addr1+addr2);
-		   vo.setTel(tel);
+		   MemberVO dvo=new MemberVO();
+		   dvo.setMem_id(id);
+		   dvo.setMem_pwd(pwd);
+		   dvo.setName(name);
+		   dvo.setEmail(email);
+		   dvo.setAddress(addr);
+		   dvo.setTel(tel);
 		   
-		   MemberDAO.memberUpdate(vo);
+		   MemberDAO.memberUpdate(dvo);
 		   
 		   request.setAttribute("main_jsp", "../reserve/mypage.jsp");
 		   return "../main/main.jsp";

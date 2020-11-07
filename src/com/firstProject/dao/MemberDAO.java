@@ -99,10 +99,10 @@ import com.firstProject.vo.MemberVO;
 	   return vo;
   }
   
-  public static void memberUpdate(MemberVO vo) {
+  public static void memberUpdate(MemberVO dvo) {
 	  
 	  SqlSession session=ssf.openSession(true);
-	  session.update("memberUpdate", vo);
+	  session.update("memberUpdate", dvo);
 	  session.close();
 
   }
