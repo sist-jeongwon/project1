@@ -214,7 +214,7 @@ public String reserve_reserve_ok(HttpServletRequest request)
 		
 		  for(LikeVO vo:lpList)//판매찜
 		  {
-			  ProductVO plvo=ProductDAO.productDetailData(vo.getCno());
+			  ProductVO plvo=ProductDAO.productDetailData(vo.getProduct_no());
 			  String name=plvo.getName();
 			  plvo.setLpno(vo.getProduct_no());
 			  p2List.add(plvo);
