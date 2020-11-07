@@ -69,7 +69,7 @@ $(function(){
 		    $(this).text("댓글");
 			i=0;
 	  }
-	  alert("빈칸입니다.");
+	
 	 
 	});
 	$('.reply_update').click(function(){
