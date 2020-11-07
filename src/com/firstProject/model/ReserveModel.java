@@ -202,7 +202,7 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  List<LikeVO> lrsList=RestaurantDAO.rslikeListData(id);//식당찜
 	  List<LikeVO> lcrList=RecipeDAO.rclikeListData(id);//레시피찜
 	  
-	  List<ProductVO> p1List=new ArrayList<ProductVO>();//장바구니
+	  List<ProductVO> p1List=new ArrayList<ProductVO>();//장바구니 
 	  List<ProductVO> p2List=new ArrayList<ProductVO>();//판매찜
 	  List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//식당찜
 	  List<RecipeVO> lcList=new ArrayList<RecipeVO>();//레시피찜

@@ -185,12 +185,12 @@ $(function() {
 			            <li><a href="#cart" data-toggle="tab">장바구니</a></li>
 			            <li><a href="#likelist" data-toggle="tab">찜목록</a></li>
 			            <li><a href="#q&alist" data-toggle="tab">1:1문의</a></li>
-					</ul>
+					</ul> 
 								</div>
 								
 								</div>
     </div><!-- col-md-3 -->
-    
+      
 	    <!--   SIDEBAR BUTTONS   -->
 		<div class="col-md-9">
       <div class="profile-container">
