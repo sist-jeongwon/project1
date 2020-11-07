@@ -35,7 +35,6 @@ $(function(){
 		    $(this).text("댓글");
 			i=0;
 	  }
-	
 	});
 	$('.reply_update').click(function(){
 		let no=$(this).attr("value");
@@ -65,6 +64,13 @@ $(function(){
 			d=0;
 		}
 	});
+		let replyArea = $('#replyArea').val();
+		$('#replyBtn').click(function() {
+			if (replyArea.trim() == "") {
+				alert("댓글을 입력하세요");
+				$('#replyArea').focus();
+				return false;
+			}});
 });
 </script>
 <style type="text/css">
@@ -166,9 +172,9 @@ $(function(){
 						       <td>
 						        <form method=post action="../recipe/reply_insert.do">
 						            <input type=hidden name="bno" value="${vo.recipe_no }">
-							        <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;" id="replyArea"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
-							          class="btn bueno-btn reply_reply btn-xs">
+							          class="btn bueno-btn reply_reply btn-xs" id="replyBtn">
 						        </form>
 						       </td>
 						      </tr>
