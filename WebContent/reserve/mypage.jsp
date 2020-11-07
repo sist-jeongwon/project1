@@ -377,7 +377,7 @@ $(function() {
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">
-						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
+						                 <a href="../Product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
 						                 <a href="#" class="btn btn-sm btn-success">결제하기</a>
 						               </td>
 						            </tr>

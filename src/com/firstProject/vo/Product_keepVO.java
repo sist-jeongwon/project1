@@ -1,6 +1,7 @@
 package com.firstProject.vo;
 
 public class Product_keepVO {
+	private int no;
 	private int product_no;
 	private int pno;
 	private String mem_id;
@@ -21,6 +22,12 @@ public class Product_keepVO {
 	}
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}
 	
 	//quantity 추가?

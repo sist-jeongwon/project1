@@ -161,9 +161,9 @@ public class ProductModel {
 			String id=(String)session.getAttribute("id");
 			Product_keepVO vo=new Product_keepVO();
 			vo.setMem_id(id);
-			vo.setPno(Integer.parseInt(no));
+			vo.setProduct_no(Integer.parseInt(no));
 			ProductDAO.Product_keepInsert(vo);
-			return "redirect:../product/detail.do?no="+no;
+			return "redirect:../Product/detail.do?no="+no;
 		}
 		@RequestMapping("Product/product_keep_cancel.do")
 		public String product_keep_cancel(HttpServletRequest request)

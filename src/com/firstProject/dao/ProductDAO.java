@@ -57,7 +57,7 @@ public class ProductDAO {
 	// 장바구니
 	public static void Product_keepInsert(Product_keepVO vo) {
 		SqlSession session = ssf.openSession(true);
-		session.update("productInsert", vo);
+		session.update("Product_keepInsert", vo);
 		session.close();
 	}
 
