@@ -262,7 +262,7 @@ $(function() {
 				 
 					<tr>
 						<th class="text-right danger" width="30%">아이디 <img src="ico_required.gif"></th>
-						<td width=70%><input type=text name=id class="input-sm" size=15 value="${dvo.mem_id }" readonly id="id"></td>
+						<td width=70%>${dvo.mem_id }</td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 <img src="ico_required.gif">
@@ -290,7 +290,7 @@ $(function() {
 					<tr>
 						<th class="text-right danger" width="30%">주소 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=text name=addr class="input-sm" size=45 id="addr" value=${dvo.address }></td>
+						<td width=70%>${dvo.address }</td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">전화번호 <img src="ico_required.gif">

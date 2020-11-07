@@ -134,9 +134,14 @@
 										</div>
 									</c:if>
 									<c:if test="${sessionScope.id!=null }">
-										<div class="login-area" id="in">
+										<div class="login-area text-center" id="in">
 											<a>${sessionScope.name }(${sessionScope.admin==1?'관리자':'일반유저' })님
 												환영합니다.</a>&nbsp;&nbsp;<a href="../member/logout.do">Logout</a>
+											&nbsp;&nbsp;
+											<c:if test="${sessionScope.admin != 1 }">
+												<a href="../reserve/mypage.do?#cart"><img src="../style/img/core-img/cart.png"
+													width="30px" height="30px"></a>
+											</c:if>
 										</div>
 									</c:if>
 								</div>
