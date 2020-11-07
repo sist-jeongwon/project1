@@ -208,10 +208,10 @@ $(function() {
 		      <div class="tab-pane" id="reservationlist"> <!-- 예약확인 -->
 		           <div class="row">
 					<div class="input-group">
-						<!-- 테이블장소 -->
+						<!-- 테이블장소 --> 
 						    <caption>예매목록</caption>
 						  <table class="table">
-						    <tr>
+						    <tr> 
 						      <td>
 						        <table class="table table-striped">
 						          <tr class="danger">
