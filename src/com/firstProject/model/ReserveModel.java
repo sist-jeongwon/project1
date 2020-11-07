@@ -203,18 +203,18 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  List<RestaurantVO> lrList=new ArrayList<RestaurantVO>();//식당찜
 	  List<RecipeVO> lcList=new ArrayList<RecipeVO>();//레시피찜
 	  
-	 /*
+	 
 	  for(Product_keepVO vo:pkList)//장바구니--cno달리쓰고있는데가있어서그런듯
 	  {
-		  ProductVO pkvo=ProductDAO.productDetailData(vo.getPno());
+		  ProductVO pkvo=ProductDAO.productDetailData(vo.getProduct_no());
 		  String name=pkvo.getName();
 		  pkvo.setKno(vo.getProduct_no());
 		  p1List.add(pkvo);
 	  }
-		*/
+		
 		  for(LikeVO vo:lpList)//판매찜
 		  {
-			  ProductVO plvo=ProductDAO.productDetailData(vo.getCno());
+			  ProductVO plvo=ProductDAO.productDetailData(vo.getProduct_no());
 			  String name=plvo.getName();
 			  plvo.setLpno(vo.getProduct_no());
 			  p2List.add(plvo);
@@ -246,7 +246,7 @@ public String reserve_reserve_ok(HttpServletRequest request)
 		  }
 		  lcList.add(rec_vo);
 	  }
-	 // request.setAttribute("p1List", p1List);
+	  request.setAttribute("p1List", p1List);
 	  request.setAttribute("p2List", p2List);
 	  request.setAttribute("lrList", lrList);
 	  request.setAttribute("lcList", lcList);
@@ -284,14 +284,3 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  return "redirect:../reserve/adminpage.do";
   }
 }
-
-
-
-
-
-
-
-
-
-
-

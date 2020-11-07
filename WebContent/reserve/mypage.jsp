@@ -356,7 +356,7 @@ $(function() {
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">
-						                 <a href="../product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
+						                 <a href="../Product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
 						                 <a href="#" class="btn btn-sm btn-success">결제하기</a>
 						               </td>
 						            </tr>
@@ -412,7 +412,7 @@ $(function() {
 						              <td width=70%>${vo.rest_name }</td>
 						            </tr>
 						            <tr>
-						               <td width=70% valign="top">${vo.rest_content }</td>
+						            <td width=70% valign="top">${vo.rest_content}&emsp;${vo.rest_price }</td>
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">

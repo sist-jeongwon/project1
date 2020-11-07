@@ -168,7 +168,7 @@ public class RestaurantModel {
 		   vo.setName(name);
 		   // DAO���� 
 		   RestaurantDAO.replyInsert(vo);
-		   return "redirect:../restaurant/restaurant_detail.do?no="+bno;
+		   return "redirect:../restaurant/restaurant_detail.do?rest_no="+bno;
 	   }
 	   @RequestMapping("restaurant/reply_reply_insert.do")
 	   public String reply_reply_insert(HttpServletRequest request)

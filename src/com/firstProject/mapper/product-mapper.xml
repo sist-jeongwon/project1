@@ -33,15 +33,15 @@ WHERE product.product_no=product_detail.product_no AND product.product_no=#{no}
   
   <!-- 장바구니 저장  -->
   <insert id="Product_keepInsert" parameterType="com.firstProject.vo.Product_keepVO">
-    INSERT INTO product_keep VALUES(
-      (SELECT NVL(MAX(product_no)+1,1) FROM product_keep),#{mem_id},#{pno}
+    INSERT INTO product_keep(no, product_no, mem_id) VALUES(
+      (SELECT NVL(MAX(no)+1,1) FROM product_keep),#{product_no},#{mem_id}
     )
   </insert>
   <!-- 데이터 읽기(장바구니 목록) -->
   <select id="product_keepListData" parameterType="String" resultType="com.firstProject.vo.Product_keepVO">
     SELECT * FROM product_keep
     WHERE mem_id=#{mem_id}
-    ORDER BY product_no DESC
+    ORDER BY no DESC
   </select>
   <!-- 장바구니여부 확인 -->
   <select id="product_keepCount" parameterType="com.firstProject.vo.Product_keepVO" resultType="int">

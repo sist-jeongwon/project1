@@ -35,6 +35,7 @@ $(function(){
 		    $(this).text("댓글");
 			i=0;
 	  }
+	  
 	});
 	$('.reply_update').click(function(){
 		let no=$(this).attr("value");
@@ -170,9 +171,8 @@ $(function(){
 						      </tr>
 						    </table>
 						    </div>
-                </div>
-
-                <!-- Sidebar Widget -->
+                		</div>
+                 <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
 
@@ -184,7 +184,7 @@ $(function(){
                                  <a href="#" class="post-author">${vo.price }원</a>
                               </div>
                                 <button type="submit" class="btn bueno-btn w-100">주문하기</button><br>
-                                <button type="submit" class="btn bueno-btn w-100 mt-1">장바구니 담기</button><br>
+                                <a href="../Product/product_keep.do?no=${vo.product_no }" class="btn bueno-btn w-100 mt-1">장바구니 담기</a><br>                                
                                 <a href="../Product/like.do?no=${vo.product_no }" class="btn bueno-btn w-100 mt-1">찜하기</a><br>
                             </div>
                         </div>
