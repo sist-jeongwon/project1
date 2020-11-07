@@ -99,7 +99,8 @@ $(function(){
                             <h4 class="post-title">${vo.title }</h4>
                             <div class="post-meta mb-50">
                                 	<fmt:formatDate pattern="yyyy-MM-dd" value="${vo.recipe_date }"/> / 
-                          	<span style="color:#B0C364; font-weight:bold;">${vo.mem_id }</span>
+                          	<span style="color:#B0C364; font-weight:bold;">${vo.mem_id }</span> / 
+                          		<fmt:formatNumber value="${vo.hit }" pattern="#,###" /> Views                          		 
                             </div>
                              <c:forTokens var="item" items="${vo.content}" delims="|" varStatus="status">
 								    <p><span style="color:#B0C364; font-weight:bold; font-size:20px;">${status.count}.</span> ${item} </p>
