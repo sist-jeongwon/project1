@@ -170,7 +170,7 @@ $(function(){
                	</tr>
                	<tr>
                	<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">전화번호</td>
-               	<td width="20%" style="margin:100%; padding-bottom:5px;rowspan:1px">${vo.rest_tel }</td>
+               	<td width="80%" style="margin:100%; padding-bottom:5px;rowspan:1px">${vo.rest_tel }</td>
                 </tr>
                	<tr>
                		<td width="20%" style="color: #41AC33;font-weight:BOLD; text-align:left;padding-right:10px;padding-bottom:5px;">가격대</td>
@@ -276,7 +276,7 @@ $(function(){
 						            <input type=hidden name="bno" value="${vo.rest_no }">
 							        <textarea rows="3" cols="86" name="msg" style="float: left; margin-right:10px;"></textarea>
 							        <input type=submit value="댓글쓰기"  style="height:65px;float: left;"
-							        class="btn bueno-btn reply_reply">
+							        class="btn bueno-btn reply_reply btn-xs">
 						        </form>
 						       </td>
 						      </tr>
@@ -316,7 +316,7 @@ $(function(){
                         <div class="single-widget-area post-widget mb-30">
                             <!-- Single Post Area -->
                             <c:forEach var="vo" items="${cList }" varStatus="s">
-                            <c:if test="${s.index<6 }">
+                            <c:if test="${s.index<5 }">
                             <div class="single-post-area d-flex">
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">

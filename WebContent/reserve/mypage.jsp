@@ -433,7 +433,7 @@ $(function() {
 						              <td width=70%>${vo.rest_name }</td>
 						            </tr>
 						            <tr>
-						               <td width=70% valign="top">${vo.rest_content }</td>
+						            <td width=70% valign="top">${vo.rest_content}&emsp;${vo.rest_price }</td>
 						            </tr>
 						            <tr>
 						               <td width=70% class="text-right">

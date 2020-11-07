@@ -284,14 +284,3 @@ public String reserve_reserve_ok(HttpServletRequest request)
 	  return "redirect:../reserve/adminpage.do";
   }
 }
-
-
-
-
-
-
-
-
-
-
-
