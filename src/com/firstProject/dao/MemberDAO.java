@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.firstProject.vo.MemberVO;
 
-public class MemberDAO {
+  public class MemberDAO {
   private static SqlSessionFactory ssf;
   static
   {
@@ -73,12 +73,7 @@ public class MemberDAO {
 	  session.close();
 	  return count;
   }
-  /*
-   *  <select id="findMemberId" parameterType="String" resultType="String">
-  SELECT RPAD(SUBSTR(mem_id,1,2),LENGTH(mem_id),'*') FROM member WHERE tel=#{tel}
- </select>
- 
-   */
+
   public static String findMemberId(String tel)
   {
 	  SqlSession session=ssf.openSession();
@@ -86,16 +81,29 @@ public class MemberDAO {
 	  session.close();
 	  return id;
   }
-/*
- * <select id="findMemberPwd" resultType="MemberVO" parameterType="String">
-  SELECT RPAD(SUBSTR(mem_pwd,1,2),LENGTH(mem_pwd),'●') FROM member WHERE name={name} AND tel=#{tel}  
- </select>
- */
-//  public static String findMemberPwd(String name, String tel) {
-//	  
-//	  MemberVO vo=new MemberVO();
-//	  SqlSession session=ssf.openSession();
-//	  String id=session.selectOne("findMemberPwd", tel);
-//	  
-//  }
+  
+  public static String findMemberPwd(String id) {
+	  
+	  SqlSession session=ssf.openSession();
+      String pwd=session.selectOne("findMemberPwd", id);
+      session.close();
+	  return pwd;
+	  
+  }
+  
+  public static MemberVO memberDetailData(String id)
+  {
+	   SqlSession session=ssf.openSession();
+	   MemberVO vo=session.selectOne("memberDetailData", id);
+	   session.close();
+	   return vo;
+  }
+  
+  public static void memberUpdate(MemberVO vo) {
+	  
+	  SqlSession session=ssf.openSession(true);
+	  session.update("memberUpdate", vo);
+	  session.close();
+
+  }
 }

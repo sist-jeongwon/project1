@@ -295,7 +295,7 @@ $(function() {
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=password name=pwd class="input-sm" size=15 id="pwd"></td>
+						<td width=70%><input type=password name=pwd class="input-sm" size=15  id="pwd"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 확인 <img src="ico_required.gif">

@@ -30,22 +30,27 @@
     WHERE tel=#{tel}
  </select>
  
- <select id="findMemberId" parameterType="String" resultType="String">
+ <select id="findMemberId"  resultType="String" parameterType="String">
   SELECT RPAD(SUBSTR(mem_id,1,2),LENGTH(mem_id),'●') FROM member WHERE tel=#{tel}
  </select>
  
- <select id="findMemberPwd" resultType="MemberVO" parameterType="String">
-  SELECT RPAD(SUBSTR(mem_pwd,1,2),LENGTH(mem_pwd),'●') FROM member WHERE name={name} AND tel=#{tel}  
+ <select id="findMemberPwd" resultType="String" parameterType="String">
+  SELECT RPAD(SUBSTR(mem_pwd,1,2),LENGTH(mem_pwd),'●') FROM member WHERE mem_id=#{id} 
  </select>
  
- <update id="memberUpdate" parameterType="MemberVO">
+ <select id="memberDetailData" parameterType="String" resultType="MemberVO">
+    SELECT * FROM member
+    WHERE mem_id=#{id}
+ </select>
+ 
+ <update id="memberUpdate" parameterType="BoardVO">
    UPDATE member SET 
-   mem_pwd={pwd},
-   name={name},
+   mem_pwd=#{pwd},
+   name=#{name},
    email=#{email},
    birth=#{birth},
    address=#{address}
    tel=#{tel}
-   WHERE mem_id={id}
+   WHERE mem_id=#{id}
  </update>
 </mapper>

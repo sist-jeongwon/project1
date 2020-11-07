@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.sist.controller.RequestMapping;
+import com.firstProject.dao.BoardDAO;
 import com.firstProject.dao.MemberDAO;
+import com.firstProject.vo.BoardVO;
 import com.firstProject.vo.MemberVO;
 
 public class MemberModel {
@@ -152,9 +154,34 @@ public class MemberModel {
 	
 	}
 	   
-//	@RequestMapping("member/find_pwd_ok.do")
-//	public String member_find_pwd_ok(HttpServletRequest request) {
-//		
-//		
-//	}
+	@RequestMapping("member/find_pwd_ok.do")
+	public String member_find_pwd_ok(HttpServletRequest request) {
+		
+		String id=request.getParameter("id");
+		int count=MemberDAO.memberIdCheck(id);
+		String idc="";
+		if(count==0) {
+			
+			idc="0";
+		}
+		else {
+			
+			idc=MemberDAO.findMemberPwd(id);
+		}
+		
+		request.setAttribute("idc", idc);
+		return "../member/find_pwd_ok.jsp";
+	}
+
+	
+	@RequestMapping("member/update.do")
+	public String member_update(HttpServletRequest request) {
+		
+		String id=request.getParameter("id");
+		MemberVO vo=MemberDAO.memberDetailData(id);
+		request.setAttribute("vo", vo);
+		request.setAttribute("main_jsp", "../member/update.do");
+		return "";
+	}
+	
 }

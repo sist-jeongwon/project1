@@ -27,6 +27,13 @@
 <script type="text/javascript">
 $(function(){
 	$('#findPwdBtn').click(function(){
+		let id=$('#id').val();
+		if(id.trim()=="")
+		{
+			alert("아이디를 입력하세요");
+			$('#id').focus();
+			return;
+		}
 		let name=$('#name').val();
 		if(name.trim()=="")
 		{
@@ -34,27 +41,20 @@ $(function(){
 			$('#name').focus();
 			return;
 		}
-		let tel=$('#tel').val();
-		if(tel.trim()=="")
-		{
-			alert("전화번호를 입력하세요");
-			$('#tel').focus();
-			return;
-		}
 		$.ajax({
 			type:'post',
 			url:'../member/find_pwd_ok.do',
-			data:{"tel":tel},
+			data:{"id":id},
 			success:function(result)
 			{
-				let res=result.trim();
-				if(res==0)
+				let idc=result.trim();
+				if(idc==0)
 				{
-					$('#telcheck_result').html("<font color=red>가입된 정보가 없습니다</font>")
+					$('#pwdcheck_result').html("<font color=red>일치하는 정보가 없습니다</font>")
 				}
 				else 
 				{
-					$('#telcheck_result').html("<font color=black>회원님의 id는 "+res+"입니다</font>");
+					$('#pwdcheck_result').html("<font color=black>회원님의 비밀번호는 "+idc+"입니다</font>");
 				}
 			}
 		})
@@ -66,16 +66,21 @@ $(function(){
  <div style="height: 120px"></div>
 	<div class="row row2"></div>
 	<div class="row row1">
-			<form method=post action="../member/find_pwd_ok.do" name="findPwdFrm" id="findPwddFrm">
+			<form method=post action="../member/find_pwd_ok.do" name="findPwdFrm" id="findPwdFrm">
 				<table class="table">
+					<tr>
+						<th class="text-right danger" width="30%">아이디</th>
+						<td width=70%><input type=text id="id" name=id class="input-sm" size=15> </td>
+					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">이름</th>
 						<td width=70%><input type=text id="name" name=name class="input-sm" size=15> </td>
 					</tr>
+					<table class="table">
+					 <tr>
+					   <td class="text-center" id="pwdcheck_result"></td><%-- 결과 --%>
+					 </tr>
 					<tr>
-						<th class="text-right danger" width="30%">전화번호</th>
-						<td width=70%><input type=text id="tel" name=tel class="input-sm" size=15> </td>
-					</tr>
 					<tr>
 						<td colspan="2" class="text-center"><input type=button value="비밀번호 찾기" class="button" id="findPwdBtn">
 							<input type=button value="취소" class="button" onclick="javascript:history.back()"></td>
