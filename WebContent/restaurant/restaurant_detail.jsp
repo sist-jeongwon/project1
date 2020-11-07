@@ -69,8 +69,8 @@ $(function(){
 		    $(this).text("댓글");
 			i=0;
 	  }
-	  alert("댓글을 입력해주세요.");
-	  return false;
+	  alert("빈칸입니다.");
+	 
 	});
 	$('.reply_update').click(function(){
 		let no=$(this).attr("value");
