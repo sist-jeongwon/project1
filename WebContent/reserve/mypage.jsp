@@ -158,28 +158,14 @@ $(function() {
 			return;
 		}
 
-		let tel1 = $('#tel1').val();
-		if (tel1.trim() == "") {
+		let tel = $('#tel').val();
+		if (tel.trim() == "") {
 			alert("전화번호를 입력하세요");
-			$('#tel1').focus();
+			$('#tel').focus();
 			return;
 		}
 
-		let tel2 = $('#tel2').val();
-		if (tel2.trim() == "") {
-			alert("전화번호를 입력하세요");
-			$('#tel2').focus();
-			return;
-		}
-
-		let tel3 = $('#tel3').val();
-		if (tel3.trim() == "") {
-			alert("전화번호를 입력하세요");
-			$('#tel3').focus();
-			return;
-		}
-
-		$('#updateFrm').submit();
+		
 	});
 });
 </script>
@@ -288,32 +274,33 @@ $(function() {
 			  <div class="input-group">
 		       <form method=post action="../member/update_ok.do" name="updateFrm" id="updateFrm">
 				<table class="table">
+				 
 					<tr>
 						<th class="text-right danger" width="30%">아이디 <img src="ico_required.gif"></th>
-						<td width=70%><input type=text name=id class="input-sm" size=15  readonly id="id"></td>
+						<td width=70%><input type=text name=id class="input-sm"  size=15 value="${vo.mem_id }"  readonly id="id"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=password name=pwd class="input-sm" size=15  id="pwd"></td>
+						<td width=70%><input type=password name=pwd class="input-sm" size=15 value="${vo.mem_pwd }"   id="pwd"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">비밀번호 확인 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=password name=pwd1 class="input-sm" size=15 id="pwd1"></td>
+						<td width=70%><input type=password name=pwd class="input-sm" size=15 value="${vo.mem_pwd }"  id="pwd"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">이름 <img src="ico_required.gif">
 						</th>
-						<td width=70%><input type=text name=name class="input-sm" size=15 id="name"></td>
+						<td width=70%><input type=text name=name class="input-sm" size=15 value="${vo.name }"  id="name"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">이메일</th>
-						<td width=70%><input type=text name=email class="input-sm" size=45 id="email"></td>
+						<td width=70%><input type=text name=email class="input-sm" size=45 value="${vo.email }" id="email"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">생년월일</th>
-						<td width=70%><input type=date name=birthday class="input-sm" size=25 id="birthday"></td>
+						<td width=70%><input type=date name=birthday class="input-sm" size=25 value="${vo.birth }"  id="birthday"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">우편번호 <img src="ico_required.gif">
@@ -335,19 +322,11 @@ $(function() {
 					<tr>
 						<th class="text-right danger" width="30%">전화번호 <img src="ico_required.gif">
 						</th>
-						<td width=70%><select name=tel1 id=tel1>
-								<option>---</option>
-								<option>010</option>
-								<option>011</option>
-								<option>016</option>
-								<option>017</option>
-								<option>018</option>
-						</select> <input type=text name=tel2 class="input-sm" size=3 id=tel2>
-							<input type=text name=tel3 class="input-sm" size=3 id=tel3>
-						</td>
+						<td width=70%><input type=text name=tel class="input-sm" size=7 value="${vo.tel }" id=tel></td>
 					</tr>
+					
 					<tr>
-						<td colspan="2" class="text-center"><input type=button value="수정" class="updateBtn" id="updateBtn">
+						<td colspan="2" class="text-center"><input type=submit value="수정" class="updateBtn" id="updateBtn">
 							<input type=button value="취소" class="updateBtn" onclick="javascript:history.back()"></td>
 					</tr>
 				</table>

@@ -1,5 +1,8 @@
 package com.firstProject.model;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -174,14 +177,62 @@ public class MemberModel {
 	}
 
 	
-	@RequestMapping("member/update.do")
+	@RequestMapping("reserve/mypage.do")
 	public String member_update(HttpServletRequest request) {
 		
-		String id=request.getParameter("id");
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
 		MemberVO vo=MemberDAO.memberDetailData(id);
+		
+//		String tel1=vo.getTel();
+//		tel1.substring(0, 2);
+//		System.out.println(tel1);
+//		String tel2=vo.getTel();
+//		tel2.substring(3, 6);
+//		String tel3=vo.getTel();
+//		tel3.substring(7, 10);
+		
 		request.setAttribute("vo", vo);
-		request.setAttribute("main_jsp", "../member/update.do");
-		return "";
+		request.setAttribute("main_jsp", "../reserve/mypage.jsp");
+		return "../main/main.jsp";
 	}
 	
+	
+	@RequestMapping("member/update_ok.do")
+	public String member_update_ok(HttpServletRequest request) {
+		
+		try {
+			
+			request.setCharacterEncoding("UTF-8");
+		
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		
+		}
+		   String id=request.getParameter("id");	
+		   String pwd=request.getParameter("pwd");
+		   String name=request.getParameter("name");
+		   String email=request.getParameter("email");
+		   String birthday=request.getParameter("birthday");
+		   String post=request.getParameter("post");
+		   String addr1=request.getParameter("addr1");
+		   String addr2=request.getParameter("addr2");
+		   String tel=request.getParameter("tel");
+		   
+		   MemberVO vo=new MemberVO();
+		   vo.setMem_id(id);
+		   vo.setMem_pwd(pwd);
+		   vo.setName(name);
+		   vo.setEmail(email);
+	       vo.setBirth(birthday);
+		   vo.setAddress(addr1+addr2);
+		   vo.setTel(tel);
+		   
+		   MemberDAO.memberUpdate(vo);
+		   
+		   request.setAttribute("main_jsp", "../reserve/mypage.jsp");
+		   return "../main/main.jsp";
+		
+	}
 }
