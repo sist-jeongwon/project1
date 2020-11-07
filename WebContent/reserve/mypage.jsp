@@ -106,6 +106,7 @@ function postfind() {
 		}
 	}).open();
 }
+
 $(function() {
 	$('#updateBtn').click(function() {
 
@@ -185,12 +186,12 @@ $(function() {
 			            <li><a href="#cart" data-toggle="tab">장바구니</a></li>
 			            <li><a href="#likelist" data-toggle="tab">찜목록</a></li>
 			            <li><a href="#q&alist" data-toggle="tab">1:1문의</a></li>
-					</ul> 
+					</ul>
 								</div>
 								
 								</div>
     </div><!-- col-md-3 -->
-      
+    
 	    <!--   SIDEBAR BUTTONS   -->
 		<div class="col-md-9">
       <div class="profile-container">
@@ -207,16 +208,17 @@ $(function() {
 		      <div class="tab-pane" id="reservationlist"> <!-- 예약확인 -->
 		           <div class="row">
 					<div class="input-group">
-						<!-- 테이블장소 -->
+						<!-- 테이블장소 -->2
+						<!-- 
+						  <table class="table">
 						    <caption>예매목록</caption>
-						   <table class="table">
 						    <tr>
 						      <td>
 						        <table class="table table-striped">
 						          <tr class="danger">
 						           <th class="text-center">예약번호</th>
 						           <th class="text-center"></th>
-						           <th class="text-center">식당</th>
+						           <th class="text-center">식당이름</th>
 						           <th class="text-center">장소</th>
 						           <th class="text-center">예약일</th>
 						           <th class="text-center">인원</th>
@@ -227,18 +229,18 @@ $(function() {
 						            <tr>
 						               <td class="text-center">${vo.rest_no }</td>
 							           <td class="text-center">
-							             <img src="${vo.resvo.rest_poster }" width=30 height=30>
+							             <img src="${vo.mvo.poster }" width=30 height=30>
 							           </td>
-							           <td class="text-center">${vo.resvo.rest_name }</td>
+							           <td class="text-center">${vo.rest_vo.rest_name }</td>
 							           <td class="text-center">${vo.theater }</td>
 							           <td class="text-center">${vo.time }</td>
 							           <td class="text-center">${vo.people }</td>
 							           <td class="text-center">${vo.price }</td>
 							           <td class="text-center">
-							             <c:if test="${vo.isreserve=='1' }">
+							             <c:if test="${vo.isreserve=='0' }">
 							              <a href="#" class="btn btn-sm btn-primary">예매완료</a>
 							             </c:if>
-							             <c:if test="${vo.isreserve=='0' }">
+							             <c:if test="${vo.isreserve=='1' }">
 							              <span class="btn btn-sm btn-danger">예매대기</span>
 							             </c:if>
 							           </td>
@@ -248,7 +250,7 @@ $(function() {
 						      </td>
 						    </tr>
 						  </table>
-						  
+						   -->
 					</div>
 		           </div>
 		       </div>
@@ -289,7 +291,7 @@ $(function() {
 					<tr>
 						<th class="text-right danger" width="30%">주소 <img src="ico_required.gif">
 						</th>
-						<td width=70%>${dvo.address }</td>
+						<td width=70%><input type=text name=addr class="input-sm" size=45 value="${dvo.address }" id="addr"></td>
 					</tr>
 					<tr>
 						<th class="text-right danger" width="30%">전화번호 <img src="ico_required.gif">
@@ -329,14 +331,11 @@ $(function() {
 						            <tr>
 						               <td width=70% class="text-right">
 						                 <a href="../Product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
-						                 
+						                 <a href="#" class="btn btn-sm btn-success">결제하기</a>
 						               </td>
 						            </tr>
 						          </table>
 						        </c:forEach>
-						        <div class="text-right mt-100" >
-						        <a href="#" class="btn btn-lg btn-success">결제하기</a>
-						        </div>
 						      </td>
 						    </tr>
 						  </table>

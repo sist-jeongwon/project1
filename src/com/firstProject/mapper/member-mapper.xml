@@ -45,12 +45,11 @@
  
  <update id="memberUpdate" parameterType="BoardVO">
    UPDATE member SET
-   mem_id=#{mem_id},
    mem_pwd=#{mem_pwd},
    name=#{name},
    email=#{email},
    address=#{address},
    tel=#{tel}
-   WHERE mem_id=#{mem_id}
+   WHERE tel=#{tel}
  </update>
 </mapper>
