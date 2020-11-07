@@ -329,11 +329,14 @@ $(function() {
 						            <tr>
 						               <td width=70% class="text-right">
 						                 <a href="../Product/product_keep_cancel.do?no=${vo.kno }" class="btn btn-sm btn-danger">취소</a>
-						                 <a href="#" class="btn btn-sm btn-success">결제하기</a>
+						                 
 						               </td>
 						            </tr>
 						          </table>
 						        </c:forEach>
+						        <div class="text-right mt-100" >
+						        <a href="#" class="btn btn-lg btn-success">결제하기</a>
+						        </div>
 						      </td>
 						    </tr>
 						  </table>
