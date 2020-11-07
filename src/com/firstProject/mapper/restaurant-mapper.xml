@@ -71,7 +71,7 @@ REST_PRICE            VARCHAR2(30)
     <selectKey keyProperty="rest_no" resultType="int" order="BEFORE">
       SELECT NVL(MAX(rest_no)+1,1) as rest_no FROM reservation
     </selectKey>
-    INSERT INTO reservation VALUES(
+    INSERT INTO reservation VALUES (
       #{rest_no},
       #{mem_id},
       #{cno},
