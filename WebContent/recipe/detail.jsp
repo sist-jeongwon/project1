@@ -64,14 +64,17 @@ $(function(){
 			d=0;
 		}
 	});
+		
+	$('#replyBtn').click(function() {
 		let replyArea = $('#replyArea').val();
-		$('#replyBtn').click(function() {
-			if (replyArea.trim() == "") {
-				alert("댓글을 입력하세요");
-				$('#replyArea').focus();
-				return false;
-			}});
-});
+		if (replyArea.trim() == "") {
+			alert("댓글을 입력하세요");
+			$('#replyArea').focus();
+			return false;
+		}
+	});
+	
+}); 
 </script>
 <style type="text/css">
 .btn{
@@ -155,7 +158,7 @@ $(function(){
 						      </tr>
 						      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
 						       <td colspan="2">
-						        <form method=post action="../recipe/reply_update.do">
+						        <form method=post action="../recipe/reply_update.do" id="replyInsert">
 						            <input type=hidden name="no" value="${rvo.no }">
 						            <input type=hidden name="bno" value="${vo.recipe_no }">	<!-- bno는 게시물 번호 -->
 							         <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
@@ -171,7 +174,7 @@ $(function(){
 						    <table class="table">
 						      <tr>
 						       <td>
-						        <form method=post action="../recipe/reply_insert.do">
+						        <form method=post action="../recipe/reply_insert.do" >
 						            <input type=hidden name="bno" value="${vo.recipe_no }">
 							        <textarea rows="3" cols="95" name="msg" style="float: left; margin-right:10px;" id="replyArea"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
@@ -191,8 +194,9 @@ $(function(){
  			<!-- Single Widget Area -->
                         <div class="single-widget-area author-widge">
                             <div class="background-pattern bg-img" style="background-image: url(img/core-img/pattern2.png); margin-bottom:30px;">
-                               <input type=hidden name="rno" value="${vo.recipe_no }">
-                                <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a>
+                               <input type="hidden" name="rno" value="${vo.recipe_no }">
+                                 <a href="../recipe/like.do?no=${vo.recipe_no }" class="btn bueno-btn w-100 mt-1">레시피 찜하기</a> 
+                            
                             </div>
                         </div>
 		                <div class="ingredients">
