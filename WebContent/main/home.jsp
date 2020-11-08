@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style media="screen">
 * {
 	margin: 0;
@@ -91,99 +92,534 @@
 </style>
 </head>
 <body>
-	<div class="main-section" id="sec1">
-		<div class="text-center" id="bgset">
-			<img src="../style/img/core-img/section_title_1.png"
-				alt="채소 한끼, 최소 한끼로 지구를 지켜주세요!">
-		</div>
-		<div>
-			<p>
-				<strong>육식으로 인해 기후변화가 가속화되고 있다는 것을 알고 계셨나요?</strong> <br>육류 생산
-				과정에서 발생하는 탄소 배출은 모든 교통수단을 합친 것보다 많습니다. <br>고기 소비가 계속 늘어나면서 숲이
-				파괴되고 토양과 물, 대기 오염문제까지 발생하고 있으며, 대규모 공장식 가축 사육으로 동물들은 고통받고 있습니다.
-			</p>
-		</div>
-	</div>
-	<div class="main-section" id="sec2">
-		<div class="text-center">
-			<img src="../style/img/core-img/section_title_2.png"
-				alt="육식에 대한 불편한 진실">
-		</div>
-		<div>
-			<p>공장식 축산 과정에서 전염병을 막기 위해 많은 양의 항생제가 사용됩니다. 농장에서 사육되는 동물들은 살충제와
-				화학비료로 키운 사료를 먹습니다. 대규모 공장식 축산은 탄소배출이나 환경오염 등의 문제를 일으키는 것은 물론, 우리의
-				건강을 위협하고 있습니다.</p>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-12 col-sm-6 col-lg-4">
-				<img margin-left="20px" src="../style/img/core-img/problem1.png">
-				<p>육류 과다 섭취는 당뇨, 동맥경화, 심혈관 질환은 물론 암 등 치명적인 질병의 원인이 되기도 합니다. 식물성
-					위주의 식단은 제2형 당뇨병 발생 위험을 40% 줄일 수 있다고 합니다.</p>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-4">
-				<img src="../style/img/core-img/problem2.png">
-				<p>1960년에서 2011년까지 50년 동안, 전세계 전환된 토지의 65%가 축산업을 위한 개간이었습니다.
-					계속해서 늘어나는 가축들의 사료를 마련하기 위해, 지금도 생물다양성이 풍부한 숲이 베어져나가고 있습니다.</p>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-4">
-				<img src="../style/img/core-img/problem3.png">
-				<p>대규모 산업식 축산은 이윤추구를 위해 가능한 한 빨리 동물을 키우고 도살하는 시스템을 만들었습니다. 이로 인해
-					동물들은 살아있는 동안은 엄청난 고통을 겪다 무참히 도살 당하고 있습니다.</p>
-			</div>
-		</div>
+	 <!-- ##### Treading Post Area Start ##### -->
+    <div class="treading-post-area" id="treadingPost">
+        <div class="close-icon">
+            <i class="fa fa-times"></i>
+        </div>
 
-		<div class="row">
-			<div class="col-12 col-sm-6 col-lg-4">
-				<img src="../style/img/core-img/problem4.png">
-				<p>현재 축산업으로 인한 온실가스 배출량은 전체의 14%를 차지하고 있습니다. 이대로 방치한다면 2050년까지
-					육식으로 인한 탄소배출량은 전체 배출량의 절반 이상을 차지하게 될 것입니다.</p>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-4">
-				<img src="../style/img/core-img/problem5.png">
-				<p>가축 사육은 엄청난 양의 물을 사용할 뿐 아니라 수질 오염의 원인 중 하나입니다. 축산업으로 인한 물 사용은
-					전체 농업에서 사용하는 양의 29%를 차지합니다. 대규모 산업식 축산 농장에서 사용하는 화학비료, 살충제, 가축을 위한
-					약품들은 물과 토양을 오염시키고 결국 우리의 식탁으로 돌아와 건강을 위협합니다.</p>
-			</div>
-		</div>
+        <h4>Treading Post</h4>
+
+        <!-- Single Blog Post -->
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <img src="img/bg-img/9.jpg" alt="">
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <a href="#" class="post-tag">The Best</a>
+                <a href="#" class="post-title">Friend eggs with ham</a>
+                <div class="post-meta">
+                    <a href="#" class="post-date">July 11, 2018</a>
+                    <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Blog Post -->
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <img src="img/bg-img/10.jpg" alt="">
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <a href="#" class="post-tag">The Best</a>
+                <a href="#" class="post-title">Mushrooms with pork chop</a>
+                <div class="post-meta">
+                    <a href="#" class="post-date">July 11, 2018</a>
+                    <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Blog Post -->
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <img src="img/bg-img/11.jpg" alt="">
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <a href="#" class="post-tag">The Best</a>
+                <a href="#" class="post-title">Birthday cake with chocolate</a>
+                <div class="post-meta">
+                    <a href="#" class="post-date">July 11, 2018</a>
+                    <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Blog Post -->
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <img src="img/bg-img/9.jpg" alt="">
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <a href="#" class="post-tag">The Best</a>
+                <a href="#" class="post-title">Friend eggs with ham</a>
+                <div class="post-meta">
+                    <a href="#" class="post-date">July 11, 2018</a>
+                    <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Blog Post -->
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <img src="img/bg-img/10.jpg" alt="">
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <a href="#" class="post-tag">The Best</a>
+                <a href="#" class="post-title">Mushrooms with pork chop</a>
+                <div class="post-meta">
+                    <a href="#" class="post-date">July 11, 2018</a>
+                    <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Blog Post -->
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <img src="img/bg-img/11.jpg" alt="">
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <a href="#" class="post-tag">The Best</a>
+                <a href="#" class="post-title">Birthday cake with chocolate</a>
+                <div class="post-meta">
+                    <a href="#" class="post-date">July 11, 2018</a>
+                    <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Treading Post Area End ##### -->
+
+    
+<div class="instagram-feed-area d-flex flex-wrap">
+		<img src="../style/img/bg-img/112.jpg" alt="">
+
 	</div>
 
-	<div class="slide">
-		<div class="post-catagory">
-			<img id="back" src="../style/img/core-img/left.png" alt="" width="50">
-			<div class="container">
-				<ul>
-					<c:forEach var="vo" items="${list }">
-						<li>
-							<div class="single-post-catagory">
-								<img src="${vo.poster }" alt=""
-									style="width: 300px; height: 300px;">
-								<div class="catagory-content-bg">
-									<div class="catagory-content">
-										<a href="#" class="post-tag">${vo.mem_id }</a> <a
-											href="../recipe/detail_before.do?recipe_no=${vo.recipe_no }"
-											class="post-title-main"> <c:choose>
-												<c:when test="${fn:length(vo.title) gt 20}">
-													<c:out value="${fn:substring(vo.title, 0, 25)}" />...
-				        					</c:when>
-												<c:otherwise>
-													<c:out value="${vo.title}">
-													</c:out>
-												</c:otherwise>
-											</c:choose>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-					</c:forEach>
-				</ul>
-			</div>
-			<img id="next" src="../style/img/core-img/right.png" alt=""
-				width="50">
-		</div>
-	</div>
+    <!-- ##### Catagory Area Start ##### --><!-- 여기부터 수정됨 -->
+    <div class="post-catagory section-padding-100-0 mb-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Single Post Catagory -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        <img src="../style/img/bg-img/4.jpg" alt="">
+                        <!-- Content -->
+                        <div class="catagory-content-bg">
+                            <div class="catagory-content">
+                                <a href="#" class="post-tag">The Best</a>
+                                <a href="#" class="post-title">Healthy Food</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Post Catagory -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        <img src="../style/img/bg-img/5.jpg" alt="">
+                        <!-- Content -->
+                        <div class="catagory-content-bg">
+                            <div class="catagory-content">
+                                <a href="#" class="post-tag">The Best</a>
+                                <a href="#" class="post-title">Organic Cuisine</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Post Catagory -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        <img src="../style/img/bg-img/6.jpg" alt="">
+                        <!-- Content -->
+                        <div class="catagory-content-bg">
+                            <div class="catagory-content">
+                                <a href="#" class="post-tag">The Best</a>
+                                <a href="#" class="post-title">Vegetarian Food</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Catagory Area End ##### -->
+
+
+
+    <!-- ##### Big Posts Area Start ##### -->
+    <div class="big-posts-area mb-50">
+        <div class="container">
+            <!-- Single Big Post Area -->
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="big-post-thumbnail mb-50"><!-- ../style/img/core-img/section_title_2.png -->
+                        <img src="../style/img/bg-img/earth.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="big-post-content text-center mb-50">
+                        <a href="#" class="post-tag">Advantage</a>
+                        <a href="#" class="post-title">환경을 지키는 또 하나의 방법</a>
+                        <div class="post-meta">
+                            <a href="#" class="post-date">2014 02 24</a>
+                            <a href="#" class="post-author">By 한국장학재단blog</a>
+                        </div>
+                        <p>가축이 키워지고 또 그것을 소비하는 일은 생명이 자라나는 일이고, 사람의 당연한 식생활을 하는 일이 환경에 어떤 악영향을 끼치는지 아는 사람은 비교적 적습니다.
+전 세계가 소비하는 육류를 생산하기 위해 그만큼 엄청난 수의 가축 사육을 함으로써 엄청난 물 사용량이 야기되고 있고,소고기 1kg을 생산하는데 배출되는 이산화탄소의 양이 농작물을 생산하는데 나오는 이산화탄소의 8배에 달하는 16kg이다.
+물과 화석연료 역시 소고기를 생산하는데 필요한 양이 다른 어떤 농작물보다도 월등히 많다.</p>
+                        <a href="#" class="btn bueno-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Big Post Area -->
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="big-post-content text-center mb-50">
+                        <a href="#" class="post-tag">Advantage</a>
+                        <a href="#" class="post-title">채식주의자들이 더 건강하게 장수한다</a>
+                        <div class="post-meta">
+                            <a href="#" class="post-date">2014 02 27</a>
+                            <a href="#" class="post-author">By jasonhbae </a>
+                        </div>
+                        <p>최근의 연구 결과들은 채식주의자들이 그렇지 않은 사람들과 비교할 때 평균적으로 혈압이 더 낮다는 사실을 보고하고 있습니다. 채식 위주의 식단이 당장 혈압을 낮출 필요가 있는 고혈압 환자들에게 효과적이다는 연구 결과도 발표 되고 있습니다.
+
+7만명 이상을 대상으로 벌어진 2013년의 한 연구는 채식주의자들이 그렇지 않은 사람들에 비해 사망 위험율이 12%나 낮다는 사실을 발견했습니다. 동맥 경화를 일으키는 주범인 포화지방과 콜레스트롤 섭취량이 거의 0에 가깝기 때문에 각종 만성 질환을 앓을 확률이 그만큼 감소한 결과입니다.</p>
+                        <a href="#" class="btn bueno-btn">Read More</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="big-post-thumbnail mb-50">
+                        <img src="../style/img/bg-img/health.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Single Big Post Area -->
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="big-post-thumbnail mb-50"><!-- ../style/img/core-img/section_title_2.png -->
+                        <img src="../style/img/bg-img/animal.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="big-post-content text-center mb-50">
+                        <a href="#" class="post-tag">Advantage</a>
+                        <a href="#" class="post-title">채식을 통해, 사람은 건강해지고 동물들은 <br>고통에서 해방된다</a>
+                        <div class="post-meta">
+                            <a href="#" class="post-date">2020 10 26</a>
+                            <a href="#" class="post-author">By 채식과 동물권</a>
+                        </div>
+                        <p>현대인의 육식은, 동물성 음식의 섭취가 인간의 건강에 필수적이라는 잘못된 정보를 기반으로 식용 동물들의 고통을 무의식적으로 외면하면서 행하는 식사 습관입니다. 
+수없이 많은 동물들을 고통 속으로 몰아넣으면서도 결국 자신의 신체적·정신적·영적 건강을 해친다는 점에서 대단히 불필요하고 무가치하며 자기파괴적인 행동입니다.
+사람들이 완전채식을 하거나 채식 위주의 식생활로 전환하는 만큼 '동물들에 대한 먹거리 상품화'는 줄어들 수밖에 없고 이것은 동물들이 점차 불필요한 고통에서 벗어나는 것, 즉 동물복지의 확대를 의미합니다.
+채식은, 사람의 건강을 지키고 동물의 복지를 향상시키기 위한 최선의 방법입니다.</p>
+                        <a href="#" class="btn bueno-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+   
+    <!-- ##### Big Posts Area End ##### -->
+    
+    <!-- table -->
+<div class="row align-items-center">
+                <div>
+                <tr>
+                <div class="container">
+                    <table class="table table-hover">
+				    <thead>
+				      <tr class="success">
+				        <th><font color="#B0C364">채식주의단계</font></th>
+				        <th>소/돼지</th>
+				        <th>닭</th>
+				        <th>생선/조개</th>
+				        <th>달걀</th>
+				        <th>우유(유제품)</th>
+				        <th>채소</th>
+				        <th>과일/견과류/곡류</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				        <td class="success"><b>프루테리언</b></td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>비건</b></td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>락토 베지테리언</b></td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>오보 베지테리언</b></td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>락토-오보베지테리언</b></td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>페스코 베지테리언</b></td>
+				        <td>X</td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>폴로 베지테리언</b></td>
+				        <td>X</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				      <tr>
+				        <td class="success"><b>플렉시테리언</b></td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				        <td>O</td>
+				      </tr>
+				    </tbody>
+				  </table>
+				                </div>
+				                </tr>
+				                </div>
+            </div>
+     </div>
+    </div>
+    <!-- table End-->
+    
+
+
+    <!-- ##### Posts Area End ##### -->
+    <div class="bueno-post-area mb-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Post Area -->
+                <div class="col-12 col-lg-8 col-xl-9">
+                    <!-- Single Blog Post -->
+                    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                        <!-- Blog Thumbnail -->
+                        <div class="blog-thumbnail">
+                            <img src="../style/img/bg-img/recipe.jpg" alt="">
+                        </div>
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <a href="#" class="post-tag">The Best Category</a>
+                            <a href="../recipe/total.do" class="post-title">Recipe</a>
+                            <div class="post-meta">
+                                <a href="#" class="post-date">2020 11 09</a>
+                                <a href="#" class="post-author">By 도아라</a>
+                            </div>
+                            <p>쉽고, 맛있고, 영양 가득한 채식 레시피.
+고기 없이 할 수 있는 다양한 비건 레시피를 상세하게 찾아보실 수 있습니다.
+당신의 식생활을 개선해 주는 채식의 세계로 서서히 안내하겠습니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- Single Blog Post -->
+                    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                        <!-- Blog Thumbnail -->
+                        <div class="blog-thumbnail">
+                            <img src="../style/img/bg-img/restaurant.jpg" alt="">
+                        </div>
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <a href="#" class="post-tag">The Best Category</a>
+                            <a href="../restaurant/restaurant_main.do" class="post-title">Restaurant</a>
+                            <div class="post-meta">
+                                <a href="#" class="post-date">2020 11 09</a>
+                                <a href="#" class="post-author">By 강신진</a>
+                            </div>
+                            <p>전국에 숨겨진 맛집 비건음식점을 소개하겠습니다.<br>
+가장 맛있는 제철 채소로 만든 음식을 맛볼 수 있습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Single Blog Post -->
+                    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                        <!-- Blog Thumbnail -->
+                        <div class="blog-thumbnail">
+                            <img src="../style/img/bg-img/product.jpg" alt="">
+                        </div>
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <a href="#" class="post-tag">The Best Category</a>
+                            <a href="../Product/Product_main.do" class="post-title">Product</a>
+                            <div class="post-meta">
+                                <a href="#" class="post-date">2020 11 09</a>
+                                <a href="#" class="post-author">By 안준성</a>
+                            </div>
+                            <p>손안의 작은 마트. 비건 채식 웰빙식품 전문몰.<br>
+찾기 힘든 채식 마켓을 집에서 손쉽게 구할 수 있도록 도와드리겠습니다.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar Area -->
+                <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
+                    <div class="sidebar-area">
+                          
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area post-widget">
+							<font color="#B0C364">CATEGORY<font> 
+                            <!-- Single Post Area -->
+                            <div class="single-post-area d-flex">
+                                <!-- Blog Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <img src="../style/img/bg-img/12.jpg" alt="">
+                                </div>
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <a href="../recipe/detail.do?no=133" class="post-title">부추두부들깨탕</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">2020 09 11</a>
+                                        <a href="#" class="post-author">By 재미마미</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Post Area -->
+                            <div class="single-post-area d-flex mb-30">
+                                <!-- Blog Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <img src="../style/img/bg-img/13.jpg" alt="">
+                                </div>
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <a href="../restaurant/restaurant_detail.do?rest_no=18" class="post-title">바토스(잠실점)</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">서울시 송파구</a>
+                                        <a href="#" class="post-author">남미음식</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Post Area -->
+                            <div class="single-post-area d-flex">
+                                <!-- Blog Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <img src="../style/img/bg-img/14.jpg" alt="">
+                                </div>
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <a href="../Product/detail.do?no=4" class="post-title">[상온]비건 한입스테이크맛</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">180g</a>
+                                        <a href="#" class="post-author">5500원</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Post Area -->
+                            <div class="single-post-area d-flex">
+                                <!-- Blog Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <img src="../style/img/bg-img/15.jpg" alt="">
+                                </div>
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <a href="../recipe/detail.do?no=135" class="post-title">표고버섯들깨볶음</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">2013 12 03</a>
+                                        <a href="#" class="post-author">By 뽕뽕이</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Post Area -->
+                            <div class="single-post-area d-flex">
+                                <!-- Blog Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <img src="../style/img/bg-img/16.jpg" alt="">
+                                </div>
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <a href="../Product/detail.do?no=11" class="post-title">쏘이버거</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">1kg</a>
+                                        <a href="#" class="post-author">17000원</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Posts Area End ##### -->
+
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
 </body>
 <script type="text/javascript">
 	$(document).ready(function() {
