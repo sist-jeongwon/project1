@@ -417,7 +417,7 @@
                             <a href="../recipe/total.do" class="post-title">Recipe</a>
                             <div class="post-meta">
                                 <a href="#" class="post-date">2020 11 09</a>
-                                <a href="#" class="post-author">By 도아라</a>
+                                <a href="#" class="post-author">By 정희진</a>
                             </div>
                             <p>쉽고, 맛있고, 영양 가득한 채식 레시피.
 고기 없이 할 수 있는 다양한 비건 레시피를 상세하게 찾아보실 수 있습니다.

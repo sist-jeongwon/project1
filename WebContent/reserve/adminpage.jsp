@@ -43,8 +43,8 @@ $(function(){
            <th class="text-center">예매번호</th>
            <th class="text-center"></th>
            <th class="text-center">ID</th>
-           <th class="text-center">식당명</th>
-            <th class="text-center">지점</th>
+           <th class="text-center">식당</th>
+            <th class="text-center">장소</th>
            <th class="text-center">예매일</th>
            <th class="text-center">인원</th>
            <th class="text-center">금액</th>
@@ -53,7 +53,7 @@ $(function(){
           <c:forEach var="vo" items="${list }">
             <tr>
                <td class="text-center">
-                 <c:if test="${vo.isreserve=='n' }">
+                 <c:if test="${vo.isreserve=='0' }">
                   <input type="checkbox" value="${vo.rest_no }" class="cb" name=cb>
                  </c:if>
                </td>
@@ -69,7 +69,7 @@ $(function(){
 	           <td class="text-center">${vo.price }</td>
 	           <td class="text-center">
 	             <c:if test="${vo.isreserve=='0' }">
-	              <a href="../reserve/admin_ok.do?no=${vo.no }" class="btn btn-sm btn-primary">승인대기</a>
+	              <a href="../reserve/admin_ok.do?no=${vo.rest_no }" class="btn btn-sm btn-primary">승인대기</a>
 	             </c:if>
 	             <c:if test="${vo.isreserve=='1' }">
 	              <span class="btn btn-sm btn-danger">승인완료</span>

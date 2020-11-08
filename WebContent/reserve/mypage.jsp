@@ -183,9 +183,9 @@ $(function() {
 						<li><a href="#orderlist" data-toggle="tab">주문조회</a></li>
 			            <li><a href="#reservationlist" data-toggle="tab">예약확인</a></li>
 			            <li><a href="#member" data-toggle="tab">내 정보 수정</a></li>
-			            <li><a href="#cart" data-toggle="tab">장바구니</a></li>
+			            <!-- <li><a href="#cart" data-toggle="tab">장바구니</a></li> -->
 			            <li><a href="#likelist" data-toggle="tab">찜목록</a></li>
-			            <li><a href="#q&alist" data-toggle="tab">1:1문의</a></li>
+			            <!-- <li><a href="#q&alist" data-toggle="tab">1:1문의</a></li> -->
 					</ul>
 								</div>
 								
