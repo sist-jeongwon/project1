@@ -209,58 +209,10 @@
 		<img src="../style/img/bg-img/112.jpg" alt="">
 
 	</div>
+	<div class="instagram-feed-area d-flex flex-wrap">
+		<img src="../style/img/bg-img/bean.jpg" alt="">
 
-    <!-- ##### Catagory Area Start ##### --><!-- 여기부터 수정됨 -->
-    <div class="post-catagory section-padding-100-0 mb-70">
-        <div class="container">
-            <div class="row justify-content-center">
-                <!-- Single Post Catagory -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-post-catagory mb-30">
-                        <img src="../style/img/bg-img/4.jpg" alt="">
-                        <!-- Content -->
-                        <div class="catagory-content-bg">
-                            <div class="catagory-content">
-                                <a href="#" class="post-tag">The Best</a>
-                                <a href="#" class="post-title">Healthy Food</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Post Catagory -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-post-catagory mb-30">
-                        <img src="../style/img/bg-img/5.jpg" alt="">
-                        <!-- Content -->
-                        <div class="catagory-content-bg">
-                            <div class="catagory-content">
-                                <a href="#" class="post-tag">The Best</a>
-                                <a href="#" class="post-title">Organic Cuisine</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Post Catagory -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-post-catagory mb-30">
-                        <img src="../style/img/bg-img/6.jpg" alt="">
-                        <!-- Content -->
-                        <div class="catagory-content-bg">
-                            <div class="catagory-content">
-                                <a href="#" class="post-tag">The Best</a>
-                                <a href="#" class="post-title">Vegetarian Food</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Catagory Area End ##### -->
-
-
+	</div>
 
     <!-- ##### Big Posts Area Start ##### -->
     <div class="big-posts-area mb-50">
