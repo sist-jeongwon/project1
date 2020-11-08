@@ -24,7 +24,7 @@
 <div class="post-catagory section-padding-100">
   <div class="container">
  <div class="row row1 ">
-    <h3 class="text-center">자유게시판</h3>
+    <h3 class="text-left">Q&A</h3>
     <table class="table">
       <tr>
         <td class="text-left">

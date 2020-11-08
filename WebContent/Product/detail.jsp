@@ -36,6 +36,8 @@ $(function(){
 			i=0;
 	  }
 	  
+	  
+	  
 	});
 	$('.reply_update').click(function(){
 		let no=$(this).attr("value");
@@ -63,6 +65,15 @@ $(function(){
 		{
 			$('#delTr').hide();
 			d=0;
+		}
+	});
+	
+	$('#replyBtn').click(function() {
+		let replyArea = $('#replyArea').val();
+		if (replyArea.trim() == "") {
+			alert("댓글을 입력하세요");
+			$('#replyArea').focus();
+			return false;
 		}
 	});
 });
@@ -138,7 +149,7 @@ $(function(){
 						        <form method=post action="../Product/reply_reply_insert.do">
 						            <input type=hidden name="no" value="${rvo.no }">
 						            <input type=hidden name="bno" value="${vo.product_no }">
-							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;" ></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
 							          class="btn btn-sm">
 						        </form>
@@ -146,7 +157,7 @@ $(function(){
 						      </tr>
 						      <tr class="rUp" id="rUp${rvo.no }" value="${rvo.no }" style="display:none">
 						       <td colspan="2">
-						        <form method=post action="../Product/reply_update.do">
+						        <form method=post action="../Product/reply_update.do" id="replyInsert">
 						            <input type=hidden name="no" value="${rvo.no }">
 						            <input type=hidden name="bno" value="${vo.product_no }">	<!-- bno는 게시물 번호 -->
 							         <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
@@ -163,9 +174,9 @@ $(function(){
 						       <td>
 						        <form method=post action="../Product/reply_insert.do">
 						            <input type=hidden name="bno" value="${vo.product_no }">
-							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;"></textarea>
+							        <textarea rows="3" cols="100" name="msg" style="float: left; margin-right:10px;" id="replyArea"></textarea>
 							        <input type=submit value="댓글쓰기" style="height:70px;float: left;"
-							          class="btn btn-sm btn-primary">
+							          class="btn btn-sm btn-primary" id="replyBtn">
 						        </form>
 						       </td>
 						      </tr>
