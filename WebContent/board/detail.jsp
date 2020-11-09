@@ -70,7 +70,7 @@ $(function(){
 <style type="text/css">
 .row1 {
     margin: 0px auto;
-    width:700px;
+    width:900px;
 }
   .btn{
 	background-color:#92C364;
@@ -164,7 +164,7 @@ $(function(){
         <form method=post action="../board/reply_reply_insert.do">
             <input type=hidden name="no" value="${rvo.no }">
             <input type=hidden name="bno" value="${vo.no }">
-	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>
+	        <textarea rows="3" cols="110" name="msg" style="float: left; margin-right:10px;"></textarea>
 	        <input type=submit value="댓글쓰기" style="height:70px;float: left"
 	          class="btn btn-sm"
 	        >
@@ -175,7 +175,7 @@ $(function(){
        <td colspan="2">
         <form method=post action="../board/reply_insert.do">
             <input type=hidden name="bno" value="${vo.no }">
-	        <textarea rows="3" cols="80" name="msg" style="float: left">${rvo.msg }</textarea>
+	        <textarea rows="3" cols="110" name="msg" style="float: left; margin-right:10px;">${rvo.msg }</textarea>
 	        <input type=submit value="댓글수정" style="height:70px;float: left"
 	          class="btn btn-sm"
 	        >
@@ -190,7 +190,7 @@ $(function(){
        <td>
         <form method=post action="../board/reply_insert.do">
             <input type=hidden name="bno" value="${vo.no }">
-	        <textarea rows="3" cols="80" name="msg" style="float: left"></textarea>
+	        <textarea rows="3" cols="110" name="msg" style="float: left; margin-right:10px;"></textarea>
 	        <input type=submit value="댓글쓰기" style="height:70px;float: left"
 	          class="btn btn-sm"
 	        >

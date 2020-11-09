@@ -8,7 +8,7 @@
 <style type="text/css">
 .row1 {
    margin: 0px auto;
-   width:700px;
+   width:9700px;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
