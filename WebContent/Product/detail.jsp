@@ -194,8 +194,8 @@ $(function(){
                                  <a href="#" class="post-date"><h4>${vo.name }</h4></a><br>
                                  <a href="#" class="post-author">${vo.price }원</a>
                               </div>
-                                <button type="submit" class="btn bueno-btn w-100">주문하기</button><br>
-                                <a href="../Product/product_keep.do?no=${vo.product_no }" class="btn bueno-btn w-100 mt-1">장바구니 담기</a><br>                                
+                                <a href="../order/order_main.do" class="btn bueno-btn w-100 mt-1">주문하기</a><button type="submit" class="btn bueno-btn w-100"></button><br>
+                                <a href="../Product/product_keep.do?no=${vo.product_no }">장바구니 담기</a><br>                                
                                 <a href="../Product/like.do?no=${vo.product_no }" class="btn bueno-btn w-100 mt-1">찜하기</a><br>
                             </div>
                         </div>
