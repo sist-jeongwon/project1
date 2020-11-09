@@ -170,7 +170,7 @@ public class ProductModel {
 		{
 			String no=request.getParameter("no");
 			ProductDAO.product_keepDelete(Integer.parseInt(no));
-			return "redirect:../reserve/mypage.do";
+			return "redirect:../order/order_main.do";
 		}
 		// 찜
 		@RequestMapping("Product/like.do")

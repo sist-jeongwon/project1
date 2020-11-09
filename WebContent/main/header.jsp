@@ -139,7 +139,7 @@
 												환영합니다.</a>&nbsp;&nbsp;<a href="../member/logout.do">Logout</a>
 											&nbsp;&nbsp;
 											<c:if test="${sessionScope.admin != 1 }">
-												<a href="../reserve/mypage.do?#cart"><img src="../style/img/core-img/cart.png"
+												<a href="../order/order_main.do"><img src="../style/img/core-img/cart.png"
 													width="30px" height="30px"></a>
 											</c:if>
 										</div>

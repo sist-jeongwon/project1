@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firstProject.mapper.order-mapper">
+	<!-- 장바구니에서 주문 화면으로 데이터 가져오기 -->
+	<select id="productFromKeep" parameterType="String"
+		resultType="ProductVO">
+		SELECT * FROM product_keep WHERE mem_id=#{mem_id}
+	</select>
 
+	
+	<!-- 결제버튼 클릭 시 주문 테이블 입력 -->
+	<insert id="orderInsert" parameterType="orderVO">
+		INSERT INTO order VALUES(SELECT NVL(MAX(orderNo)+1,1) FROM
+		order,sysdate,#{shipCharge},#{price},#{totalPrice},#{mem_id})
+	</insert>
+	<!-- 주문 데이터 검색 : 결제버튼 클릭 시 productList 입력용-->
+	<select id="orderSelect_input" resultType="orderVO">
+		SELECT * FROM order WHERE orderNo=(SELECT MAX(orderNo) FROM order)
+	</select>
+	
+	
+	<!-- 주문 데이터 검색 -->
+	<select id="orderSelect" parameterType="String" resultType="orderVO">
+		SELECT * FROM order WHERE mem_id=#{mem_id}
+	</select>
+	<!-- 결제상태 생성 -->
+	<insert id="orderStateInsert" parameterType="orderStateVO">
+		INSERT INTO orderState VALUES(#{status},#{orderNo},sysdate)
+	</insert>
+	
+	<!-- 주문시 물품목록 정보 저장 -->
+	<insert id="orderProductInsert" parameterType="orderProductsVO">
+		INSERT INTO orderProductList VALUES(#{product_no},#{quantity},#{discountRate},#{orderNo})
+	</insert>
 	
 	<!-- 주문 목록 데이터 읽기 -->
 	<select id="orderProductsList" resultType="orderProductsVO"
 		parameterType="String">
-		SELECT * FROM orderProductList WHERE mem_id=#{mem_id}
+		SELECT * FROM orderProductList WHERE orderNo = (SELECT orderNo FROM order WHERE mem_id=#{mem_id})
 	</select>
 </mapper>
