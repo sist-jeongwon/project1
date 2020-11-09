@@ -8,8 +8,15 @@
 <style type="text/css">
 .row1 {
    margin: 0px auto;
-   width:9700px;
+   width:900px;
+}.table{
+	width:900px;
 }
+.btn{
+	background-color:#92C364;
+	border:none;
+	min-width:0px;
+	}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -83,8 +90,8 @@ $(function(){
      </tr>
      <tr>
        <td colspan="2" class="text-center">
-         <input type=submit value=수정 class="btn btn-sm btn-primary sub" style="display:none">
-         <input type=button value=취소 class="btn btn-sm btn-primary"
+         <input type=submit value=수정 class="btn bueno-btn btn-xs sub" style="display:none">
+         <input type=button value=취소 class="btn bueno-btn btn-xs"
            onclick="javascript:history.back()"
          >
        </td>
